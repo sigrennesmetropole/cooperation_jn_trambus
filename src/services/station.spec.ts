@@ -1,7 +1,6 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 
 import type { StationModel } from '@/model/stations.model'
-import { stationsFixtures } from '@/model/stations.fixtures'
 import {
   formatLiCode,
   keepOnlyUsefulDessertes,
