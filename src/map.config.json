@@ -195,6 +195,19 @@
           }
         }
       },
+      "vectorProperties": {
+        "primitiveOptions": {
+          "type": "ellipsoid",
+          "geometryOptions": {
+            "radii": [5, 5, 5],
+            "innerRadii": [0.000001, 0.000001, 0.000001],
+            "minimumCone": 1.54,
+            "maximumCone": 1.58
+          },
+          "offset": [0, 0, 0.1]
+        },
+        "modelAutoScale": true
+      },
       "activeOnStartup": false,
       "zIndex": 5
     },
