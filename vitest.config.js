@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
-const path = require('path')
+import { fileURLToPath, URL } from 'node:url'
 
 const configTest = defineConfig({
   plugins: [Vue()],
@@ -8,7 +8,7 @@ const configTest = defineConfig({
     alias: [
       {
         find: '@',
-        replacement: path.resolve(__dirname, '/src'),
+        replacement: fileURLToPath(new URL('./src', import.meta.url)),
       },
     ],
   },
