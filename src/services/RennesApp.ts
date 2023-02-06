@@ -38,6 +38,11 @@ export class RennesApp extends VcsApp {
     return layer
   }
 
+  async getFeaturesFromLayer(key: RennesLayer) {
+    const layer = await this.getLayerByKey(key)
+    return layer.getFeatures()
+  }
+
   async filterFeaturesByAttribute(
     attribute: string,
     value: string,
