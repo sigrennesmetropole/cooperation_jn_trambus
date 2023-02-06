@@ -26,7 +26,8 @@ const configTest = defineConfig({
         resources: 'usable',
       },
     },
-    root: 'src', //Define the root
+    root: 'src', //Define the root,
+    silent: true, //Disable warning during test
   },
 })
 export default configTest

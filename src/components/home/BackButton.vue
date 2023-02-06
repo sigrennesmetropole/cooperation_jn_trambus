@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import router from '@/router'
-
 import ChevronArrowLeft from '@/assets/icons/chevron-left.svg'
 import UiButton from '@/components/ui/UiButton.vue'
-
+import { useRouter } from 'vue-router'
 import { useTraveltimeInteractionStore } from '@/stores/interactionMap'
 
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
@@ -14,6 +12,7 @@ const props = defineProps({
     default: '/home',
   },
 })
+const router = useRouter()
 
 function backButtonClicked() {
   router.push(props.url)

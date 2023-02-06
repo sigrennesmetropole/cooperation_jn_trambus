@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { LineNumber } from '@/model/lines.model'
-import router from '@/router'
 import ItemThermometerStations from '@/components/line/ItemThermometerStations.vue'
 import type { StationModel } from '@/model/stations.model'
 import { useStationsStore } from '@/stores/stations'
+import { useRouter } from 'vue-router'
 
 type actionItem = 'leave' | 'over'
 
@@ -13,6 +13,7 @@ const props = defineProps<{
 }>()
 
 const stationsStore = useStationsStore()
+const router = useRouter()
 
 function mouseOverAndLeaveItem(action: actionItem, stationName: string) {
   if (
