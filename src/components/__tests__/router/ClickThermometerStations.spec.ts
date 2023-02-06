@@ -44,9 +44,6 @@ describe('ThermometerStations click on item', () => {
         line: 1,
         stations: stations,
       },
-      provide: {
-        [Symbol.for('router')]: router,
-      },
     })
 
     const items = wrapper.findAllComponents(ItemThermometerStations)
