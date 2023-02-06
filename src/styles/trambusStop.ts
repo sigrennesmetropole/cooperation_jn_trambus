@@ -9,19 +9,14 @@ import { getAllStartEndStations } from '@/model/lines.fixtures'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import { isStationLabelDisplayed } from '@/services/station'
 
+const WHITE_COLOR = ol_color.fromString('#FFFFFF')
+
 function getCircleStyle(
   lineNumber: LineNumber,
-  isStationSelected: boolean,
-  is3D: boolean
+  isStationSelected: boolean
 ): Style {
-  let fillColor = ol_color.fromString('#FFFFFF')
-  let strokeColor = lineColors[lineNumber]
-
-  // TODO: change to use disk style
-  if (is3D) {
-    fillColor = lineColors[lineNumber]
-    strokeColor = ol_color.fromString('#FFFFFF')
-  }
+  const fillColor = WHITE_COLOR
+  const strokeColor = lineColors[lineNumber]
 
   const fill = new Fill({
     color: fillColor,
@@ -56,14 +51,47 @@ function getCircleStyle(
 export function trambusStopStyle(
   lineNumber: LineNumber,
   isShown: boolean,
-  is3D: boolean,
   isSelectedStation: boolean
 ): Style[] {
   if (!isShown) {
     return []
   }
-  const circleStyle = getCircleStyle(lineNumber, isSelectedStation, is3D)
+  const circleStyle = getCircleStyle(lineNumber, isSelectedStation)
   return [circleStyle]
+}
+
+export function trambusStopOutlineStyle(
+  lineNumber: LineNumber,
+  isShown: boolean,
+  is3D: boolean,
+  isSelectedStation: boolean
+) {
+  if (!is3D || !isShown) {
+    return []
+  }
+
+  let radius = 6
+  if (isSelectedStation) {
+    radius = 1
+  }
+
+  const style_circle = new Style({
+    image: new Circle({
+      fill: new Fill({ color: lineColors[lineNumber] }),
+      stroke: new Stroke({
+        color: lineColors[lineNumber],
+        width: 0,
+      }),
+      radius: radius,
+    }),
+    fill: new Fill({ color: lineColors[lineNumber] }),
+    stroke: new Stroke({
+      color: lineColors[lineNumber],
+      width: 0,
+    }),
+    zIndex: 5,
+  })
+  return [style_circle]
 }
 
 export function trambusLineTravelTimesViewStyleFunction(
@@ -86,8 +114,7 @@ export function trambusLineTravelTimesViewStyleFunction(
 
 export function trambusStopTravelTimesViewStyleFunction(
   feature: FeatureLike,
-  selectedTravelTime: TravelTimeModel,
-  is3D: boolean
+  selectedTravelTime: TravelTimeModel
 ): Style[] {
   let lineNumber = getTrambusLineNumber(feature) as LineNumber
 
@@ -103,6 +130,30 @@ export function trambusStopTravelTimesViewStyleFunction(
   const isShown = shownStations.indexOf(stationName) > -1
 
   return trambusStopStyle(
+    lineNumber,
+    isShown,
+    isStationLabelDisplayed(stationName)
+  )
+}
+
+export function trambusStopOutlineTravelTimesViewStyleFunction(
+  feature: FeatureLike,
+  selectedTravelTime: TravelTimeModel,
+  is3D: boolean
+) {
+  let lineNumber = getTrambusLineNumber(feature) as LineNumber
+
+  // no travel time selected, only show the start and end stations
+  let shownStations = getAllStartEndStations()
+  // There is a travel time selected, show only the selected station from
+  // the selected travel time
+  if (selectedTravelTime != null) {
+    shownStations = [selectedTravelTime.start, selectedTravelTime.end]
+    lineNumber = selectedTravelTime?.line
+  }
+  const stationName = feature.get('nom')
+  const isShown = shownStations.indexOf(stationName) > -1
+  return trambusStopOutlineStyle(
     lineNumber,
     isShown,
     is3D,
@@ -122,7 +173,6 @@ export function trambusStopLineViewStyleFunction(
   return trambusStopStyle(
     selectedTrambusLine,
     isShown,
-    is3D,
     isStationLabelDisplayed(stationName)
   )
 }

@@ -9,6 +9,7 @@ import { useLineViewsStore } from '@/stores/views'
 import {
   trambusLineTravelTimesViewStyleFunction,
   trambusStopLineViewStyleFunction,
+  trambusStopOutlineTravelTimesViewStyleFunction,
   trambusStopTravelTimesViewStyleFunction,
 } from '@/styles/trambusStop'
 import { isTrambusStopBelongsToLine } from '@/services/station'
@@ -64,9 +65,18 @@ export async function updateTravelTimesViewStyle(rennesApp: RennesApp) {
   clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.trambusStops, (feature) =>
     trambusStopTravelTimesViewStyleFunction(
       feature,
-      traveltimeInteractionStore.selectedTraveltime!,
-      mapStore.is3D()
+      traveltimeInteractionStore.selectedTraveltime!
     )
+  )
+  clearLayerAndApplyStyle(
+    rennesApp,
+    RENNES_LAYER._trambusStopsOutline,
+    (feature) =>
+      trambusStopOutlineTravelTimesViewStyleFunction(
+        feature,
+        traveltimeInteractionStore.selectedTraveltime!,
+        mapStore.is3D()
+      )
   )
   await updateTraveltimeArrow(rennesApp)
 }
