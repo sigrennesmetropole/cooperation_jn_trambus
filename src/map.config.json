@@ -197,12 +197,13 @@
       },
       "vectorProperties": {
         "primitiveOptions": {
-          "type": "ellipsoid",
+          "type": "cylinder",
           "geometryOptions": {
-            "radii": [5, 5, 5],
-            "innerRadii": [0.000001, 0.000001, 0.000001],
-            "minimumCone": 1.54,
-            "maximumCone": 1.58
+            "length": 1.0,
+            "topRadius": 5.0,
+            "bottomRadius": 5.0,
+            "outline": false,
+            "material": "Cesium.Color.GREEN"
           },
           "offset": [0, 0, 0.1]
         },
