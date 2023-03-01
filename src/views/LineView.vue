@@ -25,6 +25,7 @@ import type { ParkingModel } from '@/model/parkings.model'
 import type { StationModel } from '@/model/stations.model'
 import { fetchStationsByLine, completeStationsData } from '@/services/station'
 import { useLineInteractionStore } from '@/stores/interactionMap'
+import { poiStoreSubcribe } from '@/services/poi'
 
 const map3dStore = useMap3dStore()
 const viewStore = useViewsStore()
@@ -49,8 +50,14 @@ onBeforeMount(async () => {
   const { params } = useRoute()
   const routeParams = ref(params)
   currentLine = Number(routeParams.value.id) as SelectedTrambusLine
+  let isFromLineToLine = false
+  if (viewStore.currentView === viewList.line) {
+    isFromLineToLine = true
+  }
   viewStore.setCurrentView(viewList.line, currentLine, null)
-
+  if (isFromLineToLine) {
+    poiStoreSubcribe(rennesApp)
+  }
   const travelTimes = await apiClientService.fetchTravelTimeByLine(currentLine)
   traveltimeInteractionStore.setDisplayTravelTimes(travelTimes)
 
