@@ -10,13 +10,12 @@ import { useViewsStore } from '@/stores/views'
 import { useMap3dStore } from '@/stores/map'
 import { useLineInteractionStore } from '@/stores/interactionMap'
 import { FooterArea } from '@sigrennesmetropole/cooperation_jn_common_ui'
-import { usePanelsStore } from '@/stores/panels'
+import SkipLinksHome from '@/components/accessibility/SkipLinksHome.vue'
 
 const layerStore = useLayersStore()
 const viewStore = useViewsStore()
 const map3dStore = useMap3dStore()
 const lineInteractionStore = useLineInteractionStore()
-const panelsStore = usePanelsStore()
 
 onMounted(() => {
   viewStore.setHomeAsCurrentView()
@@ -31,13 +30,23 @@ onMounted(() => {
     bike: false,
     _traveltimeArrow: false,
   })
-  panelsStore.toggleGallery()
 })
 </script>
 
 <template>
-  <UiTrambusTitle></UiTrambusTitle>
-  <TravelTimes></TravelTimes>
-  <LineDescriptions class="grow border-b border-neutral-300"></LineDescriptions>
-  <FooterArea></FooterArea>
+  <SkipLinksHome></SkipLinksHome>
+  <section id="reseau-trambus" class="flex flex-col p-0 gap-3 font-dm-sans">
+    <UiTrambusTitle></UiTrambusTitle>
+  </section>
+  <section id="travel-times" class="flex flex-col gap-2">
+    <TravelTimes></TravelTimes>
+  </section>
+  <section id="line-descriptions">
+    <LineDescriptions
+      class="grow border-b border-neutral-300"
+    ></LineDescriptions>
+  </section>
+  <footer id="footer">
+    <FooterArea></FooterArea>
+  </footer>
 </template>

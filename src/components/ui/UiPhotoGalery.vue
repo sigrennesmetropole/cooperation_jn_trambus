@@ -7,7 +7,7 @@ const emit = defineEmits(['toggleEvent', 'clickImage'])
 const props = defineProps({
   galleryShown: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   photos: {
     type: Array as PropType<string[]>,
