@@ -43,7 +43,11 @@ const textStyle = computed(() => {
     class="flex items-center rounded-full justify-center"
     :class="circleStyle"
   >
-    <div class="font-dm-sans font-bold text-white items-end" :class="textStyle">
+    <div
+      class="font-dm-sans font-bold text-white items-end"
+      :class="textStyle"
+      aria-hidden="true"
+    >
       {{ text }}
     </div>
   </div>

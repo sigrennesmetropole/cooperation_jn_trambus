@@ -51,7 +51,7 @@ function activeAllTrambusLine() {
 </script>
 
 <template>
-  <div class="absolute right-2 top-2 z-10 flex [&>*]:m-1">
+  <div class="absolute right-2 top-2 z-10 flex [&>*]:m-1" id="head-toolbar">
     <div
       class="inline-flex shadow-sm rounded-md"
       role="group"

@@ -6,21 +6,20 @@ const props = defineProps<{
 }>()
 </script>
 <template>
-  <div class="fr-skiplinks">
-    <nav class="fr-container" role="navigation" aria-label="Accès rapide">
-      <ul class="fr-skiplinks__list">
-        <li v-for="link in props.links" :key="link.id">
-          <a :href="'#' + link.id" class="fr-link bg-white p-1">
-            {{ link.title }}
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  <nav role="navigation" aria-label="Accès rapide">
+    <ul>
+      <li v-for="link in props.links" :key="link.id">
+        <a :href="'#' + link.id" class="fr-link bg-white p-1">
+          {{ link.title }}
+        </a>
+      </li>
+    </ul>
+  </nav>
 </template>
 <style scoped>
 .fr-link {
   position: absolute;
+  z-index: 100;
   transform: translateY(-1000%);
 }
 
