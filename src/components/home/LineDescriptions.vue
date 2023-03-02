@@ -44,7 +44,10 @@ function leaveLine() {
     <h2 class="font-dm-sans font-bold text-lg leading-6">
       Les nouvelles lignes
     </h2>
-    <div class="flex flex-col p-0 gap-2 grow">
+    <ul
+      class="flex flex-col p-0 gap-2 grow"
+      aria-label="Liste des nouvelles lignes"
+    >
       <UiLineDescription
         v-for="lineDescription in state.lineDescription"
         role="button"
@@ -60,6 +63,6 @@ function leaveLine() {
         :frequency="lineDescription.frequency"
       >
       </UiLineDescription>
-    </div>
+    </ul>
   </div>
 </template>
