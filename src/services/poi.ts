@@ -2,7 +2,6 @@ import type { RennesApp } from '@/services/RennesApp'
 import { RENNES_LAYER } from '@/stores/layers'
 import { Point } from 'ol/geom'
 import { transform } from 'ol/proj'
-import { NearFarScalar } from '@vcmap/cesium'
 import type { Feature } from 'ol'
 import { generatePoiStyle, generatePoiStyleWithoutLabel } from '@/styles/common'
 import { useMap3dStore } from '@/stores/map'
@@ -41,10 +40,7 @@ export async function fixGeometryOfPoi(rennesApp: RennesApp) {
     ]
     f.setGeometry(new Point(transform(coordinates, 'EPSG:4326', 'EPSG:3857')))
     const echelleMax = f.get('echelle_max') / 5
-    f.set(
-      'olcs_scaleByDistance',
-      new NearFarScalar(echelleMax - 1, 1, echelleMax, 0)
-    )
+    f.set('olcs_scaleByDistance', [echelleMax - 1, 1, echelleMax, 0])
   })
 }
 
