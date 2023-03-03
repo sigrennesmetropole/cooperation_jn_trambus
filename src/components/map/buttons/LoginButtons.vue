@@ -6,7 +6,7 @@ function getUserLog() {
 }
 </script>
 <template>
-  <UiIconButton class="rounded-full px-0 py-0">
+  <UiIconButton class="rounded-full px-0 py-0" titleButton="Espace mon compte">
     <div class="w-3/4 h-3/4 border border-black rounded-full flex mx-auto">
       <div v-if="getUserLog()" class="container my-auto">
         {{ getUserLog() }}

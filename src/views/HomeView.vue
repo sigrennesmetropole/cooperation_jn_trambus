@@ -46,7 +46,5 @@ onMounted(() => {
       class="grow border-b border-neutral-300"
     ></LineDescriptions>
   </section>
-  <footer id="footer">
-    <FooterArea></FooterArea>
-  </footer>
+  <FooterArea></FooterArea>
 </template>

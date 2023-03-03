@@ -29,6 +29,7 @@ function clickImage(photo: string) {
       :is-open="props.galleryShown"
       :anchor-position="'bottom'"
       @click="sendEvent"
+      ariaLabelButton="Afficher les images de la métropole de Rennes"
     ></UiPanelControlButton>
     <div
       class="flex flex-row items-start p-3 gap-3 w-auto h-56 bg-white rounded-l-xl rounded-r-xl rounded-t-none rounded-b-none"
@@ -40,6 +41,7 @@ function clickImage(photo: string) {
         :src="photo"
         class="w-64 h-52"
         @click="clickImage(photo)"
+        alt="''"
       />
     </div>
   </div>
