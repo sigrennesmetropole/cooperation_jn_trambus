@@ -13,7 +13,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div ref="mapContainer" class="h-full w-full"></div>
+  <div ref="mapContainer" class="h-full w-full" aria-hidden="true"></div>
 </template>
 <style scoped>
 :deep(.mapElement) {
