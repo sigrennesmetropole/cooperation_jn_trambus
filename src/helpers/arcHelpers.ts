@@ -1,5 +1,5 @@
 import { cartesian2DDistance, getMidPoint } from '@vcmap/core'
-import { Cartesian3, CatmullRomSpline } from '@vcmap/cesium'
+import { Cartesian3, CatmullRomSpline } from '@vcmap-cesium/engine'
 import type { Coordinate } from 'ol/coordinate'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import { LineString, Point } from 'ol/geom'

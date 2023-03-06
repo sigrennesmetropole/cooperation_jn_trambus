@@ -31,7 +31,7 @@ export default defineConfig(({ command }) => {
             transform(source, sid) {
               if (/src[/\\]main.ts/.test(sid)) {
                 return source.replace(
-                  '/node_modules/@vcmap/cesium/Build/CesiumUnminified/',
+                  '/node_modules/@vcmap-cesium/engine/Build/CesiumUnminified/',
                   './assets/cesium/'
                 )
               }

@@ -8,7 +8,7 @@ import {
   Cartographic,
   SceneTransforms,
   Scene,
-} from '@vcmap/cesium'
+} from '@vcmap-cesium/engine'
 import type { Coordinate } from 'ol/coordinate'
 import type { RennesApp } from '@/services/RennesApp'
 

@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { Cartesian2 } from '@vcmap/cesium'
+import type { Cartesian2 } from '@vcmap-cesium/engine'
 import type { Viewpoint } from '@vcmap/core'
 import { RENNES_LAYER } from '@/stores/layers'
 import type { Feature } from 'ol'

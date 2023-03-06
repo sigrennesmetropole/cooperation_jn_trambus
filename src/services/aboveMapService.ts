@@ -1,9 +1,9 @@
 import type { RennesApp } from '@/services/RennesApp'
 import type { Feature } from 'ol'
 import { getCartesianPositionFromFeature } from '@/helpers/featureHelper'
-import type { Cartesian2 } from '@vcmap/cesium'
+import type { Cartesian2 } from '@vcmap-cesium/engine'
 import { CesiumMap, OpenlayersMap, Viewpoint } from '@vcmap/core'
-import { Math as CesiumMath } from '@vcmap/cesium'
+import { Math as CesiumMath } from '@vcmap-cesium/engine'
 
 export type aboveMap = { feature: Feature; cartesian: Cartesian2 }
 export function updateCartesianPositions(
