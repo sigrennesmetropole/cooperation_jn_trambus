@@ -1,5 +1,5 @@
 import type { OpenlayersMap } from '@vcmap/core'
-import { Projection, StyleItem, VectorLayer } from '@vcmap/core'
+import { Projection, StyleItem } from '@vcmap/core'
 import type { Feature, Map as olMap } from 'ol'
 import { NearFarScalar, Math as CesiumMath } from '@vcmap/cesium'
 /**
@@ -39,9 +39,16 @@ export function setDistanceDisplayConditionFeature(
   const currentStyle = layer.style
   layer.style = (feature: Feature, resolution: number) => {
     let featureDistance
-    const featureNearFar = feature.get('olcs_scaleByDistance') as
-      | NearFarScalar
-      | undefined
+    const scaleByDistance = feature.get('olcs_scaleByDistance')
+    let featureNearFar = undefined
+    if (scaleByDistance !== undefined && scaleByDistance.length === 4) {
+      featureNearFar = new NearFarScalar(
+        scaleByDistance[0],
+        scaleByDistance[1],
+        scaleByDistance[2],
+        scaleByDistance[3]
+      )
+    }
     if (featureNearFar) {
       featureDistance = featureNearFar.far
     }
@@ -51,54 +58,6 @@ export function setDistanceDisplayConditionFeature(
     ) {
       return undefined
     }
-    if (typeof currentStyle === 'function') {
-      return currentStyle(feature, resolution)
-    }
-    return currentStyle
-  }
-}
-
-/**
- * Patches the layers style & sets the layers scaleByDistance so that the features in this layer
- * are only shown based on a given distance. You can also set the property olcs_scaleByDistance on the
- * feature to provide feature specific distances. if no distance is provided, only
- * feature specific scaling will be applied
- * @param {import("@vcmap/core").VectorLayer} layer
- * @param {import("@vcmap/core").OpenlayersMap} map
- * @param {number=} [distance]
- */
-export default function setDistanceDisplayCondition(
-  layer: VectorLayer,
-  map: OpenlayersMap,
-  distance: number
-): void {
-  if (distance != null) {
-    layer.vectorProperties.scaleByDistance = new NearFarScalar(
-      distance - 1,
-      1,
-      distance,
-      0
-    )
-  }
-
-  const currentStyle = layer.style.style
-
-  layer.style.style = (feature: Feature, resolution: number) => {
-    let featureDistance = distance
-    const featureNearFar = feature.get('olcs_scaleByDistance') as
-      | NearFarScalar
-      | undefined
-    if (featureNearFar) {
-      featureDistance = featureNearFar.far
-    }
-    featureDistance = 1000
-    if (
-      featureDistance != null &&
-      getDistanceFromResolution(resolution, map.olMap) > featureDistance
-    ) {
-      return undefined
-    }
-
     if (typeof currentStyle === 'function') {
       return currentStyle(feature, resolution)
     }

@@ -2,7 +2,6 @@ import type { RennesApp } from '@/services/RennesApp'
 import { RENNES_LAYER } from '@/stores/layers'
 import { Point } from 'ol/geom'
 import { transform } from 'ol/proj'
-import { NearFarScalar } from '@vcmap/cesium'
 import type { Feature } from 'ol'
 import { generatePoiStyle, generatePoiStyleWithoutLabel } from '@/styles/common'
 import { useMap3dStore } from '@/stores/map'
@@ -16,7 +15,7 @@ import {
 } from '@/services/filter'
 import { viewList } from '@/model/views.model'
 import type { View } from '@/model/views.model'
-import { vectorStyleSymbol, StyleItem } from '@vcmap/core'
+import { vectorStyleSymbol, StyleItem, createSync } from '@vcmap/core'
 import { setDistanceDisplayConditionFeature } from '@/services/setDistanceDisplayCondition'
 import { usePoiParkingStore } from '@/stores/poiParking'
 import { useStationsStore } from '@/stores/stations'
@@ -41,10 +40,7 @@ export async function fixGeometryOfPoi(rennesApp: RennesApp) {
     ]
     f.setGeometry(new Point(transform(coordinates, 'EPSG:4326', 'EPSG:3857')))
     const echelleMax = f.get('echelle_max') / 5
-    f.set(
-      'olcs_scaleByDistance',
-      new NearFarScalar(echelleMax - 1, 1, echelleMax, 0)
-    )
+    f.set('olcs_scaleByDistance', [echelleMax - 1, 1, echelleMax, 0])
   })
 }
 
@@ -63,31 +59,17 @@ export function displayCurrentPoi(feature: Feature<Geometry>) {
     map3dStore.is3D(),
     false
   )
+  // @ts-ignore
+  feature[createSync] = true
   feature.setStyle(styleItem.style)
-}
-
-/**
- * Normally the name of one poi should be displayed at once
- * It happens that the name of the previous poi are still displayed when displaying the name of a new poi
- * To correct this, we call this function to hide the name of all previous poi and only display the name of the current poi
- */
-export function undisplayPreviousPoiExpectCurrent() {
-  const poiInteractionStore = usePoiInteractionStore()
-  if (poiInteractionStore.previousFeaturesPoi.length === 0) return
-  poiInteractionStore.previousFeaturesPoi.forEach((feature) => {
-    const styleItem = generatePoiStyleWithoutLabel()
-    feature.setStyle(styleItem.style)
-  })
 }
 
 export function undisplayCurrentPoi() {
   const poiInteractionStore = usePoiInteractionStore()
   if (poiInteractionStore.currentFeaturePoi === null) return
-
   const styleItem = generatePoiStyleWithoutLabel()
   poiInteractionStore.currentFeaturePoi.setStyle(styleItem.style)
-  poiInteractionStore.currentFeaturePoi = null
-  undisplayPreviousPoiExpectCurrent()
+  poiInteractionStore.selectCurrentFeaturePoi(null)
 }
 
 async function resetStyleOfPoi(view: View, rennesApp: RennesApp) {
