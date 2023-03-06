@@ -36,7 +36,10 @@ onMounted(async () => {
 
   <div class="flex flex-col items-start gap-3 pt-0 pr-9 pb-0 pl-0">
     <UiOverflowContainer class="w-[450px] -mx-6">
-      <div class="flex flex-row items-start gap-2 w-[450px]">
+      <ul
+        class="flex flex-row items-start gap-2 w-[450px]"
+        title="Liste des temps de parcours"
+      >
         <UiTravelTime
           class="w-80 flex-none"
           v-for="travelTime in state.travelTimes"
@@ -48,14 +51,14 @@ onMounted(async () => {
           :endStation="travelTime.end"
         >
         </UiTravelTime>
-      </div>
+      </ul>
     </UiOverflowContainer>
 
     <UiLinkPrimary
       :url="'/traveltimes'"
       :arrowStrokeColor="'stroke-red-600'"
       :underlineColor="'bg-red-600'"
-      :title="'Voir plus de futurs temps de parcours'"
+      :aria-label="'Voir plus de futurs temps de parcours'"
     >
       Voir plus
     </UiLinkPrimary>

@@ -17,6 +17,10 @@ const props = defineProps({
     type: String as PropType<AnchorPosition>,
     required: true,
   },
+  ariaLabelButton: {
+    type: String,
+    default: '',
+  },
 })
 
 const arrowIcon = computed(() => {
@@ -64,6 +68,7 @@ const styleClass = computed(() => {
   <button
     class="flex justify-center items-center gap-4 bg-white shadow"
     :class="styleClass"
+    :aria-label="ariaLabelButton"
   >
     <img :src="arrowIcon" />
   </button>

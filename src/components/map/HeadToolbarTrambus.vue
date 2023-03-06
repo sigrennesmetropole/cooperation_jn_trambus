@@ -51,7 +51,7 @@ function activeAllTrambusLine() {
 </script>
 
 <template>
-  <div class="absolute right-2 top-2 z-10 flex [&>*]:m-1">
+  <div class="absolute right-2 top-2 z-10 flex [&>*]:m-1" id="head-toolbar">
     <div
       class="inline-flex shadow-sm rounded-md"
       role="group"
@@ -63,6 +63,8 @@ function activeAllTrambusLine() {
         type="button"
         class="rounded-l-lg px-3 py-3 border border-gray-200 bg-white text-gray-900 inline-flex items-center"
         v-if="isTrambusButtonVisible"
+        titleButton="Afficher les autres lignes de trambus"
+        ariaLabelButton="Afficher les autres lignes de trambus sur la carte"
       >
         <IconTB :active="lineStore.displayedOtherLines"></IconTB>
       </UiIconButton>
@@ -72,6 +74,8 @@ function activeAllTrambusLine() {
         type="button"
         :class="{ 'rounded-l-lg': !isTrambusButtonVisible }"
         class="px-3 py-3 border border-gray-200 bg-white text-gray-900 inline-flex items-center"
+        titleButton="Afficher les lignes de métros"
+        ariaLabelButton="Afficher les lignes de métros sur la carte"
       >
         <IconMetro :active="layerStore.visibilities.metro"></IconMetro>
       </UiIconButton>
@@ -80,6 +84,8 @@ function activeAllTrambusLine() {
         :active="layerStore.visibilities.bus"
         type="button"
         class="border-t px-3 py-3 border-b border-gray-200 bg-white text-gray-900 inline-flex items-center"
+        titleButton="Afficher les lignes de bus"
+        ariaLabelButton="Afficher les lignes de bus sur la carte"
       >
         <IconBus :active="layerStore.visibilities.bus"></IconBus>
       </UiIconButton>
@@ -88,6 +94,8 @@ function activeAllTrambusLine() {
         :active="layerStore.visibilities.bike"
         type="button"
         class="rounded-r-md px-3 py-3 border border-gray-200 bg-white text-gray-900 inline-flex items-center"
+        titleButton="Afficher les pistes cyclables"
+        ariaLabelButton="Afficher les pistes cyclables sur la carte"
       >
         <IconVelo :active="layerStore.visibilities.bike"></IconVelo>
       </UiIconButton>

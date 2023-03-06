@@ -44,7 +44,12 @@ const getBgColorLine = (line: string) => {
 </script>
 
 <template>
-  <div class="absolute" :style="positionStyle" v-if="props.lines.length > 0">
+  <div
+    class="absolute"
+    :style="positionStyle"
+    v-if="props.lines.length > 0"
+    aria-hidden="true"
+  >
     <div class="flex p-2 round-md">
       <div
         v-for="line in props.lines"
