@@ -207,7 +207,7 @@
           },
           "offset": [0, 0, 0.1]
         },
-        "modelAutoScale": true
+        "scaleByDistance": [0, 25, 30000, 0]
       },
       "activeOnStartup": false,
       "zIndex": 5
@@ -242,7 +242,7 @@
           },
           "offset": [0, 0, 0.1]
         },
-        "modelAutoScale": true
+        "scaleByDistance": [0, 25, 30000, 0]
       },
       "activeOnStartup": false,
       "zIndex": 5
