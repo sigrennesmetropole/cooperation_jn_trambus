@@ -12,8 +12,7 @@ declare global {
     CESIUM_BASE_URL: string
   }
 }
-window.CESIUM_BASE_URL =
-  '/node_modules/@vcmap-cesium/engine/Build/CesiumUnminified/'
+window.CESIUM_BASE_URL = '/node_modules/@vcmap-cesium/engine/Build/'
 
 const app = createApp(App)
 

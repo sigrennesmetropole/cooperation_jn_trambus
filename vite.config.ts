@@ -31,7 +31,7 @@ export default defineConfig(({ command }) => {
             transform(source, sid) {
               if (/src[/\\]main.ts/.test(sid)) {
                 return source.replace(
-                  '/node_modules/@vcmap-cesium/engine/Build/CesiumUnminified/',
+                  '/node_modules/@vcmap-cesium/engine/Build',
                   './assets/cesium/'
                 )
               }
@@ -44,10 +44,8 @@ export default defineConfig(({ command }) => {
               const cesiumPath = path.join(
                 process.cwd(),
                 'node_modules',
-                '@vcmap',
-                'cesium',
-                'Build',
-                'Cesium'
+                '@vcmap-cesium',
+                'engine'
               )
               const buildPath = path.join(
                 process.cwd(),
@@ -57,14 +55,14 @@ export default defineConfig(({ command }) => {
               )
               await Promise.all([
                 fs.promises.cp(
-                  path.join(cesiumPath, 'Assets'),
+                  path.join(cesiumPath, 'Source', 'Assets'),
                   path.join(buildPath, 'Assets'),
                   {
                     recursive: true,
                   }
                 ),
                 fs.promises.cp(
-                  path.join(cesiumPath, 'Workers'),
+                  path.join(cesiumPath, 'Build', 'Workers'),
                   path.join(buildPath, 'Workers'),
                   {
                     recursive: true,

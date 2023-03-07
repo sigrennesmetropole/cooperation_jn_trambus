@@ -53,6 +53,7 @@ function arrowStyleFunction(
     arcFactor: arcFactor,
     color: arrowColor,
     end: end,
+    offset: 200,
   })
 }
 
