@@ -63,19 +63,35 @@ const heightClass = computed(() => {
       class="rounded-lg"
       @click="router.push('/home')"
       v-show="shouldDisplayHomeButton()"
-      ><IconHome
-    /></UiIconButton>
+      titleButton="Revenir à l'accueil"
+    >
+      <IconHome />
+    </UiIconButton>
     <div class="flex flex-col zoom-buttons text-2xl [&>*]:p-2" role="group">
-      <UiIconButton class="rounded-t-lg" @click="() => zoom(false)">
+      <UiIconButton
+        class="rounded-t-lg"
+        @click="() => zoom(false)"
+        ariaLabelButton="Zoom avant sur la carte"
+      >
         <IconPlus />
       </UiIconButton>
-      <UiIconButton class="rounded-b-lg" @click="() => zoom(true)">
+      <UiIconButton
+        class="rounded-b-lg"
+        @click="() => zoom(true)"
+        ariaLabelButton="Zoom arrière sur la carte"
+      >
         <IconMinus />
       </UiIconButton>
     </div>
-    <UiIconButton class="font-semibold rounded-lg" @click="toggle3DMap">{{
-      map3dStore.is3D() ? '2D' : '3D'
-    }}</UiIconButton>
+    <UiIconButton
+      class="font-semibold rounded-lg"
+      @click="toggle3DMap"
+      :ariaLabelButton="
+        map3dStore.is3D() ? 'Passer la carte en 2D' : 'Passer la carte en 3D'
+      "
+    >
+      {{ map3dStore.is3D() ? '2D' : '3D' }}
+    </UiIconButton>
     <CompassComponent v-if="map3dStore.is3D()" />
   </div>
 </template>

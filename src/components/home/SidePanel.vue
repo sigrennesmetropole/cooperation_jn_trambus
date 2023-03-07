@@ -29,6 +29,7 @@ const leftAlignment = computed(() =>
         :is-open="panelStore.isInformationPanelShown"
         @click="toggleInformationPanel"
         :class="leftAlignment"
+        ariaLabelButton="Rétracter le panneau latéral pour afficher la carte sur tout l'écran"
       ></UiPanelControlButton>
     </div>
   </div>
