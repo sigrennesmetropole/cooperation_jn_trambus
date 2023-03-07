@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import rollupPluginStripPragma from 'rollup-plugin-strip-pragma'
 import path from 'path'
 import fs from 'fs'
+import { determineHostFromArgv } from './build/determineHost.js'
 
 type stripPragmas = (options: { pragmas: string[] }) => Plugin
 
@@ -75,17 +76,21 @@ export default defineConfig(({ command }) => {
       },
     }
   }
-  const protocol = 'http'
-  const host = 'localhost'
-  const port = 5173
-  const fullHost = `${protocol}://${host}:${port}`
-  base.server = {
-    proxy: {
-      '/node_modules/@vcmap-cesium/engine/Build/Assets': {
-        target: fullHost,
-        rewrite: (path) => path.replace(/Build/, 'Source'),
+
+  // Heavily inspired from https://github.com/virtualcitySYSTEMS/map-ui/blob/main/vite.config.js
+  const dev = command === 'serve'
+  const https = false
+  const port = dev ? 5173 : 8080
+  const fullHost = determineHostFromArgv(port, https)
+  if (dev) {
+    base.server = {
+      proxy: {
+        '/node_modules/@vcmap-cesium/engine/Build/Assets': {
+          target: fullHost,
+          rewrite: (path) => path.replace(/Build/, 'Source'),
+        },
       },
-    },
+    }
   }
 
   return base
