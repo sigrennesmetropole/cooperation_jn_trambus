@@ -75,6 +75,18 @@ export default defineConfig(({ command }) => {
       },
     }
   }
+  const protocol = 'http'
+  const host = 'localhost'
+  const port = 5173
+  const fullHost = `${protocol}://${host}:${port}`
+  base.server = {
+    proxy: {
+      '/node_modules/@vcmap-cesium/engine/Build/Assets': {
+        target: fullHost,
+        rewrite: (path) => path.replace(/Build/, 'Source'),
+      },
+    },
+  }
 
   return base
 })
