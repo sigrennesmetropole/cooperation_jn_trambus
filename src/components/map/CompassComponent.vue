@@ -25,7 +25,6 @@ function syncCompass(map: VcsMap) {
 }
 
 const headingMap = async (event: { angle: number; animate: boolean }) => {
-  console.log('headingMap', event)
   const vp = await rennesApp.maps?.activeMap.getViewpoint()
   if (vp) {
     vp.heading = event.angle
