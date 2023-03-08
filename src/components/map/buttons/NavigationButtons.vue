@@ -6,6 +6,8 @@ import { IconHome } from '@sigrennesmetropole/cooperation_jn_common_ui'
 import { IconPlus } from '@sigrennesmetropole/cooperation_jn_common_ui'
 import { IconMinus } from '@sigrennesmetropole/cooperation_jn_common_ui'
 import { UiIconButton } from '@sigrennesmetropole/cooperation_jn_common_ui'
+import { UiDescribeButton3D } from '@sigrennesmetropole/cooperation_jn_common_ui'
+import { UiDescribeButtonCompass } from '@sigrennesmetropole/cooperation_jn_common_ui'
 
 import CompassComponent from '@/components/map/CompassComponent.vue'
 
@@ -93,5 +95,12 @@ const heightClass = computed(() => {
       {{ map3dStore.is3D() ? '2D' : '3D' }}
     </UiIconButton>
     <CompassComponent v-if="map3dStore.is3D()" />
+  </div>
+
+  <div class="absolute right-[120px] bottom-10" v-if="!map3dStore.is3D()">
+    <UiDescribeButton3D></UiDescribeButton3D>
+  </div>
+  <div class="absolute right-[130px] bottom-12" v-else>
+    <UiDescribeButtonCompass></UiDescribeButtonCompass>
   </div>
 </template>
