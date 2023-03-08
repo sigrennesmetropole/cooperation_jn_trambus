@@ -12,6 +12,7 @@ import type { Geometry } from 'ol/geom'
 import type { RennesLayer } from '@/stores/layers'
 import { LineString, MultiLineString } from 'ol/geom'
 import type { Coordinate } from 'ol/coordinate'
+import ResizeObserver from 'resize-observer-polyfill'
 
 export class RennesAppTest extends RennesApp {
   test_viewpoints: VcsObjectOptions[]
@@ -25,6 +26,7 @@ export class RennesAppTest extends RennesApp {
     this.test_maps = []
     this.test_layers = []
     this.test_context = null
+    global.ResizeObserver = ResizeObserver
   }
 
   _addOpenLayerMap() {
