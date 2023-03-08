@@ -39,7 +39,7 @@ function clickImage(photo: string) {
         v-for="photo in props.photos.slice(0, 3)"
         :key="photo"
         :src="photo"
-        class="w-64 h-52"
+        class="w-64 h-52 cursor-pointer"
         @click="clickImage(photo)"
         alt="''"
       />
