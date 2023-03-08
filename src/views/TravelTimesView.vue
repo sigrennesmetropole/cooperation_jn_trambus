@@ -67,7 +67,7 @@ function onTravelTimesClicked(travelTime: TravelTimeModel) {
       <BackButton></BackButton>
       <div class="flex flex-col items-start p-0 gap-2">
         <h1 class="font-dm-sans font-bold text-2xl">
-          Les temps de parcours théoriques
+          Temps de parcours théorique
         </h1>
       </div>
     </div>
@@ -77,7 +77,8 @@ function onTravelTimesClicked(travelTime: TravelTimeModel) {
     <div class="flex items-center p-0 gap-4">
       <p class="font-dm-sans font-medium text-sm text-neutral-800">
         Ces temps de parcours sont calculés à l’heure de pointe du matin en
-        direction Rennes
+        direction Rennes. Ils sont comparés au temps actuel de trajet en
+        transport en commun.
       </p>
     </div>
   </div>

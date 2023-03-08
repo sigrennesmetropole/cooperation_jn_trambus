@@ -37,6 +37,13 @@ const isMostRightPosition = computed(() => {
 const isMostLeftPosition = computed(() => {
   return currentScrollPosition.value == 0
 })
+
+const marginContents = computed(() => {
+  if (isMostLeftPosition.value) {
+    return 'ml-6'
+  }
+  return ''
+})
 </script>
 
 <template>
@@ -44,6 +51,7 @@ const isMostLeftPosition = computed(() => {
     <div
       ref="scrollBar"
       class="flex p-0 gap-3 items-start overflow-x-auto scrollbar-hide"
+      :class="marginContents"
     >
       <slot></slot>
     </div>
