@@ -55,7 +55,7 @@ function onTravelTimesClicked(travelTime: TravelTimeModel) {
   } else {
     stationsStore.updateStationsToDisplayFromTravelTimes(travelTime)
     traveltimeInteractionStore.removeDisplayTravelTime()
-    traveltimeInteractionStore.selectTraveltime(null)
+    traveltimeInteractionStore.selectTraveltime(travelTime)
     traveltimeInteractionStore.addDisplayTravelTime(travelTime)
   }
 }
