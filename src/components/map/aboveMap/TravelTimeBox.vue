@@ -15,7 +15,7 @@ const viewStore = useViewsStore()
 
 const positionStyle = computed(() => {
   let style: string = ''
-  const box_width = 72
+  const box_width = 74
   const label_height = 24
   if (
     props.topPosition + label_height > window.innerHeight ||
@@ -33,9 +33,9 @@ const positionStyle = computed(() => {
 
 <template>
   <div
-    class="absolute items-center flex gap-0.5 rounded-sm px-1 p-0.5 h-6 bg-white w-[72px]"
+    class="absolute items-center flex gap-0.5 rounded-sm px-1 p-0.5 bg-white w-[74px]"
     :style="positionStyle"
-    :class="props.isHighlighted ? 'border-2 border-black' : ''"
+    :class="props.isHighlighted ? 'border-2 border-black z-10' : 'z-0'"
   >
     <div class="flex-auto">
       <img :src="Clock" alt="" />
