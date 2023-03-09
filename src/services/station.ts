@@ -55,7 +55,11 @@ export function isStationOnLine(
   const station: StationModel = stations.find(
     (station) => station.nom === name_station
   )!
-  return station.li_code.includes(`T${num_line}`)
+  return isOnLine(station.li_code, num_line)
+}
+
+export function isOnLine(li_code: string, num_line: number) {
+  return li_code.includes(`T${num_line}`)
 }
 
 export function keepOnlyUsefulDessertes(
@@ -79,8 +83,7 @@ export function isTrambusStopBelongsToLine(
   trambusStopFeature: FeatureLike,
   trambusLine: number
 ): boolean {
-  const lineNumbers: string = trambusStopFeature.get('li_code') // e.g. T1 T2, T1
-  return lineNumbers.includes(trambusLine.toString())
+  return isOnLine(trambusStopFeature.get('li_code'), trambusLine)
 }
 
 export function isTrambusStopBelongsLineToTravelTime(
