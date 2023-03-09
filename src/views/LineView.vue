@@ -26,9 +26,12 @@ import type { StationModel } from '@/model/stations.model'
 import { fetchStationsByLine, completeStationsData } from '@/services/station'
 import { useLineInteractionStore } from '@/stores/interactionMap'
 import { poiStoreSubcribe } from '@/services/poi'
+import { useStationsStore } from '@/stores/stations'
 
 const map3dStore = useMap3dStore()
 const viewStore = useViewsStore()
+const stationStore = useStationsStore()
+
 const layerStore = useLayersStore()
 const lineStore = useLineViewsStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
@@ -67,6 +70,11 @@ onBeforeMount(async () => {
   state.travelTimes = await apiClientService.fetchTravelTimeByLine(
     lineStore.selectedLine
   )
+  state.travelTimes.forEach((tt) => {
+    stationStore.addStationToDisplayPermanently(tt.start)
+    stationStore.addStationToDisplayPermanently(tt.end)
+  })
+
   state.photo = await apiClientService.fetchPhotoByLine(lineStore.selectedLine)
   const stations = await fetchStationsByLine(rennesApp, lineStore.selectedLine)
 

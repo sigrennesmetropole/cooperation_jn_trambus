@@ -7,6 +7,7 @@ import type { RennesApp } from '@/services/RennesApp'
 import { RENNES_LAYER } from '@/stores/layers'
 import { apiClientService } from '@/services/api.client'
 import type { ParkingModel } from '@/model/parkings.model'
+import type { TravelTimeModel } from '@/model/travel-time.model'
 
 export function sortStationsByOrder(
   stations: StationModel[],
@@ -80,6 +81,20 @@ export function isTrambusStopBelongsToLine(
 ): boolean {
   const lineNumbers: string = trambusStopFeature.get('li_code') // e.g. T1 T2, T1
   return lineNumbers.includes(trambusLine.toString())
+}
+
+export function isTrambusStopBelongsLineToTravelTime(
+  trambusStopFeature: FeatureLike,
+  travelTime: TravelTimeModel[]
+): boolean {
+  const stationName: string = trambusStopFeature.get('nom')
+  let isInTravelTime: boolean = false
+  travelTime.forEach((tt) => {
+    if (tt.end == stationName || tt.start == stationName) {
+      isInTravelTime = true
+    }
+  })
+  return isInTravelTime
 }
 
 export function formatLiCode(

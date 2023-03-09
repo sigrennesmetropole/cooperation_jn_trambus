@@ -17,7 +17,10 @@ import {
   trambusStopTravelTimesViewStyleFunction,
   trambusStopOutlineLineViewStyleFunction,
 } from '@/styles/trambusStop'
-import { isTrambusStopBelongsToLine } from '@/services/station'
+import {
+  isTrambusStopBelongsLineToTravelTime,
+  isTrambusStopBelongsToLine,
+} from '@/services/station'
 import { parkingStyle } from '@/styles/common'
 import { useTraveltimeInteractionStore } from '@/stores/interactionMap'
 import { updateTraveltimeArrow } from '@/services/arrow'
@@ -37,6 +40,7 @@ export function clearLayerAndApplyStyle(
 export async function updateLineViewStyle(rennesApp: RennesApp) {
   const mapStore = useMap3dStore()
   const lineViewStore = useLineViewsStore()
+  const traveltimeInteractionStore = useTraveltimeInteractionStore()
   clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.trambusLines, (feature) =>
     trambusLineViewStyleFunction(
       feature,
@@ -49,7 +53,11 @@ export async function updateLineViewStyle(rennesApp: RennesApp) {
     trambusStopLineViewStyleFunction(
       feature,
       lineViewStore.selectedLine,
-      isTrambusStopBelongsToLine(feature, lineViewStore.selectedLine),
+      isTrambusStopBelongsToLine(feature, lineViewStore.selectedLine) ||
+        isTrambusStopBelongsLineToTravelTime(
+          feature,
+          traveltimeInteractionStore.displayedTravelTimes
+        ),
       mapStore.is3D()
     )
   )
