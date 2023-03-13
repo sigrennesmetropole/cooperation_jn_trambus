@@ -109,6 +109,7 @@ export const useStationsStore = defineStore('stations', () => {
     stationIsInStationsToDisplay,
     traveltimesViewSetUpStationsToDisplay,
     addStationToDisplay,
+    addStationToDisplayPermanently,
     deleteStationToDisplay,
     clearStationsExceptPermanently,
     homeViewSetUpStationsToDisplay,

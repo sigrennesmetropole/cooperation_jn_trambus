@@ -7,6 +7,7 @@ import type { RennesApp } from '@/services/RennesApp'
 import { RENNES_LAYER } from '@/stores/layers'
 import { apiClientService } from '@/services/api.client'
 import type { ParkingModel } from '@/model/parkings.model'
+import type { TravelTimeModel } from '@/model/travel-time.model'
 
 export function sortStationsByOrder(
   stations: StationModel[],
@@ -54,7 +55,11 @@ export function isStationOnLine(
   const station: StationModel = stations.find(
     (station) => station.nom === name_station
   )!
-  return station.li_code.includes(`T${num_line}`)
+  return isOnLine(station.li_code, num_line)
+}
+
+export function isOnLine(li_code: string, num_line: number) {
+  return li_code.includes(`T${num_line}`)
 }
 
 export function keepOnlyUsefulDessertes(
@@ -78,8 +83,21 @@ export function isTrambusStopBelongsToLine(
   trambusStopFeature: FeatureLike,
   trambusLine: number
 ): boolean {
-  const lineNumbers: string = trambusStopFeature.get('li_code') // e.g. T1 T2, T1
-  return lineNumbers.includes(trambusLine.toString())
+  return isOnLine(trambusStopFeature.get('li_code'), trambusLine)
+}
+
+export function isTrambusStopBelongsLineToTravelTime(
+  trambusStopFeature: FeatureLike,
+  travelTime: TravelTimeModel[]
+): boolean {
+  const stationName: string = trambusStopFeature.get('nom')
+  let isInTravelTime: boolean = false
+  travelTime.forEach((tt) => {
+    if (tt.end == stationName || tt.start == stationName) {
+      isInTravelTime = true
+    }
+  })
+  return isInTravelTime
 }
 
 export function formatLiCode(

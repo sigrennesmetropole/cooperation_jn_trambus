@@ -23,6 +23,7 @@ import { Feature } from 'ol'
 import { Point } from 'ol/geom'
 import { Style } from 'ol/style'
 import { displayCurrentPoi, undisplayCurrentPoi } from '@/services/poi'
+import { isTrambusStopBelongsToLine } from '@/services/station'
 
 class mapClickAndMoveInteraction extends AbstractInteraction {
   private _rennesApp: RennesApp
@@ -43,7 +44,9 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
         const lineViewStore = useLineViewsStore()
         const lineNumber = lineViewStore.selectedLine
         const stationId = feature?.get('id')
-        router.push(`/line/${lineNumber}/station/${stationId}`)
+        if (isTrambusStopBelongsToLine(feature, lineNumber)) {
+          router.push(`/line/${lineNumber}/station/${stationId}`)
+        }
       }
     } else if (event.type & EventType.MOVE) {
       stationsStore.addStationToDisplay(stationName)
