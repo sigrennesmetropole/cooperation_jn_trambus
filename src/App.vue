@@ -12,9 +12,12 @@ import { usePanelsStore } from '@/stores/panels'
 import { useViewsStore } from '@/stores/views'
 import { RennesApp } from '@/services/RennesApp'
 import mapConfig from './map.config.json'
+import BackButton from '@/components/home/BackButton.vue'
+import { useStationsStore } from '@/stores/stations'
 
 const panelStore = usePanelsStore()
 const viewStore = useViewsStore()
+const stationsStore = useStationsStore()
 
 onBeforeMount(() => {
   const rennesApp = new RennesApp(mapConfig)
@@ -62,6 +65,20 @@ const isPhotoGalleryVisible = computed(() => {
       class="z-10 absolute inset-x-0 bottom-0 max-w-max m-auto"
       v-show="isPhotoGalleryVisible"
     ></PhotoGallery>
+
+    <BackButton
+      v-show="
+        (panelStore.isInformationPanelShown === false ||
+          panelStore.isPlanningViewShown === true) &&
+        viewStore.currentView !== viewList.home
+      "
+      :url="
+        viewStore.currentView === viewList.station
+          ? '/line/' + stationsStore.lineOfStation
+          : '/home'
+      "
+      class="z-10 absolute top-[45px] left-[24px]"
+    ></BackButton>
 
     <!--Do lazy loading for planning view.
       Only render it once, and after that 'hide' the planning view so that we can keep its state and no need to load it again. -->

@@ -13,6 +13,7 @@ export const useStationsStore = defineStore('stations', () => {
   const stationsToDisplay: Ref<string[]> = ref([])
   const currentStationView: Ref<string | null> = ref('')
   const flagClearStationsExceptPermanently: Ref<boolean> = ref(false)
+  const lineOfStation: Ref<LineNumber | null> = ref(null)
 
   function addStationToDisplay(stationName: string) {
     if (!stationsToDisplay.value.includes(stationName)) {
@@ -99,6 +100,10 @@ export const useStationsStore = defineStore('stations', () => {
     addStationToDisplayPermanently(travelTime.end)
   }
 
+  function setLineOfStation(lineNumber: LineNumber) {
+    lineOfStation.value = lineNumber
+  }
+
   return {
     stationsToDisplay,
     currentStationView,
@@ -115,5 +120,7 @@ export const useStationsStore = defineStore('stations', () => {
     homeViewSetUpStationsToDisplay,
     updateStationsToDisplayFromTravelTimes,
     clearAllStations,
+    setLineOfStation,
+    lineOfStation,
   }
 })

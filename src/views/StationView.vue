@@ -41,7 +41,7 @@ onBeforeMount(async () => {
   state.lineDescription = await apiClientService.fetchLineDescription(
     lineNumber.value as number
   )
-
+  stationsStore.setLineOfStation(state.lineDescription!.id)
   await apiClientService
     .fetchStationDescription(stationId.value)
     .then((station) => {

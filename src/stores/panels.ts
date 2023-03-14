@@ -12,6 +12,7 @@ export const usePanelsStore = defineStore('panels', () => {
   function toggleGallery() {
     isGalleryShown.value = !isGalleryShown.value
   }
+
   function toggleInformationPanel() {
     isInformationPanelShown.value = !isInformationPanelShown.value
   }
