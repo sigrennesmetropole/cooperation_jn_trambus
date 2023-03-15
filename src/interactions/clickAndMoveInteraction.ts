@@ -24,6 +24,7 @@ import { Point } from 'ol/geom'
 import { Style } from 'ol/style'
 import { displayCurrentPoi, undisplayCurrentPoi } from '@/services/poi'
 import { isTrambusStopBelongsToLine } from '@/services/station'
+import { usePanelsStore } from '@/stores/panels'
 
 class mapClickAndMoveInteraction extends AbstractInteraction {
   private _rennesApp: RennesApp
@@ -46,6 +47,8 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
         const stationId = feature?.get('id')
         if (isTrambusStopBelongsToLine(feature, lineNumber)) {
           router.push(`/line/${lineNumber}/station/${stationId}`)
+          const panelStore = usePanelsStore()
+          panelStore.isInformationPanelShown = true
         }
       }
     } else if (event.type & EventType.MOVE) {

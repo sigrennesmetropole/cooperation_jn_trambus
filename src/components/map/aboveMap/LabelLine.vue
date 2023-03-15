@@ -4,6 +4,7 @@ import { getColorLine } from '@/services/color'
 import { useRouter } from 'vue-router'
 import { useLineViewsStore } from '@/stores/views'
 import type { LineNumber } from '@/model/lines.model'
+import { usePanelsStore } from '@/stores/panels'
 
 const props = defineProps<{
   lines: string[]
@@ -13,6 +14,7 @@ const props = defineProps<{
 
 const lineViewStore = useLineViewsStore()
 const router = useRouter()
+const panelStore = usePanelsStore()
 
 const positionStyle = computed(() => {
   let style: string = ''
@@ -34,6 +36,7 @@ const goToLinePage = (line: string) => {
   const num_line = line.replace('T', '')
   if (parseInt(num_line) != lineViewStore.selectedLine) {
     router.push(`/line/${num_line}`)
+    panelStore.isInformationPanelShown = true
   }
 }
 

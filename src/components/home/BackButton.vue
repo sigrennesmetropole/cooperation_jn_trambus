@@ -2,11 +2,12 @@
 import { useRouter } from 'vue-router'
 import ChevronArrowLeft from '@/assets/icons/chevron-left.svg'
 import UiButton from '@/components/ui/UiButton.vue'
-
+import { usePanelsStore } from '@/stores/panels'
 import { useTraveltimeInteractionStore } from '@/stores/interactionMap'
 
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
 const router = useRouter()
+const panelStore = usePanelsStore()
 
 const props = defineProps({
   url: {
@@ -19,6 +20,7 @@ function backButtonClicked() {
   router.push(props.url)
   // Reset any selection
   traveltimeInteractionStore.selectTraveltime(null)
+  panelStore.isInformationPanelShown = true
 }
 </script>
 
