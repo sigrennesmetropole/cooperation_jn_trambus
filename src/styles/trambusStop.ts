@@ -103,7 +103,7 @@ export function trambusStopOutlineStyle(
 
 export function trambusStopTravelTimesViewStyleFunction(
   feature: FeatureLike,
-  selectedTravelTime: TravelTimeModel,
+  selectedTravelTime: TravelTimeModel | null,
   is3D: boolean
 ): Style[] {
   let lineNumber = getTrambusLineNumber(feature) as LineNumber
@@ -118,7 +118,6 @@ export function trambusStopTravelTimesViewStyleFunction(
   }
   const stationName = feature.get('nom')
   const isShown = shownStations.indexOf(stationName) > -1
-
   return trambusStopStyle(
     lineNumber,
     isShown,
@@ -129,7 +128,7 @@ export function trambusStopTravelTimesViewStyleFunction(
 
 export function trambusStopOutlineTravelTimesViewStyleFunction(
   feature: FeatureLike,
-  selectedTravelTime: TravelTimeModel,
+  selectedTravelTime: TravelTimeModel | null,
   is3D: boolean
 ) {
   let lineNumber = getTrambusLineNumber(feature) as LineNumber

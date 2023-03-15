@@ -24,6 +24,7 @@ import {
 import { parkingStyle } from '@/styles/common'
 import { useTraveltimeInteractionStore } from '@/stores/interactionMap'
 import { updateTraveltimeArrow } from '@/services/arrow'
+import type { TravelTimeModel } from '@/model/travel-time.model'
 
 export function clearLayerAndApplyStyle(
   rennesApp: RennesApp,
@@ -76,38 +77,48 @@ export async function updateLineViewStyle(rennesApp: RennesApp) {
   await updateTraveltimeArrow(rennesApp)
 }
 
-export async function updateTravelTimesViewStyle(rennesApp: RennesApp) {
+function clearLayerAndApplyStyleTravelTimes(
+  rennesApp: RennesApp,
+  displayedTravelTime: TravelTimeModel | null
+) {
   const mapStore = useMap3dStore()
-  const traveltimeInteractionStore = useTraveltimeInteractionStore()
-  traveltimeInteractionStore.displayedTravelTimes.forEach(
-    (displayedTravelTime) => {
-      clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.trambusLines, (feature) =>
-        trambusLineTravelTimesViewStyleFunction(
-          feature,
-          displayedTravelTime,
-          mapStore.is3D()
-        )
-      )
-      clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.trambusStops, (feature) =>
-        trambusStopTravelTimesViewStyleFunction(
-          feature,
-          displayedTravelTime,
-          mapStore.is3D()
-        )
-      )
-      clearLayerAndApplyStyle(
-        rennesApp,
-        RENNES_LAYER._trambusStopsOutline,
-        (feature) =>
-          trambusStopOutlineTravelTimesViewStyleFunction(
-            feature,
-            displayedTravelTime,
-            mapStore.is3D()
-          )
-      )
-    }
+  clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.trambusLines, (feature) =>
+    trambusLineTravelTimesViewStyleFunction(
+      feature,
+      displayedTravelTime,
+      mapStore.is3D()
+    )
   )
+  clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.trambusStops, (feature) =>
+    trambusStopTravelTimesViewStyleFunction(
+      feature,
+      displayedTravelTime,
+      mapStore.is3D()
+    )
+  )
+  clearLayerAndApplyStyle(
+    rennesApp,
+    RENNES_LAYER._trambusStopsOutline,
+    (feature) =>
+      trambusStopOutlineTravelTimesViewStyleFunction(
+        feature,
+        displayedTravelTime,
+        mapStore.is3D()
+      )
+  )
+}
 
+export async function updateTravelTimesViewStyle(rennesApp: RennesApp) {
+  const traveltimeInteractionStore = useTraveltimeInteractionStore()
+  if (traveltimeInteractionStore.displayedTravelTimes.length === 0) {
+    clearLayerAndApplyStyleTravelTimes(rennesApp, null)
+  } else {
+    traveltimeInteractionStore.displayedTravelTimes.forEach(
+      (displayedTravelTime) => {
+        clearLayerAndApplyStyleTravelTimes(rennesApp, displayedTravelTime)
+      }
+    )
+  }
   await updateTraveltimeArrow(rennesApp)
 }
 

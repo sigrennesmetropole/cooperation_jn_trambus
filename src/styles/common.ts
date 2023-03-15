@@ -10,7 +10,7 @@ import { VectorStyleItem } from '@vcmap/core'
 
 export function getTrambusLineNumber(feature: FeatureLike): number {
   const lineNumberString = feature.get('li_code') // e.g. T1
-  return Number(lineNumberString.substr(lineNumberString.length - 1))
+  return Number(lineNumberString.substr(1, 2))
 }
 
 export const lineColors: Record<LineNumber, ol_color.Color> = {

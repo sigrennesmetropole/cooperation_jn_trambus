@@ -78,7 +78,7 @@ export function trambusLineViewStyleFunction(
 
 export function trambusLineTravelTimesViewStyleFunction(
   feature: FeatureLike,
-  selectedTravelTime: TravelTimeModel,
+  selectedTravelTime: TravelTimeModel | null,
   is3D: boolean
 ): Style[] {
   const lineNumber = getTrambusLineNumber(feature) as LineNumber
