@@ -8,9 +8,14 @@ import type { LineNumber } from '@/model/lines.model'
 import { getColorLine } from '@/services/color'
 import type { BusNumber } from '@/model/bus.model'
 import { useStationsStore } from '@/stores/stations'
+import router from '@/router'
 
 const props = defineProps({
   index: {
+    type: Number,
+    required: true,
+  },
+  id: {
     type: Number,
     required: true,
   },
@@ -140,14 +145,22 @@ const classCircle = computed(() => {
   classObject = classObject.concat(getClassBeforeCircle())
   return classObject
 })
+
+function goToStationPage() {
+  router.push(`/line/${props.line}/station/${props.id}`)
+}
 </script>
 
 <template>
-  <li
+  <a
     class="flex items-center mb-1 cursor-pointer h-7"
+    :aria-label="`Station ${name}.`"
     :class="stationActive || stationInteractionOnMap ? 'bg-slate-100' : ''"
     @mouseover="stationActive = true"
     @mouseleave="stationActive = false"
+    tabindex="0"
+    @click="goToStationPage()"
+    href="#"
   >
     <div :id="'divcircle-' + name" :class="classCircle" />
     <p class="font-dm-sans font-bold text-base -tracking-[1%] w-80 h-6 mb-1">
@@ -166,5 +179,5 @@ const classCircle = computed(() => {
         </template>
       </div>
     </div>
-  </li>
+  </a>
 </template>

@@ -27,6 +27,7 @@ import { fetchStationsByLine, completeStationsData } from '@/services/station'
 import { useLineInteractionStore } from '@/stores/interactionMap'
 import { poiStoreSubcribe } from '@/services/poi'
 import { useStationsStore } from '@/stores/stations'
+import SkipLinksLineView from '@/components/accessibility/SkipLinksLineView.vue'
 
 const map3dStore = useMap3dStore()
 const viewStore = useViewsStore()
@@ -112,9 +113,10 @@ function onTravelTimesClicked(travelTime: TravelTimeModel) {
 </script>
 
 <template>
+  <SkipLinksLineView></SkipLinksLineView>
   <div class="flex flex-col items-start py-0 gap-2">
     <div class="flex items-center p-0 gap-4">
-      <BackButton></BackButton>
+      <BackButton title="Retour vers la page d'accueil."></BackButton>
       <UiLineHeader
         v-if="state.lineDescription"
         :line="state.lineDescription?.id!"
@@ -141,33 +143,41 @@ function onTravelTimesClicked(travelTime: TravelTimeModel) {
     :nb_station="state.stations.length"
   />
 
-  <h2 class="font-dm-sans font-bold text-lg leading-6">
-    Nouveaux temps de parcours
-  </h2>
-  <UiTravelTime
-    v-for="travelTime in state.travelTimes"
-    role="button"
-    @click="onTravelTimesClicked(travelTime)"
-    :key="travelTime.line"
-    :newDuration="travelTime.new"
-    :oldDuration="travelTime.old"
-    :lineNumber="travelTime.line"
-    :startStation="travelTime.start"
-    :endStation="travelTime.end"
-    :colored="travelTime == traveltimeInteractionStore.selectedTraveltime"
-  >
-  </UiTravelTime>
-
+  <section id="new-travel-times">
+    <h2 class="font-dm-sans font-bold text-lg leading-6">
+      Nouveaux temps de parcours
+    </h2>
+    <div title="Liste des temps de parcours.">
+      <UiTravelTime
+        v-for="travelTime in state.travelTimes"
+        role="button"
+        @click="onTravelTimesClicked(travelTime)"
+        :key="travelTime.line"
+        :newDuration="travelTime.new"
+        :oldDuration="travelTime.old"
+        :lineNumber="travelTime.line"
+        :startStation="travelTime.start"
+        :endStation="travelTime.end"
+        :colored="travelTime == traveltimeInteractionStore.selectedTraveltime"
+        :clickable="true"
+      >
+      </UiTravelTime>
+    </div>
+  </section>
   <template v-if="state.parkings && state.parkings.length > 0">
     <div class="border-b border-neutral-300 mt-2"></div>
     <ParkingsInformations :parkings="state.parkings" />
   </template>
   <div class="border-b border-neutral-300 mb-3"></div>
-  <ThermometerStations
-    v-if="state.lineDescription && state.stations"
-    :line="state.lineDescription?.id"
-    :stations="state.stations"
-  />
+  <section id="stations-list">
+    <ThermometerStations
+      v-if="state.lineDescription && state.stations"
+      :line="state.lineDescription?.id"
+      :stations="state.stations"
+    />
+  </section>
   <div class="border-b border-neutral-300 my-3"></div>
-  <FooterArea />
+  <section id="footer">
+    <FooterArea />
+  </section>
 </template>

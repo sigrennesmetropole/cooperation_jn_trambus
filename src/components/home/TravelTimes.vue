@@ -49,6 +49,7 @@ onMounted(async () => {
           :lineNumber="travelTime.line"
           :startStation="travelTime.start"
           :endStation="travelTime.end"
+          :clickable="false"
         >
         </UiTravelTime>
       </ul>
