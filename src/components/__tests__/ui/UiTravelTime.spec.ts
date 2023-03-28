@@ -11,7 +11,6 @@ describe('UiTravelTime', () => {
         lineNumber: 1,
         startStation: 'République',
         endStation: 'Grand Quartier',
-        clickable: false,
         colored: false,
       },
     })
@@ -29,7 +28,6 @@ describe('UiTravelTime', () => {
         lineNumber: 1,
         startStation: 'République',
         endStation: 'Grand Quartier',
-        clickable: true,
         colored: true,
       },
     })

@@ -50,9 +50,9 @@ describe('ThermometerStations click on item', () => {
     const itemRepublique = items.find(
       (item) => item.props('name') === 'République'
     )
-
+    const itemRepubliqueHyperlink = itemRepublique?.find('a')
     const push = jest.spyOn(router, 'push')
-    await itemRepublique?.trigger('click')
+    await itemRepubliqueHyperlink?.trigger('click')
     expect(push).toHaveBeenCalledTimes(1)
     expect(push).toHaveBeenCalledWith('/line/1/station/1543')
   })

@@ -20,7 +20,6 @@ const props = defineProps({
   },
   clickable: {
     type: Boolean,
-    required: true,
   },
 })
 
