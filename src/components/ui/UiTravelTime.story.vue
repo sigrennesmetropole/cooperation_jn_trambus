@@ -30,6 +30,7 @@ function initState() {
           :lineNumber="state.lineNumber"
           :startStation="state.startStation"
           :endStation="state.endStation"
+          :clickable="false"
           class="w-72 h-16"
         >
         </UiTravelTime>
@@ -43,6 +44,7 @@ function initState() {
           :lineNumber="state.lineNumber"
           :startStation="state.startStation"
           :endStation="state.endStation"
+          :clickable="true"
           :colored="Boolean(false)"
           class="w-72 h-16"
         >
