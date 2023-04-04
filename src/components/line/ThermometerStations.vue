@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { LineNumber } from '@/model/lines.model'
-import { useRouter } from 'vue-router'
 import ItemThermometerStations from '@/components/line/ItemThermometerStations.vue'
 import type { StationModel } from '@/model/stations.model'
 import { useStationsStore } from '@/stores/stations'
@@ -14,7 +13,6 @@ const props = defineProps<{
 }>()
 
 const stationsStore = useStationsStore()
-const router = useRouter()
 const idStationAfterSelectStation = ref<number>(0)
 
 function mouseOverAndLeaveItem(
@@ -38,10 +36,6 @@ function mouseOverAndLeaveItem(
     idStationAfterSelectStation.value = props.stations[index + 1].id
   }
 }
-
-function goToStationPage(stationId: number) {
-  router.push(`/line/${props.line}/station/${stationId}`)
-}
 </script>
 
 <template>
@@ -52,14 +46,20 @@ function goToStationPage(stationId: number) {
   </div>
 
   <div>
-    <ul class="list-stations" v-if="props.stations.length > 0">
+    <div
+      class="list-stations"
+      title="Liste des nouvelles stations."
+      v-if="props.stations.length > 0"
+    >
       <ItemThermometerStations
         v-for="(station, index) in props.stations"
         :key="index"
         @mouseover="mouseOverAndLeaveItem('over', station.nom, index)"
         @mouseleave="mouseOverAndLeaveItem('leave', station.nom, index)"
-        @click="goToStationPage(station.id)"
+        @focus="mouseOverAndLeaveItem('over', station.nom, index)"
+        @blur="mouseOverAndLeaveItem('leave', station.nom, index)"
         :index="index + 1"
+        :id="station.id"
         :line="props.line"
         :name="station.nom"
         :parking="station.parking"
@@ -68,7 +68,7 @@ function goToStationPage(stationId: number) {
         :is_last_elem="index + 1 === props.stations.length"
         :is_station_after_select="station.id === idStationAfterSelectStation"
       />
-    </ul>
+    </div>
   </div>
 </template>
 
@@ -77,7 +77,7 @@ function goToStationPage(stationId: number) {
   list-style: none;
 }
 
-.list-stations > li {
+.list-stations > a {
   position: relative;
 }
 </style>

@@ -18,24 +18,32 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  clickable: {
+    type: Boolean,
+  },
 })
 
 const containerStyle = computed(() => {
   let bgColor = 'bg-slate-100'
   let borderColor = 'border-slate-50'
+  let clickable = ''
   if (props.colored) {
     bgColor = getColorLine('bg', props.lineNumber, 100)
     borderColor = getColorLine('border', props.lineNumber, 50)
   }
+  if (props.clickable == false) {
+    clickable = 'disabled'
+  }
 
-  return [bgColor, borderColor]
+  return [bgColor, borderColor, clickable]
 })
 </script>
 <template>
-  <li
+  <a
     class="flex items-center px-3 py-0 gap-2.5 rounded font-dm-sans hover:bg-white hover:border-slate-600 border"
     :class="containerStyle"
     :id="props.lineNumber + ':' + props.startStation + '-' + props.endStation"
+    href="#"
   >
     <div
       class="flex flex-col justify-center items-start pt-3 pr-3 pb-3 pl-0"
@@ -82,5 +90,12 @@ const containerStyle = computed(() => {
       </div>
     </div>
     <IconLine :line="lineNumber" :size="'l'"></IconLine>
-  </li>
+  </a>
 </template>
+
+<style scoped>
+.disabled {
+  cursor: default;
+  pointer-events: none;
+}
+</style>
