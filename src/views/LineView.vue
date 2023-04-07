@@ -132,6 +132,7 @@ function onTravelTimesClicked(travelTime: TravelTimeModel) {
     <img
       :key="state.photo.url"
       :src="state.photo.url"
+      alt="photomontage simulant l'intégration de la ligne dans le paysage urbain"
       class="h-[184px] -mx-6 max-w-7xl mb-2"
     />
   </template>
