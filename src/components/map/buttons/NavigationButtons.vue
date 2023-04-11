@@ -66,8 +66,8 @@ const heightClass = computed(() => {
       @click="router.push('/home')"
       v-show="shouldDisplayHomeButton()"
       titleButton="Revenir à l'accueil"
-      height="30"
-      width="200"
+      heightTitle="30"
+      widthTitle="200"
       positionX="-210"
       positionY="12"
     >
@@ -79,8 +79,8 @@ const heightClass = computed(() => {
         @click="() => zoom(false)"
         ariaLabelButton="Zoom avant sur la carte"
         titleButton="Zoom avant sur la carte"
-        height="30"
-        width="200"
+        heightTitle="30"
+        widthTitle="200"
         positionX="-210"
         positionY="12"
       >
@@ -91,8 +91,8 @@ const heightClass = computed(() => {
         @click="() => zoom(true)"
         ariaLabelButton="Zoom arrière sur la carte"
         titleButton="Zoom arrière sur la carte"
-        height="30"
-        width="200"
+        heightTitle="30"
+        widthTitle="200"
         positionX="-210"
         positionY="12"
       >
@@ -108,8 +108,8 @@ const heightClass = computed(() => {
       :titleButton="
         map3dStore.is3D() ? 'Passer la carte en 2D' : 'Passer la carte en 3D'
       "
-      height="30"
-      width="200"
+      heightTitle="30"
+      widthTitle="200"
       positionX="-210"
       positionY="12"
     >

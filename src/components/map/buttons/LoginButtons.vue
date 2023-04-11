@@ -9,8 +9,8 @@ function getUserLog() {
   <UiIconButton
     class="rounded-full px-0 py-0"
     titleButton="Espace mon compte"
-    height="30"
-    width="300"
+    heightTitle="30"
+    widthTitle="300"
     positionX="-250"
     positionY="60"
   >

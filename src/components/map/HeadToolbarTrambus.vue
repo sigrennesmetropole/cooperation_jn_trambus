@@ -65,8 +65,8 @@ function activeAllTrambusLine() {
         v-if="isTrambusButtonVisible"
         titleButton="Afficher les autres lignes de trambus"
         ariaLabelButton="Afficher les autres lignes de trambus sur la carte"
-        height="30"
-        width="300"
+        heightTitle="30"
+        widthTitle="300"
         positionX="-100"
         positionY="60"
       >
@@ -80,8 +80,8 @@ function activeAllTrambusLine() {
         class="px-3 py-3 border border-gray-200 bg-white text-gray-900 inline-flex items-center"
         titleButton="Afficher les lignes de métros"
         ariaLabelButton="Afficher les lignes de métros sur la carte"
-        height="30"
-        width="300"
+        heightTitle="30"
+        widthTitle="300"
         positionX="-140"
         positionY="60"
       >
@@ -94,8 +94,8 @@ function activeAllTrambusLine() {
         class="border-t px-3 py-3 border-b border-gray-200 bg-white text-gray-900 inline-flex items-center"
         titleButton="Afficher les lignes de bus"
         ariaLabelButton="Afficher les lignes de bus sur la carte"
-        height="30"
-        width="300"
+        heightTitle="30"
+        widthTitle="300"
         positionX="-170"
         positionY="60"
       >
@@ -108,8 +108,8 @@ function activeAllTrambusLine() {
         class="rounded-r-md px-3 py-3 border border-gray-200 bg-white text-gray-900 inline-flex items-center"
         titleButton="Afficher les pistes cyclables"
         ariaLabelButton="Afficher les pistes cyclables sur la carte"
-        height="30"
-        width="300"
+        heightTitle="30"
+        widthTitle="300"
         positionX="-200"
         positionY="60"
       >
