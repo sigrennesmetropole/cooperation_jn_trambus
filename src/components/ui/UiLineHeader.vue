@@ -14,6 +14,7 @@ const props = defineProps({
   end: String,
 })
 </script>
+
 <template>
   <div class="flex items-center px-0 py-3 gap-3 font-dm-sans">
     <IconLine :line="line" :size="'xl'"></IconLine>
@@ -21,9 +22,9 @@ const props = defineProps({
       class="flex flex-col items-start p-0 grow"
       :title="`De ${props.start} à ${props.end}`"
     >
-      <h2 class="text-2xl font-bold">
+      <h1 class="text-2xl font-bold">
         {{ props.name }}
-      </h2>
+      </h1>
       <div class="flex items-center p-0 gap-2">
         <div class="font-normal text-base text-neutral-800">
           {{ props.start }}

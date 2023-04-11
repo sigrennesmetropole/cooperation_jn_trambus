@@ -59,13 +59,17 @@ const heightClass = computed(() => {
 <template>
   <div
     :class="heightClass"
-    class="transition-[height] absolute right-2 bottom-10 flex flex-col [&>*]:m-2 text-gray-dark items-center overflow-hidden w-32 select-none"
+    class="transition-[height] absolute right-2 bottom-10 flex flex-col [&>*]:m-2 text-gray-dark items-center w-32 select-none"
   >
     <UiIconButton
       class="rounded-lg"
       @click="router.push('/home')"
       v-show="shouldDisplayHomeButton()"
       titleButton="Revenir à l'accueil"
+      heightTitle="30"
+      widthTitle="200"
+      positionX="-210"
+      positionY="12"
     >
       <IconHome />
     </UiIconButton>
@@ -74,6 +78,11 @@ const heightClass = computed(() => {
         class="rounded-t-lg"
         @click="() => zoom(false)"
         ariaLabelButton="Zoom avant sur la carte"
+        titleButton="Zoom avant sur la carte"
+        heightTitle="30"
+        widthTitle="200"
+        positionX="-210"
+        positionY="12"
       >
         <IconPlus />
       </UiIconButton>
@@ -81,6 +90,11 @@ const heightClass = computed(() => {
         class="rounded-b-lg"
         @click="() => zoom(true)"
         ariaLabelButton="Zoom arrière sur la carte"
+        titleButton="Zoom arrière sur la carte"
+        heightTitle="30"
+        widthTitle="200"
+        positionX="-210"
+        positionY="12"
       >
         <IconMinus />
       </UiIconButton>
@@ -91,6 +105,13 @@ const heightClass = computed(() => {
       :ariaLabelButton="
         map3dStore.is3D() ? 'Passer la carte en 2D' : 'Passer la carte en 3D'
       "
+      :titleButton="
+        map3dStore.is3D() ? 'Passer la carte en 2D' : 'Passer la carte en 3D'
+      "
+      heightTitle="30"
+      widthTitle="200"
+      positionX="-210"
+      positionY="12"
     >
       {{ map3dStore.is3D() ? '2D' : '3D' }}
     </UiIconButton>
