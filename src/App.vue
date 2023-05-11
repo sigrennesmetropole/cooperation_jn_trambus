@@ -13,6 +13,7 @@ import { useViewsStore } from '@/stores/views'
 import { RennesApp } from '@/services/RennesApp'
 import mapConfig from './map.config.json'
 import BackButton from '@/components/home/BackButton.vue'
+import ConsultationComponent from '@/components/home/ConsultationComponent.vue'
 import { useStationsStore } from '@/stores/stations'
 
 const panelStore = usePanelsStore()
@@ -42,6 +43,10 @@ const isPhotoGalleryVisible = computed(() => {
         <RouterView :key="$route.fullPath" />
       </SidePanel>
     </aside>
+
+    <ConsultationComponent
+      v-show="panelStore.isPlanningViewShown === false"
+    ></ConsultationComponent>
 
     <HeadToolbarTrambus
       v-show="panelStore.isPlanningViewShown === false"
