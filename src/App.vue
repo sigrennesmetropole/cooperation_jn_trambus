@@ -45,7 +45,10 @@ const isPhotoGalleryVisible = computed(() => {
     </aside>
 
     <ConsultationComponent
-      v-show="panelStore.isPlanningViewShown === false"
+      v-if="
+        viewStore.currentView == 'home' &&
+        panelStore.isPlanningViewShown === false
+      "
     ></ConsultationComponent>
 
     <HeadToolbarTrambus

@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import fabriqueCitoyenne from '@/assets/icons/fabrique-citoyenne.svg'
+import { usePanelsStore } from '@/stores/panels'
+import { computed } from 'vue'
+
+const panelStore = usePanelsStore()
+
+const leftAlignment = computed(() =>
+  panelStore.isInformationPanelShown
+    ? 'absolute left-[462px] top-3'
+    : 'absolute left-3 top-3'
+)
 
 function goToConsultation() {
   console.log('go to the concertation page')
@@ -8,7 +18,8 @@ function goToConsultation() {
 
 <template>
   <div
-    class="absolute left-1/4 top-2 z-10 flex flex-row gap-4 p-2 bg-[#261E69] rounded-lg text-white items-center"
+    class="z-10 flex flex-row gap-4 p-2 bg-[#261E69] rounded-lg text-white items-center"
+    :class="leftAlignment"
   >
     <div class="flex flex-row gap-3 px-2">
       <img :src="fabriqueCitoyenne" />
