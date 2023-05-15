@@ -5,7 +5,6 @@ import type { FeatureLike } from 'ol/Feature'
 import { useStationsStore } from '@/stores/stations'
 import type { RennesApp } from '@/services/RennesApp'
 import { RENNES_LAYER } from '@/stores/layers'
-import { apiClientService } from '@/services/api.client'
 import type { ParkingModel } from '@/model/parkings.model'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 
@@ -168,11 +167,9 @@ export async function completeStationsData(
   rennesApp: RennesApp,
   stations: StationModel[],
   lineNumber: number,
+  stationsOrder: StationModel[],
   parkings: ParkingModel[]
 ) {
-  const stationsOrder = await apiClientService.fetchStationsOrderByLine(
-    lineNumber
-  )
   stations.forEach((station) => {
     const stationOrder = stationsOrder.find(
       (order) => order.nom === station.nom
