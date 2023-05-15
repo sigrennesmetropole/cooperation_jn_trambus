@@ -1,0 +1,12 @@
+// Vitest Snapshot v1
+
+exports[`ConsultationComponent.vue > renders the component correctly 1`] = `
+"<div class=\\"z-10 flex flex-row gap-4 p-2 bg-[#261E69] rounded-lg text-white items-center absolute left-[462px] top-3\\">
+  <div class=\\"flex flex-row gap-3 px-2\\"><img src=\\"/src/assets/icons/fabrique-citoyenne.svg\\">
+    <div>
+      <h4 class=\\"font-dm-sans font-bold text-lg leading-6\\"> La fabrique Citoyenne </h4>
+      <p class=\\"font-dm-sans font-normal text-sm\\"> Découvrez l'espace concertation et <br> contribuez au transport de demain </p>
+    </div>
+  </div><button tabindex=\\"0\\" class=\\"font-dm-sans font-medium text-base border border-white px-4 py-3 rounded-lg h-12\\"> Découvrir </button>
+</div>"
+`;
