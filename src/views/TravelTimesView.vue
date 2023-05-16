@@ -95,7 +95,7 @@ function onTravelTimesClicked(travelTime: TravelTimeModel) {
       :lineNumber="travelTime.line"
       :startStation="travelTime.start"
       :endStation="travelTime.end"
-      :clickable="false"
+      :clickable="true"
       :colored="traveltimeInteractionStore.isOnlySelected(travelTime)"
     >
     </UiTravelTime>

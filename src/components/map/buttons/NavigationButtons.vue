@@ -65,6 +65,7 @@ const heightClass = computed(() => {
       class="rounded-lg"
       @click="router.push('/home')"
       v-show="shouldDisplayHomeButton()"
+      ariaLabelButton="Revenir à l'accueil"
       titleButton="Revenir à l'accueil"
       heightTitle="30"
       widthTitle="200"
