@@ -22,10 +22,10 @@ function goToConsultation() {
     :class="leftAlignment"
   >
     <div class="flex flex-row gap-3 px-2">
-      <img :src="fabriqueCitoyenne" />
+      <img :src="fabriqueCitoyenne" class="w-9 h-9 my-auto" />
       <div>
         <h4 class="font-dm-sans font-bold text-lg leading-6">
-          La fabrique Citoyenne
+          La Fabrique Citoyenne
         </h4>
         <p class="font-dm-sans font-normal text-sm">
           Découvrez l'espace concertation et <br />
