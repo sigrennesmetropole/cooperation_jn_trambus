@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 
 import { shorterName } from '@/services/poi'
 
-describe.skip('PoiService', () => {
+describe('PoiService', () => {
   describe('#shorterName', () => {
     it('short when more than 20 chars', () => {
       const nameTooLong = 'THIS_NAME_IS_REALLY_TOO_LONG'
