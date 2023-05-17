@@ -6,7 +6,7 @@ import UiTravelTime from '../ui/UiTravelTime.vue'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import UiOverflowContainer from '../ui/UiOverflowContainer.vue'
 import UiLinkPrimary from '../ui/UiLinkPrimary.vue'
-import UiButtonInformation from '../home/UiButtonInformation.vue'
+import { UiButtonWithTooltip } from '@sigrennesmetropole/cooperation_jn_common_ui'
 
 const state = reactive({
   travelTimes: null as null | TravelTimeModel[],
@@ -23,14 +23,14 @@ onMounted(async () => {
       Temps de parcours théorique
     </h2>
     <div class="ml-2">
-      <UiButtonInformation
+      <UiButtonWithTooltip
         widthButton="4"
         heightButton="4"
         positionRight="130px"
         positionTop="5px"
         text="Les temps de parcours présentés sont estimés de façon théorique. Ils sont calculés à l'heure de pointe du matin en direction de Rennes et sont comparés aux temps de parcours théoriques actuels."
-        widthBoxText="w-[302px]"
-      ></UiButtonInformation>
+        widthBoxText="w-[280px]"
+      ></UiButtonWithTooltip>
     </div>
   </div>
 
