@@ -67,12 +67,12 @@ const isPageFullScreen = computed(() => {
         v-show="panelStore.isPlanningViewShown === false"
       ></HeadToolbarTrambus>
 
-      <div class="grow">
+      <div class="w-screen">
         <MapComponent></MapComponent>
       </div>
       <FooterPlainPage
         v-if="panelStore.isInformationPanelShown === false"
-        class="mt-auto"
+        class="absolute bottom-0 z-50"
         @openLink="openLink($event)"
         :legalList="legalList"
       ></FooterPlainPage>
