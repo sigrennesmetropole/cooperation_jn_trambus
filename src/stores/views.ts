@@ -56,7 +56,16 @@ export const useViewsStore = defineStore('views', () => {
     currentView.value = viewList.home
   }
 
-  return { currentView, setCurrentView, setHomeAsCurrentView }
+  function setLegalNoticeAsCurrentView() {
+    currentView.value = viewList.legalnotice
+  }
+
+  return {
+    currentView,
+    setCurrentView,
+    setHomeAsCurrentView,
+    setLegalNoticeAsCurrentView,
+  }
 })
 
 export const useTravelTimesViewStore = defineStore('traveltimes-views', () => {
