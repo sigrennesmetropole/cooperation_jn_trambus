@@ -16,12 +16,17 @@ import { useViewsStore } from '@/stores/views'
 import { viewList } from '@/model/views.model'
 import type { RennesApp } from '@/services/RennesApp'
 import { useRouter } from 'vue-router'
+import { IconSynchronize } from '@sigrennesmetropole/cooperation_jn_common_ui'
+import { useMapViewPointStore } from '@/stores/map'
+import { useStationsStore } from '@/stores/stations'
+import type { Viewpoint } from '@vcmap/core'
 
+const stationsStore = useStationsStore()
 const rennesApp = inject('rennesApp') as RennesApp
-
 const map3dStore = useMap3dStore()
 const viewStore = useViewsStore()
 const router = useRouter()
+const mapStore = useMapViewPointStore()
 
 async function toggle3DMap() {
   map3dStore.toggle3D()
@@ -54,6 +59,18 @@ const heightClass = computed(() => {
   }
   return ['h-90']
 })
+
+async function resetZoom() {
+  if (viewStore.currentView !== 'station') {
+    let viewpoint = rennesApp.viewpoints.getByKey(mapStore.viewPoint)
+    const activeMap = rennesApp.maps.activeMap
+    await activeMap.gotoViewpoint(viewpoint!)
+  } else {
+    await rennesApp.maps?.activeMap.gotoViewpoint(
+      stationsStore.viewPointStation as Viewpoint
+    )
+  }
+}
 </script>
 
 <template>
@@ -88,7 +105,6 @@ const heightClass = computed(() => {
         <IconPlus />
       </UiIconButton>
       <UiIconButton
-        class="rounded-b-lg"
         @click="() => zoom(true)"
         ariaLabelButton="Zoom arrière sur la carte"
         titleButton="Zoom arrière sur la carte"
@@ -99,9 +115,21 @@ const heightClass = computed(() => {
       >
         <IconMinus />
       </UiIconButton>
+      <UiIconButton
+        class="rounded-b-lg"
+        @click="() => resetZoom()"
+        ariaLabelButton="Réinitialiser le zoom"
+        titleButton="Réinitialiser le zoom"
+        heightTitle="30"
+        widthTitle="200"
+        positionX="-210"
+        positionY="12"
+      >
+        <IconSynchronize />
+      </UiIconButton>
     </div>
     <UiIconButton
-      class="font-semibold rounded-lg"
+      class="rounded-lg"
       @click="toggle3DMap"
       :ariaLabelButton="
         map3dStore.is3D() ? 'Passer la carte en 2D' : 'Passer la carte en 3D'

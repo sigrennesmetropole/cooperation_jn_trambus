@@ -7,6 +7,7 @@ import {
 } from '@/model/lines.fixtures'
 import type { LineNumber } from '@/model/lines.model'
 import type { TravelTimeModel } from '@/model/travel-time.model'
+import type { Viewpoint } from '@vcmap/core'
 
 export const useStationsStore = defineStore('stations', () => {
   const stationsToDisplayPermanently: Ref<string[]> = ref([])
@@ -14,6 +15,7 @@ export const useStationsStore = defineStore('stations', () => {
   const currentStationView: Ref<string | null> = ref('')
   const flagClearStationsExceptPermanently: Ref<boolean> = ref(false)
   const lineOfStation: Ref<LineNumber | null> = ref(null)
+  const viewPointStation: Ref<Viewpoint | null> = ref(null)
 
   function addStationToDisplay(stationName: string) {
     if (!stationsToDisplay.value.includes(stationName)) {
@@ -104,10 +106,15 @@ export const useStationsStore = defineStore('stations', () => {
     lineOfStation.value = lineNumber
   }
 
+  function setViewPointStation(newViewpoint: Viewpoint) {
+    viewPointStation.value = newViewpoint
+  }
+
   return {
     stationsToDisplay,
     currentStationView,
     flagClearStationsExceptPermanently,
+    viewPointStation,
     stationViewSetUpStationsToDisplay,
     stationIsInStationsToDisplayPermanently,
     lineViewSetUpStationsToDisplay,
@@ -121,6 +128,7 @@ export const useStationsStore = defineStore('stations', () => {
     updateStationsToDisplayFromTravelTimes,
     clearAllStations,
     setLineOfStation,
+    setViewPointStation,
     lineOfStation,
   }
 })

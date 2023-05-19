@@ -99,6 +99,8 @@ async function updateViewPoint(viewPoint: string) {
     if (map3dStore.is3D()) {
       viewpoint = tiltViewpoint(viewpoint!)
     }
+    stationsStore.setViewPointStation(viewpoint as Viewpoint)
+
     await activeMap.gotoViewpoint(viewpoint!)
   } else {
     let selectedViewPoint = rennesApp.viewpoints.getByKey(viewPoint)
