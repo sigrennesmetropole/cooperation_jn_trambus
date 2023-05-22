@@ -53,9 +53,9 @@ const shouldDisplayHomeButton = () => {
 
 const heightClass = computed(() => {
   if (!shouldDisplayHomeButton() && map3dStore.is3D()) {
-    return ['h-[17rem]']
+    return ['h-[20rem]']
   } else if (map3dStore.is3D()) {
-    return ['h-[21rem]']
+    return ['h-[24rem]']
   }
   return ['h-90']
 })
