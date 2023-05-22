@@ -28,8 +28,8 @@ onMounted(async () => {
         heightButton="4"
         positionRight="130px"
         positionTop="5px"
-        text="Ces temps de parcours sont calculés à l’heure de pointe du matin en direction Rennes. Ils sont comparés au temps actuel de trajet en transport en commun."
-        widthBoxText="w-[230px]"
+        text="Les temps de parcours présentés sont estimés de façon théorique. Ils sont calculés à l'heure de pointe du matin en direction de Rennes et sont comparés aux temps de parcours théoriques actuels."
+        widthBoxText="w-[280px]"
       ></UiButtonWithTooltip>
     </div>
   </div>
