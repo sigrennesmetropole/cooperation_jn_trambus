@@ -46,8 +46,7 @@ export async function updateLineViewStyle(rennesApp: RennesApp) {
     trambusLineViewStyleFunction(
       feature,
       lineViewStore.selectedLine,
-      lineViewStore.displayedOtherLines,
-      mapStore.is3D()
+      lineViewStore.displayedOtherLines
     )
   )
   clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.trambusStops, (feature) =>
@@ -83,11 +82,7 @@ function clearLayerAndApplyStyleTravelTimes(
 ) {
   const mapStore = useMap3dStore()
   clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.trambusLines, (feature) =>
-    trambusLineTravelTimesViewStyleFunction(
-      feature,
-      displayedTravelTime,
-      mapStore.is3D()
-    )
+    trambusLineTravelTimesViewStyleFunction(feature, displayedTravelTime)
   )
   clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.trambusStops, (feature) =>
     trambusStopTravelTimesViewStyleFunction(
@@ -129,8 +124,7 @@ export async function updateStationViewStyle(rennesApp: RennesApp) {
     trambusLineViewStyleFunction(
       feature,
       lineViewStore.selectedLine,
-      lineViewStore.displayedOtherLines,
-      mapStore.is3D()
+      lineViewStore.displayedOtherLines
     )
   )
   clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.trambusStops, (feature) =>
@@ -155,9 +149,8 @@ export async function updateStationViewStyle(rennesApp: RennesApp) {
 }
 
 export function updateHomeViewStyle(rennesApp: RennesApp) {
-  const mapStore = useMap3dStore()
   clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.trambusLines, (feature) =>
-    homeViewStyleFunction(feature, mapStore.is3D())
+    homeViewStyleFunction(feature)
   )
   clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.parking, parkingStyle)
 }
