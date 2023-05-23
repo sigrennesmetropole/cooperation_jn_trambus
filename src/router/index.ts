@@ -31,6 +31,11 @@ const routes = [
     component: () => import('../views/TravelTimesView.vue'),
   },
   {
+    path: '/legalnotice/:legallink',
+    name: 'legalnotice',
+    component: () => import('../views/LegalNoticeView.vue'),
+  },
+  {
     path: '/consultation',
     name: 'consultation',
     component: () => import('../views/ConsultationView.vue'),
