@@ -2,6 +2,7 @@
 import { inject, computed } from 'vue'
 import { cloneViewPointAndResetCameraPosition } from '@/helpers/viewpointHelper'
 
+import TravelMap from '@/assets/icons/travel-map.svg'
 import { IconHome } from '@sigrennesmetropole/cooperation_jn_common_ui'
 import { IconPlus } from '@sigrennesmetropole/cooperation_jn_common_ui'
 import { IconMinus } from '@sigrennesmetropole/cooperation_jn_common_ui'
@@ -53,9 +54,9 @@ const shouldDisplayHomeButton = () => {
 
 const heightClass = computed(() => {
   if (!shouldDisplayHomeButton() && map3dStore.is3D()) {
-    return ['h-[20rem]']
-  } else if (map3dStore.is3D()) {
     return ['h-[24rem]']
+  } else if (map3dStore.is3D()) {
+    return ['h-[28rem]']
   }
   return ['h-90']
 })
@@ -78,6 +79,20 @@ async function resetZoom() {
     :class="heightClass"
     class="transition-[height] absolute right-2 bottom-10 flex flex-col [&>*]:m-2 text-gray-dark items-center w-32 select-none"
   >
+    <UiIconButton
+      class="rounded-lg"
+      @click="router.push('/home')"
+      v-show="map3dStore.is3D()"
+      ariaLabelButton="Plan de ville"
+      titleButton="Plan de ville"
+      heightTitle="30"
+      widthTitle="200"
+      positionX="-210"
+      positionY="12"
+    >
+      <img :src="TravelMap" />
+    </UiIconButton>
+
     <UiIconButton
       class="rounded-lg"
       @click="router.push('/home')"
