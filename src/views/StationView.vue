@@ -7,7 +7,6 @@ import { useLayersStore } from '@/stores/layers'
 import { useStationsStore } from '@/stores/stations'
 import UiStationHeader from '@/components/ui/UiStationHeader.vue'
 import { apiClientService } from '@/services/api.client'
-import { FooterArea } from '@sigrennesmetropole/cooperation_jn_common_ui'
 import type { LineModel, SelectedTrambusLine } from '@/model/lines.model'
 import type { StationModel } from '@/model/stations.model'
 import { viewList } from '@/model/views.model'
@@ -18,6 +17,12 @@ import { usePoiParkingStore } from '@/stores/poiParking'
 import { useLineInteractionStore } from '@/stores/interactionMap'
 import type { RennesApp } from '@/services/RennesApp'
 import { poiStoreSubcribe } from '@/services/poi'
+import FooterAreaLink from '@/components/home/FooterAreaLink.vue'
+import { legalList } from '@/constants/legalLinks'
+
+const openLink = (link: string) => {
+  window.open(link, '_blank')
+}
 
 const map3dStore = useMap3dStore()
 const viewStore = useViewsStore()
@@ -110,5 +115,9 @@ onMounted(async () => {
     :nameStation="state.stationDescription.nom"
   />
   <div class="border-b border-neutral-300 my-3"></div>
-  <FooterArea />
+  <FooterAreaLink
+    class="mt-auto"
+    @openLink="openLink($event)"
+    :legalList="legalList"
+  ></FooterAreaLink>
 </template>

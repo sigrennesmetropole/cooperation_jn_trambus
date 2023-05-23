@@ -9,7 +9,6 @@ import LineFigures from '@/components/line/LineFigures.vue'
 import UiTravelTime from '@/components/ui/UiTravelTime.vue'
 import ThermometerStations from '@/components/line/ThermometerStations.vue'
 import ParkingsInformations from '@/components/line/ParkingsInformations.vue'
-import { FooterArea } from '@sigrennesmetropole/cooperation_jn_common_ui'
 import { useRoute } from 'vue-router'
 import { useMap3dStore } from '@/stores/map'
 import { useViewsStore } from '@/stores/views'
@@ -28,6 +27,12 @@ import { useLineInteractionStore } from '@/stores/interactionMap'
 import { poiStoreSubcribe } from '@/services/poi'
 import { useStationsStore } from '@/stores/stations'
 import SkipLinksLineView from '@/components/accessibility/SkipLinksLineView.vue'
+import FooterAreaLink from '@/components/home/FooterAreaLink.vue'
+import { legalList } from '@/constants/legalLinks'
+
+const openLink = (link: string) => {
+  window.open(link, '_blank')
+}
 
 const map3dStore = useMap3dStore()
 const viewStore = useViewsStore()
@@ -184,6 +189,10 @@ function onTravelTimesClicked(travelTime: TravelTimeModel) {
   </section>
   <div class="border-b border-neutral-300 my-3"></div>
   <section id="footer">
-    <FooterArea />
+    <FooterAreaLink
+      class="mt-auto"
+      @openLink="openLink($event)"
+      :legalList="legalList"
+    ></FooterAreaLink>
   </section>
 </template>
