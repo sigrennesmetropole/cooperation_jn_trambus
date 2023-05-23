@@ -1,4 +1,5 @@
-export type View = 'home' | 'station' | 'line' | 'traveltimes' | 'legalnotice'
+
+export type View = 'home' | 'station' | 'line' | 'traveltimes' | 'legalnotice' | 'consultation'
 
 export const viewList: Record<View, View> = {
   home: 'home',
@@ -6,4 +7,5 @@ export const viewList: Record<View, View> = {
   line: 'line',
   traveltimes: 'traveltimes',
   legalnotice: 'legalnotice',
+  consultation: 'consultation',
 }

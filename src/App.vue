@@ -95,7 +95,6 @@ const isPageFullScreen = computed(() => {
         "
         class="z-10 absolute top-[45px] left-[24px]"
       ></BackButton>
-
       <!--Do lazy loading for planning view.
         Only render it once, and after that 'hide' the planning view so that we can keep its state and no need to load it again. -->
       <div

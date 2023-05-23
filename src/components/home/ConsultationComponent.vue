@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import fabriqueCitoyenne from '@/assets/icons/fabrique-citoyenne.svg'
+import router from '@/router'
 import { usePanelsStore } from '@/stores/panels'
 import { computed } from 'vue'
 
@@ -12,7 +13,7 @@ const leftAlignment = computed(() =>
 )
 
 function goToConsultation() {
-  console.log('go to the concertation page')
+  router.push('/consultation')
 }
 </script>
 

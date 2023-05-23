@@ -76,9 +76,9 @@ function onTravelTimesClicked(travelTime: TravelTimeModel) {
   <div class="flex flex-col items-start p-0 gap-3">
     <div class="flex items-center p-0 gap-4">
       <p class="font-dm-sans font-medium text-sm text-neutral-800">
-        Ces temps de parcours sont calculés à l’heure de pointe du matin en
-        direction Rennes. Ils sont comparés au temps actuel de trajet en
-        transport en commun.
+        Les temps de parcours présentés sont estimés de façon théorique. Ils
+        sont calculés à l'heure de pointe du matin en direction de Rennes et
+        sont comparés aux temps de parcours théoriques actuels.
       </p>
     </div>
   </div>

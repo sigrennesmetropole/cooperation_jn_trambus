@@ -21,7 +21,6 @@ const layerStore = useLayersStore()
 const viewStore = useViewsStore()
 const map3dStore = useMap3dStore()
 const lineInteractionStore = useLineInteractionStore()
-const panelsStore = usePanelsStore()
 
 onMounted(() => {
   viewStore.setHomeAsCurrentView()
@@ -36,7 +35,6 @@ onMounted(() => {
     bike: false,
     _traveltimeArrow: false,
   })
-  panelsStore.toggleGallery()
 })
 </script>
 
