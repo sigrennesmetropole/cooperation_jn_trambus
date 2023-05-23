@@ -10,7 +10,6 @@ import { useViewsStore } from '@/stores/views'
 import { useMap3dStore } from '@/stores/map'
 import { useLineInteractionStore } from '@/stores/interactionMap'
 import SkipLinksHome from '@/components/accessibility/SkipLinksHome.vue'
-import { usePanelsStore } from '@/stores/panels'
 import FooterAreaLink from '@/components/home/FooterAreaLink.vue'
 import { legalList } from '@/constants/legalLinks'
 const openLink = (link: string) => {

@@ -1,5 +1,10 @@
-
-export type View = 'home' | 'station' | 'line' | 'traveltimes' | 'legalnotice' | 'consultation'
+export type View =
+  | 'home'
+  | 'station'
+  | 'line'
+  | 'traveltimes'
+  | 'legalnotice'
+  | 'consultation'
 
 export const viewList: Record<View, View> = {
   home: 'home',
