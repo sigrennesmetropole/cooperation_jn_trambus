@@ -3,6 +3,8 @@ import { usePanelsStore } from '@/stores/panels'
 import UiPanelControlButton from '@/components/ui/UiPanelControlButton.vue'
 import { computed } from 'vue'
 import { useViewsStore } from '@/stores/views'
+import { viewList } from '@/model/views.model'
+
 const viewStore = useViewsStore()
 
 const panelStore = usePanelsStore()
@@ -16,7 +18,7 @@ const leftAlignment = computed(() =>
     : 'absolute left-0 top-28'
 )
 const isConsultationPage = computed(() => {
-  if (viewStore.currentView === 'consultation') {
+  if (viewStore.currentView === viewList['consultation']) {
     return true
   }
   return false
