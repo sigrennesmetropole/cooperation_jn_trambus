@@ -89,7 +89,7 @@ const isPhotoGalleryVisible = computed(() => {
     ></BackButton>
 
     <!--Do lazy loading for planning view.
-      Only render it once, and after that 'hide' the planning view so that we can keep its state and no need to load it again. -->
+        Only render it once, and after that 'hide' the planning view so that we can keep its state and no need to load it again. -->
     <div
       class="absolute h-screen w-screen"
       v-if="panelStore.hasPlanningViewRendered"
