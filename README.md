@@ -68,7 +68,7 @@ npm run story
 ### Build locally the image
 
 ```shell
-docker build -t cooperation_jn_trambus:latest  --build-arg NPM_TOKEN=<YOUR_GITHUB_NPM_TOKEN> .
+docker build -t cooperation_jn_trambus:latest  --build-arg NPM_TOKEN=<YOUR_GITHUB_NPM_TOKEN>.
 ```
 
 ### Run the image
