@@ -170,6 +170,7 @@ map3dStore.$subscribe(async () => {
     )
   }
   travelTimeBoxesStore.addListenerForUpdatePositions(rennesApp)
+  poiStoreSubcribe(rennesApp)
 })
 
 mapViewPointStore.$subscribe(async () => {
