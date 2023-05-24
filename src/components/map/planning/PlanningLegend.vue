@@ -1,5 +1,8 @@
 <script lang="ts" setup>
-import { LinePlanningStateTypes } from '@/model/line-planning-state.model'
+import {
+  LinePlanningStateTypes,
+  LineName,
+} from '@/model/line-planning-state.model'
 import { usePlanningStore } from '@/stores/planning'
 import UiPlanningLegend from '@/components/ui/UiPlanningLegend.vue'
 const planningStore = usePlanningStore()
@@ -7,9 +10,10 @@ const planningStore = usePlanningStore()
 let items = [
   LinePlanningStateTypes.UNSTARTED,
   LinePlanningStateTypes.UNDER_CONSTRUCTION,
-  LinePlanningStateTypes.CONSTRUCTION_FINISHED,
+  // LinePlanningStateTypes.CONSTRUCTION_FINISHED,
   LinePlanningStateTypes.COMMISIONING,
 ]
+let lines = [LineName.LINE_1, LineName.LINE_2, LineName.LINE_3, LineName.LINE_4]
 
 const updateLineState = (lineState: LinePlanningStateTypes) => {
   planningStore.setLinePlanningState(lineState)
@@ -23,6 +27,7 @@ function getHighlightedItemId() {
 <template>
   <UiPlanningLegend
     :items="items"
+    :lines="lines"
     :highlighted-item-id="getHighlightedItemId()"
     @update-line-planning-state="updateLineState"
     class="absolute right-8 top-8"

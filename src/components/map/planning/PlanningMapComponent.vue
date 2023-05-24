@@ -18,7 +18,7 @@ import type { FeatureLike } from 'ol/Feature'
 import { getTrambusLineNumber, lineColors } from '@/styles/common'
 
 import { usePlanningStore } from '@/stores/planning'
-import UiPlanningLegend from '@/components/map/planning/PlanningLegend.vue'
+import PlanningLegend from '@/components/map/planning/PlanningLegend.vue'
 import { Overlay } from 'ol'
 import UiLineButton from '@/components/map/buttons/UiLineButton.vue'
 import type { Corner } from '@/components/map/buttons/UiLineButton.vue'
@@ -142,9 +142,11 @@ function getState(feature: FeatureLike): LinePlanningStateTypes {
 
   if (selectedDate >= commisionedDate) {
     return LinePlanningStateTypes.COMMISIONING
-  } else if (selectedDate >= finishedDate && selectedDate < commisionedDate) {
-    return LinePlanningStateTypes.CONSTRUCTION_FINISHED
-  } else if (selectedDate >= inProgressDate && selectedDate < finishedDate) {
+  }
+  // else if (selectedDate >= finishedDate && selectedDate < commisionedDate) {
+  //   return LinePlanningStateTypes.CONSTRUCTION_FINISHED
+  // }
+  else if (selectedDate >= inProgressDate && selectedDate < finishedDate) {
     return LinePlanningStateTypes.UNDER_CONSTRUCTION
   } else {
     return LinePlanningStateTypes.UNSTARTED
@@ -303,5 +305,5 @@ function setSelectedLine(line: number) {
     >
     </UiLineButton>
   </div>
-  <UiPlanningLegend></UiPlanningLegend>
+  <PlanningLegend></PlanningLegend>
 </template>

@@ -61,16 +61,14 @@ describe('PlanningLegend', () => {
             (item) =>
               item.text() !== LinePlanningStateTypes.UNSTARTED.toString()
           ).length
-      ).toBe(3)
+      ).toBe(6)
       wrapper
         .findAll('.cursor-pointer')
         .filter(
           (item) => item.text() !== LinePlanningStateTypes.UNSTARTED.toString()
         )
         .forEach((elt) => {
-          expect(
-            elt.classes().find((elt) => elt === 'text-neutral-500')
-          ).toBeTruthy()
+          expect(elt.classes().find((elt) => elt === 'flex-1')).toBeTruthy()
         })
     })
   })
