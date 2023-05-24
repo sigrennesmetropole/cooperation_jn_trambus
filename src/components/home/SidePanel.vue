@@ -34,7 +34,10 @@ const isConsultationPage = computed(() => {
     >
       <slot></slot>
     </div>
-    <div class="max-h-0 top-28">
+    <div
+      class="max-h-0 top-28"
+      v-if="viewStore.currentView !== viewList['consultation']"
+    >
       <UiPanelControlButton
         :anchor-position="'left'"
         :is-open="panelStore.isInformationPanelShown"
