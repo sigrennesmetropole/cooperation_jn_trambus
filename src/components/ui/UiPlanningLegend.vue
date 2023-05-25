@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue'
+import { PropType, Ref, ref } from 'vue'
 import type {
   LineName,
   LinePlanningStateTypes,
@@ -16,31 +16,28 @@ const props = defineProps({
     type: Array as PropType<LineName[]>,
     default: () => [],
   },
-  highlightedItemId: String,
-  highlightedLineId: String,
 })
+
+const selectedStatus: Ref<LinePlanningStateTypes | null> = ref(null)
+const selectedLine: Ref<LineName | null> = ref(null)
 
 const emit = defineEmits(['update-line-planning-state'])
 
 const setLinePlanningState = (item: LinePlanningStateTypes) => {
   emit('update-line-planning-state', item)
-}
-
-function isHighlighted(item: LinePlanningStateTypes): boolean {
-  return props.highlightedItemId == null || props.highlightedItemId == item.id
-}
-
-function isLineHighlighted(line: LineName): boolean {
-  return props.highlightedLineId == null || props.highlightedLineId == line.id
+  if (selectedStatus.value?.id === item.id) {
+    selectedStatus.value = null
+  }
 }
 
 function setSelectedLine(line: number) {
-  // If the line is currently active, set the selected line to 0  to make
-  // neutral state
   if (planningStore.selectedLine == line) {
     planningStore.selectedLine = 0
   } else {
     planningStore.selectedLine = line
+  }
+  if (selectedLine.value?.number === line) {
+    selectedLine.value = null
   }
 }
 </script>
@@ -51,34 +48,42 @@ function setSelectedLine(line: number) {
   >
     <p class="font-dm-sans text-base font-bold">Statut des travaux</p>
     <div
-      v-for="item of items"
+      v-for="item of props.items"
       :key="item.id"
-      @click="setLinePlanningState(item)"
       class="flex-1 flex flex-row items-center relative hover:font-medium cursor-pointer pl-4"
-      :class="{ 'text-neutral-500': !isHighlighted(item) }"
       :style="{
         borderLeft: '5px',
         borderLeftStyle: 'solid',
-        borderLeftColor: isHighlighted(item)
-          ? item.color
-          : item.deemphasizedColor,
+        borderLeftColor: item.color,
       }"
     >
-      <label class="container">{{ item.printValue }} </label>
-      <input type="radio" name="status" :value="item" />
+      <label :for="item.id" class="container">{{ item.printValue }} </label>
+      <input
+        type="radio"
+        name="status"
+        :id="item.id"
+        :value="item"
+        v-model="selectedStatus"
+        @click="setLinePlanningState(item)"
+      />
     </div>
     <div class="border-b border-neutral-300"></div>
     <p class="font-dm-sans text-base font-bold">Lignes</p>
     <div
-      v-for="line of lines"
+      v-for="line of props.lines"
       :key="line.id"
-      @click="setSelectedLine(line.number)"
       class="flex-1 flex flex-row items-center relative hover:font-medium cursor-pointer"
-      :class="{ 'text-neutral-500': !isLineHighlighted(line) }"
     >
       <img :src="line.img" class="w-6 mr-3" />
-      <label class="container">{{ line.printValue }} </label>
-      <input type="radio" name="line" :value="line" />
+      <label :for="line.id" class="container">{{ line.printValue }} </label>
+      <input
+        type="radio"
+        name="line"
+        :id="line.id"
+        :value="line"
+        v-model="selectedLine"
+        @click="setSelectedLine(line.number)"
+      />
     </div>
   </div>
 </template>

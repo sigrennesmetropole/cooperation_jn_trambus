@@ -132,9 +132,6 @@ function getState(feature: FeatureLike): LinePlanningStateTypes {
   const inProgressDate = convertAttributeToDate(
     String(feature.get('phase_travaux'))
   )
-  // const finishedDate = convertAttributeToDate(
-  //   String(feature.get('phase_amenage'))
-  // )
   const commisionedDate = convertAttributeToDate(
     String(feature.get('phase_livre'))
   )
@@ -142,11 +139,7 @@ function getState(feature: FeatureLike): LinePlanningStateTypes {
 
   if (selectedDate >= commisionedDate) {
     return LinePlanningStateTypes.COMMISIONING
-  }
-  // else if (selectedDate >= finishedDate && selectedDate < commisionedDate) {
-  //   return LinePlanningStateTypes.CONSTRUCTION_FINISHED
-  // }
-  else if (selectedDate >= inProgressDate && selectedDate < commisionedDate) {
+  } else if (selectedDate >= inProgressDate && selectedDate < commisionedDate) {
     return LinePlanningStateTypes.UNDER_CONSTRUCTION
   } else {
     return LinePlanningStateTypes.UNSTARTED

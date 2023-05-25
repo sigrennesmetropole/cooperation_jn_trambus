@@ -38,11 +38,6 @@ describe('PlanningLegend', () => {
     })
   })
   describe('when unstarted button is the only one active', () => {
-    beforeEach(async () => {
-      planningStore.getHighlightedId = vi.fn().mockImplementation(() => {
-        return LinePlanningStateTypes.UNSTARTED.id
-      })
-    })
     it('should highlight only the unstarted button', () => {
       expect(
         wrapper
