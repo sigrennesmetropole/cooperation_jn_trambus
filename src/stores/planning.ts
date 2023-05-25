@@ -43,6 +43,10 @@ export const usePlanningStore = defineStore('planning', () => {
     return selectedLineState.value?.id
   }
 
+  function getHighlightedLineId() {
+    console.log('ligne sélectionnée')
+  }
+
   return {
     getSelectedDate,
     selectedSemester,
@@ -53,5 +57,6 @@ export const usePlanningStore = defineStore('planning', () => {
     setLinePlanningState,
     isLinePlanningStateHighlighted,
     getHighlightedId,
+    getHighlightedLineId,
   }
 })

@@ -42,15 +42,16 @@ export class LinePlanningStateTypes {
 }
 
 export class LineName {
-  static readonly LINE_1 = new LineName('line1', 'Ligne 1', Line1)
-  static readonly LINE_2 = new LineName('line2', 'Ligne 2', Line2)
-  static readonly LINE_3 = new LineName('line3', 'Ligne 3', Line3)
-  static readonly LINE_4 = new LineName('line4', 'Ligne 4', Line4)
+  static readonly LINE_1 = new LineName('line1', 'Ligne 1', Line1, 1)
+  static readonly LINE_2 = new LineName('line2', 'Ligne 2', Line2, 2)
+  static readonly LINE_3 = new LineName('line3', 'Ligne 3', Line3, 3)
+  static readonly LINE_4 = new LineName('line4', 'Ligne 4', Line4, 4)
 
   private constructor(
     public readonly id: string,
     public readonly printValue: string,
-    public readonly img: string
+    public readonly img: string,
+    public readonly number: number
   ) {}
 
   toString() {

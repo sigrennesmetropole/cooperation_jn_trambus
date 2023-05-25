@@ -4,6 +4,8 @@ import type {
   LineName,
   LinePlanningStateTypes,
 } from '@/model/line-planning-state.model'
+import { usePlanningStore } from '@/stores/planning'
+const planningStore = usePlanningStore()
 
 const props = defineProps({
   items: {
@@ -15,6 +17,7 @@ const props = defineProps({
     default: () => [],
   },
   highlightedItemId: String,
+  highlightedLineId: String,
 })
 
 const emit = defineEmits(['update-line-planning-state'])
@@ -25,6 +28,20 @@ const setLinePlanningState = (item: LinePlanningStateTypes) => {
 
 function isHighlighted(item: LinePlanningStateTypes): boolean {
   return props.highlightedItemId == null || props.highlightedItemId == item.id
+}
+
+function isLineHighlighted(line: LineName): boolean {
+  return props.highlightedLineId == null || props.highlightedLineId == line.id
+}
+
+function setSelectedLine(line: number) {
+  // If the line is currently active, set the selected line to 0  to make
+  // neutral state
+  if (planningStore.selectedLine == line) {
+    planningStore.selectedLine = 0
+  } else {
+    planningStore.selectedLine = line
+  }
 }
 </script>
 
@@ -48,20 +65,20 @@ function isHighlighted(item: LinePlanningStateTypes): boolean {
       }"
     >
       <label class="container">{{ item.printValue }} </label>
-      <input type="radio" />
-      <span class="checkmark"></span>
+      <input type="radio" name="status" :value="item" />
     </div>
     <div class="border-b border-neutral-300"></div>
     <p class="font-dm-sans text-base font-bold">Lignes</p>
     <div
       v-for="line of lines"
       :key="line.id"
+      @click="setSelectedLine(line.number)"
       class="flex-1 flex flex-row items-center relative hover:font-medium cursor-pointer"
+      :class="{ 'text-neutral-500': !isLineHighlighted(line) }"
     >
       <img :src="line.img" class="w-6 mr-3" />
       <label class="container">{{ line.printValue }} </label>
-      <input type="radio" />
-      <span class="checkmark"></span>
+      <input type="radio" name="line" :value="line" />
     </div>
   </div>
 </template>

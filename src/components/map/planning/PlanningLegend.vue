@@ -22,6 +22,9 @@ const updateLineState = (lineState: LinePlanningStateTypes) => {
 function getHighlightedItemId() {
   return planningStore.getHighlightedId()
 }
+// function getHighlightedLineId() {
+//   return planningStore.getHighlightedLineId()
+// }
 </script>
 
 <template>
