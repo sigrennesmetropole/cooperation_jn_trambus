@@ -4,6 +4,7 @@ import { defineStore } from 'pinia'
 
 export const RENNES_LAYER = {
   rennesOrtho: 'rennesOrtho',
+  alternativeRennesOrtho: 'alternativeRennesOrtho',
   rennesBase: 'rennesBase',
   metro: 'metro',
   bus: 'bus',
@@ -20,6 +21,7 @@ export const RENNES_LAYER = {
 
 export const RENNES_LAYERNAMES = [
   RENNES_LAYER.rennesOrtho,
+  RENNES_LAYER.alternativeRennesOrtho,
   RENNES_LAYER.rennesBase,
   RENNES_LAYER.metro,
   RENNES_LAYER.bus,
@@ -39,6 +41,7 @@ export type LayersVisibility = Record<RennesLayer, boolean>
 export const useLayersStore = defineStore('layers', () => {
   const visibilities: Ref<LayersVisibility> = ref({
     rennesOrtho: false,
+    alternativeRennesOrtho: false,
     rennesBase: false,
     metro: false,
     bus: false,
@@ -103,12 +106,29 @@ export const useLayersStore = defineStore('layers', () => {
     visibilities.value._traveltimeArrow = newVisibilities._traveltimeArrow
   }
 
+  const checkedMapButton: Ref<boolean> = ref(false)
+
+  function displayAlternativeOrtho() {
+    visibilities.value.rennesOrtho = false
+    visibilities.value.alternativeRennesOrtho = true
+    checkedMapButton.value = true
+  }
+
+  function removeAlternativeOrtho() {
+    visibilities.value.alternativeRennesOrtho = false
+    visibilities.value.rennesOrtho = true
+    checkedMapButton.value = false
+  }
+
   return {
     visibilities,
+    checkedMapButton,
     toggleLayer,
     disableLayer,
     enableLayer,
     update3DBaseLayer,
     setVisibilities,
+    displayAlternativeOrtho,
+    removeAlternativeOrtho,
   }
 })

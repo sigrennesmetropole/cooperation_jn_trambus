@@ -76,17 +76,10 @@ async function resetZoom() {
 }
 
 function setAlternativeMapChecked() {
-  console.log(map3dStore.activeMap)
-  if (map3dStore.activeMap == 'cesium') {
-    layersStore.disableLayer('cesium')
-    console.log(map3dStore.activeMap)
-    layersStore.enableLayer('alternativeRennesOrtho')
-    console.log(map3dStore.activeMap)
-    // interactionMapStore.enableInteraction(SelectDistrictInteraction)
+  if (layersStore.checkedMapButton == false) {
+    layersStore.displayAlternativeOrtho()
   } else {
-    layersStore.disableLayer('alternativeRennesOrtho')
-    layersStore.enableLayer('cesium')
-    // interactionsStore.disableInteraction(SelectDistrictInteraction)
+    layersStore.removeAlternativeOrtho()
   }
 }
 </script>

@@ -95,9 +95,9 @@
     {
       "name": "alternativeRennesOrtho",
       "type": "WMTSLayer",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WMS&request=getFeature&typename=ref_fonds:pvci&outputFormat=image/jpeg&srsName=EPSG:4326",
+      "url": "https://public.sig.rennesmetropole.fr/geowebcache/service/wmts",
       "layer": "ref_fonds:pvci",
-      "format": "image/jpeg",
+      "format": "image/png",
       "tileMatrixSetID": "EPSG:3857",
       "tileMatrixPrefix": "EPSG:3857:",
       "extent": {
