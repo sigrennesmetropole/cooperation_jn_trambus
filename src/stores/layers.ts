@@ -106,23 +106,18 @@ export const useLayersStore = defineStore('layers', () => {
     visibilities.value._traveltimeArrow = newVisibilities._traveltimeArrow
   }
 
-  const checkedMapButton: Ref<boolean> = ref(false)
-
   function displayAlternativeOrtho() {
     visibilities.value.rennesOrtho = false
     visibilities.value.alternativeRennesOrtho = true
-    checkedMapButton.value = true
   }
 
   function removeAlternativeOrtho() {
     visibilities.value.alternativeRennesOrtho = false
     visibilities.value.rennesOrtho = true
-    checkedMapButton.value = false
   }
 
   return {
     visibilities,
-    checkedMapButton,
     toggleLayer,
     disableLayer,
     enableLayer,

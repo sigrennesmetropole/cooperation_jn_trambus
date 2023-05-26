@@ -32,6 +32,7 @@ const mapStore = useMapViewPointStore()
 const layersStore = useLayersStore()
 
 async function toggle3DMap() {
+  layersStore.removeAlternativeOrtho()
   map3dStore.toggle3D()
 }
 
@@ -76,7 +77,7 @@ async function resetZoom() {
 }
 
 function setAlternativeMapChecked() {
-  if (layersStore.checkedMapButton == false) {
+  if (layersStore.visibilities.alternativeRennesOrtho === false) {
     layersStore.displayAlternativeOrtho()
   } else {
     layersStore.removeAlternativeOrtho()

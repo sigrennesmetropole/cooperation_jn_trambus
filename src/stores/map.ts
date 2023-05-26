@@ -17,7 +17,6 @@ export const useMap3dStore = defineStore('map-3d', () => {
   }
 
   function toggle3D() {
-    layerStore.removeAlternativeOrtho()
     if (is3D()) {
       activeMap.value = 'ol'
     } else {
