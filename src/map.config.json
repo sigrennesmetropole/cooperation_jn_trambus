@@ -261,7 +261,7 @@
       "name": "poi",
       "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=trp_coll:trambus_station_to_site&outputFormat=application/json&srsName=EPSG:4326",
       "type": "GeoJSONLayer",
-      "activeOnStartup": true,
+      "activeOnStartup": false,
       "hiddenObjectIds": [],
       "zIndex": 4,
       "vectorProperties": {
@@ -272,6 +272,12 @@
     },
     {
       "name": "customLayerLabelLine",
+      "type": "GeoJSONLayer",
+      "activeOnStartup": true,
+      "zIndex": 4
+    },
+    {
+      "name": "customLayerLabelMetro",
       "type": "GeoJSONLayer",
       "activeOnStartup": true,
       "zIndex": 4

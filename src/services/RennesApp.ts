@@ -41,13 +41,19 @@ export class RennesApp extends VcsApp {
 
   async getLayerByKey(key: RennesLayer) {
     const layer: GeoJSONLayer = this.layers.getByKey(key) as GeoJSONLayer
-    await layer.fetchData()
+    if (layer) {
+      await layer.fetchData()
+    }
     return layer
   }
 
   async getFeaturesFromLayer(key: RennesLayer) {
     const layer = await this.getLayerByKey(key)
-    return layer.getFeatures()
+    if (layer) {
+      return layer.getFeatures()
+    } else {
+      return []
+    }
   }
 
   async filterFeaturesByAttribute(

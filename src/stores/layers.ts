@@ -16,6 +16,7 @@ export const RENNES_LAYER = {
   _traveltimeArrow: '_traveltimeArrow',
   customLayerLabelLine: 'customLayerLabelLine',
   _trambusStopsOutline: '_trambusStopsOutline',
+  customLayerLabelMetro: 'customLayerLabelMetro',
 }
 
 export const RENNES_LAYERNAMES = [
@@ -31,6 +32,7 @@ export const RENNES_LAYERNAMES = [
   RENNES_LAYER._traveltimeArrow,
   RENNES_LAYER.customLayerLabelLine,
   RENNES_LAYER._trambusStopsOutline,
+  RENNES_LAYER.customLayerLabelMetro,
 ] as const
 
 export type RennesLayer = typeof RENNES_LAYERNAMES[number]

@@ -2,16 +2,20 @@
 import { useComponentAboveMapStore } from '@/stores/componentsAboveMapStore'
 import LabelStation from '@/components/map/aboveMap/LabelStation.vue'
 import LabelLine from '@/components/map/aboveMap/LabelLine.vue'
+import LabelMetro from '@/components/map/aboveMap/LabelMetro.vue'
 import {
   useLineInteractionStore,
   useTravelTimeBoxesStore,
   useTraveltimeInteractionStore,
+  useMetroInteractionStore,
 } from '@/stores/interactionMap'
 import TravelTimeBox from '@/components/map/aboveMap/TravelTimeBox.vue'
+
 const componentAboveMapStore = useComponentAboveMapStore()
 const lineInteractionStore = useLineInteractionStore()
 const travelTimeBoxesStore = useTravelTimeBoxesStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
+const metroInteractionStore = useMetroInteractionStore()
 </script>
 
 <template>
@@ -41,4 +45,11 @@ const traveltimeInteractionStore = useTraveltimeInteractionStore()
       traveltimeInteractionStore.selectedTraveltime?.id
     "
   ></TravelTimeBox>
+  <LabelMetro
+    v-if="metroInteractionStore.clickPosition !== null"
+    :topPosition="metroInteractionStore.clickPosition.y"
+    :leftPosition="metroInteractionStore.clickPosition.x"
+    :lines="lineInteractionStore.selectedLines"
+  >
+  </LabelMetro>
 </template>

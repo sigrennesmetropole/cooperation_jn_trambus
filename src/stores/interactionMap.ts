@@ -149,6 +149,43 @@ export const useLineInteractionStore = defineStore(
   }
 )
 
+export const useMetroInteractionStore = defineStore(
+  'metro-interaction-map',
+  () => {
+    const selectedMetros: Ref<string[]> = ref([])
+    const clickPosition: Ref<Cartesian2 | null> = ref(null)
+    const featureLabel: Ref<Feature<Geometry> | null> = ref(null)
+
+    function selectLines(lines: string[]) {
+      selectedMetros.value = lines
+    }
+
+    function selectClickPosition(cartesian: Cartesian2 | null) {
+      clickPosition.value = cartesian
+    }
+
+    function selectFeatureLabel(feature: Feature<Geometry>) {
+      featureLabel.value = feature
+    }
+
+    function resetLinesLabels() {
+      selectedMetros.value = []
+      clickPosition.value = null
+      featureLabel.value = null
+    }
+
+    return {
+      selectedMetros,
+      selectLines,
+      clickPosition,
+      selectClickPosition,
+      featureLabel,
+      selectFeatureLabel,
+      resetLinesLabels,
+    }
+  }
+)
+
 export const usePoiInteractionStore = defineStore('poi-interaction-map', () => {
   const currentFeaturePoi: Ref<Feature<Geometry> | null> = ref(null)
 

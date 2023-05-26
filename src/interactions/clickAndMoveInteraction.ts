@@ -13,6 +13,7 @@ import { useStationsStore } from '@/stores/stations'
 import { useLineViewsStore, useViewsStore } from '@/stores/views'
 import {
   useLineInteractionStore,
+  useMetroInteractionStore,
   usePoiInteractionStore,
 } from '@/stores/interactionMap'
 import router from '@/router'
@@ -147,12 +148,39 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
     }
   }
 
+  async _interactionMetro(event: InteractionEvent) {
+    document.body.style.cursor = 'pointer'
+
+    if (event.type & EventType.CLICK) {
+      if (event.position === undefined) {
+        return
+      }
+      console.log(`Layer name: ${event.feature?.[vcsLayerName]}`)
+      const lines = ['A']
+      const metroInteractionStore = useMetroInteractionStore()
+      metroInteractionStore.selectLines(lines)
+      metroInteractionStore.selectClickPosition(event.windowPosition)
+
+      const customLayer: GeoJSONLayer = await this._rennesApp.getLayerByKey(
+        RENNES_LAYER.customLayerLabelMetro
+      )
+      const new_feature = new Feature()
+      const point = new Point(event.position)
+      new_feature.setGeometry(point.transform('EPSG:3857', 'EPSG:4326'))
+      new_feature.setStyle(new Style({}))
+      customLayer.removeAllFeatures()
+      customLayer.addFeatures([new_feature])
+      metroInteractionStore.selectFeatureLabel(new_feature)
+    }
+  }
+
   async pipe(event: InteractionEvent): Promise<InteractionEvent> {
     const isFeatureTrambusStpos =
       event.feature?.[vcsLayerName] === RENNES_LAYER.trambusStops
     const isFeatureLine =
       event.feature?.[vcsLayerName] === RENNES_LAYER.trambusLines
     const isFeaturePOI = event.feature?.[vcsLayerName] === RENNES_LAYER.poi
+    const isFeatureMetro = event.feature?.[vcsLayerName] === RENNES_LAYER.metro
 
     if (isFeatureTrambusStpos) {
       this._interactionStation(event)
@@ -160,6 +188,8 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
       await this._interactionLine(event)
     } else if (isFeaturePOI) {
       this._interactionPoi(event)
+    } else if (isFeatureMetro) {
+      await this._interactionMetro(event)
     } else {
       const stationsStore = useStationsStore()
       if (stationsStore.flagClearStationsExceptPermanently) {
