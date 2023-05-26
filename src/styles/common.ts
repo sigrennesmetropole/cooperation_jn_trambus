@@ -5,7 +5,8 @@ import * as ol_color from 'ol/color'
 import type { FeatureLike } from 'ol/Feature'
 import { Icon, Style } from 'ol/style'
 import parkingIcon from '../assets/icons/parkingRelaisMin.png'
-import pinIcon from '../assets/icons/pin.png'
+import pinIconBlack from '../assets/icons/pin-black.svg'
+import pinIconWhite from '../assets/icons/pin-white.svg'
 import { VectorStyleItem } from '@vcmap/core'
 
 export function getTrambusLineNumber(feature: FeatureLike): number {
@@ -28,14 +29,6 @@ export const lineDimmedColors: Record<LineNumber, ol_color.Color> = {
   4: ol_color.fromString('#C084FC'), // purple-200
 }
 
-export const poiStyle: Style = new Style({
-  image: new Icon({
-    opacity: 1,
-    src: pinIcon,
-    scale: 1,
-  }),
-})
-
 export const parkingStyle: Style = new Style({
   image: new Icon({
     opacity: 1,
@@ -57,33 +50,34 @@ export function generatePoiStyle(
   // @ts-ignore
   return new VectorStyleItem({
     text: {
-      font: is3D ? 'bold 14px DM Sans' : '14px DM Sans',
+      font: is3D ? 'bold 14px DM Sans' : 'bold 14px DM Sans',
       fill: {
         color: is3D ? '#ffffff' : '#000000',
+        width: 2,
       },
       stroke: {
         color: is3D ? '#000000' : '#ffffff',
-        width: 1,
+        width: 2,
       },
-      offsetX: 25,
-      offsetY: is3D ? -40 : -10,
+      offsetX: 20,
+      offsetY: is3D ? -10 : 0,
       textAlign: 'left',
       justify: 'left',
     },
     label: label,
     image: {
-      src: pinIcon,
-      scale: 0.75,
+      src: is3D ? pinIconWhite : pinIconBlack,
+      scale: 1,
     },
   })
 }
 
-export function generatePoiStyleWithoutLabel() {
+export function generatePoiStyleWithoutLabel(is3D: boolean) {
   // @ts-ignore
   return new VectorStyleItem({
     image: {
-      src: pinIcon,
-      scale: 0.75,
+      src: is3D ? pinIconWhite : pinIconBlack,
+      scale: 1,
     },
   })
 }

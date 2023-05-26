@@ -93,6 +93,24 @@
       "zIndex": 1
     },
     {
+      "name": "alternativeRennesOrtho",
+      "type": "WMTSLayer",
+      "url": "https://public.sig.rennesmetropole.fr/geowebcache/service/wmts",
+      "layer": "ref_fonds:pvci",
+      "format": "image/png",
+      "tileMatrixSetID": "EPSG:3857",
+      "tileMatrixPrefix": "EPSG:3857:",
+      "extent": {
+        "coordinates": [
+          -2.1170142251181825, 47.78117827367612, -1.170835369910388,
+          48.39479586736775
+        ],
+        "epsg": "EPSG:4326"
+      },
+      "activeOnStartup": false,
+      "zIndex": 1
+    },
+    {
       "name": "metro",
       "url": "https://public.sig.rennesmetropole.fr/geoserver/wfs?&outputFormat=application/json&srsName=EPSG:4326&SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=trp_coll:metro_trace_axe&STARTINDEX=0&COUNT=1000000&SRSNAME=urn:ogc:def:crs:EPSG::4326&BBOX=48.00616775832305905,-1.76368099999999983,48.1778082416769422,-1.5842989999999999,urn:ogc:def:crs:EPSG::4326",
       "type": "GeoJSONLayer",

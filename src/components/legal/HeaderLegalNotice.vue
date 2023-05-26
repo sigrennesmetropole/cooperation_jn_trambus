@@ -19,7 +19,7 @@ function goTo(link: string) {
 <template>
   <UiHeaderFullScreen :urlBack="'/home'">
     <template v-slot:title-img>
-      <img class="ml-8" :src="logoRennes" />
+      <img class="ml-8" :src="logoRennes" alt="Rennes Métropole" />
     </template>
     <template v-slot:mid-content>
       <div class="flex flex-row self-end gap-4">

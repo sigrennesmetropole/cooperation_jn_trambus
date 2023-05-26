@@ -66,8 +66,9 @@ export function displayCurrentPoi(feature: Feature<Geometry>) {
 
 export function undisplayCurrentPoi() {
   const poiInteractionStore = usePoiInteractionStore()
+  const map3dStore = useMap3dStore()
   if (poiInteractionStore.currentFeaturePoi === null) return
-  const styleItem = generatePoiStyleWithoutLabel()
+  const styleItem = generatePoiStyleWithoutLabel(map3dStore.is3D())
   poiInteractionStore.currentFeaturePoi.setStyle(styleItem.style)
   poiInteractionStore.selectCurrentFeaturePoi(null)
 }
@@ -85,7 +86,7 @@ async function resetStyleOfPoi(view: View, rennesApp: RennesApp) {
         true
       )
     } else {
-      styleItem = generatePoiStyleWithoutLabel()
+      styleItem = generatePoiStyleWithoutLabel(map3dStore.is3D())
       setDistanceDisplayConditionFeature(styleItem, rennesApp.get2DMap())
     }
 

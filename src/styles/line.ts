@@ -9,8 +9,7 @@ export type LineState = 'selected' | 'normal' | 'unselected' | 'hidden'
 
 export function trambusLineStyle(
   lineNumber: LineNumber,
-  lineState: LineState,
-  is3DStyle: boolean
+  lineState: LineState
 ): Style[] {
   const lineStyles = []
   const basicLineStyle = new Style({
@@ -27,20 +26,9 @@ export function trambusLineStyle(
     }),
     zIndex: 1,
   })
-  const lineBorderStyle = new Style({
-    stroke: new Stroke({
-      color: '#FFFFFF',
-      width: 5,
-    }),
-    zIndex: 0,
-  })
 
   if (lineState == 'hidden') {
     return []
-  }
-
-  if (is3DStyle) {
-    lineStyles.push(lineBorderStyle)
   }
 
   if (lineState == 'selected') {
@@ -60,8 +48,7 @@ export function trambusLineStyle(
 export function trambusLineViewStyleFunction(
   feature: FeatureLike,
   selectedLine: SelectedTrambusLine,
-  displayOtherLine: boolean,
-  is3D: boolean
+  displayOtherLine: boolean
 ): Style[] {
   const lineNumber = getTrambusLineNumber(feature) as LineNumber
   let lineState: LineState = 'normal'
@@ -73,13 +60,12 @@ export function trambusLineViewStyleFunction(
   } else {
     lineState = displayOtherLine ? 'unselected' : 'hidden'
   }
-  return trambusLineStyle(lineNumber, lineState, is3D)
+  return trambusLineStyle(lineNumber, lineState)
 }
 
 export function trambusLineTravelTimesViewStyleFunction(
   feature: FeatureLike,
-  selectedTravelTime: TravelTimeModel | null,
-  is3D: boolean
+  selectedTravelTime: TravelTimeModel | null
 ): Style[] {
   const lineNumber = getTrambusLineNumber(feature) as LineNumber
   let lineState: LineState = 'normal'
@@ -91,18 +77,15 @@ export function trambusLineTravelTimesViewStyleFunction(
   } else {
     lineState = 'unselected'
   }
-  return trambusLineStyle(lineNumber, lineState, is3D)
+  return trambusLineStyle(lineNumber, lineState)
 }
 
-export function homeViewStyleFunction(
-  feature: FeatureLike,
-  is3D: boolean
-): Style[] {
+export function homeViewStyleFunction(feature: FeatureLike): Style[] {
   const lineNumber = getTrambusLineNumber(feature) as LineNumber
   const homeViewStore = useHomeViewsStore()
   let lineState: LineState = 'normal'
   if (homeViewStore.selectedLineOnHomePage == lineNumber) {
     lineState = 'selected'
   }
-  return trambusLineStyle(lineNumber, lineState, is3D)
+  return trambusLineStyle(lineNumber, lineState)
 }
