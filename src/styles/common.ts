@@ -67,7 +67,7 @@ export function generatePoiStyle(
     label: label,
     image: {
       src: is3D ? pinIconWhite : pinIconBlack,
-      scale: 1.5,
+      scale: 1,
     },
   })
 }
@@ -77,7 +77,7 @@ export function generatePoiStyleWithoutLabel(is3D: boolean) {
   return new VectorStyleItem({
     image: {
       src: is3D ? pinIconWhite : pinIconBlack,
-      scale: 1.5,
+      scale: 1,
     },
   })
 }
