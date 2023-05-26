@@ -6,7 +6,6 @@ import PlanningLegend from '../../../map/planning/PlanningLegend.vue'
 
 import { usePlanningStore } from '@/stores/planning'
 import { LinePlanningStateTypes } from '@/model/line-planning-state.model'
-
 const wrapper = mount(PlanningLegend, {
   global: {
     plugins: [
@@ -24,10 +23,10 @@ describe('PlanningLegend', () => {
   describe('when click on unstarted button', () => {
     beforeEach(async () => {
       const obj = await wrapper
-        .findAll('.cursor-pointer')
-        .filter(
-          (item) => item.text() === LinePlanningStateTypes.UNSTARTED.toString()
-        )
+        .findAll('input[type="radio"]')
+        .filter((element) => {
+          return element.attributes().id === LinePlanningStateTypes.UNSTARTED.id
+        })
         .at(0)
       if (obj) obj.trigger('click')
     })

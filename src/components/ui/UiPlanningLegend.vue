@@ -38,14 +38,13 @@ function setSelectedLine(line: number) {
   }
   if (selectedLine.value?.number === line) {
     selectedLine.value = null
+    //changer dynamiquement la class de l'input selectionné
   }
 }
 </script>
 
 <template>
-  <div
-    class="h-[357px] w-[202px] flex flex-col bg-white rounded-lg shadow-lg gap-3 p-4"
-  >
+  <div class="w-[202px] flex flex-col bg-white rounded-lg shadow-lg gap-3 p-4">
     <p class="font-dm-sans text-base font-bold">Statut des travaux</p>
     <div
       v-for="item of props.items"
@@ -57,10 +56,13 @@ function setSelectedLine(line: number) {
         borderLeftColor: item.color,
       }"
     >
-      <label :for="item.id" class="container">{{ item.printValue }} </label>
+      <label :for="item.id">{{ item.printValue }} </label>
+      <div class="mr-auto"></div>
       <input
+        role="radio"
         type="radio"
         name="status"
+        class="checked:bg-black checked:hover:bg-black checked:active:bg-black checked:focus:bg-black focus:bg-black focus:outline-none focus:ring-1 focus:ring-black"
         :id="item.id"
         :value="item"
         v-model="selectedStatus"
@@ -74,11 +76,13 @@ function setSelectedLine(line: number) {
       :key="line.id"
       class="flex-1 flex flex-row items-center relative hover:font-medium cursor-pointer"
     >
-      <img :src="line.img" class="w-6 mr-3" />
-      <label :for="line.id" class="container">{{ line.printValue }} </label>
+      <img :src="line.img" class="h-6 mr-3" />
+      <label :for="line.id">{{ line.printValue }} </label>
+      <div class="mr-auto"></div>
       <input
         type="radio"
         name="line"
+        class="checked:bg-black checked:hover:bg-black checked:active:bg-black checked:focus:bg-black focus:bg-black focus:outline-none focus:ring-1 focus:ring-black"
         :id="line.id"
         :value="line"
         v-model="selectedLine"
@@ -89,12 +93,7 @@ function setSelectedLine(line: number) {
 </template>
 
 <style setup>
-input {
-  height: 24px;
-  width: 24px;
-}
-
-input {
+/* input {
   accent-color: black;
-}
+} */
 </style>
