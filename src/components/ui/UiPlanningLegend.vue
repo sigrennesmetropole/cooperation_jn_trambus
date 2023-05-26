@@ -38,7 +38,6 @@ function setSelectedLine(line: number) {
   }
   if (selectedLine.value?.number === line) {
     selectedLine.value = null
-    //changer dynamiquement la class de l'input selectionné
   }
 }
 </script>
@@ -62,7 +61,7 @@ function setSelectedLine(line: number) {
         role="radio"
         type="radio"
         name="status"
-        class="checked:bg-black checked:hover:bg-black checked:active:bg-black checked:focus:bg-black focus:bg-black focus:outline-none focus:ring-1 focus:ring-black"
+        class="checked:bg-black checked:hover:bg-black checked:active:bg-black checked:focus:bg-black focus:outline-none focus:ring-1 focus:ring-white"
         :id="item.id"
         :value="item"
         v-model="selectedStatus"
@@ -82,7 +81,7 @@ function setSelectedLine(line: number) {
       <input
         type="radio"
         name="line"
-        class="checked:bg-black checked:hover:bg-black checked:active:bg-black checked:focus:bg-black focus:bg-black focus:outline-none focus:ring-1 focus:ring-black"
+        class="checked:bg-black checked:hover:bg-black checked:active:bg-black checked:focus:bg-black focus:outline-none focus:ring-1 focus:ring-white"
         :id="line.id"
         :value="line"
         v-model="selectedLine"
@@ -91,9 +90,3 @@ function setSelectedLine(line: number) {
     </div>
   </div>
 </template>
-
-<style setup>
-/* input {
-  accent-color: black;
-} */
-</style>
