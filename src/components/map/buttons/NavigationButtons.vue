@@ -21,6 +21,7 @@ import { IconSynchronize } from '@sigrennesmetropole/cooperation_jn_common_ui'
 import { useMapViewPointStore } from '@/stores/map'
 import { useStationsStore } from '@/stores/stations'
 import type { Viewpoint } from '@vcmap/core'
+import { useLayersStore } from '@/stores/layers'
 
 const stationsStore = useStationsStore()
 const rennesApp = inject('rennesApp') as RennesApp
@@ -28,8 +29,10 @@ const map3dStore = useMap3dStore()
 const viewStore = useViewsStore()
 const router = useRouter()
 const mapStore = useMapViewPointStore()
+const layersStore = useLayersStore()
 
 async function toggle3DMap() {
+  layersStore.removeAlternativeOrtho()
   map3dStore.toggle3D()
 }
 
@@ -72,6 +75,14 @@ async function resetZoom() {
     )
   }
 }
+
+function setAlternativeMapChecked() {
+  if (layersStore.visibilities.alternativeRennesOrtho === false) {
+    layersStore.displayAlternativeOrtho()
+  } else {
+    layersStore.removeAlternativeOrtho()
+  }
+}
 </script>
 
 <template>
@@ -81,7 +92,7 @@ async function resetZoom() {
   >
     <UiIconButton
       class="rounded-lg"
-      @click="router.push('/home')"
+      @click="setAlternativeMapChecked()"
       v-show="map3dStore.is3D()"
       ariaLabelButton="Plan de ville"
       titleButton="Plan de ville"
