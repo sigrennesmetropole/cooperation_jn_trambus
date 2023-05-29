@@ -49,7 +49,7 @@ const metroInteractionStore = useMetroInteractionStore()
     v-if="metroInteractionStore.clickPosition !== null"
     :topPosition="metroInteractionStore.clickPosition.y"
     :leftPosition="metroInteractionStore.clickPosition.x"
-    :lines="lineInteractionStore.selectedLines"
+    :lines="metroInteractionStore.selectedMetros"
   >
   </LabelMetro>
 </template>

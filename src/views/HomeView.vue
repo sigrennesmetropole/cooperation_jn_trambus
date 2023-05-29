@@ -8,7 +8,10 @@ import UiTrambusTitle from '@/components/ui/UiTrambusTitle.vue'
 import { useLayersStore } from '@/stores/layers'
 import { useViewsStore } from '@/stores/views'
 import { useMap3dStore } from '@/stores/map'
-import { useLineInteractionStore } from '@/stores/interactionMap'
+import {
+  useLineInteractionStore,
+  useMetroInteractionStore,
+} from '@/stores/interactionMap'
 import SkipLinksHome from '@/components/accessibility/SkipLinksHome.vue'
 import FooterAreaLink from '@/components/home/FooterAreaLink.vue'
 import { legalList } from '@/constants/legalLinks'
@@ -20,10 +23,12 @@ const layerStore = useLayersStore()
 const viewStore = useViewsStore()
 const map3dStore = useMap3dStore()
 const lineInteractionStore = useLineInteractionStore()
+const metroInteractionStore = useMetroInteractionStore()
 
 onMounted(() => {
   viewStore.setHomeAsCurrentView()
   lineInteractionStore.resetLinesLabels()
+  metroInteractionStore.resetMetroLabels()
   layerStore.setVisibilities(map3dStore.is3D(), {
     trambusLines: true,
     trambusStops: false,

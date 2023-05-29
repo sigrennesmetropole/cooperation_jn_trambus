@@ -18,7 +18,10 @@ import { useLineViewsStore } from '@/stores/views'
 import UiLineHeader from '@/components/ui/UiLineHeader.vue'
 import { viewList } from '@/model/views.model'
 import BackButton from '@/components/home/BackButton.vue'
-import { useTraveltimeInteractionStore } from '@/stores/interactionMap'
+import {
+  useTraveltimeInteractionStore,
+  useMetroInteractionStore,
+} from '@/stores/interactionMap'
 import type { RennesApp } from '@/services/RennesApp'
 import { fetchParkingsByStations } from '@/services/parking'
 import type { ParkingModel } from '@/model/parkings.model'
@@ -37,6 +40,7 @@ const layerStore = useLayersStore()
 const lineStore = useLineViewsStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
 const lineInteractionStore = useLineInteractionStore()
+const metroInteractionStore = useMetroInteractionStore()
 
 const rennesApp = inject('rennesApp') as RennesApp
 
@@ -96,6 +100,7 @@ onBeforeMount(async () => {
 
 onMounted(async () => {
   lineInteractionStore.resetLinesLabels()
+  metroInteractionStore.resetMetroLabels()
   layerStore.setVisibilities(map3dStore.is3D(), {
     trambusLines: true,
     trambusStops: true,

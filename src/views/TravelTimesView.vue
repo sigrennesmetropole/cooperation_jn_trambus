@@ -13,6 +13,7 @@ import { viewList } from '@/model/views.model'
 import {
   useTraveltimeInteractionStore,
   useLineInteractionStore,
+  useMetroInteractionStore,
 } from '@/stores/interactionMap'
 
 const viewStore = useViewsStore()
@@ -23,6 +24,7 @@ const mapViewPointStore = useMapViewPointStore()
 
 const stationsStore = useStationsStore()
 const lineInteractionStore = useLineInteractionStore()
+const metroInteractionStore = useMetroInteractionStore()
 
 const state = reactive({
   travelTimes: null as null | TravelTimeModel[],
@@ -33,6 +35,7 @@ onMounted(async () => {
   mapViewPointStore.updateViewpoint(`home`, true)
   stationsStore.traveltimesViewSetUpStationsToDisplay()
   lineInteractionStore.resetLinesLabels()
+  metroInteractionStore.resetMetroLabels()
 
   layerStore.setVisibilities(map3dStore.is3D(), {
     trambusLines: true,

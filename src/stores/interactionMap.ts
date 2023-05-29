@@ -156,8 +156,8 @@ export const useMetroInteractionStore = defineStore(
     const clickPosition: Ref<Cartesian2 | null> = ref(null)
     const featureLabel: Ref<Feature<Geometry> | null> = ref(null)
 
-    function selectLines(lines: string[]) {
-      selectedMetros.value = lines
+    function selectMetros(metroLines: string[]) {
+      selectedMetros.value = metroLines
     }
 
     function selectClickPosition(cartesian: Cartesian2 | null) {
@@ -168,7 +168,7 @@ export const useMetroInteractionStore = defineStore(
       featureLabel.value = feature
     }
 
-    function resetLinesLabels() {
+    function resetMetroLabels() {
       selectedMetros.value = []
       clickPosition.value = null
       featureLabel.value = null
@@ -176,12 +176,12 @@ export const useMetroInteractionStore = defineStore(
 
     return {
       selectedMetros,
-      selectLines,
+      selectMetros,
       clickPosition,
       selectClickPosition,
       featureLabel,
       selectFeatureLabel,
-      resetLinesLabels,
+      resetMetroLabels,
     }
   }
 )

@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 
 import MetroAIcon from '@/assets/icons/metro-a.svg'
+import MetroBIcon from '@/assets/icons/metro-b.svg'
 
 const props = defineProps<{
   lines: string[]
@@ -22,7 +23,6 @@ const positionStyle = computed(() => {
     style += 'top: ' + props.topPosition + 'px; '
     style += 'left: ' + props.leftPosition + 'px; '
   }
-  console.log(style)
   return style
 })
 </script>
@@ -34,6 +34,7 @@ const positionStyle = computed(() => {
     v-if="props.lines.length > 0"
     aria-hidden="true"
   >
-    <img :src="MetroAIcon" />
+    <img v-if="props.lines.indexOf('A') > -1" :src="MetroAIcon" />
+    <img v-if="props.lines.indexOf('B') > -1" :src="MetroBIcon" />
   </div>
 </template>

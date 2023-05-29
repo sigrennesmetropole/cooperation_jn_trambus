@@ -9,7 +9,10 @@ import type { Geometry } from 'ol/geom'
 import { getCartesianPositionFromFeature } from '@/helpers/featureHelper'
 import { useStationsStore } from '@/stores/stations'
 import type { RennesApp } from '@/services/RennesApp'
-import { useLineInteractionStore } from '@/stores/interactionMap'
+import {
+  useLineInteractionStore,
+  useMetroInteractionStore,
+} from '@/stores/interactionMap'
 import {
   addGenericListenerForUpdatePositions,
   updateCartesianPositions,
@@ -83,6 +86,17 @@ export const useComponentAboveMapStore = defineStore(
           lineInteractionStore.selectClickPosition(null)
         } else {
           lineInteractionStore.selectClickPosition(cartesian)
+        }
+      }
+
+      const metroInteractionStore = useMetroInteractionStore()
+      if (metroInteractionStore.featureLabel !== null) {
+        const feature = metroInteractionStore.featureLabel as Feature<Geometry>
+        const cartesian = getCartesianPositionFromFeature(rennesApp, feature)
+        if (cartesian == undefined) {
+          metroInteractionStore.selectClickPosition(null)
+        } else {
+          metroInteractionStore.selectClickPosition(cartesian)
         }
       }
     }

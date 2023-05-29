@@ -156,9 +156,9 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
         return
       }
       console.log(`Layer name: ${event.feature?.[vcsLayerName]}`)
-      const lines = ['A']
+      const lines = ['A', 'B']
       const metroInteractionStore = useMetroInteractionStore()
-      metroInteractionStore.selectLines(lines)
+      metroInteractionStore.selectMetros(lines)
       metroInteractionStore.selectClickPosition(event.windowPosition)
 
       const customLayer: GeoJSONLayer = await this._rennesApp.getLayerByKey(
