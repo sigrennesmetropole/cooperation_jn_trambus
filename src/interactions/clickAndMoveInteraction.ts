@@ -148,6 +148,31 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
     }
   }
 
+  getAllMetroLines(event: InteractionEvent) {
+    const lines: string[] = []
+    if (event.map.className === 'OpenlayersMap') {
+      const map = event.map as OpenlayersMap
+      map.olMap.forEachFeatureAtPixel(
+        [event.windowPosition.x, event.windowPosition.y],
+        (feat: Feature) => {
+          lines.push(feat.get('ligne'))
+        },
+        { hitTolerance: 10 }
+      )
+    } else if (event.map.className === 'CesiumMap') {
+      const cesiumMap = event.map as CesiumMap
+      const scene = cesiumMap.getScene()
+      const pickedObjects = scene.drillPick(event.windowPosition)
+      pickedObjects.forEach((object) => {
+        if (object.primitive && object.primitive.olFeature) {
+          const feature = object.primitive.olFeature
+          lines.push(feature.get('ligne'))
+        }
+      })
+    }
+    return lines
+  }
+
   async _interactionMetro(event: InteractionEvent) {
     document.body.style.cursor = 'pointer'
 
@@ -156,7 +181,7 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
         return
       }
       console.log(`Layer name: ${event.feature?.[vcsLayerName]}`)
-      const lines = ['A', 'B']
+      const lines = this.getAllMetroLines(event)
       const metroInteractionStore = useMetroInteractionStore()
       metroInteractionStore.selectMetros(lines)
       metroInteractionStore.selectClickPosition(event.windowPosition)
