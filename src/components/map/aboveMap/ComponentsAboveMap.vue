@@ -10,12 +10,14 @@ import {
   useMetroInteractionStore,
 } from '@/stores/interactionMap'
 import TravelTimeBox from '@/components/map/aboveMap/TravelTimeBox.vue'
+import { RENNES_LAYER, useLayersStore } from '@/stores/layers'
 
 const componentAboveMapStore = useComponentAboveMapStore()
 const lineInteractionStore = useLineInteractionStore()
 const travelTimeBoxesStore = useTravelTimeBoxesStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
 const metroInteractionStore = useMetroInteractionStore()
+const layerStore = useLayersStore()
 </script>
 
 <template>
@@ -46,7 +48,10 @@ const metroInteractionStore = useMetroInteractionStore()
     "
   ></TravelTimeBox>
   <LabelMetro
-    v-if="metroInteractionStore.clickPosition !== null"
+    v-if="
+      metroInteractionStore.clickPosition !== null &&
+      layerStore.visibilities[RENNES_LAYER.metro]
+    "
     :topPosition="metroInteractionStore.clickPosition.y"
     :leftPosition="metroInteractionStore.clickPosition.x"
     :lines="metroInteractionStore.selectedMetros"
