@@ -126,7 +126,7 @@
           "color": {
             "conditions": [
               ["${li_num} === 'C1'", "color('#b0d363')"],
-              ["${li_num} === 'C2'", "color('#e79575')"],
+              ["${li_num} === 'C2'", "color('#2a8bcd')"],
               ["${li_num} === 'C3'", "color('#e79575')"],
               ["${li_num} === 'C4'", "color('#cc25a0')"],
               ["${li_num} === 'C5'", "color('#9b8eed')"],
