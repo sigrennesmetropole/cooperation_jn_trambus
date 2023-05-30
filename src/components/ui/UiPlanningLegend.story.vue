@@ -7,7 +7,6 @@ function initState() {
     items: [
       LinePlanningStateTypes.UNSTARTED,
       LinePlanningStateTypes.UNDER_CONSTRUCTION,
-      // LinePlanningStateTypes.CONSTRUCTION_FINISHED,
       LinePlanningStateTypes.COMMISIONING,
     ],
   }

@@ -16,12 +16,6 @@ export class LinePlanningStateTypes {
     '#F43F5E',
     '#FDA4AF'
   )
-  // static readonly CONSTRUCTION_FINISHED = new LinePlanningStateTypes(
-  //   'constructionFinished',
-  //   'Travaux finalisés',
-  //   '#FACC15',
-  //   '#FEF08A'
-  // )
   static readonly COMMISIONING = new LinePlanningStateTypes(
     'commisioning',
     'En service',
