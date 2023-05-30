@@ -180,7 +180,6 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
       if (event.position === undefined) {
         return
       }
-      console.log(`Layer name: ${event.feature?.[vcsLayerName]}`)
       const lines = this.getAllMetroLines(event)
       const metroInteractionStore = useMetroInteractionStore()
       metroInteractionStore.selectMetros(lines)
