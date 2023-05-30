@@ -17,6 +17,7 @@ export const RENNES_LAYER = {
   customLayerLabelLine: 'customLayerLabelLine',
   _trambusStopsOutline: '_trambusStopsOutline',
   customLayerLabelMetro: 'customLayerLabelMetro',
+  customLayerLabelBus: 'customLayerLabelBus',
   staticLabel: 'staticLabel',
 }
 
@@ -33,6 +34,7 @@ export const RENNES_LAYERNAMES = [
   RENNES_LAYER._traveltimeArrow,
   RENNES_LAYER.customLayerLabelLine,
   RENNES_LAYER._trambusStopsOutline,
+  RENNES_LAYER.customLayerLabelMetro,
   RENNES_LAYER.customLayerLabelMetro,
 ] as const
 

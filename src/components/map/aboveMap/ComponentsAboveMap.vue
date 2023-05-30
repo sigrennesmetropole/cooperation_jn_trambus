@@ -3,11 +3,13 @@ import { useComponentAboveMapStore } from '@/stores/componentsAboveMapStore'
 import LabelStation from '@/components/map/aboveMap/LabelStation.vue'
 import LabelLine from '@/components/map/aboveMap/LabelLine.vue'
 import LabelMetro from '@/components/map/aboveMap/LabelMetro.vue'
+import LabelBus from '@/components/map/aboveMap/LabelBus.vue'
 import {
   useLineInteractionStore,
   useTravelTimeBoxesStore,
   useTraveltimeInteractionStore,
   useMetroInteractionStore,
+  useBusInteractionStore,
 } from '@/stores/interactionMap'
 import TravelTimeBox from '@/components/map/aboveMap/TravelTimeBox.vue'
 import { RENNES_LAYER, useLayersStore } from '@/stores/layers'
@@ -17,6 +19,7 @@ const lineInteractionStore = useLineInteractionStore()
 const travelTimeBoxesStore = useTravelTimeBoxesStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
 const metroInteractionStore = useMetroInteractionStore()
+const busInteractionStore = useBusInteractionStore()
 const layerStore = useLayersStore()
 </script>
 
@@ -57,4 +60,14 @@ const layerStore = useLayersStore()
     :lines="metroInteractionStore.selectedMetros"
   >
   </LabelMetro>
+  <LabelBus
+    v-if="
+      busInteractionStore.clickPosition !== null &&
+      layerStore.visibilities[RENNES_LAYER.bus]
+    "
+    :topPosition="busInteractionStore.clickPosition.y"
+    :leftPosition="busInteractionStore.clickPosition.x"
+    :lines="busInteractionStore.selectedBusLines"
+  >
+  </LabelBus>
 </template>

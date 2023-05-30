@@ -10,6 +10,7 @@ import { getCartesianPositionFromFeature } from '@/helpers/featureHelper'
 import { useStationsStore } from '@/stores/stations'
 import type { RennesApp } from '@/services/RennesApp'
 import {
+  useBusInteractionStore,
   useLineInteractionStore,
   useMetroInteractionStore,
 } from '@/stores/interactionMap'
@@ -97,6 +98,17 @@ export const useComponentAboveMapStore = defineStore(
           metroInteractionStore.selectClickPosition(null)
         } else {
           metroInteractionStore.selectClickPosition(cartesian)
+        }
+      }
+
+      const busInteractionStore = useBusInteractionStore()
+      if (busInteractionStore.featureLabel !== null) {
+        const feature = busInteractionStore.featureLabel as Feature<Geometry>
+        const cartesian = getCartesianPositionFromFeature(rennesApp, feature)
+        if (cartesian == undefined) {
+          busInteractionStore.selectClickPosition(null)
+        } else {
+          busInteractionStore.selectClickPosition(cartesian)
         }
       }
     }
