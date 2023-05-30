@@ -2,7 +2,6 @@ import { linesFixtures } from '@/model/lines.fixtures'
 import type { LineModel } from '@/model/lines.model'
 import { stationsFixtures } from '@/model/stations.fixtures'
 import type { StationModel } from '@/model/stations.model'
-import { networkFiguresFixtures } from '@/model/network-figures.fixtures'
 import { photoFixtures } from '@/model/photos.fixtures'
 import type { PhotoModel } from '@/model/photos.model'
 import { travelTimeFixtures } from '@/model/travel-time.fixtures'
@@ -11,6 +10,36 @@ import type { NetworkFigureModel } from '../model/network-figures.model'
 import { servicesFixtures } from '@/model/services.fixtures'
 import type { ServiceModel } from '@/model/services.model'
 import { filterStationsByLineNumber } from '@/services/station'
+
+import bikeIcon from '../assets/icons/bike.svg'
+import linesIcon from '../assets/icons/lines.svg'
+import stationIcon from '../assets/icons/station.svg'
+
+const CYCLING_DISTANCE = 128
+
+export const networkFiguresFixtures = async (): Promise<
+  NetworkFigureModel[]
+> => [
+  {
+    id: 'lines',
+    figure: await apiClientService.numberOfLine(),
+    description: 'Nouvelles lignes',
+    icon: linesIcon,
+  },
+  {
+    id: 'stations',
+    figure: await apiClientService.numberOfStations(),
+    description: 'Nouvelles stations',
+    icon: stationIcon,
+  },
+  {
+    id: 'bike',
+    figure: CYCLING_DISTANCE,
+    description: 'Aménagement cyclables',
+    unit: 'km',
+    icon: bikeIcon,
+  },
+]
 
 class ApiClientService {
   async fetchNetworkFigure() {
@@ -49,6 +78,12 @@ class ApiClientService {
     })
   }
 
+  async numberOfLine() {
+    return new Promise<number>((resolve) => {
+      resolve(linesFixtures().length)
+    })
+  }
+
   async fetchLineDescription(lineNumber: number) {
     return new Promise<LineModel>((resolve) => {
       resolve(linesFixtures()[lineNumber - 1])
@@ -81,6 +116,27 @@ class ApiClientService {
       val = filterStationsByLineNumber(val, num_line)
       return val
     })
+  }
+
+  async numberOfStations() {
+    const lines = []
+    const stations = []
+    const linesDescription = await apiClientService.fetchLineDescriptions()
+    for (const lineDescription of linesDescription) {
+      lines.push(lineDescription.id)
+    }
+    for (const numberLine of lines) {
+      const stationList = await apiClientService.fetchStationsOrderByLine(
+        numberLine
+      )
+      stations.push(stationList.length)
+    }
+    const initValue = 0
+    const sumStations = stations.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      initValue
+    )
+    return sumStations
   }
 
   async fetchStationDescription(stationId: number) {
