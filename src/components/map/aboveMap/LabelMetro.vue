@@ -34,7 +34,7 @@ const positionStyle = computed(() => {
     v-if="props.lines.length > 0"
     aria-hidden="true"
   >
-    <div class="flex p-2 round-md">
+    <div class="flex round-md">
       <img v-if="props.lines.indexOf('a') > -1" :src="MetroAIcon" />
       <img v-if="props.lines.indexOf('b') > -1" :src="MetroBIcon" />
     </div>
