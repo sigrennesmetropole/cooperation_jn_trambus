@@ -281,6 +281,13 @@
       "type": "GeoJSONLayer",
       "activeOnStartup": true,
       "zIndex": 4
+    },
+    {
+      "name": "staticLabel",
+      "type": "GeoJSONLayer",
+      "url": "src/assets/staticLabels.geojson",
+      "activeOnStartup": true,
+      "zIndex": 4
     }
   ],
   "viewpoints": [

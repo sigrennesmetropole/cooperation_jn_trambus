@@ -161,6 +161,7 @@ layerStore.$subscribe(async () => {
   if (!layerStore.visibilities[RENNES_LAYER.metro]) {
     metroInteractionStore.resetMetroLabels()
   }
+  updateHomeViewStyle(rennesApp)
 })
 
 map3dStore.$subscribe(async () => {

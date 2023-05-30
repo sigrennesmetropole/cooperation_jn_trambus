@@ -17,6 +17,7 @@ export const RENNES_LAYER = {
   customLayerLabelLine: 'customLayerLabelLine',
   _trambusStopsOutline: '_trambusStopsOutline',
   customLayerLabelMetro: 'customLayerLabelMetro',
+  staticLabel: 'staticLabel',
 }
 
 export const RENNES_LAYERNAMES = [
