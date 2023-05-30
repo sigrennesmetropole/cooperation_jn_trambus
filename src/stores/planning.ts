@@ -39,10 +39,6 @@ export const usePlanningStore = defineStore('planning', () => {
     return selectedLineState.value?.id == linePlanningState.id
   }
 
-  function getHighlightedId() {
-    return selectedLineState.value?.id
-  }
-
   return {
     getSelectedDate,
     selectedSemester,
@@ -52,6 +48,5 @@ export const usePlanningStore = defineStore('planning', () => {
     selectedLineState,
     setLinePlanningState,
     isLinePlanningStateHighlighted,
-    getHighlightedId,
   }
 })
