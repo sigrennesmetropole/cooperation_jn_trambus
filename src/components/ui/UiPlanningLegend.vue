@@ -30,6 +30,14 @@ const setLinePlanningState = (item: LinePlanningStateTypes) => {
   }
 }
 
+planningStore.$subscribe(() => {
+  for (let line of props.lines) {
+    if (line.number == planningStore.selectedLine) {
+      selectedLine.value = line
+    }
+  }
+})
+
 function setSelectedLine(line: number) {
   if (planningStore.selectedLine == line) {
     planningStore.selectedLine = 0
