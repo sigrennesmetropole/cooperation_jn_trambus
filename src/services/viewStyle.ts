@@ -34,9 +34,11 @@ export function clearLayerAndApplyStyle(
   style: Style | StyleFunction | undefined
 ) {
   const layer = rennesApp.layers.getByKey(layerName) as FeatureLayer
-  layer.clearStyle()
-  if (style) {
-    layer.setStyle(style)
+  if (layer) {
+    layer.clearStyle()
+    if (style) {
+      layer.setStyle(style)
+    }
   }
 }
 

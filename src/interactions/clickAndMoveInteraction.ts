@@ -118,10 +118,9 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
       lineInteractionStore.selectLines(lines)
       lineInteractionStore.selectClickPosition(event.windowPosition)
 
-      const customLayer: GeoJSONLayer = this._rennesApp.layers.getByKey(
+      const customLayer: GeoJSONLayer = await this._rennesApp.getLayerByKey(
         RENNES_LAYER.customLayerLabelLine
-      ) as GeoJSONLayer
-      await customLayer.fetchData()
+      )
 
       const new_feature = new Feature()
       const point = new Point(event.position)
@@ -187,15 +186,15 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
       metroInteractionStore.selectMetros(lines)
       metroInteractionStore.selectClickPosition(event.windowPosition)
 
-      // const customLayer: GeoJSONLayer = await this._rennesApp.getLayerByKey(
-      //   RENNES_LAYER.customLayerLabelMetro
-      // )
+      const customLayer: GeoJSONLayer = await this._rennesApp.getLayerByKey(
+        RENNES_LAYER.customLayerLabelMetro
+      )
       const new_feature = new Feature()
       const point = new Point(event.position)
       new_feature.setGeometry(point.transform('EPSG:3857', 'EPSG:4326'))
       new_feature.setStyle(new Style({}))
-      // customLayer.removeAllFeatures()
-      // customLayer.addFeatures([new_feature])
+      customLayer.removeAllFeatures()
+      customLayer.addFeatures([new_feature])
       metroInteractionStore.selectFeatureLabel(new_feature)
     }
   }
