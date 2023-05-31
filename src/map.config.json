@@ -280,7 +280,7 @@
     {
       "name": "staticLabel",
       "type": "GeoJSONLayer",
-      "url": "src/assets/staticLabels.geojson",
+      "url": "/src/assets/staticLabels.geojson",
       "activeOnStartup": true,
       "zIndex": 4
     }

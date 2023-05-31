@@ -76,6 +76,11 @@ export async function updateLineViewStyle(rennesApp: RennesApp) {
   )
   clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.parking, parkingStyle)
   await updateTraveltimeArrow(rennesApp)
+
+  const layerStore = useLayersStore()
+  clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.staticLabel, (feature) =>
+    staticLabelStyleFunction(feature, layerStore.visibilities)
+  )
 }
 
 function clearLayerAndApplyStyleTravelTimes(
@@ -117,6 +122,10 @@ export async function updateTravelTimesViewStyle(rennesApp: RennesApp) {
     )
   }
   await updateTraveltimeArrow(rennesApp)
+  const layerStore = useLayersStore()
+  clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.staticLabel, (feature) =>
+    staticLabelStyleFunction(feature, layerStore.visibilities)
+  )
 }
 
 export async function updateStationViewStyle(rennesApp: RennesApp) {
@@ -147,6 +156,10 @@ export async function updateStationViewStyle(rennesApp: RennesApp) {
         isTrambusStopBelongsToLine(feature, lineViewStore.selectedLine),
         mapStore.is3D()
       )
+  )
+  const layerStore = useLayersStore()
+  clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.staticLabel, (feature) =>
+    staticLabelStyleFunction(feature, layerStore.visibilities)
   )
 }
 
