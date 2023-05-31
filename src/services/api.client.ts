@@ -121,6 +121,7 @@ class ApiClientService {
   async numberOfStations() {
     const lines = []
     const stations = []
+    let totalStations = 0
     const linesDescription = await apiClientService.fetchLineDescriptions()
     for (const lineDescription of linesDescription) {
       lines.push(lineDescription.id)
@@ -129,14 +130,15 @@ class ApiClientService {
       const stationList = await apiClientService.fetchStationsOrderByLine(
         numberLine
       )
-      stations.push(stationList.length)
+      for (const i in stationList) {
+        stations.push(stationList[i].id)
+      }
+      const uniqueStations = stations.filter((value, index, self) => {
+        return self.indexOf(value) === index
+      })
+      totalStations = uniqueStations.length
     }
-    const initValue = 0
-    const sumStations = stations.reduce(
-      (accumulator, currentValue) => accumulator + currentValue,
-      initValue
-    )
-    return sumStations
+    return totalStations
   }
 
   async fetchStationDescription(stationId: number) {
