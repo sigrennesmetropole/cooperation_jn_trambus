@@ -39,7 +39,7 @@ const positionStyle = computed(() => {
     v-if="props.lines.length > 0"
     aria-hidden="true"
   >
-    <div class="flex round-md">
+    <div class="flex round-md space-x-1">
       <img v-if="props.lines.indexOf('C1') > -1" :src="BusC1Icon" />
       <img v-if="props.lines.indexOf('C2') > -1" :src="BusC2Icon" />
       <img v-if="props.lines.indexOf('C3') > -1" :src="BusC3Icon" />
