@@ -15,10 +15,7 @@ import ServicesStation from '@/components/station/ServicesStation.vue'
 import PointsOfInterestsStation from '@/components/station/PointsOfInterestsStation.vue'
 import BackButton from '@/components/home/BackButton.vue'
 import { usePoiParkingStore } from '@/stores/poiParking'
-import {
-  useLineInteractionStore,
-  useMetroInteractionStore,
-} from '@/stores/interactionMap'
+import { useLineInteractionStore } from '@/stores/interactionMap'
 import type { RennesApp } from '@/services/RennesApp'
 import { poiStoreSubcribe } from '@/services/poi'
 
@@ -28,7 +25,6 @@ const layerStore = useLayersStore()
 const stationsStore = useStationsStore()
 const poiStore = usePoiParkingStore()
 const lineInteractionStore = useLineInteractionStore()
-const metroInteractionStore = useMetroInteractionStore()
 
 const { params } = useRoute()
 const routeParams = ref(params)
@@ -74,7 +70,6 @@ onBeforeMount(async () => {
 
 onMounted(async () => {
   lineInteractionStore.resetLinesLabels()
-  metroInteractionStore.resetMetroLabels()
   layerStore.setVisibilities(map3dStore.is3D(), {
     trambusLines: true,
     trambusStops: true,
