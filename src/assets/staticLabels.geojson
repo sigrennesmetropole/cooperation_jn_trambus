@@ -77,6 +77,14 @@
         "type": "Point",
         "coordinates": [-1.74191348593508, 48.025806612309403]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": { "layerName": "bike", "line": "bike" },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-1.579566552626008, 48.154191988654198]
+      }
     }
   ]
 }

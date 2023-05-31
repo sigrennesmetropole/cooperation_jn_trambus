@@ -12,12 +12,11 @@ import BusC5Icon from '@/assets/icons/bus-c5.svg'
 import BusC6Icon from '@/assets/icons/bus-c6.svg'
 import BusC7Icon from '@/assets/icons/bus-c7.svg'
 
+import BikeIcon from '@/assets/icons/velo.svg'
+
 import type { LayersVisibility } from '@/stores/layers'
 
-export function staticLabelStyle(
-  busLine: string,
-  isLayerShown: boolean
-): Style[] {
+export function staticLabelStyle(line: string, isLayerShown: boolean): Style[] {
   if (!isLayerShown) {
     return []
   }
@@ -32,9 +31,10 @@ export function staticLabelStyle(
     c5: BusC5Icon,
     c6: BusC6Icon,
     c7: BusC7Icon,
+    bike: BikeIcon,
   }
 
-  const imgSource = iconMapping[busLine]
+  const imgSource = iconMapping[line]
   if (imgSource) {
     return [
       new Style({
