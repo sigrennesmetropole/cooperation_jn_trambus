@@ -220,6 +220,35 @@ export const useBusInteractionStore = defineStore('bus-interaction-map', () => {
   }
 })
 
+export const useBikeInteractionStore = defineStore(
+  'bike-interaction-map',
+  () => {
+    const clickPosition: Ref<Cartesian2 | null> = ref(null)
+    const featureLabel: Ref<Feature<Geometry> | null> = ref(null)
+
+    function selectClickPosition(cartesian: Cartesian2 | null) {
+      clickPosition.value = cartesian
+    }
+
+    function selectFeatureLabel(feature: Feature<Geometry>) {
+      featureLabel.value = feature
+    }
+
+    function resetBikeLabels() {
+      clickPosition.value = null
+      featureLabel.value = null
+    }
+
+    return {
+      clickPosition,
+      selectClickPosition,
+      featureLabel,
+      selectFeatureLabel,
+      resetBikeLabels,
+    }
+  }
+)
+
 export const usePoiInteractionStore = defineStore('poi-interaction-map', () => {
   const currentFeaturePoi: Ref<Feature<Geometry> | null> = ref(null)
 

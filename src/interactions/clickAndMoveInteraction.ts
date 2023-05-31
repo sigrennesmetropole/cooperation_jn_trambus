@@ -16,6 +16,7 @@ import {
   useMetroInteractionStore,
   useBusInteractionStore,
   usePoiInteractionStore,
+  useBikeInteractionStore,
 } from '@/stores/interactionMap'
 import router from '@/router'
 import { viewList } from '@/model/views.model'
@@ -186,15 +187,15 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
       metroInteractionStore.selectMetros(lines)
       metroInteractionStore.selectClickPosition(event.windowPosition)
 
-      const customLayer: GeoJSONLayer = await this._rennesApp.getLayerByKey(
-        RENNES_LAYER.customLayerLabelMetro
-      )
+      // const customLayer: GeoJSONLayer = await this._rennesApp.getLayerByKey(
+      //   RENNES_LAYER.customLayerLabelMetro
+      // )
       const new_feature = new Feature()
       const point = new Point(event.position)
       new_feature.setGeometry(point.transform('EPSG:3857', 'EPSG:4326'))
       new_feature.setStyle(new Style({}))
-      customLayer.removeAllFeatures()
-      customLayer.addFeatures([new_feature])
+      // customLayer.removeAllFeatures()
+      // customLayer.addFeatures([new_feature])
       metroInteractionStore.selectFeatureLabel(new_feature)
     }
   }
@@ -249,6 +250,31 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
     }
   }
 
+  async _interactionBike(event: InteractionEvent) {
+    document.body.style.cursor = 'pointer'
+
+    if (event.type & EventType.CLICK) {
+      if (event.position === undefined) {
+        return
+      }
+      const bikeInteractionStore = useBikeInteractionStore()
+
+      bikeInteractionStore.selectClickPosition(event.windowPosition)
+
+      const customLayer: GeoJSONLayer = await this._rennesApp.getLayerByKey(
+        RENNES_LAYER.customLayerLabelBike
+      )
+
+      const new_feature = new Feature()
+      const point = new Point(event.position)
+      new_feature.setGeometry(point.transform('EPSG:3857', 'EPSG:4326'))
+      new_feature.setStyle(new Style({}))
+      customLayer.removeAllFeatures()
+      customLayer.addFeatures([new_feature])
+      bikeInteractionStore.selectFeatureLabel(new_feature)
+    }
+  }
+
   async pipe(event: InteractionEvent): Promise<InteractionEvent> {
     const isFeatureTrambusStpos =
       event.feature?.[vcsLayerName] === RENNES_LAYER.trambusStops
@@ -257,6 +283,7 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
     const isFeaturePOI = event.feature?.[vcsLayerName] === RENNES_LAYER.poi
     const isFeatureMetro = event.feature?.[vcsLayerName] === RENNES_LAYER.metro
     const isFeatureBus = event.feature?.[vcsLayerName] === RENNES_LAYER.bus
+    const isFeatureBike = event.feature?.[vcsLayerName] === RENNES_LAYER.bike
 
     if (isFeatureTrambusStpos) {
       this._interactionStation(event)
@@ -268,6 +295,9 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
       await this._interactionMetro(event)
     } else if (isFeatureBus) {
       await this._interactionBus(event)
+    } else if (isFeatureBike) {
+      console.log(`isFeatureBike`)
+      await this._interactionBike(event)
     } else {
       const stationsStore = useStationsStore()
       if (stationsStore.flagClearStationsExceptPermanently) {
