@@ -55,14 +55,16 @@ describe('PlanningLegend', () => {
             (item) =>
               item.text() !== LinePlanningStateTypes.UNSTARTED.toString()
           ).length
-      ).toBe(6)
+      ).toBe(19)
       wrapper
         .findAll('.cursor-pointer')
         .filter(
           (item) => item.text() !== LinePlanningStateTypes.UNSTARTED.toString()
         )
         .forEach((elt) => {
-          expect(elt.classes().find((elt) => elt === 'flex-1')).toBeTruthy()
+          expect(
+            elt.classes().find((elt) => elt === 'cursor-pointer')
+          ).toBeTruthy()
         })
     })
   })

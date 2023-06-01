@@ -66,13 +66,15 @@ function setSelectedLine(line: number) {
         borderLeftColor: item.color,
       }"
     >
-      <label :for="item.id">{{ item.printValue }} </label>
+      <label class="cursor-pointer" :for="item.id"
+        >{{ item.printValue }}
+      </label>
       <div class="mr-auto"></div>
       <input
         role="radio"
         type="radio"
         name="status"
-        class="checked:bg-black checked:hover:bg-black checked:active:bg-black checked:focus:bg-black focus:outline-none focus:ring-1 focus:ring-white"
+        class="checked:bg-black checked:hover:bg-black checked:active:bg-black checked:focus:bg-black focus:outline-none focus:ring-1 focus:ring-white cursor-pointer"
         :id="item.id"
         :value="item"
         v-model="selectedStatus"
@@ -86,13 +88,14 @@ function setSelectedLine(line: number) {
       :key="line.id"
       class="flex-1 flex flex-row items-center relative hover:font-medium cursor-pointer"
     >
-      <img :src="line.img" class="h-6 mr-3" />
-      <label :for="line.id">{{ line.printValue }} </label>
+      <label class="cursor-pointer flex flex-row" :for="line.id"
+        ><img :src="line.img" class="h-6 mr-3" />{{ line.printValue }}
+      </label>
       <div class="mr-auto"></div>
       <input
         type="radio"
         name="line"
-        class="checked:bg-black checked:hover:bg-black checked:active:bg-black checked:focus:bg-black focus:outline-none focus:ring-1 focus:ring-white"
+        class="checked:bg-black checked:hover:bg-black checked:active:bg-black checked:focus:bg-black focus:outline-none focus:ring-1 focus:ring-white cursor-pointer"
         :id="line.id"
         :value="line"
         v-model="selectedLine"
