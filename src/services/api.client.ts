@@ -4,37 +4,11 @@ import { stationsFixtures } from '@/model/stations.fixtures'
 import type { StationModel } from '@/model/stations.model'
 import { photoFixtures } from '@/model/photos.fixtures'
 import type { PhotoModel } from '@/model/photos.model'
-import { travelTimeFixtures } from '@/model/travel-time.fixtures'
-import type { TravelTimeModel } from '@/model/travel-time.model'
 import { servicesFixtures } from '@/model/services.fixtures'
 import type { ServiceModel } from '@/model/services.model'
 import { filterStationsByLineNumber } from '@/services/station'
 
 class ApiClientService {
-  async fetchTravelTimeByLine(lineNumber: number) {
-    return new Promise<TravelTimeModel[]>((resolve) => {
-      resolve(
-        travelTimeFixtures().filter((travel) => travel.line == lineNumber)
-      )
-    })
-  }
-
-  async fetchTravelTimeByIndex(index: number) {
-    return new Promise<TravelTimeModel>((resolve) => {
-      resolve(travelTimeFixtures()[index])
-    })
-  }
-
-  async fetchTravelTime(count: number | null = null) {
-    return new Promise<TravelTimeModel[]>((resolve) => {
-      if (count == null) {
-        resolve(travelTimeFixtures())
-      } else {
-        resolve(travelTimeFixtures().slice(0, count))
-      }
-    })
-  }
-
   async numberOfLine() {
     return new Promise<number>((resolve) => {
       resolve(linesFixtures().length)

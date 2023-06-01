@@ -29,6 +29,7 @@ import { useStationsStore } from '@/stores/stations'
 import SkipLinksLineView from '@/components/accessibility/SkipLinksLineView.vue'
 import FooterAreaLink from '@/components/home/FooterAreaLink.vue'
 import { legalList } from '@/constants/legalLinks'
+import { fetchTravelTimeByLine } from '@/services/travelTime'
 
 const openLink = (link: string) => {
   window.open(link, '_blank')
@@ -67,13 +68,14 @@ onBeforeMount(async () => {
   if (isFromLineToLine) {
     poiStoreSubcribe(rennesApp)
   }
-  const travelTimes = await apiClientService.fetchTravelTimeByLine(currentLine)
+  const travelTimes = await fetchTravelTimeByLine(rennesApp, currentLine)
   traveltimeInteractionStore.setDisplayTravelTimes(travelTimes)
 
   state.lineDescription = await apiClientService.fetchLineDescription(
     lineStore.selectedLine
   )
-  state.travelTimes = await apiClientService.fetchTravelTimeByLine(
+  state.travelTimes = await fetchTravelTimeByLine(
+    rennesApp,
     lineStore.selectedLine
   )
   state.travelTimes.forEach((tt) => {
