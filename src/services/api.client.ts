@@ -10,7 +10,6 @@ import type { NetworkFigureModel } from '../model/network-figures.model'
 import { servicesFixtures } from '@/model/services.fixtures'
 import type { ServiceModel } from '@/model/services.model'
 import { filterStationsByLineNumber } from '@/services/station'
-
 import bikeIcon from '../assets/icons/bike.svg'
 import linesIcon from '../assets/icons/lines.svg'
 import stationIcon from '../assets/icons/station.svg'
@@ -28,7 +27,7 @@ export const networkFiguresFixtures = async (): Promise<
   },
   {
     id: 'stations',
-    figure: await apiClientService.numberOfStations(),
+    figure: 4, // TODO : modify this value
     description: 'Nouvelles stations',
     icon: stationIcon,
   },
@@ -72,12 +71,6 @@ class ApiClientService {
     })
   }
 
-  async fetchLineDescriptions() {
-    return new Promise<LineModel[]>((resolve) => {
-      resolve(linesFixtures())
-    })
-  }
-
   async numberOfLine() {
     return new Promise<number>((resolve) => {
       resolve(linesFixtures().length)
@@ -87,12 +80,6 @@ class ApiClientService {
   async fetchLineDescription(lineNumber: number) {
     return new Promise<LineModel>((resolve) => {
       resolve(linesFixtures()[lineNumber - 1])
-    })
-  }
-
-  async fetchLineFrequency(lineNumber: number) {
-    return new Promise<number>((resolve) => {
-      resolve(linesFixtures()[lineNumber - 1]['frequency'])
     })
   }
 
@@ -116,29 +103,6 @@ class ApiClientService {
       val = filterStationsByLineNumber(val, num_line)
       return val
     })
-  }
-
-  async numberOfStations() {
-    const lines = []
-    const stations = []
-    let totalStations = 0
-    const linesDescription = await apiClientService.fetchLineDescriptions()
-    for (const lineDescription of linesDescription) {
-      lines.push(lineDescription.id)
-    }
-    for (const numberLine of lines) {
-      const stationList = await apiClientService.fetchStationsOrderByLine(
-        numberLine
-      )
-      for (const i in stationList) {
-        stations.push(stationList[i].id)
-      }
-      const uniqueStations = stations.filter((value, index, self) => {
-        return self.indexOf(value) === index
-      })
-      totalStations = uniqueStations.length
-    }
-    return totalStations
   }
 
   async fetchStationDescription(stationId: number) {

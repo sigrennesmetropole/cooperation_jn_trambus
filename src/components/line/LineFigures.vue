@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue'
-
-import { apiClientService } from '@/services/api.client'
 import type { LineNumber } from '@/model/lines.model'
 import UiNetworkFigure from '../ui/UiNetworkFigure.vue'
 import UiVerticalSeparator from '../ui/UiVerticalSeparator.vue'
 import type { LineFigureModel } from '../../model/line-figures.model'
 import stationIcon from '@/assets/icons/station.svg'
+import { fetchLineFrequency } from '@/services/line'
 
 const props = defineProps<{
   line: LineNumber
@@ -33,7 +32,7 @@ onMounted(async () => {
     figure: props.nb_parking,
     description: props.nb_parking > 1 ? 'Parkings relais' : 'Parking relais',
   })
-  const frequency = await apiClientService.fetchLineFrequency(props.line)
+  const frequency = await fetchLineFrequency(props.line)
   state.lineFigures.push({
     id: 'frequency',
     idLine: props.line,

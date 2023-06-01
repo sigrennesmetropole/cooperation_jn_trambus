@@ -1,20 +1,22 @@
 <script setup lang="ts">
-import { reactive, onMounted, ref } from 'vue'
+import { reactive, onMounted, ref, inject } from 'vue'
 import { useRouter } from 'vue-router'
-import { apiClientService } from '@/services/api.client'
 import type { LineModel } from '@/model/lines.model'
 import UiLineDescription from '@/components/ui/UiLineDescription.vue'
 import { useHomeViewsStore } from '@/stores/views'
 import type { LineNumber } from '@/model/lines.model'
+import { RennesApp } from '@/services/RennesApp'
+import { fetchLineDescriptions } from '@/services/line'
 
 const state = reactive({
   lineDescription: null as null | LineModel[],
 })
 const router = useRouter()
 const homeViewStore = useHomeViewsStore()
+const rennesApp = inject('rennesApp') as RennesApp
 
 onMounted(async () => {
-  state.lineDescription = await apiClientService.fetchLineDescriptions()
+  state.lineDescription = await fetchLineDescriptions(rennesApp)
 })
 
 function goToLinePage(line: number) {
