@@ -188,8 +188,8 @@ function buildStationModelFromStationFeature(feature: Feature<Geometry>) {
   }
 }
 
-export async function getStationsWithOrder(rennesApp: RennesApp) {
-  const layer = await rennesApp.getLayerByKey(RENNES_LAYER.appTrambusArrets)
+export async function getStations(rennesApp: RennesApp) {
+  const layer = await rennesApp.getLayerByKey(RENNES_LAYER.trambusStops)
   const stations: StationModel[] = []
   layer.getFeatures().forEach((feature) => {
     stations.push(buildStationModelFromStationFeature(feature))
@@ -204,7 +204,7 @@ export async function fetchStationsByLine(
   const stations: StationModel[] = []
   const stationsFeatures =
     await rennesApp.getFeaturesThatContainAttributeFromLayer(
-      RENNES_LAYER.appTrambusArrets,
+      RENNES_LAYER.trambusStops,
       'li_code',
       lineNumber.toString()
     )

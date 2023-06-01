@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import { reactive, onMounted } from 'vue'
-
-import { apiClientService } from '@/services/api.client'
+import { reactive, onMounted, inject } from 'vue'
 import UiNetworkFigure from '../ui/UiNetworkFigure.vue'
 import UiVerticalSeparator from '../ui/UiVerticalSeparator.vue'
 import type { NetworkFigureModel } from '../../model/network-figures.model'
+import { fetchNetworkFigure } from '@/services/networkFigures'
+import type { RennesApp } from '@/services/RennesApp'
+
+const rennesApp = inject('rennesApp') as RennesApp
 
 const state = reactive({
   networkFigures: null as null | NetworkFigureModel[],
 })
 
 onMounted(async () => {
-  state.networkFigures = await apiClientService.fetchNetworkFigure()
+  state.networkFigures = await fetchNetworkFigure(rennesApp)
 })
 
 function getLength(networkFigures: null | NetworkFigureModel[]): Number {

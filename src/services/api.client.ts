@@ -6,47 +6,11 @@ import { photoFixtures } from '@/model/photos.fixtures'
 import type { PhotoModel } from '@/model/photos.model'
 import { travelTimeFixtures } from '@/model/travel-time.fixtures'
 import type { TravelTimeModel } from '@/model/travel-time.model'
-import type { NetworkFigureModel } from '../model/network-figures.model'
 import { servicesFixtures } from '@/model/services.fixtures'
 import type { ServiceModel } from '@/model/services.model'
 import { filterStationsByLineNumber } from '@/services/station'
-import bikeIcon from '../assets/icons/bike.svg'
-import linesIcon from '../assets/icons/lines.svg'
-import stationIcon from '../assets/icons/station.svg'
-
-const CYCLING_DISTANCE = 128
-
-export const networkFiguresFixtures = async (): Promise<
-  NetworkFigureModel[]
-> => [
-  {
-    id: 'lines',
-    figure: await apiClientService.numberOfLine(),
-    description: 'Nouvelles lignes',
-    icon: linesIcon,
-  },
-  {
-    id: 'stations',
-    figure: 4, // TODO : modify this value
-    description: 'Nouvelles stations',
-    icon: stationIcon,
-  },
-  {
-    id: 'bike',
-    figure: CYCLING_DISTANCE,
-    description: 'Aménagement cyclables',
-    unit: 'km',
-    icon: bikeIcon,
-  },
-]
 
 class ApiClientService {
-  async fetchNetworkFigure() {
-    return new Promise<NetworkFigureModel[]>((resolve) => {
-      resolve(networkFiguresFixtures())
-    })
-  }
-
   async fetchTravelTimeByLine(lineNumber: number) {
     return new Promise<TravelTimeModel[]>((resolve) => {
       resolve(

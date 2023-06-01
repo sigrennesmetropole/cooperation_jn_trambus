@@ -17,7 +17,6 @@ export const RENNES_LAYER = {
   _traveltimeArrow: '_traveltimeArrow',
   customLayerLabelLine: 'customLayerLabelLine',
   _trambusStopsOutline: '_trambusStopsOutline',
-  appTrambusArrets: 'appTrambusArrets',
   appTrambusLines: 'appTrambusLines',
   trambusTempsParcours: 'trambusTempsParcours',
 }
@@ -36,7 +35,6 @@ export const RENNES_LAYERNAMES = [
   RENNES_LAYER._traveltimeArrow,
   RENNES_LAYER.customLayerLabelLine,
   RENNES_LAYER._trambusStopsOutline,
-  RENNES_LAYER.appTrambusArrets,
   RENNES_LAYER.appTrambusLines,
   RENNES_LAYER.trambusTempsParcours,
 ] as const

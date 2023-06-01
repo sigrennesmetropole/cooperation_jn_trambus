@@ -197,7 +197,7 @@
     },
     {
       "name": "trambusStops",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=trp_coll:trambus_arrets&outputFormat=application/json&srsName=EPSG:4326",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_arrets&outputFormat=application/json&srsName=EPSG:4326",
       "type": "GeoJSONLayer",
       "style": {
         "name": "trambusStopStyle",
@@ -232,7 +232,7 @@
     },
     {
       "name": "_trambusStopsOutline",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=trp_coll:trambus_arrets&outputFormat=application/json&srsName=EPSG:4326",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_arrets&outputFormat=application/json&srsName=EPSG:4326",
       "type": "GeoJSONLayer",
       "style": {
         "name": "trambusStopOutlineStyle",
@@ -274,17 +274,6 @@
       "vectorProperties": {
         "eyeOffset": [0, 0, -100]
       }
-    },
-    {
-      "name": "appTrambusArrets",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_arrets&outputFormat=application/json&srsName=EPSG:4326",
-      "type": "GeoJSONLayer",
-      "activeOnStartup": true,
-      "style": {
-        "name": "appTrambusArrets",
-        "type": "VectorStyleItem"
-      },
-      "zIndex": -1
     },
     {
       "name": "appTrambusLines",
