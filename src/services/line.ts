@@ -67,3 +67,11 @@ export async function fetchLineDescriptions(rennesApp: RennesApp) {
   }
   return linesDescriptions
 }
+
+export async function fetchLineDescription(
+  rennesApp: RennesApp,
+  lineNumber: number
+) {
+  const lines = await fetchLineDescriptions(rennesApp)
+  return lines.find((line) => line.id == lineNumber)
+}

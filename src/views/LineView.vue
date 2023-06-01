@@ -30,6 +30,7 @@ import SkipLinksLineView from '@/components/accessibility/SkipLinksLineView.vue'
 import FooterAreaLink from '@/components/home/FooterAreaLink.vue'
 import { legalList } from '@/constants/legalLinks'
 import { fetchTravelTimeByLine } from '@/services/travelTime'
+import { fetchLineDescription } from '@/services/line'
 
 const openLink = (link: string) => {
   window.open(link, '_blank')
@@ -71,7 +72,8 @@ onBeforeMount(async () => {
   const travelTimes = await fetchTravelTimeByLine(rennesApp, currentLine)
   traveltimeInteractionStore.setDisplayTravelTimes(travelTimes)
 
-  state.lineDescription = await apiClientService.fetchLineDescription(
+  state.lineDescription = await fetchLineDescription(
+    rennesApp,
     lineStore.selectedLine
   )
   state.travelTimes = await fetchTravelTimeByLine(

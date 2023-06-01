@@ -19,6 +19,7 @@ import type { RennesApp } from '@/services/RennesApp'
 import { poiStoreSubcribe } from '@/services/poi'
 import FooterAreaLink from '@/components/home/FooterAreaLink.vue'
 import { legalList } from '@/constants/legalLinks'
+import { fetchLineDescription } from '@/services/line'
 
 const openLink = (link: string) => {
   window.open(link, '_blank')
@@ -43,7 +44,8 @@ const state = reactive({
 const rennesApp = inject('rennesApp') as RennesApp
 
 onBeforeMount(async () => {
-  state.lineDescription = await apiClientService.fetchLineDescription(
+  state.lineDescription = await fetchLineDescription(
+    rennesApp,
     lineNumber.value as number
   )
   stationsStore.setLineOfStation(state.lineDescription!.id)

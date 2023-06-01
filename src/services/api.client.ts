@@ -1,5 +1,3 @@
-import { linesFixtures } from '@/model/lines.fixtures'
-import type { LineModel } from '@/model/lines.model'
 import { stationsFixtures } from '@/model/stations.fixtures'
 import type { StationModel } from '@/model/stations.model'
 import { photoFixtures } from '@/model/photos.fixtures'
@@ -9,18 +7,6 @@ import type { ServiceModel } from '@/model/services.model'
 import { filterStationsByLineNumber } from '@/services/station'
 
 class ApiClientService {
-  async numberOfLine() {
-    return new Promise<number>((resolve) => {
-      resolve(linesFixtures().length)
-    })
-  }
-
-  async fetchLineDescription(lineNumber: number) {
-    return new Promise<LineModel>((resolve) => {
-      resolve(linesFixtures()[lineNumber - 1])
-    })
-  }
-
   async fetchPhotos() {
     return new Promise<PhotoModel[]>((resolve) => {
       resolve(photoFixtures())
