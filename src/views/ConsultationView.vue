@@ -4,6 +4,7 @@ import { viewList } from '@/model/views.model'
 import { useViewsStore } from '@/stores/views'
 import ChevronArrowRight from '@/assets/icons/chevron-left.svg'
 import ConsultationMeeting from '@/components/consultation/ConsultationMeeting.vue'
+import ExplanationComponent from '@/components/consultation/ExplanationComponent.vue'
 
 const viewStore = useViewsStore()
 
@@ -22,6 +23,9 @@ onBeforeMount(() => {
         <img :src="ChevronArrowRight" />
       </UiButton>
       <div class="font-dm-sans grow font-bold text-2xl">Concertations</div>
+    </div>
+    <div class="-mx-6 mt-6">
+      <ExplanationComponent></ExplanationComponent>
     </div>
     <div class="flex flex-col">
       <h2
