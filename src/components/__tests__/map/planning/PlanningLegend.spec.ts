@@ -55,7 +55,7 @@ describe('PlanningLegend', () => {
             (item) =>
               item.text() !== LinePlanningStateTypes.UNSTARTED.toString()
           ).length
-      ).toBe(19)
+      ).toBe(13)
       wrapper
         .findAll('.cursor-pointer')
         .filter(
