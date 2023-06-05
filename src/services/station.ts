@@ -136,24 +136,11 @@ export function isStationLabelDisplayed(stationName: string): boolean {
 }
 
 export async function completeStationsData(
-  rennesApp: RennesApp,
   stations: StationModel[],
   lineNumber: number,
-  stationsOrder: StationModel[],
   parkings: ParkingModel[]
 ) {
   stations.forEach((station) => {
-    const stationOrder = stationsOrder.find(
-      (order) => order.nom === station.nom
-    )
-    if (stationOrder === undefined) {
-      return station
-    }
-    station.ordre_t1 = stationOrder.ordre_t1
-    station.ordre_t2 = stationOrder.ordre_t2
-    station.ordre_t3 = stationOrder.ordre_t3
-    station.ordre_t4 = stationOrder.ordre_t4
-
     const parking = parkings.find(
       (parking) => parking.arret_nom === station.nom
     )

@@ -92,15 +92,9 @@ onBeforeMount(async () => {
 
   state.parkings = await fetchParkingsByStations(rennesApp, stations)
 
-  const stationsOrder = await apiClientService.fetchStationsOrderByLine(
-    lineStore.selectedLine
-  )
-
   state.stations = await completeStationsData(
-    rennesApp,
     stations,
     lineStore.selectedLine,
-    stationsOrder,
     state.parkings
   )
 })

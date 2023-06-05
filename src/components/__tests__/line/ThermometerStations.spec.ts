@@ -7,14 +7,12 @@ import { RennesAppTest } from '../../../../tests/RennesAppTest'
 import { fetchStationsByLine, completeStationsData } from '@/services/station'
 import { fetchParkingsByStations } from '@/services/parking'
 import { useStationsStore } from '@/stores/stations'
-import { apiClientService } from '@/services/api.client'
 
 const app = new RennesAppTest()
 await app._initializeMapToThermometerTest()
 let stations = await fetchStationsByLine(app, 1)
 const parkings = await fetchParkingsByStations(app, stations)
-const stationOrder = await apiClientService.fetchStationsOrderByLine(1)
-stations = await completeStationsData(app, stations, 1, stationOrder, parkings)
+stations = await completeStationsData(stations, 1, parkings)
 
 describe('ThermometerStations', () => {
   const wrapper = mount(ThermometerStations, {
