@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { onBeforeMount, reactive, onMounted, ref, inject } from 'vue'
 
-import type { LineModel, SelectedTrambusLine } from '@/model/lines.model'
+import type {
+  LineModel,
+  SelectedTrambusLine,
+  LineNumber,
+} from '@/model/lines.model'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import type { PhotoModel } from '@/model/photos.model'
 import { apiClientService } from '@/services/api.client'
@@ -123,7 +127,10 @@ function onTravelTimesClicked(travelTime: TravelTimeModel) {
 
 linesStore.$subscribe(async () => {
   if (linesStore.lineDesciptions.length > 0) {
-    stationStore.lineViewSetUpStationsToDisplay(lineStore.selectedLine, false)
+    stationStore.lineViewSetUpStationsToDisplay(
+      lineStore.selectedLine as LineNumber,
+      false
+    )
   }
 })
 </script>

@@ -6,7 +6,11 @@ import { useViewsStore } from '@/stores/views'
 import { useLayersStore } from '@/stores/layers'
 import { useStationsStore } from '@/stores/stations'
 import UiStationHeader from '@/components/ui/UiStationHeader.vue'
-import type { LineModel, SelectedTrambusLine } from '@/model/lines.model'
+import type {
+  LineModel,
+  SelectedTrambusLine,
+  LineNumber,
+} from '@/model/lines.model'
 import type { StationModel } from '@/model/stations.model'
 import { viewList } from '@/model/views.model'
 import ServicesStation from '@/components/station/ServicesStation.vue'
@@ -91,7 +95,9 @@ onMounted(async () => {
 
 linesStore.$subscribe(async () => {
   if (linesStore.lineDesciptions.length > 0) {
-    stationsStore.addStationStartEndOfLinePermanently(lineNumber)
+    stationsStore.addStationStartEndOfLinePermanently(
+      lineNumber.value as LineNumber
+    )
   }
 })
 </script>

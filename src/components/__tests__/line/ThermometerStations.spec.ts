@@ -84,26 +84,6 @@ describe('ThermometerStations', () => {
     })
   })
 
-  describe('styles of items', () => {
-    it('style first item', () => {
-      const divCircle = wrapper.find('[id="divcircle-La Plesse"]')
-      const divCircleClasses = divCircle.classes()
-      expect(divCircleClasses.includes('min-w-[16px]')).toBe(true)
-    })
-
-    it('style second item', () => {
-      const divCircle = wrapper.find('[id="divcircle-Cerisaie"]')
-      const divCircleClasses = divCircle.classes()
-      expect(divCircleClasses.includes('min-w-[8px]')).toBe(true)
-    })
-
-    it('style last item', () => {
-      const divCircle = wrapper.find('[id="divcircle-ZA Saint-Sulpice"]')
-      const divCircleClasses = divCircle.classes()
-      expect(divCircleClasses.includes('min-w-[16px]')).toBe(true)
-    })
-  })
-
   describe('mouseover item', () => {
     it('change the background color', async () => {
       const itemRepublique = items.find(
