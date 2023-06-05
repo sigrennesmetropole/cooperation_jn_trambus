@@ -7,10 +7,6 @@ import multiplePerson from '@/assets/icons/multiple-person.svg'
 import { computed } from 'vue'
 
 const props = defineProps({
-  illustration: {
-    type: String,
-    default: '',
-  },
   title: {
     type: String,
     default: '',
@@ -70,7 +66,7 @@ const style = computed(() => {
 
 <template>
   <div class="flex flex-row gap-4 py-4 border-b border-b-slate-200">
-    <img :src="props.illustration" class="h-[133px] w-[200px] rounded-lg" />
+    <slot name="img"></slot>
     <div class="flex flex-col gap-2">
       <p class="font-dm-sans font-bold text-base">{{ props.title }}</p>
       <div class="flex flex-row gap-3 h-8">

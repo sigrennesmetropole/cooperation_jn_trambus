@@ -5,7 +5,7 @@ import { useViewsStore } from '@/stores/views'
 import ChevronArrowRight from '@/assets/icons/chevron-left.svg'
 import ConsultationMeeting from '@/components/consultation/ConsultationMeeting.vue'
 import ExplanationComponent from '@/components/consultation/ExplanationComponent.vue'
-
+import ConsultationIllustration from '@/assets/illustrations/ex_consultation.png'
 const viewStore = useViewsStore()
 
 onBeforeMount(() => {
@@ -34,7 +34,6 @@ onBeforeMount(() => {
         Les concertations ouvertes
       </h2>
       <ConsultationMeeting
-        :illustration="'src/assets/illustrations/ex_consultation.png'"
         :title="'Vos réactions au futur aménagement du réseau trambus'"
         :status="'open'"
         :date="'15/10/2023'"
@@ -43,7 +42,15 @@ onBeforeMount(() => {
         :comment="481"
         :like="1291"
         :person="353"
-      ></ConsultationMeeting>
+      >
+        <template v-slot:img>
+          <img
+            class="h-[133px] w-[200px] rounded-lg"
+            :src="ConsultationIllustration"
+            alt="Illustration de la concertation"
+          />
+        </template>
+      </ConsultationMeeting>
       <ConsultationMeeting
         :illustration="'src/assets/illustrations/ex_consultation.png'"
         :title="'Trambus'"
@@ -54,7 +61,15 @@ onBeforeMount(() => {
         :comment="120"
         :like="364"
         :person="56"
-      ></ConsultationMeeting>
+      >
+        <template v-slot:img>
+          <img
+            class="h-[133px] w-[200px] rounded-lg"
+            :src="ConsultationIllustration"
+            alt="Illustration de la concertation"
+          />
+        </template>
+      </ConsultationMeeting>
       <h2
         class="font-dm-sans font-bold text-lg leading-6 border-b border-b-slate-200 mt-6 pb-6"
       >
@@ -70,7 +85,15 @@ onBeforeMount(() => {
         :comment="61"
         :like="579"
         :person="237"
-      ></ConsultationMeeting>
+      >
+        <template v-slot:img>
+          <img
+            class="h-[133px] w-[200px] rounded-lg"
+            :src="ConsultationIllustration"
+            alt="Illustration de la concertation"
+          />
+        </template>
+      </ConsultationMeeting>
     </div>
   </main>
 </template>
