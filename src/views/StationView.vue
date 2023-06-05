@@ -6,7 +6,6 @@ import { useViewsStore } from '@/stores/views'
 import { useLayersStore } from '@/stores/layers'
 import { useStationsStore } from '@/stores/stations'
 import UiStationHeader from '@/components/ui/UiStationHeader.vue'
-import { apiClientService } from '@/services/api.client'
 import type { LineModel, SelectedTrambusLine } from '@/model/lines.model'
 import type { StationModel } from '@/model/stations.model'
 import { viewList } from '@/model/views.model'
@@ -21,6 +20,7 @@ import FooterAreaLink from '@/components/home/FooterAreaLink.vue'
 import { legalList } from '@/constants/legalLinks'
 import { fetchLineDescription } from '@/services/line'
 import { useLinesStore } from '@/stores/lines'
+import { fetchStationDescription } from '@/services/station'
 
 const openLink = (link: string) => {
   window.open(link, '_blank')
@@ -51,30 +51,28 @@ onBeforeMount(async () => {
     lineNumber.value as number
   )
   stationsStore.setLineOfStation(state.lineDescription!.id)
-  await apiClientService
-    .fetchStationDescription(stationId.value)
-    .then((station) => {
-      stationsStore.stationViewSetUpStationsToDisplay(
-        station.nom,
-        state.lineDescription!.id
-      )
-      let isFromStationToStation = false
-      //For some reason, when we go to station page from another station page, the poiStore.subscribe is not called
-      //So we need to call it manually
-      if (viewStore.currentView === viewList.station) {
-        isFromStationToStation = true
-      }
-      viewStore.setCurrentView(
-        viewList.station,
-        lineNumber.value,
-        stationsStore.currentStationView!
-      )
-      poiStore.activeStationProfile(station.nom)
-      state.stationDescription = station
-      if (isFromStationToStation) {
-        poiStoreSubcribe(rennesApp)
-      }
-    })
+  await fetchStationDescription(rennesApp, stationId.value).then((station) => {
+    stationsStore.stationViewSetUpStationsToDisplay(
+      station.nom,
+      state.lineDescription!.id
+    )
+    let isFromStationToStation = false
+    //For some reason, when we go to station page from another station page, the poiStore.subscribe is not called
+    //So we need to call it manually
+    if (viewStore.currentView === viewList.station) {
+      isFromStationToStation = true
+    }
+    viewStore.setCurrentView(
+      viewList.station,
+      lineNumber.value,
+      stationsStore.currentStationView!
+    )
+    poiStore.activeStationProfile(station.nom)
+    state.stationDescription = station
+    if (isFromStationToStation) {
+      poiStoreSubcribe(rennesApp)
+    }
+  })
 })
 
 onMounted(async () => {

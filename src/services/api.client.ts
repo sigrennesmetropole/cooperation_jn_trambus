@@ -1,5 +1,3 @@
-import { stationsFixtures } from '@/model/stations.fixtures'
-import type { StationModel } from '@/model/stations.model'
 import { photoFixtures } from '@/model/photos.fixtures'
 import type { PhotoModel } from '@/model/photos.model'
 import { servicesFixtures } from '@/model/services.fixtures'
@@ -18,11 +16,6 @@ class ApiClientService {
     })
   }
 
-  async fetchStationDescription(stationId: number) {
-    return new Promise<StationModel>((resolve) => {
-      resolve(stationsFixtures().find((station) => station.id == stationId)!)
-    })
-  }
   /* eslint-disable @typescript-eslint/no-unused-vars */
   async fetchServicesByStation(stationId: number) {
     //TODO: when RENNES send data of services, filter services by stationId

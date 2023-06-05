@@ -200,3 +200,11 @@ export async function fetchStationsByLine(
   })
   return stations
 }
+
+export async function fetchStationDescription(
+  rennesApp: RennesApp,
+  stationId: number
+) {
+  const stations = await getStations(rennesApp)
+  return stations.find((station) => station.id == stationId)!
+}
