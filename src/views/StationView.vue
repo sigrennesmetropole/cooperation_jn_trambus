@@ -20,6 +20,7 @@ import { poiStoreSubcribe } from '@/services/poi'
 import FooterAreaLink from '@/components/home/FooterAreaLink.vue'
 import { legalList } from '@/constants/legalLinks'
 import { fetchLineDescription } from '@/services/line'
+import { useLinesStore } from '@/stores/lines'
 
 const openLink = (link: string) => {
   window.open(link, '_blank')
@@ -31,6 +32,7 @@ const layerStore = useLayersStore()
 const stationsStore = useStationsStore()
 const poiStore = usePoiParkingStore()
 const lineInteractionStore = useLineInteractionStore()
+const linesStore = useLinesStore()
 
 const { params } = useRoute()
 const routeParams = ref(params)
@@ -87,6 +89,12 @@ onMounted(async () => {
     bike: false,
     _traveltimeArrow: false,
   })
+})
+
+linesStore.$subscribe(async () => {
+  if (linesStore.lineDesciptions.length > 0) {
+    stationsStore.addStationStartEndOfLinePermanently(lineNumber)
+  }
 })
 </script>
 

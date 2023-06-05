@@ -15,16 +15,17 @@ import {
 } from '@/stores/interactionMap'
 import { fetchTravelTime } from '@/services/travelTime'
 import type { RennesApp } from '@/services/RennesApp'
+import { useLinesStore } from '@/stores/lines'
 
 const viewStore = useViewsStore()
 const layerStore = useLayersStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
 const map3dStore = useMap3dStore()
 const mapViewPointStore = useMapViewPointStore()
-
 const stationsStore = useStationsStore()
 const lineInteractionStore = useLineInteractionStore()
 const rennesApp = inject('rennesApp') as RennesApp
+const linesStore = useLinesStore()
 
 const state = reactive({
   travelTimes: null as null | TravelTimeModel[],
@@ -61,6 +62,12 @@ function onTravelTimesClicked(travelTime: TravelTimeModel) {
     traveltimeInteractionStore.addDisplayTravelTime(travelTime)
   }
 }
+
+linesStore.$subscribe(async () => {
+  if (linesStore.lineDesciptions.length > 0) {
+    stationsStore.traveltimesViewSetUpStationsToDisplay()
+  }
+})
 </script>
 
 <template>

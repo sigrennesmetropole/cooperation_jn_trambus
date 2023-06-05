@@ -3,6 +3,7 @@ import { RENNES_LAYER } from '@/stores/layers'
 import { fetchStationsByLine } from '@/services/station'
 import type { StationModel } from '@/model/stations.model'
 import type { LineModel, LineNumber } from '@/model/lines.model'
+import { useLinesStore } from '@/stores/lines'
 
 export async function getLinesId(rennesApp: RennesApp) {
   const layer = await rennesApp.getLayerByKey(RENNES_LAYER.trambusLines)
@@ -74,4 +75,37 @@ export async function fetchLineDescription(
 ) {
   const lines = await fetchLineDescriptions(rennesApp)
   return lines.find((line) => line.id == lineNumber)
+}
+
+export async function storeLineDescriptions(rennesApp: RennesApp) {
+  const lineDesciptions = await fetchLineDescriptions(rennesApp)
+  const linesStore = useLinesStore()
+  linesStore.setLineDescriptions(lineDesciptions)
+}
+
+export function getAllStartEndStations(): string[] {
+  const startEndStations: string[] = []
+  const linesStore = useLinesStore()
+  linesStore.lineDesciptions.forEach((line) => {
+    startEndStations.push(line.start)
+    startEndStations.push(line.end)
+  })
+  return startEndStations
+}
+
+export function getStartEndStationsOfLine(lineNumber: LineNumber): string[] {
+  const linesStore = useLinesStore()
+  const line = linesStore.lineDesciptions.find((line) => line.id == lineNumber)
+  return line ? [line.start, line.end] : []
+}
+
+export function isStartEndStation(stationName: string): boolean {
+  return getAllStartEndStations().includes(stationName)
+}
+
+export function isStartEndStationOfLine(
+  lineNumber: LineNumber,
+  stationName: string
+): boolean {
+  return getStartEndStationsOfLine(lineNumber).includes(stationName)
 }

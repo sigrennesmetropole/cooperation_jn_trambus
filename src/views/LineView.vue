@@ -31,6 +31,7 @@ import FooterAreaLink from '@/components/home/FooterAreaLink.vue'
 import { legalList } from '@/constants/legalLinks'
 import { fetchTravelTimeByLine } from '@/services/travelTime'
 import { fetchLineDescription } from '@/services/line'
+import { useLinesStore } from '@/stores/lines'
 
 const openLink = (link: string) => {
   window.open(link, '_blank')
@@ -44,6 +45,7 @@ const layerStore = useLayersStore()
 const lineStore = useLineViewsStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
 const lineInteractionStore = useLineInteractionStore()
+const linesStore = useLinesStore()
 
 const rennesApp = inject('rennesApp') as RennesApp
 
@@ -124,6 +126,12 @@ function onTravelTimesClicked(travelTime: TravelTimeModel) {
     traveltimeInteractionStore.selectTraveltime(travelTime)
   }
 }
+
+linesStore.$subscribe(async () => {
+  if (linesStore.lineDesciptions.length > 0) {
+    stationStore.lineViewSetUpStationsToDisplay(lineStore.selectedLine, false)
+  }
+})
 </script>
 
 <template>

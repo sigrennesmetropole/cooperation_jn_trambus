@@ -38,6 +38,8 @@ import { updateTraveltimeArrow } from '@/services/arrow'
 import { viewList } from '@/model/views.model'
 import { poiStoreSubcribe } from '@/services/poi'
 import { usePoiParkingStore } from '@/stores/poiParking'
+import { useLinesStore } from '@/stores/lines'
+import { storeLineDescriptions } from '@/services/line'
 
 const rennesApp = inject('rennesApp') as RennesApp
 
@@ -52,6 +54,7 @@ const viewStore = useViewsStore()
 const componentAboveMapStore = useComponentAboveMapStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
 const travelTimeBoxesStore = useTravelTimeBoxesStore()
+const linesStore = useLinesStore()
 
 onMounted(async () => {
   await rennesApp.initializeMap()
@@ -171,6 +174,10 @@ map3dStore.$subscribe(async () => {
   }
   travelTimeBoxesStore.addListenerForUpdatePositions(rennesApp)
   poiStoreSubcribe(rennesApp)
+
+  if (map3dStore.isInitializeMap && linesStore.lineDesciptions.length == 0) {
+    await storeLineDescriptions(rennesApp)
+  }
 })
 
 mapViewPointStore.$subscribe(async () => {

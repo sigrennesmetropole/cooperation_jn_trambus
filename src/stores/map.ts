@@ -11,6 +11,7 @@ export const useMap3dStore = defineStore('map-3d', () => {
   const layerStore = useLayersStore()
   // Map state
   const activeMap: Ref<string> = ref('ol') // Map: 'ol', 'cesium'
+  const isInitializeMap: Ref<boolean> = ref(false)
 
   function is3D() {
     return activeMap.value == 'cesium'
@@ -29,6 +30,7 @@ export const useMap3dStore = defineStore('map-3d', () => {
     activeMap,
     is3D,
     toggle3D,
+    isInitializeMap,
   }
 })
 

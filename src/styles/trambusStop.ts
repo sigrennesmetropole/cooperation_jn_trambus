@@ -3,7 +3,7 @@ import { Circle, Fill, Stroke, Style } from 'ol/style'
 import { getTrambusLineNumber, lineColors } from './common'
 import * as ol_color from 'ol/color'
 import type { FeatureLike } from 'ol/Feature'
-import { getAllStartEndStations } from '@/model/lines.fixtures'
+import { getAllStartEndStations } from '@/services/line'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import { isStationLabelDisplayed } from '@/services/station'
 
