@@ -2,10 +2,10 @@ import type { RennesApp } from '@/services/RennesApp'
 import { RENNES_LAYER } from '@/stores/layers'
 import type { SelectedTrambusLine } from '@/model/lines.model'
 import { isStationOnLine } from '@/services/station'
-import { stationsFixtures } from '@/model/stations.fixtures'
 import type { LineNumber } from '@/model/lines.model'
 import { GlobalHider } from '@vcmap/core'
 import { fetchStationsByLine } from '@/services/station'
+import { getStations } from '@/services/station'
 
 async function removeFilterOnLayers(rennesApp: RennesApp, layerName: string) {
   const lyr = await rennesApp.getLayerByKey(layerName)
@@ -53,12 +53,13 @@ export async function filterFeatureByPoiAndLine(
 ) {
   const layer = await rennesApp.getLayerByKey(RENNES_LAYER.poi)
   layer.setGlobalHider(new GlobalHider())
+  const stations = await getStations(rennesApp)
   const featuresToHide = layer
     .getFeatures()
     .filter(
       (f) =>
         !isStationOnLine(
-          stationsFixtures(),
+          stations,
           f.getProperties()['station_nom'],
           line as LineNumber
         )
