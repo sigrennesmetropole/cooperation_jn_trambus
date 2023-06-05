@@ -9,7 +9,12 @@ import type { Geometry } from 'ol/geom'
 import { getCartesianPositionFromFeature } from '@/helpers/featureHelper'
 import { useStationsStore } from '@/stores/stations'
 import type { RennesApp } from '@/services/RennesApp'
-import { useLineInteractionStore } from '@/stores/interactionMap'
+import {
+  useBikeInteractionStore,
+  useBusInteractionStore,
+  useLineInteractionStore,
+  useMetroInteractionStore,
+} from '@/stores/interactionMap'
 import {
   addGenericListenerForUpdatePositions,
   updateCartesianPositions,
@@ -83,6 +88,39 @@ export const useComponentAboveMapStore = defineStore(
           lineInteractionStore.selectClickPosition(null)
         } else {
           lineInteractionStore.selectClickPosition(cartesian)
+        }
+      }
+
+      const metroInteractionStore = useMetroInteractionStore()
+      if (metroInteractionStore.featureLabel !== null) {
+        const feature = metroInteractionStore.featureLabel as Feature<Geometry>
+        const cartesian = getCartesianPositionFromFeature(rennesApp, feature)
+        if (cartesian == undefined) {
+          metroInteractionStore.selectClickPosition(null)
+        } else {
+          metroInteractionStore.selectClickPosition(cartesian)
+        }
+      }
+
+      const busInteractionStore = useBusInteractionStore()
+      if (busInteractionStore.featureLabel !== null) {
+        const feature = busInteractionStore.featureLabel as Feature<Geometry>
+        const cartesian = getCartesianPositionFromFeature(rennesApp, feature)
+        if (cartesian == undefined) {
+          busInteractionStore.selectClickPosition(null)
+        } else {
+          busInteractionStore.selectClickPosition(cartesian)
+        }
+      }
+
+      const bikeInteractionStore = useBikeInteractionStore()
+      if (bikeInteractionStore.featureLabel !== null) {
+        const feature = bikeInteractionStore.featureLabel as Feature<Geometry>
+        const cartesian = getCartesianPositionFromFeature(rennesApp, feature)
+        if (cartesian == undefined) {
+          bikeInteractionStore.selectClickPosition(null)
+        } else {
+          bikeInteractionStore.selectClickPosition(cartesian)
         }
       }
     }
