@@ -48,7 +48,7 @@ const lineInteractionStore = useLineInteractionStore()
 const rennesApp = inject('rennesApp') as RennesApp
 
 const state = reactive({
-  lineDescription: null as null | LineModel,
+  lineDescription: null as null | LineModel | undefined,
   travelTimes: null as null | TravelTimeModel[],
   photo: null as null | PhotoModel,
   parkings: null as null | ParkingModel[],

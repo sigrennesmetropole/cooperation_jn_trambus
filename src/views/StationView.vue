@@ -38,7 +38,7 @@ const stationId = ref(Number(routeParams.value.id))
 const lineNumber = ref(Number(routeParams.value.lineid) as SelectedTrambusLine)
 
 const state = reactive({
-  lineDescription: null as null | LineModel,
+  lineDescription: null as null | LineModel | undefined,
   stationDescription: null as null | StationModel,
 })
 const rennesApp = inject('rennesApp') as RennesApp

@@ -1,6 +1,7 @@
 import type { RennesApp } from '@/services/RennesApp'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import { RENNES_LAYER } from '@/stores/layers'
+import type { LineNumber } from '@/model/lines.model'
 
 export async function getAllTravelTimes(rennesApp: RennesApp) {
   const layer = await rennesApp.getLayerByKey(RENNES_LAYER.trambusTempsParcours)
@@ -9,9 +10,9 @@ export async function getAllTravelTimes(rennesApp: RennesApp) {
     const num_line = feature.get('li_code').split('T')[1]
     travelTimes.push({
       id: feature.get('id'),
-      line: num_line,
-      new: feature.get('temps_futur'),
-      old: feature.get('temps_actuel'),
+      line: num_line as LineNumber,
+      new: parseInt(feature.get('temps_futur')),
+      old: parseInt(feature.get('temps_actuel')),
       start: feature.get('arret_depart'),
       end: feature.get('arret_destination'),
     })

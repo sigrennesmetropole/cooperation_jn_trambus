@@ -6,7 +6,7 @@ import UiOverflowContainer from '../ui/UiOverflowContainer.vue'
 import UiLinkPrimary from '../ui/UiLinkPrimary.vue'
 import { UiButtonWithTooltip } from '@sigrennesmetropole/cooperation_jn_common_ui'
 import { fetchTravelTime } from '@/services/travelTime'
-import { RennesApp } from '@/services/RennesApp'
+import type { RennesApp } from '@/services/RennesApp'
 
 const state = reactive({
   travelTimes: null as null | TravelTimeModel[],

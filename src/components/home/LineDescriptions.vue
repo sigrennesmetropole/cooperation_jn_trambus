@@ -5,7 +5,7 @@ import type { LineModel } from '@/model/lines.model'
 import UiLineDescription from '@/components/ui/UiLineDescription.vue'
 import { useHomeViewsStore } from '@/stores/views'
 import type { LineNumber } from '@/model/lines.model'
-import { RennesApp } from '@/services/RennesApp'
+import type { RennesApp } from '@/services/RennesApp'
 import { fetchLineDescriptions } from '@/services/line'
 
 const state = reactive({

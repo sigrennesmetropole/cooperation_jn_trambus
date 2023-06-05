@@ -14,7 +14,7 @@ import {
   useLineInteractionStore,
 } from '@/stores/interactionMap'
 import { fetchTravelTime } from '@/services/travelTime'
-import { RennesApp } from '@/services/RennesApp'
+import type { RennesApp } from '@/services/RennesApp'
 
 const viewStore = useViewsStore()
 const layerStore = useLayersStore()
