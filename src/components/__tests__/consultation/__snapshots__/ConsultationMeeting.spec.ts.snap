@@ -1,0 +1,33 @@
+// Vitest Snapshot v1
+
+exports[`ConsultationComponent > renders correctly 1`] = `
+"<div class=\\"flex flex-row gap-4 py-4 border-b border-b-slate-200\\"><img src=\\"src/assets/illustrations/ex_consultation.png\\" class=\\"h-[133px] w-[200px] rounded-lg\\">
+  <div class=\\"flex flex-col gap-2\\">
+    <p class=\\"font-dm-sans font-bold text-base\\">Vos réactions au futur aménagement du réseau trambus</p>
+    <div class=\\"flex flex-row gap-3 h-8\\"><button class=\\"bg-amber-400 flex items-center py-1 px-2 rounded h-[28px]\\">
+        <div class=\\"font-medium font-dm-sans text-sm text-center items-center text-black\\">Ouverte</div>
+      </button>
+      <div class=\\"flex flex-row gap-1.5 items-center\\"><img src=\\"/src/assets/icons/calendar.svg\\" class=\\"w-[15px] h-[15px]\\">
+        <p class=\\"font-dm-sans font-normal text-xs\\"> Cloturée le 15/10/2023</p>
+      </div>
+      <div class=\\"flex flex-row gap-1.5 items-center\\"><img src=\\"/src/assets/icons/localization-icon.svg\\" class=\\"w-4 h-4\\">
+        <p class=\\"font-dm-sans font-normal text-xs\\">Zone géographique</p>
+      </div>
+    </div>
+    <p class=\\"font-dm-sans font-normal text-xs\\">Appaisement du traffic et végétalisation des espaces. La rue chicogné va faire l’objet d’une requalification</p>
+    <div class=\\"flex flex-row gap-3 py-3\\">
+      <div class=\\"flex flex-row gap-1.5 items-center\\"><img src=\\"/src/assets/icons/chat-bubble.svg\\" class=\\"w-4 h-4\\">
+        <p>481</p>
+      </div>
+      <div class=\\"border border-l border-slate-200\\"></div>
+      <div class=\\"flex flex-row gap-1.5 items-center\\"><img src=\\"/src/assets/icons/like-thumb.svg\\" class=\\"w-4 h-4\\">
+        <p>1291</p>
+      </div>
+      <div class=\\"border border-l border-slate-200\\"></div>
+      <div class=\\"flex flex-row gap-1.5 items-center\\"><img src=\\"/src/assets/icons/multiple-person.svg\\" class=\\"w-4 h-4\\">
+        <p>353</p>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
