@@ -56,6 +56,9 @@ export function isStationOnLine(
   const station: StationModel = stations.find(
     (station) => station.nom === name_station
   )!
+  if (station === undefined) {
+    return false
+  }
   return isOnLine(station.li_code, num_line)
 }
 

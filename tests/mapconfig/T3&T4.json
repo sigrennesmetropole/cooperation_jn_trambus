@@ -1,0 +1,407 @@
+{
+  "mapcontainer": "mapContainer",
+  "startingViewpointName": "rennes",
+  "locale": "fr",
+  "startingMapName": "ol",
+  "styles": [
+    {
+      "name": "lineColor",
+      "type": "DeclarativeStyleItem",
+      "declarativeStyle": {
+        "show": "true",
+        "color": {
+          "conditions": [
+            ["${olcs_geometryType} === 2", "color('#49eb34')"],
+            ["true", "color('#707070')"]
+          ]
+        }
+      }
+    }
+  ],
+  "maps": [
+    {
+      "type": "CesiumMap",
+      "name": "cesium",
+      "debugging": false,
+      "fxaa": false,
+      "enableLightning": true,
+      "allowSoftwareRendering": false,
+      "fogEnabled": true,
+      "fogEnabledMobile": true,
+      "fogDensity": 0.0002,
+      "fogDensityMobile": 0.0004,
+      "fogScreenSpaceError": 2,
+      "fogScreenSpaceErrorMobile": 4
+    },
+    {
+      "type": "OpenlayersMap",
+      "name": "ol"
+    }
+  ],
+  "layers": [
+    {
+      "name": "terrain",
+      "type": "TerrainLayer",
+      "url": "https://rennes3d-dev-tiles.s3.fr-par.scw.cloud/b3ef17bf-fdde-4979-8f05-8b4db5811c43/",
+      "activeOnStartup": true,
+      "requestVertexNormals": true,
+      "zIndex": 1
+    },
+    {
+      "type": "CesiumTilesetLayer",
+      "name": "building",
+      "url": "https://rennes3d-dev-tiles.s3.fr-par.scw.cloud/f8a215a9-d0cc-4804-b284-0eac8a58924d/",
+      "activeOnStartup": true,
+      "screenSpaceError": 16,
+      "screenSpaceErrorMobile": 32,
+      "zIndex": 1
+    },
+    {
+      "name": "rennesBase",
+      "type": "WMTSLayer",
+      "url": "https://public.sig.rennesmetropole.fr/geowebcache/service/wmts",
+      "layer": "ref_fonds:pvci_simple_gris",
+      "format": "image/png",
+      "tileMatrixSetID": "EPSG:3857",
+      "tileMatrixPrefix": "EPSG:3857:",
+      "extent": {
+        "coordinates": [
+          -2.1170142251181825, 47.78117827367612, -1.170835369910388,
+          48.39479586736775
+        ],
+        "epsg": "EPSG:4326",
+        "zIndex": 1
+      },
+      "activeOnStartup": true
+    },
+    {
+      "name": "rennesOrtho",
+      "type": "WMTSLayer",
+      "url": "https://public.sig.rennesmetropole.fr/geowebcache/service/wmts",
+      "layer": "raster:ortho2020",
+      "format": "image/jpeg",
+      "tileMatrixSetID": "EPSG:3857",
+      "tileMatrixPrefix": "EPSG:3857:",
+      "extent": {
+        "coordinates": [
+          -2.1170142251181825, 47.78117827367612, -1.170835369910388,
+          48.39479586736775
+        ],
+        "epsg": "EPSG:4326"
+      },
+      "activeOnStartup": false,
+      "zIndex": 1
+    },
+    {
+      "name": "alternativeRennesOrtho",
+      "type": "WMTSLayer",
+      "url": "https://public.sig.rennesmetropole.fr/geowebcache/service/wmts",
+      "layer": "ref_fonds:pvci",
+      "format": "image/png",
+      "tileMatrixSetID": "EPSG:3857",
+      "tileMatrixPrefix": "EPSG:3857:",
+      "extent": {
+        "coordinates": [
+          -2.1170142251181825, 47.78117827367612, -1.170835369910388,
+          48.39479586736775
+        ],
+        "epsg": "EPSG:4326"
+      },
+      "activeOnStartup": false,
+      "zIndex": 1
+    },
+    {
+      "name": "metro",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/wfs?&outputFormat=application/json&srsName=EPSG:4326&SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=trp_coll:metro_trace_axe&STARTINDEX=0&COUNT=1000000&SRSNAME=urn:ogc:def:crs:EPSG::4326&BBOX=48.00616775832305905,-1.76368099999999983,48.1778082416769422,-1.5842989999999999,urn:ogc:def:crs:EPSG::4326",
+      "type": "GeoJSONLayer",
+      "activeOnStartup": false,
+      "style": {
+        "name": "metroStyle",
+        "type": "DeclarativeStyleItem",
+        "declarativeStyle": {
+          "strokeWidth": "4",
+          "color": {
+            "conditions": [
+              ["${ligne} === 'a'", "color('#E31A1C')"],
+              ["${ligne} === 'b'", "color('#33A02C')"],
+              ["true", "color('#000000')"]
+            ]
+          }
+        }
+      },
+      "zIndex": 2
+    },
+    {
+      "name": "bus",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/wfs?&outputFormat=application/json&srsName=EPSG:4326&SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=trp_coll:v_star_lignes_actives&STARTINDEX=0&COUNT=1000000&SRSNAME=urn:ogc:def:crs:EPSG::4326&FILTER=%3Cfes:Filter%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%20xmlns:gml%3D%22http://www.opengis.net/gml/3.2%22%3E%0A%20%3Cfes:And%3E%0A%20%20%3Cfes:BBOX%3E%0A%20%20%20%3Cfes:ValueReference%3Etrp_coll:geom%3C/fes:ValueReference%3E%0A%20%20%20%3Cgml:Envelope%20srsName%3D%22urn:ogc:def:crs:EPSG::4326%22%3E%0A%20%20%20%20%3Cgml:lowerCorner%3E48.00619999999999976%20-1.76367999999999991%3C/gml:lowerCorner%3E%0A%20%20%20%20%3Cgml:upperCorner%3E48.17779999999999774%20-1.58430000000000004%3C/gml:upperCorner%3E%0A%20%20%20%3C/gml:Envelope%3E%0A%20%20%3C/fes:BBOX%3E%0A%20%20%3Cfes:Or%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%20%3Cfes:ValueReference%3Etrp_coll:li_num%3C/fes:ValueReference%3E%0A%20%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3EC1%3C/fes:Literal%3E%0A%20%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%20%3Cfes:ValueReference%3Etrp_coll:li_num%3C/fes:ValueReference%3E%0A%20%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3EC2%3C/fes:Literal%3E%0A%20%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%20%3Cfes:ValueReference%3Etrp_coll:li_num%3C/fes:ValueReference%3E%0A%20%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3EC3%3C/fes:Literal%3E%0A%20%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%20%3Cfes:ValueReference%3Etrp_coll:li_num%3C/fes:ValueReference%3E%0A%20%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3EC4%3C/fes:Literal%3E%0A%20%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%20%3Cfes:ValueReference%3Etrp_coll:li_num%3C/fes:ValueReference%3E%0A%20%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3EC5%3C/fes:Literal%3E%0A%20%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%20%3Cfes:ValueReference%3Etrp_coll:li_num%3C/fes:ValueReference%3E%0A%20%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3EC6%3C/fes:Literal%3E%0A%20%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%20%3Cfes:ValueReference%3Etrp_coll:li_num%3C/fes:ValueReference%3E%0A%20%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3EC7%3C/fes:Literal%3E%0A%20%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%20%3C/fes:Or%3E%0A%20%3C/fes:And%3E%0A%3C/fes:Filter%3E%0A",
+      "type": "GeoJSONLayer",
+      "activeOnStartup": false,
+      "style": {
+        "name": "busStyle",
+        "type": "DeclarativeStyleItem",
+        "declarativeStyle": {
+          "strokeWidth": "2",
+          "color": {
+            "conditions": [
+              ["${li_num} === 'C1'", "color('#b0d363')"],
+              ["${li_num} === 'C2'", "color('#e79575')"],
+              ["${li_num} === 'C3'", "color('#e79575')"],
+              ["${li_num} === 'C4'", "color('#cc25a0')"],
+              ["${li_num} === 'C5'", "color('#9b8eed')"],
+              ["${li_num} === 'C6'", "color('#84cc16')"],
+              ["${li_num} === 'C7'", "color('#d946ef')"],
+              ["true", "color('#000000')"]
+            ]
+          }
+        }
+      },
+      "zIndex": 2
+    },
+    {
+      "name": "bike",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/wfs?&outputFormat=application/json&srsName=EPSG:4326&SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=trp_org:sd_velo_iti_2018&STARTINDEX=0&COUNT=1000000&SRSNAME=urn:ogc:def:crs:EPSG::4326&FILTER=%3Cfes:Filter%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%20xmlns:gml%3D%22http://www.opengis.net/gml/3.2%22%3E%0A%20%3Cfes:And%3E%0A%20%20%3Cfes:BBOX%3E%0A%20%20%20%3Cfes:ValueReference%3Etrp_org:shape%3C/fes:ValueReference%3E%0A%20%20%20%3Cgml:Envelope%20srsName%3D%22urn:ogc:def:crs:EPSG::4326%22%3E%0A%20%20%20%20%3Cgml:lowerCorner%3E48.00619999999999976%20-1.76367999999999991%3C/gml:lowerCorner%3E%0A%20%20%20%20%3Cgml:upperCorner%3E48.17779999999999774%20-1.58430000000000004%3C/gml:upperCorner%3E%0A%20%20%20%3C/gml:Envelope%3E%0A%20%20%3C/fes:BBOX%3E%0A%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%3Cfes:ValueReference%3Etrp_org:type%3C/fes:ValueReference%3E%0A%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3ELiaison%20principale%3C/fes:Literal%3E%0A%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%3C/fes:And%3E%0A%3C/fes:Filter%3E%0A",
+      "type": "GeoJSONLayer",
+      "activeOnStartup": false,
+      "style": {
+        "name": "bikeStyle",
+        "type": "VectorStyleItem",
+        "stroke": {
+          "color": "#06b6d4",
+          "width": 2
+        }
+      },
+      "zIndex": 2
+    },
+    {
+      "name": "trambusLines",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=trp_coll:trambus_lignes&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code='T3' OR li_code='T4')",
+      "type": "GeoJSONLayer",
+      "style": {
+        "name": "trambusLineStyle",
+        "type": "DeclarativeStyleItem",
+        "declarativeStyle": {
+          "strokeWidth": "3",
+          "color": {
+            "conditions": [
+              ["${li_code} === 'T1'", "color('#4338ca')"],
+              ["${li_code} === 'T2'", "color('#db2777')"],
+              ["${li_code} === 'T3'", "color('#057857')"],
+              ["${li_code} === 'T4'", "color('#9333ea')"],
+              ["true", "color(${couleur})"]
+            ]
+          }
+        }
+      },
+      "activeOnStartup": true,
+      "zIndex": 2
+    },
+    {
+      "name": "trambusStops",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_arrets&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code%20LIKE%20'%25T3%25'%20OR%20li_code%20LIKE%20'%25T4%25')",
+      "type": "GeoJSONLayer",
+      "style": {
+        "name": "trambusStopStyle",
+        "type": "VectorStyleItem",
+        "image": {
+          "radius": 3,
+          "fill": {
+            "color": "#fff"
+          },
+          "stroke": {
+            "color": "#000",
+            "width": "1.5"
+          }
+        }
+      },
+      "vectorProperties": {
+        "primitiveOptions": {
+          "type": "cylinder",
+          "geometryOptions": {
+            "length": 1.0,
+            "topRadius": 5.0,
+            "bottomRadius": 5.0,
+            "outline": false,
+            "material": "Cesium.Color.GREEN"
+          },
+          "offset": [0, 0, 0.1]
+        },
+        "modelAutoScale": true
+      },
+      "activeOnStartup": false,
+      "zIndex": 5
+    },
+    {
+      "name": "_trambusStopsOutline",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_arrets&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code%20LIKE%20'%25T3%25'%20OR%20li_code%20LIKE%20'%25T4%25')",
+      "type": "GeoJSONLayer",
+      "style": {
+        "name": "trambusStopOutlineStyle",
+        "type": "VectorStyleItem",
+        "image": {
+          "radius": 3,
+          "fill": {
+            "color": "#fff"
+          },
+          "stroke": {
+            "color": "#000",
+            "width": "1.5"
+          }
+        }
+      },
+      "vectorProperties": {
+        "primitiveOptions": {
+          "type": "cylinder",
+          "geometryOptions": {
+            "length": 0.99,
+            "topRadius": 6.5,
+            "bottomRadius": 6.5,
+            "outline": false,
+            "material": "Cesium.Color.WHITE"
+          },
+          "offset": [0, 0, 0.1]
+        },
+        "modelAutoScale": true
+      },
+      "activeOnStartup": false,
+      "zIndex": 5
+    },
+    {
+      "name": "parking",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=trp_coll:trambus_parc_relais&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code='T3' OR li_code='T4')",
+      "type": "GeoJSONLayer",
+      "activeOnStartup": true,
+      "zIndex": 4,
+      "vectorProperties": {
+        "eyeOffset": [0, 0, -100]
+      }
+    },
+    {
+      "name": "appTrambusLines",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_lignes&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code='T3' OR li_code='T4')",
+      "type": "GeoJSONLayer",
+      "activeOnStartup": true,
+      "style": {
+        "name": "appTrambusLines",
+        "type": "VectorStyleItem"
+      },
+      "zIndex": -1
+    },
+    {
+      "name": "trambusTempsParcours",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_temps_parcours&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code='T3' OR li_code='T4')",
+      "type": "GeoJSONLayer",
+      "activeOnStartup": true,
+      "style": {
+        "name": "trambusTempsParcours",
+        "type": "VectorStyleItem"
+      },
+      "zIndex": -1
+    },
+    {
+      "name": "poi",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=trp_coll:trambus_station_to_site&outputFormat=application/json&srsName=EPSG:4326",
+      "type": "GeoJSONLayer",
+      "activeOnStartup": true,
+      "hiddenObjectIds": [],
+      "zIndex": 4,
+      "vectorProperties": {
+        "altitudeMode": "relativeToGround",
+        "heightAboveGround": 5,
+        "eyeOffset": [0, 0, -100]
+      }
+    },
+    {
+      "name": "customLayerLabelLine",
+      "type": "GeoJSONLayer",
+      "activeOnStartup": true,
+      "zIndex": 4
+    }
+  ],
+  "viewpoints": [
+    {
+      "name": "rennes",
+      "groundPosition": [-1.7219, 48.09],
+      "distance": 37039,
+      "pitch": -90,
+      "roll": 0,
+      "heading": 0,
+      "animate": true,
+      "type": "Viewpoint",
+      "duration": 0.5,
+      "properties": {
+        "title": {
+          "en": "Rennes",
+          "fr": "Rennes"
+        }
+      }
+    },
+    {
+      "name": "line1",
+      "groundPosition": [-1.6802953819335829, 48.121836135404635],
+      "distance": 9652,
+      "pitch": -90,
+      "roll": 0,
+      "heading": 0,
+      "animate": true,
+      "type": "Viewpoint",
+      "duration": 0.5,
+      "properties": {
+        "title": {
+          "en": "Line 1",
+          "fr": "Ligne 1"
+        }
+      }
+    },
+    {
+      "name": "line2",
+      "groundPosition": [-1.6924589110760557, 48.10213546508655],
+      "distance": 22952,
+      "pitch": -90,
+      "roll": 0,
+      "heading": 0,
+      "animate": true,
+      "type": "Viewpoint",
+      "duration": 0.5,
+      "properties": {
+        "title": {
+          "en": "Line 2",
+          "fr": "Ligne 2"
+        }
+      }
+    },
+    {
+      "name": "line3",
+      "groundPosition": [-1.665713596771401, 48.114309878105075],
+      "distance": 18807,
+      "pitch": -90,
+      "roll": 0,
+      "heading": 0,
+      "animate": true,
+      "type": "Viewpoint",
+      "duration": 0.5,
+      "properties": {
+        "title": {
+          "en": "Line 3",
+          "fr": "Ligne 3"
+        }
+      }
+    },
+    {
+      "name": "line4",
+      "groundPosition": [-1.7405572281528614, 48.05385678187881],
+      "distance": 16021,
+      "pitch": -90,
+      "roll": 0,
+      "heading": 0,
+      "animate": true,
+      "type": "Viewpoint",
+      "duration": 0.5,
+      "properties": {
+        "title": {
+          "en": "Line 4",
+          "fr": "Ligne 4"
+        }
+      }
+    }
+  ]
+}
