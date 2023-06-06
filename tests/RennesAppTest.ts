@@ -5,9 +5,11 @@ import trambusStops from '../tests/dataLayers/trambusStops.json'
 import parking from '../tests/dataLayers/parking.json'
 import poi from '../tests/dataLayers/poi.json'
 import trambusLines from '../tests/dataLayers/trambusLines.json'
+import appTrambusLines from '../tests/dataLayers/appTrambusLines.json'
+import trambusTempsParcours from '../tests/dataLayers/trambusTempsParcours.json'
 import { RENNES_LAYER } from '@/stores/layers'
 import { Feature } from 'ol'
-import { Point } from 'ol/geom'
+import { Point, MultiPoint } from 'ol/geom'
 import type { Geometry } from 'ol/geom'
 import type { RennesLayer } from '@/stores/layers'
 import { LineString, MultiLineString } from 'ol/geom'
@@ -68,12 +70,14 @@ export class RennesAppTest extends RennesApp {
   ) {
     if ([RENNES_LAYER.trambusStops, RENNES_LAYER.parking].includes(key)) {
       return new Point(coordinates as number[])
-    } else if ([RENNES_LAYER.poi].includes(key)) {
+    } else if ([RENNES_LAYER.poi, RENNES_LAYER.appTrambusLines].includes(key)) {
       return new LineString(coordinates as number[] | Coordinate[])
     } else if ([RENNES_LAYER.trambusLines].includes(key)) {
       return new MultiLineString(
         coordinates as number[] | (LineString | Coordinate[])[]
       )
+    } else if ([RENNES_LAYER.trambusTempsParcours].includes(key)) {
+      return new MultiPoint(coordinates as number[] | Coordinate[])
     }
   }
 
@@ -87,6 +91,10 @@ export class RennesAppTest extends RennesApp {
         return poi
       case RENNES_LAYER.trambusLines:
         return trambusLines
+      case RENNES_LAYER.appTrambusLines:
+        return appTrambusLines
+      case RENNES_LAYER.trambusTempsParcours:
+        return trambusTempsParcours
     }
     return []
   }
@@ -123,6 +131,8 @@ export class RennesAppTest extends RennesApp {
       RENNES_LAYER.parking,
       RENNES_LAYER.poi,
       RENNES_LAYER.trambusLines,
+      RENNES_LAYER.appTrambusLines,
+      RENNES_LAYER.trambusTempsParcours,
     ]
     layers.forEach((layer) => {
       this._addLayer(layer)
