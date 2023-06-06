@@ -16,7 +16,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 27,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.628447, 48.122828, -1.628447, 48.122828]
   },
@@ -37,7 +41,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 8,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.700179, 48.126151, -1.700179, 48.126151]
   },
@@ -58,7 +66,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": 27,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.60667, 48.123524, -1.60667, 48.123524]
   },
@@ -79,7 +91,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 6,
+      "ordre_t4": null
     },
     "bbox": [-1.687646, 48.157967, -1.687646, 48.157967]
   },
@@ -100,7 +116,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 2,
+      "ordre_t4": null
     },
     "bbox": [-1.668288, 48.157128, -1.668288, 48.157128]
   },
@@ -121,7 +141,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 38,
+      "ordre_t4": null
     },
     "bbox": [-1.604079, 48.08399, -1.604079, 48.08399]
   },
@@ -142,7 +166,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 39,
+      "ordre_t4": null
     },
     "bbox": [-1.602935, 48.081266, -1.602935, 48.081266]
   },
@@ -163,7 +191,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 32,
+      "ordre_t4": null
     },
     "bbox": [-1.631441, 48.093109, -1.631441, 48.093109]
   },
@@ -184,7 +216,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 20
     },
     "bbox": [-1.750788, 48.02484, -1.750788, 48.02484]
   },
@@ -205,7 +241,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 15
     },
     "bbox": [-1.753002, 48.042546, -1.753002, 48.042546]
   },
@@ -226,7 +266,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 5
     },
     "bbox": [-1.71423, 48.074873, -1.71423, 48.074873]
   },
@@ -247,7 +291,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 6
     },
     "bbox": [-1.713935, 48.067882, -1.713935, 48.067882]
   },
@@ -268,7 +316,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 9
     },
     "bbox": [-1.729808, 48.059022, -1.729808, 48.059022]
   },
@@ -289,7 +341,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 10
     },
     "bbox": [-1.73109, 48.055457, -1.73109, 48.055457]
   },
@@ -310,7 +366,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 11
     },
     "bbox": [-1.735436, 48.052495, -1.735436, 48.052495]
   },
@@ -331,7 +391,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 19
     },
     "bbox": [-1.755342, 48.026353, -1.755342, 48.026353]
   },
@@ -352,7 +416,11 @@
       "desserte": null,
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 33,
+      "ordre_t4": null
     },
     "bbox": [-1.625436, 48.090775, -1.625436, 48.090775]
   },
@@ -373,7 +441,11 @@
       "desserte": "12 67 C1 C3 C4 C6 N4 N5 Relais_b TTZ",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 17,
+      "ordre_t2": 12,
+      "ordre_t3": 23,
+      "ordre_t4": null
     },
     "bbox": [-1.674535, 48.109859, -1.674535, 48.109859]
   },
@@ -394,7 +466,11 @@
       "desserte": "C4 C6 N4",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 18,
+      "ordre_t2": 13,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.669614, 48.110053, -1.669614, 48.110053]
   },
@@ -415,7 +491,11 @@
       "desserte": "C2",
       "desserte_scolaire": "204",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 7,
+      "ordre_t4": null
     },
     "bbox": [-1.686699, 48.15455, -1.686699, 48.15455]
   },
@@ -436,7 +516,11 @@
       "desserte": "53 C4 N1",
       "desserte_scolaire": null,
       "desserte_soirs_we": "53",
-      "desserte_dimanche": "53"
+      "desserte_dimanche": "53",
+      "ordre_t1": 12,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.699637, 48.110488, -1.699637, 48.110488]
   },
@@ -457,7 +541,11 @@
       "desserte": "C2",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 19,
+      "ordre_t4": null
     },
     "bbox": [-1.689512, 48.111694, -1.689512, 48.111694]
   },
@@ -478,7 +566,11 @@
       "desserte": "178 C2",
       "desserte_scolaire": "204",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 9,
+      "ordre_t4": null
     },
     "bbox": [-1.686133, 48.147192, -1.686133, 48.147192]
   },
@@ -499,7 +591,11 @@
       "desserte": "C7 N3",
       "desserte_scolaire": "245",
       "desserte_soirs_we": "C7",
-      "desserte_dimanche": "C7"
+      "desserte_dimanche": "C7",
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 4
     },
     "bbox": [-1.712581, 48.077735, -1.712581, 48.077735]
   },
@@ -520,7 +616,11 @@
       "desserte": "178 78 C2",
       "desserte_scolaire": "204",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 10,
+      "ordre_t4": null
     },
     "bbox": [-1.686537, 48.143033, -1.686537, 48.143033]
   },
@@ -541,7 +641,11 @@
       "desserte": "C4",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 29,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.630741, 48.129752, -1.630741, 48.129752]
   },
@@ -562,7 +666,11 @@
       "desserte": "167 67 C6",
       "desserte_scolaire": null,
       "desserte_soirs_we": "11",
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": 31,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.600443, 48.114371, -1.600443, 48.114371]
   },
@@ -583,7 +691,11 @@
       "desserte": "11 C1 C2 TTZ",
       "desserte_scolaire": "Ts22",
       "desserte_soirs_we": "11",
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 27,
+      "ordre_t4": null
     },
     "bbox": [-1.661248, 48.102709, -1.661248, 48.102709]
   },
@@ -604,7 +716,11 @@
       "desserte": "11 54 55 56",
       "desserte_scolaire": null,
       "desserte_soirs_we": "54",
-      "desserte_dimanche": "54 55"
+      "desserte_dimanche": "54 55",
+      "ordre_t1": null,
+      "ordre_t2": 2,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.729611, 48.106779, -1.729611, 48.106779]
   },
@@ -625,7 +741,11 @@
       "desserte": "153 154 155 53 54 55 56",
       "desserte_scolaire": null,
       "desserte_soirs_we": "53 54",
-      "desserte_dimanche": "53 54 55"
+      "desserte_dimanche": "53 54 55",
+      "ordre_t1": 15,
+      "ordre_t2": 10,
+      "ordre_t3": 21,
+      "ordre_t4": null
     },
     "bbox": [-1.685254, 48.109959, -1.685254, 48.109959]
   },
@@ -646,7 +766,11 @@
       "desserte": "C1",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 30,
+      "ordre_t4": null
     },
     "bbox": [-1.64205, 48.097341, -1.64205, 48.097341]
   },
@@ -667,7 +791,11 @@
       "desserte": "10 Bzh7 C2",
       "desserte_scolaire": "208",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 16,
+      "ordre_t4": null
     },
     "bbox": [-1.689159, 48.118414, -1.689159, 48.118414]
   },
@@ -688,7 +816,11 @@
       "desserte": "34 C1",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 37,
+      "ordre_t4": null
     },
     "bbox": [-1.604031, 48.085464, -1.604031, 48.085464]
   },
@@ -709,7 +841,11 @@
       "desserte": "14 167 67 C6",
       "desserte_scolaire": "206 214",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": 22,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.621894, 48.114165, -1.621894, 48.114165]
   },
@@ -730,7 +866,11 @@
       "desserte": "C7 C7ex N3",
       "desserte_scolaire": "219",
       "desserte_soirs_we": "C7",
-      "desserte_dimanche": "C7"
+      "desserte_dimanche": "C7",
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 14
     },
     "bbox": [-1.74641, 48.044578, -1.74641, 48.044578]
   },
@@ -751,7 +891,11 @@
       "desserte": "159 59 90",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 17
     },
     "bbox": [-1.752705, 48.029045, -1.752705, 48.029045]
   },
@@ -772,7 +916,11 @@
       "desserte": "13 C6",
       "desserte_scolaire": "219 245",
       "desserte_soirs_we": null,
-      "desserte_dimanche": "C7"
+      "desserte_dimanche": "C7",
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 7
     },
     "bbox": [-1.721782, 48.067368, -1.721782, 48.067368]
   },
@@ -793,7 +941,11 @@
       "desserte": "14 152 165 168 178 52 65 68 76 77 78 81 82 C4 N1 Relais_a a",
       "desserte_scolaire": "205",
       "desserte_soirs_we": "52 77 81",
-      "desserte_dimanche": "52 65 77 81 82"
+      "desserte_dimanche": "52 65 77 81 82",
+      "ordre_t1": 9,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.703077, 48.121378, -1.703077, 48.121378]
   },
@@ -814,7 +966,11 @@
       "desserte": "C4 C6 N4 TTZ",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 22,
+      "ordre_t2": 17,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.648688, 48.111078, -1.648688, 48.111078]
   },
@@ -835,7 +991,11 @@
       "desserte": "C2",
       "desserte_scolaire": "204",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 1,
+      "ordre_t4": null
     },
     "bbox": [-1.671435, 48.155286, -1.671435, 48.155286]
   },
@@ -856,7 +1016,11 @@
       "desserte": "12 C4",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 4,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.695792, 48.133004, -1.695792, 48.133004]
   },
@@ -877,7 +1041,11 @@
       "desserte": "12 14 178 78 C4",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 3,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.692955, 48.135793, -1.692955, 48.135793]
   },
@@ -898,7 +1066,11 @@
       "desserte": "11 C4 N1",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 14,
+      "ordre_t2": 9,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.690051, 48.109223, -1.690051, 48.109223]
   },
@@ -919,7 +1091,11 @@
       "desserte": "10",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 13,
+      "ordre_t2": 8,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.692361, 48.108674, -1.692361, 48.108674]
   },
@@ -940,7 +1116,11 @@
       "desserte": "11 C1 C2",
       "desserte_scolaire": "214",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 31,
+      "ordre_t4": null
     },
     "bbox": [-1.638049, 48.095361, -1.638049, 48.095361]
   },
@@ -961,7 +1141,11 @@
       "desserte": "34 C6",
       "desserte_scolaire": "206 214 216",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": 28,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.600618, 48.123126, -1.600618, 48.123126]
   },
@@ -982,7 +1166,11 @@
       "desserte": "C4 N1",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 10,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.704676, 48.118041, -1.704676, 48.118041]
   },
@@ -1003,7 +1191,11 @@
       "desserte": "11 12 C2",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 24,
+      "ordre_t4": null
     },
     "bbox": [-1.673544, 48.107874, -1.673544, 48.107874]
   },
@@ -1024,7 +1216,11 @@
       "desserte": "32 C1",
       "desserte_scolaire": "Ts22",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 29,
+      "ordre_t4": null
     },
     "bbox": [-1.649431, 48.100224, -1.649431, 48.100224]
   },
@@ -1045,7 +1241,11 @@
       "desserte": "11 54 55 56",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": "54 55"
+      "desserte_dimanche": "54 55",
+      "ordre_t1": null,
+      "ordre_t2": 3,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.722378, 48.107137, -1.722378, 48.107137]
   },
@@ -1066,7 +1266,11 @@
       "desserte": "32 C4 C6 N4 TTZ",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 21,
+      "ordre_t2": 16,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.655922, 48.110129, -1.655922, 48.110129]
   },
@@ -1087,7 +1291,11 @@
       "desserte": "11 14 54 55 56 TTZ",
       "desserte_scolaire": null,
       "desserte_soirs_we": "54",
-      "desserte_dimanche": "54 55"
+      "desserte_dimanche": "54 55",
+      "ordre_t1": null,
+      "ordre_t2": 5,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.710195, 48.108958, -1.710195, 48.108958]
   },
@@ -1108,7 +1316,11 @@
       "desserte": "34 C1",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 35,
+      "ordre_t4": null
     },
     "bbox": [-1.614645, 48.085863, -1.614645, 48.085863]
   },
@@ -1129,7 +1341,11 @@
       "desserte": "12 C2",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 14,
+      "ordre_t4": null
     },
     "bbox": [-1.681747, 48.124473, -1.681747, 48.124473]
   },
@@ -1150,7 +1366,11 @@
       "desserte": "11 12 63 Bzh7 Bzh9a Bzh9b C1 C2 Relais_a Relais_b a b",
       "desserte_scolaire": "208",
       "desserte_soirs_we": "11",
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 25,
+      "ordre_t4": null
     },
     "bbox": [-1.671951, 48.104097, -1.671951, 48.104097]
   },
@@ -1171,7 +1391,11 @@
       "desserte": "164 C4 N4 Relais_b b",
       "desserte_scolaire": "200",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 28,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.628811, 48.127025, -1.628811, 48.127025]
   },
@@ -1192,7 +1416,11 @@
       "desserte": "C6",
       "desserte_scolaire": "221",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": 29,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.599409, 48.120379, -1.599409, 48.120379]
   },
@@ -1213,7 +1441,11 @@
       "desserte": "11 54 55 56",
       "desserte_scolaire": null,
       "desserte_soirs_we": "54",
-      "desserte_dimanche": "54 55"
+      "desserte_dimanche": "54 55",
+      "ordre_t1": null,
+      "ordre_t2": 1,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.739882, 48.104555, -1.739882, 48.104555]
   },
@@ -1234,7 +1466,11 @@
       "desserte": "12 14 C2",
       "desserte_scolaire": "204 228",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 12,
+      "ordre_t4": null
     },
     "bbox": [-1.685167, 48.133258, -1.685167, 48.133258]
   },
@@ -1255,7 +1491,11 @@
       "desserte": "12 14 178 78",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 2,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.690467, 48.136998, -1.690467, 48.136998]
   },
@@ -1276,7 +1516,11 @@
       "desserte": "14 C6",
       "desserte_scolaire": "206 214",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": 24,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.609797, 48.114582, -1.609797, 48.114582]
   },
@@ -1297,7 +1541,11 @@
       "desserte": "11",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": 6,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.702932, 48.107982, -1.702932, 48.107982]
   },
@@ -1318,7 +1566,11 @@
       "desserte": "C2",
       "desserte_scolaire": "204",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 3,
+      "ordre_t4": null
     },
     "bbox": [-1.671556, 48.159122, -1.671556, 48.159122]
   },
@@ -1339,7 +1591,11 @@
       "desserte": "C7 C7ex",
       "desserte_scolaire": "219 245",
       "desserte_soirs_we": "C7",
-      "desserte_dimanche": "C7"
+      "desserte_dimanche": "C7",
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 16
     },
     "bbox": [-1.757366, 48.035122, -1.757366, 48.035122]
   },
@@ -1360,7 +1616,11 @@
       "desserte": "34 83 C4",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 30,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.636047, 48.132545, -1.636047, 48.132545]
   },
@@ -1381,7 +1641,11 @@
       "desserte": "34 C6",
       "desserte_scolaire": "214 220 Ts61",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": 30,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.600555, 48.116007, -1.600555, 48.116007]
   },
@@ -1402,7 +1666,11 @@
       "desserte": "13 34 C1",
       "desserte_scolaire": "Ts22",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 34,
+      "ordre_t4": null
     },
     "bbox": [-1.619146, 48.088416, -1.619146, 48.088416]
   },
@@ -1423,7 +1691,11 @@
       "desserte": "10 14 C4 N4",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 26,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.63495, 48.118705, -1.63495, 48.118705]
   },
@@ -1444,7 +1716,11 @@
       "desserte": "14 C6",
       "desserte_scolaire": "206 214",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": 23,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.615034, 48.114211, -1.615034, 48.114211]
   },
@@ -1465,7 +1741,11 @@
       "desserte": "12 14 C2",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 13,
+      "ordre_t4": null
     },
     "bbox": [-1.683445, 48.127854, -1.683445, 48.127854]
   },
@@ -1486,7 +1766,11 @@
       "desserte": "67 C6",
       "desserte_scolaire": null,
       "desserte_soirs_we": "11",
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": 32,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.59028, 48.113445, -1.59028, 48.113445]
   },
@@ -1507,7 +1791,11 @@
       "desserte": "C2",
       "desserte_scolaire": "204 223",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 4,
+      "ordre_t4": null
     },
     "bbox": [-1.676477, 48.159052, -1.676477, 48.159052]
   },
@@ -1528,7 +1816,11 @@
       "desserte": "100 11 153 154 155 156 167 53 54 55 56 67 API Bzh7 C1 C2 C3 C4 C5 C6 N1 N2 N3 N4 N5 Relais_a a",
       "desserte_scolaire": null,
       "desserte_soirs_we": "11 50 51 53 54 61 62 64 72 77 C7",
-      "desserte_dimanche": "53 54 55 67"
+      "desserte_dimanche": "53 54 55 67",
+      "ordre_t1": 16,
+      "ordre_t2": 11,
+      "ordre_t3": 22,
+      "ordre_t4": null
     },
     "bbox": [-1.678576, 48.109853, -1.678576, 48.109853]
   },
@@ -1549,7 +1841,11 @@
       "desserte": "159 59 90 C7 C7ex",
       "desserte_scolaire": "245",
       "desserte_soirs_we": "C7",
-      "desserte_dimanche": "C7"
+      "desserte_dimanche": "C7",
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 21
     },
     "bbox": [-1.74508, 48.024986, -1.74508, 48.024986]
   },
@@ -1570,7 +1866,11 @@
       "desserte": "14 178 52 68 78 C4",
       "desserte_scolaire": null,
       "desserte_soirs_we": "52",
-      "desserte_dimanche": "52"
+      "desserte_dimanche": "52",
+      "ordre_t1": 5,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.691778, 48.131477, -1.691778, 48.131477]
   },
@@ -1591,7 +1891,11 @@
       "desserte": "C2 Relais_a",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 20,
+      "ordre_t4": null
     },
     "bbox": [-1.686607, 48.111703, -1.686607, 48.111703]
   },
@@ -1612,7 +1916,11 @@
       "desserte": "C2",
       "desserte_scolaire": "204",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 5,
+      "ordre_t4": null
     },
     "bbox": [-1.681069, 48.159108, -1.681069, 48.159108]
   },
@@ -1633,7 +1941,11 @@
       "desserte": "12 14 178 78 C2",
       "desserte_scolaire": "204",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 1,
+      "ordre_t2": null,
+      "ordre_t3": 11,
+      "ordre_t4": null
     },
     "bbox": [-1.686082, 48.137742, -1.686082, 48.137742]
   },
@@ -1654,7 +1966,11 @@
       "desserte": "34 C6",
       "desserte_scolaire": "206 216",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": 26,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.611062, 48.12312, -1.611062, 48.12312]
   },
@@ -1675,7 +1991,11 @@
       "desserte": "11 53 54 55 56 C4 N1",
       "desserte_scolaire": null,
       "desserte_soirs_we": "54",
-      "desserte_dimanche": "53 54 55"
+      "desserte_dimanche": "53 54 55",
+      "ordre_t1": null,
+      "ordre_t2": 7,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.698366, 48.108893, -1.698366, 48.108893]
   },
@@ -1696,7 +2016,11 @@
       "desserte": "C6",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": 25,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.608413, 48.11842, -1.608413, 48.11842]
   },
@@ -1717,7 +2041,11 @@
       "desserte": "13",
       "desserte_scolaire": "219 245",
       "desserte_soirs_we": null,
-      "desserte_dimanche": "C7"
+      "desserte_dimanche": "C7",
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 8
     },
     "bbox": [-1.724561, 48.065033, -1.724561, 48.065033]
   },
@@ -1738,7 +2066,11 @@
       "desserte": "14 67 C6",
       "desserte_scolaire": "206 214",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": 21,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.629188, 48.114079, -1.629188, 48.114079]
   },
@@ -1759,7 +2091,11 @@
       "desserte": "10 C2",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 18,
+      "ordre_t4": null
     },
     "bbox": [-1.693428, 48.112809, -1.693428, 48.112809]
   },
@@ -1780,7 +2116,11 @@
       "desserte": "13 C6 C7 N3",
       "desserte_scolaire": "209",
       "desserte_soirs_we": "C7",
-      "desserte_dimanche": "C7"
+      "desserte_dimanche": "C7",
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 2
     },
     "bbox": [-1.707284, 48.087083, -1.707284, 48.087083]
   },
@@ -1801,7 +2141,11 @@
       "desserte": "C4 C6 N4",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 24,
+      "ordre_t2": 19,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.641117, 48.1134, -1.641117, 48.1134]
   },
@@ -1822,7 +2166,11 @@
       "desserte": "67 C4 C6 N4 TTZ",
       "desserte_scolaire": "210",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 20,
+      "ordre_t2": 15,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.659853, 48.110098, -1.659853, 48.110098]
   },
@@ -1843,7 +2191,11 @@
       "desserte": "34 C1",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 36,
+      "ordre_t4": null
     },
     "bbox": [-1.609976, 48.084981, -1.609976, 48.084981]
   },
@@ -1864,7 +2216,11 @@
       "desserte": "C7 C7ex N3",
       "desserte_scolaire": "219",
       "desserte_soirs_we": "C7",
-      "desserte_dimanche": "C7"
+      "desserte_dimanche": "C7",
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 13
     },
     "bbox": [-1.742029, 48.047338, -1.742029, 48.047338]
   },
@@ -1885,7 +2241,11 @@
       "desserte": "C4 C6 N4 TTZ",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 19,
+      "ordre_t2": 14,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.663772, 48.110081, -1.663772, 48.110081]
   },
@@ -1906,7 +2266,11 @@
       "desserte": "C7 C7ex N3",
       "desserte_scolaire": "219",
       "desserte_soirs_we": "C7",
-      "desserte_dimanche": "C7"
+      "desserte_dimanche": "C7",
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 12
     },
     "bbox": [-1.740591, 48.0494, -1.740591, 48.0494]
   },
@@ -1927,7 +2291,11 @@
       "desserte": "11 C1 C2",
       "desserte_scolaire": null,
       "desserte_soirs_we": "11",
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 26,
+      "ordre_t4": null
     },
     "bbox": [-1.666933, 48.104717, -1.666933, 48.104717]
   },
@@ -1948,7 +2316,11 @@
       "desserte": "C7 N3",
       "desserte_scolaire": "245",
       "desserte_soirs_we": "C7",
-      "desserte_dimanche": "C7"
+      "desserte_dimanche": "C7",
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 3
     },
     "bbox": [-1.712439, 48.080562, -1.712439, 48.080562]
   },
@@ -1969,7 +2341,11 @@
       "desserte": "11 14 TTZ",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": 4,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.714431, 48.107898, -1.714431, 48.107898]
   },
@@ -1990,7 +2366,11 @@
       "desserte": "C4 C6 N4",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 23,
+      "ordre_t2": 18,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.643574, 48.112334, -1.643574, 48.112334]
   },
@@ -2011,7 +2391,11 @@
       "desserte": "C2",
       "desserte_scolaire": "204",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 8,
+      "ordre_t4": null
     },
     "bbox": [-1.685898, 48.151462, -1.685898, 48.151462]
   },
@@ -2032,7 +2416,11 @@
       "desserte": "167 67 C4 C6 N4",
       "desserte_scolaire": "206 210",
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 25,
+      "ordre_t2": 20,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.63671, 48.114106, -1.63671, 48.114106]
   },
@@ -2053,7 +2441,11 @@
       "desserte": "91 C7 C7ex",
       "desserte_scolaire": "245",
       "desserte_soirs_we": "C7",
-      "desserte_dimanche": "C7"
+      "desserte_dimanche": "C7",
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 18
     },
     "bbox": [-1.756699, 48.029198, -1.756699, 48.029198]
   },
@@ -2074,7 +2466,11 @@
       "desserte": "10 C2",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 17,
+      "ordre_t4": null
     },
     "bbox": [-1.691016, 48.116312, -1.691016, 48.116312]
   },
@@ -2095,7 +2491,11 @@
       "desserte": "11 C1",
       "desserte_scolaire": null,
       "desserte_soirs_we": "11",
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 28,
+      "ordre_t4": null
     },
     "bbox": [-1.6558, 48.102083, -1.6558, 48.102083]
   },
@@ -2116,7 +2516,11 @@
       "desserte": "14 C4",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 6,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.693879, 48.128206, -1.693879, 48.128206]
   },
@@ -2137,7 +2541,11 @@
       "desserte": "C2",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": 15,
+      "ordre_t4": null
     },
     "bbox": [-1.686342, 48.121598, -1.686342, 48.121598]
   },
@@ -2158,7 +2566,11 @@
       "desserte": "14 C4",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 7,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.698316, 48.128634, -1.698316, 48.128634]
   },
@@ -2179,7 +2591,11 @@
       "desserte": "C4 N1 TTZ",
       "desserte_scolaire": null,
       "desserte_soirs_we": null,
-      "desserte_dimanche": null
+      "desserte_dimanche": null,
+      "ordre_t1": 11,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": null
     },
     "bbox": [-1.701691, 48.114949, -1.701691, 48.114949]
   },
@@ -2200,7 +2616,11 @@
       "desserte": "13 156 37 C6 C7 C7ex N3 Relais_b b",
       "desserte_scolaire": "245",
       "desserte_soirs_we": "C7",
-      "desserte_dimanche": "C7"
+      "desserte_dimanche": "C7",
+      "ordre_t1": null,
+      "ordre_t2": null,
+      "ordre_t3": null,
+      "ordre_t4": 1
     },
     "bbox": [-1.703001, 48.091918, -1.703001, 48.091918]
   }

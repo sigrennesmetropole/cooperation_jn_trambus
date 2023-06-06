@@ -6,8 +6,11 @@ import { useViewsStore } from '@/stores/views'
 import { useLayersStore } from '@/stores/layers'
 import { useStationsStore } from '@/stores/stations'
 import UiStationHeader from '@/components/ui/UiStationHeader.vue'
-import { apiClientService } from '@/services/api.client'
-import type { LineModel, SelectedTrambusLine } from '@/model/lines.model'
+import type {
+  LineModel,
+  SelectedTrambusLine,
+  LineNumber,
+} from '@/model/lines.model'
 import type { StationModel } from '@/model/stations.model'
 import { viewList } from '@/model/views.model'
 import ServicesStation from '@/components/station/ServicesStation.vue'
@@ -19,6 +22,9 @@ import type { RennesApp } from '@/services/RennesApp'
 import { poiStoreSubcribe } from '@/services/poi'
 import FooterAreaLink from '@/components/home/FooterAreaLink.vue'
 import { legalList } from '@/constants/legalLinks'
+import { fetchLineDescription } from '@/services/line'
+import { useLinesStore } from '@/stores/lines'
+import { fetchStationDescription } from '@/services/station'
 
 const openLink = (link: string) => {
   window.open(link, '_blank')
@@ -30,6 +36,7 @@ const layerStore = useLayersStore()
 const stationsStore = useStationsStore()
 const poiStore = usePoiParkingStore()
 const lineInteractionStore = useLineInteractionStore()
+const linesStore = useLinesStore()
 
 const { params } = useRoute()
 const routeParams = ref(params)
@@ -37,40 +44,39 @@ const stationId = ref(Number(routeParams.value.id))
 const lineNumber = ref(Number(routeParams.value.lineid) as SelectedTrambusLine)
 
 const state = reactive({
-  lineDescription: null as null | LineModel,
+  lineDescription: null as null | LineModel | undefined,
   stationDescription: null as null | StationModel,
 })
 const rennesApp = inject('rennesApp') as RennesApp
 
 onBeforeMount(async () => {
-  state.lineDescription = await apiClientService.fetchLineDescription(
+  state.lineDescription = await fetchLineDescription(
+    rennesApp,
     lineNumber.value as number
   )
   stationsStore.setLineOfStation(state.lineDescription!.id)
-  await apiClientService
-    .fetchStationDescription(stationId.value)
-    .then((station) => {
-      stationsStore.stationViewSetUpStationsToDisplay(
-        station.nom,
-        state.lineDescription!.id
-      )
-      let isFromStationToStation = false
-      //For some reason, when we go to station page from another station page, the poiStore.subscribe is not called
-      //So we need to call it manually
-      if (viewStore.currentView === viewList.station) {
-        isFromStationToStation = true
-      }
-      viewStore.setCurrentView(
-        viewList.station,
-        lineNumber.value,
-        stationsStore.currentStationView!
-      )
-      poiStore.activeStationProfile(station.nom)
-      state.stationDescription = station
-      if (isFromStationToStation) {
-        poiStoreSubcribe(rennesApp)
-      }
-    })
+  await fetchStationDescription(rennesApp, stationId.value).then((station) => {
+    stationsStore.stationViewSetUpStationsToDisplay(
+      station.nom,
+      state.lineDescription!.id
+    )
+    let isFromStationToStation = false
+    //For some reason, when we go to station page from another station page, the poiStore.subscribe is not called
+    //So we need to call it manually
+    if (viewStore.currentView === viewList.station) {
+      isFromStationToStation = true
+    }
+    viewStore.setCurrentView(
+      viewList.station,
+      lineNumber.value,
+      stationsStore.currentStationView!
+    )
+    poiStore.activeStationProfile(station.nom)
+    state.stationDescription = station
+    if (isFromStationToStation) {
+      poiStoreSubcribe(rennesApp)
+    }
+  })
 })
 
 onMounted(async () => {
@@ -85,6 +91,14 @@ onMounted(async () => {
     bike: false,
     _traveltimeArrow: false,
   })
+})
+
+linesStore.$subscribe(async () => {
+  if (linesStore.lineDesciptions.length > 0) {
+    stationsStore.addStationStartEndOfLinePermanently(
+      lineNumber.value as LineNumber
+    )
+  }
 })
 </script>
 

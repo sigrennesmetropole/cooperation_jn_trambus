@@ -1,18 +1,20 @@
 <script setup lang="ts">
-import { reactive, onMounted } from 'vue'
-
-import { apiClientService } from '@/services/api.client'
+import { reactive, onMounted, inject } from 'vue'
 import type { LineNumber } from '@/model/lines.model'
 import UiNetworkFigure from '../ui/UiNetworkFigure.vue'
 import UiVerticalSeparator from '../ui/UiVerticalSeparator.vue'
 import type { LineFigureModel } from '../../model/line-figures.model'
 import stationIcon from '@/assets/icons/station.svg'
+import { fetchLineFrequency } from '@/services/line'
+import type { RennesApp } from '@/services/RennesApp'
 
 const props = defineProps<{
   line: LineNumber
   nb_parking: number
   nb_station: number
 }>()
+
+const rennesApp = inject('rennesApp') as RennesApp
 
 const state = reactive({
   lineFigures: null as null | LineFigureModel[],
@@ -33,7 +35,7 @@ onMounted(async () => {
     figure: props.nb_parking,
     description: props.nb_parking > 1 ? 'Parkings relais' : 'Parking relais',
   })
-  const frequency = await apiClientService.fetchLineFrequency(props.line)
+  const frequency = await fetchLineFrequency(rennesApp, props.line)
   state.lineFigures.push({
     id: 'frequency',
     idLine: props.line,

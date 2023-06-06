@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import { reactive, onMounted } from 'vue'
-
-import { apiClientService } from '@/services/api.client'
+import { reactive, onMounted, inject } from 'vue'
 import UiTravelTime from '../ui/UiTravelTime.vue'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import UiOverflowContainer from '../ui/UiOverflowContainer.vue'
 import UiLinkPrimary from '../ui/UiLinkPrimary.vue'
 import { UiButtonWithTooltip } from '@sigrennesmetropole/cooperation_jn_common_ui'
+import { fetchTravelTime } from '@/services/travelTime'
+import type { RennesApp } from '@/services/RennesApp'
 
 const state = reactive({
   travelTimes: null as null | TravelTimeModel[],
 })
+const rennesApp = inject('rennesApp') as RennesApp
 
 onMounted(async () => {
-  state.travelTimes = await apiClientService.fetchTravelTime(3)
+  state.travelTimes = await fetchTravelTime(rennesApp, 3)
 })
 </script>
 

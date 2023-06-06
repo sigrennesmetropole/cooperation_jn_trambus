@@ -9,6 +9,7 @@ import {
 } from '@vcmap/core'
 import mapClickAndMoveInteraction from '@/interactions/clickAndMoveInteraction'
 import type { RennesLayer } from '@/stores/layers'
+import { useMap3dStore } from '@/stores/map'
 
 export class RennesApp extends VcsApp {
   readonly mapConfig
@@ -37,6 +38,9 @@ export class RennesApp extends VcsApp {
     this.maps.eventHandler.addPersistentInteraction(
       new mapClickAndMoveInteraction(this)
     )
+
+    const mapStore = useMap3dStore()
+    mapStore.isInitializeMap = true
   }
 
   async getLayerByKey(key: RennesLayer) {

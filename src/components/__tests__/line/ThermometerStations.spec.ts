@@ -7,14 +7,12 @@ import { RennesAppTest } from '../../../../tests/RennesAppTest'
 import { fetchStationsByLine, completeStationsData } from '@/services/station'
 import { fetchParkingsByStations } from '@/services/parking'
 import { useStationsStore } from '@/stores/stations'
-import { apiClientService } from '@/services/api.client'
 
 const app = new RennesAppTest()
 await app._initializeMapToThermometerTest()
 let stations = await fetchStationsByLine(app, 1)
 const parkings = await fetchParkingsByStations(app, stations)
-const stationOrder = await apiClientService.fetchStationsOrderByLine(1)
-stations = await completeStationsData(app, stations, 1, stationOrder, parkings)
+stations = await completeStationsData(stations, 1, parkings)
 
 describe('ThermometerStations', () => {
   const wrapper = mount(ThermometerStations, {
@@ -83,26 +81,6 @@ describe('ThermometerStations', () => {
       const li_code_split = itemRepublique?.props('li_code').split(' ')
       expect(li_code_split.includes('2')).toBe(true)
       expect(li_code_split.includes('3')).toBe(true)
-    })
-  })
-
-  describe('styles of items', () => {
-    it('style first item', () => {
-      const divCircle = wrapper.find('[id="divcircle-La Plesse"]')
-      const divCircleClasses = divCircle.classes()
-      expect(divCircleClasses.includes('min-w-[16px]')).toBe(true)
-    })
-
-    it('style second item', () => {
-      const divCircle = wrapper.find('[id="divcircle-Cerisaie"]')
-      const divCircleClasses = divCircle.classes()
-      expect(divCircleClasses.includes('min-w-[8px]')).toBe(true)
-    })
-
-    it('style last item', () => {
-      const divCircle = wrapper.find('[id="divcircle-ZA Saint-Sulpice"]')
-      const divCircleClasses = divCircle.classes()
-      expect(divCircleClasses.includes('min-w-[16px]')).toBe(true)
     })
   })
 

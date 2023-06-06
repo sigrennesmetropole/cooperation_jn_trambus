@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { reactive, onMounted } from 'vue'
+import { reactive, onMounted, inject } from 'vue'
 
 import { useViewsStore } from '@/stores/views'
 import { useLayersStore } from '@/stores/layers'
 import { useStationsStore } from '@/stores/stations'
-import { apiClientService } from '@/services/api.client'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import BackButton from '@/components/home/BackButton.vue'
 import UiTravelTime from '@/components/ui/UiTravelTime.vue'
@@ -14,15 +13,19 @@ import {
   useTraveltimeInteractionStore,
   useLineInteractionStore,
 } from '@/stores/interactionMap'
+import { fetchTravelTime } from '@/services/travelTime'
+import type { RennesApp } from '@/services/RennesApp'
+import { useLinesStore } from '@/stores/lines'
 
 const viewStore = useViewsStore()
 const layerStore = useLayersStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
 const map3dStore = useMap3dStore()
 const mapViewPointStore = useMapViewPointStore()
-
 const stationsStore = useStationsStore()
 const lineInteractionStore = useLineInteractionStore()
+const rennesApp = inject('rennesApp') as RennesApp
+const linesStore = useLinesStore()
 
 const state = reactive({
   travelTimes: null as null | TravelTimeModel[],
@@ -44,7 +47,7 @@ onMounted(async () => {
     bike: false,
     _traveltimeArrow: true,
   })
-  state.travelTimes = await apiClientService.fetchTravelTime()
+  state.travelTimes = await fetchTravelTime(rennesApp)
 })
 
 function onTravelTimesClicked(travelTime: TravelTimeModel) {
@@ -59,6 +62,12 @@ function onTravelTimesClicked(travelTime: TravelTimeModel) {
     traveltimeInteractionStore.addDisplayTravelTime(travelTime)
   }
 }
+
+linesStore.$subscribe(async () => {
+  if (linesStore.lineDesciptions.length > 0) {
+    stationsStore.traveltimesViewSetUpStationsToDisplay()
+  }
+})
 </script>
 
 <template>

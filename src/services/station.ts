@@ -7,6 +7,8 @@ import type { RennesApp } from '@/services/RennesApp'
 import { RENNES_LAYER } from '@/stores/layers'
 import type { ParkingModel } from '@/model/parkings.model'
 import type { TravelTimeModel } from '@/model/travel-time.model'
+import type { Feature } from 'ol'
+import type { Geometry } from 'ol/geom'
 
 export function sortStationsByOrder(
   stations: StationModel[],
@@ -54,6 +56,9 @@ export function isStationOnLine(
   const station: StationModel = stations.find(
     (station) => station.nom === name_station
   )!
+  if (station === undefined) {
+    return false
+  }
   return isOnLine(station.li_code, num_line)
 }
 
@@ -133,55 +138,12 @@ export function isStationLabelDisplayed(stationName: string): boolean {
   return stationsStore.stationIsInStationsToDisplay(stationName)
 }
 
-export async function fetchStationsByLine(
-  rennesApp: RennesApp,
-  lineNumber: number
-) {
-  const stations: StationModel[] = []
-  const stationsFeatures =
-    await rennesApp.getFeaturesThatContainAttributeFromLayer(
-      RENNES_LAYER.trambusStops,
-      'li_code',
-      lineNumber.toString()
-    )
-  stationsFeatures.forEach((feature) => {
-    stations.push({
-      id: feature.get('id'),
-      nom: feature.get('nom'),
-      li_code: feature.get('li_code'),
-      ordre_t1: null,
-      ordre_t2: null,
-      ordre_t3: null,
-      ordre_t4: null,
-      parking: false,
-      desserte: feature.get('desserte'),
-      desserte_scolaire: feature.get('desserte_scolaire'),
-      desserte_soirs_we: feature.get('desserte_soirs_we'),
-      desserte_dimanche: feature.get('desserte_dimanche'),
-    })
-  })
-  return stations
-}
-
 export async function completeStationsData(
-  rennesApp: RennesApp,
   stations: StationModel[],
   lineNumber: number,
-  stationsOrder: StationModel[],
   parkings: ParkingModel[]
 ) {
   stations.forEach((station) => {
-    const stationOrder = stationsOrder.find(
-      (order) => order.nom === station.nom
-    )
-    if (stationOrder === undefined) {
-      return station
-    }
-    station.ordre_t1 = stationOrder.ordre_t1
-    station.ordre_t2 = stationOrder.ordre_t2
-    station.ordre_t3 = stationOrder.ordre_t3
-    station.ordre_t4 = stationOrder.ordre_t4
-
     const parking = parkings.find(
       (parking) => parking.arret_nom === station.nom
     )
@@ -197,4 +159,55 @@ export async function completeStationsData(
   stations = formatLiCode(stations, num_line)
 
   return stations
+}
+
+function buildStationModelFromStationFeature(feature: Feature<Geometry>) {
+  return {
+    id: feature.get('id'),
+    nom: feature.get('nom'),
+    li_code: feature.get('li_code'),
+    ordre_t1: feature.get('ordre_t1'),
+    ordre_t2: feature.get('ordre_t2'),
+    ordre_t3: feature.get('ordre_t3'),
+    ordre_t4: feature.get('ordre_t4'),
+    parking: false,
+    desserte: feature.get('desserte'),
+    desserte_scolaire: feature.get('desserte_scolaire'),
+    desserte_soirs_we: feature.get('desserte_soirs_we'),
+    desserte_dimanche: feature.get('desserte_dimanche'),
+  }
+}
+
+export async function getStations(rennesApp: RennesApp) {
+  const layer = await rennesApp.getLayerByKey(RENNES_LAYER.trambusStops)
+  const stations: StationModel[] = []
+  layer.getFeatures().forEach((feature) => {
+    stations.push(buildStationModelFromStationFeature(feature))
+  })
+  return stations
+}
+
+export async function fetchStationsByLine(
+  rennesApp: RennesApp,
+  lineNumber: number
+) {
+  const stations: StationModel[] = []
+  const stationsFeatures =
+    await rennesApp.getFeaturesThatContainAttributeFromLayer(
+      RENNES_LAYER.trambusStops,
+      'li_code',
+      lineNumber.toString()
+    )
+  stationsFeatures.forEach((feature) => {
+    stations.push(buildStationModelFromStationFeature(feature))
+  })
+  return stations
+}
+
+export async function fetchStationDescription(
+  rennesApp: RennesApp,
+  stationId: number
+) {
+  const stations = await getStations(rennesApp)
+  return stations.find((station) => station.id == stationId)!
 }

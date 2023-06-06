@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 import {
   getAllStartEndStations,
   getStartEndStationsOfLine,
-} from '@/model/lines.fixtures'
+} from '@/services/line'
 import type { LineNumber } from '@/model/lines.model'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import type { Viewpoint } from '@vcmap/core'
@@ -82,8 +82,13 @@ export const useStationsStore = defineStore('stations', () => {
     addStationStartEndOfLinePermanently(lineNumber)
   }
 
-  function lineViewSetUpStationsToDisplay(lineNumber: LineNumber) {
-    clearAllStations()
+  function lineViewSetUpStationsToDisplay(
+    lineNumber: LineNumber,
+    isClear: boolean = true
+  ) {
+    if (isClear) {
+      clearAllStations()
+    }
     addStationStartEndOfLinePermanently(lineNumber)
   }
 
@@ -129,6 +134,7 @@ export const useStationsStore = defineStore('stations', () => {
     clearAllStations,
     setLineOfStation,
     setViewPointStation,
+    addStationStartEndOfLinePermanently,
     lineOfStation,
   }
 })

@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { onBeforeMount, reactive, onMounted, ref, inject } from 'vue'
 
-import type { LineModel, SelectedTrambusLine } from '@/model/lines.model'
+import type {
+  LineModel,
+  SelectedTrambusLine,
+  LineNumber,
+} from '@/model/lines.model'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import type { PhotoModel } from '@/model/photos.model'
 import { apiClientService } from '@/services/api.client'
@@ -29,6 +33,9 @@ import { useStationsStore } from '@/stores/stations'
 import SkipLinksLineView from '@/components/accessibility/SkipLinksLineView.vue'
 import FooterAreaLink from '@/components/home/FooterAreaLink.vue'
 import { legalList } from '@/constants/legalLinks'
+import { fetchTravelTimeByLine } from '@/services/travelTime'
+import { fetchLineDescription } from '@/services/line'
+import { useLinesStore } from '@/stores/lines'
 
 const openLink = (link: string) => {
   window.open(link, '_blank')
@@ -42,11 +49,12 @@ const layerStore = useLayersStore()
 const lineStore = useLineViewsStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
 const lineInteractionStore = useLineInteractionStore()
+const linesStore = useLinesStore()
 
 const rennesApp = inject('rennesApp') as RennesApp
 
 const state = reactive({
-  lineDescription: null as null | LineModel,
+  lineDescription: null as null | LineModel | undefined,
   travelTimes: null as null | TravelTimeModel[],
   photo: null as null | PhotoModel,
   parkings: null as null | ParkingModel[],
@@ -67,13 +75,15 @@ onBeforeMount(async () => {
   if (isFromLineToLine) {
     poiStoreSubcribe(rennesApp)
   }
-  const travelTimes = await apiClientService.fetchTravelTimeByLine(currentLine)
+  const travelTimes = await fetchTravelTimeByLine(rennesApp, currentLine)
   traveltimeInteractionStore.setDisplayTravelTimes(travelTimes)
 
-  state.lineDescription = await apiClientService.fetchLineDescription(
+  state.lineDescription = await fetchLineDescription(
+    rennesApp,
     lineStore.selectedLine
   )
-  state.travelTimes = await apiClientService.fetchTravelTimeByLine(
+  state.travelTimes = await fetchTravelTimeByLine(
+    rennesApp,
     lineStore.selectedLine
   )
   state.travelTimes.forEach((tt) => {
@@ -86,15 +96,9 @@ onBeforeMount(async () => {
 
   state.parkings = await fetchParkingsByStations(rennesApp, stations)
 
-  const stationsOrder = await apiClientService.fetchStationsOrderByLine(
-    lineStore.selectedLine
-  )
-
   state.stations = await completeStationsData(
-    rennesApp,
     stations,
     lineStore.selectedLine,
-    stationsOrder,
     state.parkings
   )
 })
@@ -120,6 +124,15 @@ function onTravelTimesClicked(travelTime: TravelTimeModel) {
     traveltimeInteractionStore.selectTraveltime(travelTime)
   }
 }
+
+linesStore.$subscribe(async () => {
+  if (linesStore.lineDesciptions.length > 0) {
+    stationStore.lineViewSetUpStationsToDisplay(
+      lineStore.selectedLine as LineNumber,
+      false
+    )
+  }
+})
 </script>
 
 <template>
