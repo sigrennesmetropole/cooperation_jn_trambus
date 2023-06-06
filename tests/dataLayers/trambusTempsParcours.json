@@ -1,0 +1,222 @@
+[
+  {
+    "type": "Feature",
+    "id": "trambus_temps_parcours.1",
+    "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [-1.678576, 48.109853],
+        [-1.692955, 48.135793]
+      ]
+    },
+    "geometry_name": "geom",
+    "properties": {
+      "id": 1,
+      "version": "2023-05-24",
+      "li_code": "T1",
+      "arret_depart": "République",
+      "arret_destination": "Grand Quartier",
+      "temps_actuel": "31",
+      "temps_futur": "23"
+    },
+    "bbox": [-1.692955, 48.109853, -1.678576, 48.135793]
+  },
+  {
+    "type": "Feature",
+    "id": "trambus_temps_parcours.2",
+    "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [-1.636047, 48.132545],
+        [-1.678576, 48.109853]
+      ]
+    },
+    "geometry_name": "geom",
+    "properties": {
+      "id": 2,
+      "version": "2023-05-24",
+      "li_code": "T1",
+      "arret_depart": "ZA Saint-Sulpice",
+      "arret_destination": "République",
+      "temps_actuel": "24",
+      "temps_futur": "20"
+    },
+    "bbox": [-1.678576, 48.109853, -1.636047, 48.132545]
+  },
+  {
+    "type": "Feature",
+    "id": "trambus_temps_parcours.3",
+    "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [-1.739882, 48.104555],
+        [-1.678576, 48.109853]
+      ]
+    },
+    "geometry_name": "geom",
+    "properties": {
+      "id": 3,
+      "version": "2023-05-24",
+      "li_code": "T2",
+      "arret_depart": "Trois Marches",
+      "arret_destination": "République",
+      "temps_actuel": "15",
+      "temps_futur": "15"
+    },
+    "bbox": [-1.739882, 48.104555, -1.678576, 48.109853]
+  },
+  {
+    "type": "Feature",
+    "id": "trambus_temps_parcours.4",
+    "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [-1.59028, 48.113445],
+        [-1.678576, 48.109853]
+      ]
+    },
+    "geometry_name": "geom",
+    "properties": {
+      "id": 4,
+      "version": "2023-05-24",
+      "li_code": "T2",
+      "arret_depart": "Rigourdière",
+      "arret_destination": "République",
+      "temps_actuel": "35",
+      "temps_futur": "31"
+    },
+    "bbox": [-1.678576, 48.109853, -1.59028, 48.113445]
+  },
+  {
+    "type": "Feature",
+    "id": "trambus_temps_parcours.5",
+    "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [-1.600618, 48.123126],
+        [-1.678576, 48.109853]
+      ]
+    },
+    "geometry_name": "geom",
+    "properties": {
+      "id": 5,
+      "version": "2023-05-24",
+      "li_code": "T2",
+      "arret_depart": "Bourgchevreuil",
+      "arret_destination": "République",
+      "temps_actuel": "29",
+      "temps_futur": "25"
+    },
+    "bbox": [-1.678576, 48.109853, -1.600618, 48.123126]
+  },
+  {
+    "type": "Feature",
+    "id": "trambus_temps_parcours.6",
+    "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [-1.687646, 48.157967],
+        [-1.678576, 48.109853]
+      ]
+    },
+    "geometry_name": "geom",
+    "properties": {
+      "id": 6,
+      "version": "2023-05-24",
+      "li_code": "T3",
+      "arret_depart": "Uttenreuth",
+      "arret_destination": "République",
+      "temps_actuel": "25",
+      "temps_futur": "20"
+    },
+    "bbox": [-1.687646, 48.109853, -1.678576, 48.157967]
+  },
+  {
+    "type": "Feature",
+    "id": "trambus_temps_parcours.7",
+    "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [-1.604031, 48.085464],
+        [-1.678576, 48.109853]
+      ]
+    },
+    "geometry_name": "geom",
+    "properties": {
+      "id": 7,
+      "version": "2023-05-24",
+      "li_code": "T3",
+      "arret_depart": "Rosa Parks",
+      "arret_destination": "République",
+      "temps_actuel": "36",
+      "temps_futur": "22"
+    },
+    "bbox": [-1.678576, 48.085464, -1.604031, 48.109853]
+  },
+  {
+    "type": "Feature",
+    "id": "trambus_temps_parcours.8",
+    "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [-1.619146, 48.088416],
+        [-1.678576, 48.109853]
+      ]
+    },
+    "geometry_name": "geom",
+    "properties": {
+      "id": 8,
+      "version": "2023-05-24",
+      "li_code": "T3",
+      "arret_depart": "Chantepie Mairie",
+      "arret_destination": "République",
+      "temps_actuel": "25",
+      "temps_futur": "17"
+    },
+    "bbox": [-1.678576, 48.088416, -1.619146, 48.109853]
+  },
+  {
+    "type": "Feature",
+    "id": "trambus_temps_parcours.9",
+    "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [-1.721782, 48.067368],
+        [-1.671951, 48.104097]
+      ]
+    },
+    "geometry_name": "geom",
+    "properties": {
+      "id": 9,
+      "version": "2023-05-24",
+      "li_code": "T4",
+      "arret_depart": "Aéroport",
+      "arret_destination": "Gares",
+      "temps_actuel": "31",
+      "temps_futur": "20"
+    },
+    "bbox": [-1.721782, 48.067368, -1.671951, 48.104097]
+  },
+  {
+    "type": "Feature",
+    "id": "trambus_temps_parcours.10",
+    "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [-1.742029, 48.047338],
+        [-1.671951, 48.104097]
+      ]
+    },
+    "geometry_name": "geom",
+    "properties": {
+      "id": 10,
+      "version": "2023-05-24",
+      "li_code": "T4",
+      "arret_depart": "Coeur de Campus",
+      "arret_destination": "Gares",
+      "temps_actuel": "32",
+      "temps_futur": "30"
+    },
+    "bbox": [-1.742029, 48.047338, -1.671951, 48.104097]
+  }
+]
