@@ -25,6 +25,8 @@ import { parkingStyle } from '@/styles/common'
 import { useTraveltimeInteractionStore } from '@/stores/interactionMap'
 import { updateTraveltimeArrow } from '@/services/arrow'
 import type { TravelTimeModel } from '@/model/travel-time.model'
+import { staticLabelStyleFunction } from '@/styles/staticLabel'
+import { useLayersStore } from '@/stores/layers'
 
 export function clearLayerAndApplyStyle(
   rennesApp: RennesApp,
@@ -32,9 +34,11 @@ export function clearLayerAndApplyStyle(
   style: Style | StyleFunction | undefined
 ) {
   const layer = rennesApp.layers.getByKey(layerName) as FeatureLayer
-  layer.clearStyle()
-  if (style) {
-    layer.setStyle(style)
+  if (layer) {
+    layer.clearStyle()
+    if (style) {
+      layer.setStyle(style)
+    }
   }
 }
 
@@ -74,6 +78,11 @@ export async function updateLineViewStyle(rennesApp: RennesApp) {
   )
   clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.parking, parkingStyle)
   await updateTraveltimeArrow(rennesApp)
+
+  const layerStore = useLayersStore()
+  clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.staticLabel, (feature) =>
+    staticLabelStyleFunction(feature, layerStore.visibilities)
+  )
 }
 
 function clearLayerAndApplyStyleTravelTimes(
@@ -115,6 +124,10 @@ export async function updateTravelTimesViewStyle(rennesApp: RennesApp) {
     )
   }
   await updateTraveltimeArrow(rennesApp)
+  const layerStore = useLayersStore()
+  clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.staticLabel, (feature) =>
+    staticLabelStyleFunction(feature, layerStore.visibilities)
+  )
 }
 
 export async function updateStationViewStyle(rennesApp: RennesApp) {
@@ -146,6 +159,10 @@ export async function updateStationViewStyle(rennesApp: RennesApp) {
         mapStore.is3D()
       )
   )
+  const layerStore = useLayersStore()
+  clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.staticLabel, (feature) =>
+    staticLabelStyleFunction(feature, layerStore.visibilities)
+  )
 }
 
 export function updateHomeViewStyle(rennesApp: RennesApp) {
@@ -153,4 +170,9 @@ export function updateHomeViewStyle(rennesApp: RennesApp) {
     homeViewStyleFunction(feature)
   )
   clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.parking, parkingStyle)
+
+  const layerStore = useLayersStore()
+  clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.staticLabel, (feature) =>
+    staticLabelStyleFunction(feature, layerStore.visibilities)
+  )
 }

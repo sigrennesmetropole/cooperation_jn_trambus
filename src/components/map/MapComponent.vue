@@ -18,6 +18,9 @@ import {
 import { useStationsStore } from '@/stores/stations'
 import { useComponentAboveMapStore } from '@/stores/componentsAboveMapStore'
 import {
+  useBikeInteractionStore,
+  useBusInteractionStore,
+  useMetroInteractionStore,
   useTravelTimeBoxesStore,
   useTraveltimeInteractionStore,
 } from '@/stores/interactionMap'
@@ -55,6 +58,9 @@ const componentAboveMapStore = useComponentAboveMapStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
 const travelTimeBoxesStore = useTravelTimeBoxesStore()
 const linesStore = useLinesStore()
+const metroInteractionStore = useMetroInteractionStore()
+const busInteractionStore = useBusInteractionStore()
+const bikeInteractionStore = useBikeInteractionStore()
 
 onMounted(async () => {
   await rennesApp.initializeMap()
@@ -159,6 +165,16 @@ async function updateMapStyle() {
 
 layerStore.$subscribe(async () => {
   await updateLayersVisibility()
+  if (!layerStore.visibilities[RENNES_LAYER.metro]) {
+    metroInteractionStore.resetMetroLabels()
+  }
+  if (!layerStore.visibilities[RENNES_LAYER.bus]) {
+    busInteractionStore.resetBusLabels()
+  }
+  if (!layerStore.visibilities[RENNES_LAYER.bike]) {
+    bikeInteractionStore.resetBikeLabels()
+  }
+  updateHomeViewStyle(rennesApp)
 })
 
 map3dStore.$subscribe(async () => {

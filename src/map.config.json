@@ -78,7 +78,7 @@
       "name": "rennesOrtho",
       "type": "WMTSLayer",
       "url": "https://public.sig.rennesmetropole.fr/geowebcache/service/wmts",
-      "layer": "raster:ortho2020",
+      "layer": "raster:ortho2021",
       "format": "image/jpeg",
       "tileMatrixSetID": "EPSG:3857",
       "tileMatrixPrefix": "EPSG:3857:",
@@ -90,6 +90,8 @@
         "epsg": "EPSG:4326"
       },
       "activeOnStartup": false,
+      "tileSize": [256, 256],
+      "maxLevel": 22,
       "zIndex": 1
     },
     {
@@ -141,18 +143,7 @@
         "type": "DeclarativeStyleItem",
         "declarativeStyle": {
           "strokeWidth": "2",
-          "color": {
-            "conditions": [
-              ["${li_num} === 'C1'", "color('#b0d363')"],
-              ["${li_num} === 'C2'", "color('#e79575')"],
-              ["${li_num} === 'C3'", "color('#e79575')"],
-              ["${li_num} === 'C4'", "color('#cc25a0')"],
-              ["${li_num} === 'C5'", "color('#9b8eed')"],
-              ["${li_num} === 'C6'", "color('#84cc16')"],
-              ["${li_num} === 'C7'", "color('#d946ef')"],
-              ["true", "color('#000000')"]
-            ]
-          }
+          "color": "color('${li_couleur_hex}')"
         }
       },
       "zIndex": 2
@@ -301,7 +292,7 @@
       "name": "poi",
       "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=trp_coll:trambus_station_to_site&outputFormat=application/json&srsName=EPSG:4326",
       "type": "GeoJSONLayer",
-      "activeOnStartup": true,
+      "activeOnStartup": false,
       "hiddenObjectIds": [],
       "zIndex": 4,
       "vectorProperties": {
@@ -313,6 +304,31 @@
     {
       "name": "customLayerLabelLine",
       "type": "GeoJSONLayer",
+      "activeOnStartup": true,
+      "zIndex": 4
+    },
+    {
+      "name": "customLayerLabelMetro",
+      "type": "GeoJSONLayer",
+      "activeOnStartup": true,
+      "zIndex": 4
+    },
+    {
+      "name": "customLayerLabelBus",
+      "type": "GeoJSONLayer",
+      "activeOnStartup": true,
+      "zIndex": 4
+    },
+    {
+      "name": "customLayerLabelBike",
+      "type": "GeoJSONLayer",
+      "activeOnStartup": true,
+      "zIndex": 4
+    },
+    {
+      "name": "staticLabel",
+      "type": "GeoJSONLayer",
+      "url": "/src/assets/staticLabels.geojson",
       "activeOnStartup": true,
       "zIndex": 4
     }

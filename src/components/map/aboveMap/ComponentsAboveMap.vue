@@ -2,16 +2,28 @@
 import { useComponentAboveMapStore } from '@/stores/componentsAboveMapStore'
 import LabelStation from '@/components/map/aboveMap/LabelStation.vue'
 import LabelLine from '@/components/map/aboveMap/LabelLine.vue'
+import LabelMetro from '@/components/map/aboveMap/LabelMetro.vue'
+import LabelBus from '@/components/map/aboveMap/LabelBus.vue'
 import {
   useLineInteractionStore,
   useTravelTimeBoxesStore,
   useTraveltimeInteractionStore,
+  useMetroInteractionStore,
+  useBusInteractionStore,
+  useBikeInteractionStore,
 } from '@/stores/interactionMap'
 import TravelTimeBox from '@/components/map/aboveMap/TravelTimeBox.vue'
+import { RENNES_LAYER, useLayersStore } from '@/stores/layers'
+import LabelBike from './LabelBike.vue'
+
 const componentAboveMapStore = useComponentAboveMapStore()
 const lineInteractionStore = useLineInteractionStore()
 const travelTimeBoxesStore = useTravelTimeBoxesStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
+const metroInteractionStore = useMetroInteractionStore()
+const busInteractionStore = useBusInteractionStore()
+const bikeInteractionStore = useBikeInteractionStore()
+const layerStore = useLayersStore()
 </script>
 
 <template>
@@ -41,4 +53,33 @@ const traveltimeInteractionStore = useTraveltimeInteractionStore()
       traveltimeInteractionStore.selectedTraveltime?.id
     "
   ></TravelTimeBox>
+  <LabelMetro
+    v-if="
+      metroInteractionStore.clickPosition !== null &&
+      layerStore.visibilities[RENNES_LAYER.metro]
+    "
+    :topPosition="metroInteractionStore.clickPosition.y"
+    :leftPosition="metroInteractionStore.clickPosition.x"
+    :lines="metroInteractionStore.selectedMetros"
+  >
+  </LabelMetro>
+  <LabelBus
+    v-if="
+      busInteractionStore.clickPosition !== null &&
+      layerStore.visibilities[RENNES_LAYER.bus]
+    "
+    :topPosition="busInteractionStore.clickPosition.y"
+    :leftPosition="busInteractionStore.clickPosition.x"
+    :lines="busInteractionStore.selectedBusLines"
+  >
+  </LabelBus>
+  <LabelBike
+    v-if="
+      bikeInteractionStore.clickPosition !== null &&
+      layerStore.visibilities[RENNES_LAYER.bike]
+    "
+    :topPosition="bikeInteractionStore.clickPosition.y"
+    :leftPosition="bikeInteractionStore.clickPosition.x"
+  >
+  </LabelBike>
 </template>

@@ -59,7 +59,7 @@ function setSelectedLine(line: number) {
     <div
       v-for="item of props.items"
       :key="item.id"
-      class="flex-1 flex flex-row items-center relative hover:font-medium cursor-pointer pl-4"
+      class="flex-1 flex flex-row items-center relative hover:font-medium pl-4"
       :style="{
         borderLeft: '5px',
         borderLeftStyle: 'solid',
@@ -86,7 +86,7 @@ function setSelectedLine(line: number) {
     <div
       v-for="line of props.lines"
       :key="line.id"
-      class="flex-1 flex flex-row items-center relative hover:font-medium cursor-pointer"
+      class="flex-1 flex flex-row items-center relative hover:font-medium"
     >
       <label class="cursor-pointer flex flex-row" :for="line.id"
         ><img :src="line.img" class="h-6 mr-3" />{{ line.printValue }}
