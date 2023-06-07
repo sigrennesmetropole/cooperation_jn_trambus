@@ -84,7 +84,8 @@ const style = computed(() => {
         <div class="flex flex-row gap-1.5 items-center">
           <img :src="Calendar" class="w-[15px] h-[15px]" />
           <p class="font-dm-sans font-normal text-xs">
-            Cloturée le {{ props.date }}
+            Cloturée le <br />
+            {{ props.date }}
           </p>
         </div>
         <div class="flex flex-row gap-1.5 items-center">
