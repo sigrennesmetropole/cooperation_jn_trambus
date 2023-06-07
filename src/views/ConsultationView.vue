@@ -17,7 +17,7 @@ onBeforeMount(() => {
   <main class="h-screen">
     <div class="flex flex-row">
       <UiButton
-        class="shadow-md rounded-lg p-2 flex gap-2.5 shrink-0 grow-0 mr-4"
+        class="shadow-md rounded-lg p-2 flex gap-2.5 shrink-0 grow-0 mr-4 cursor-pointer"
         @click="$router.push(viewList.home)"
       >
         <img :src="ChevronArrowRight" />

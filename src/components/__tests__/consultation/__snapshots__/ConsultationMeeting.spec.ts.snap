@@ -8,7 +8,7 @@ exports[`ConsultationComponent > renders correctly 1`] = `
         <div class=\\"font-medium font-dm-sans text-sm text-center items-center text-black\\">Ouverte</div>
       </button>
       <div class=\\"flex flex-row gap-1.5 items-center\\"><img src=\\"/src/assets/icons/calendar.svg\\" class=\\"w-[15px] h-[15px]\\">
-        <p class=\\"font-dm-sans font-normal text-xs\\"> Cloturée le 15/10/2023</p>
+        <p class=\\"font-dm-sans font-normal text-xs\\"> Cloturée le <br> 15/10/2023</p>
       </div>
       <div class=\\"flex flex-row gap-1.5 items-center\\"><img src=\\"/src/assets/icons/localization-icon.svg\\" class=\\"w-4 h-4\\">
         <p class=\\"font-dm-sans font-normal text-xs\\">Zone géographique</p>
