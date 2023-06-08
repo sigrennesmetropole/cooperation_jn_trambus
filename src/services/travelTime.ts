@@ -10,7 +10,7 @@ export async function getAllTravelTimes(rennesApp: RennesApp) {
     const num_line = feature.get('li_code').split('T')[1]
     travelTimes.push({
       id: feature.get('id'),
-      line: num_line as LineNumber,
+      line: Number(num_line) as LineNumber,
       new: parseInt(feature.get('temps_futur')),
       old: parseInt(feature.get('temps_actuel')),
       start: feature.get('arret_depart'),
