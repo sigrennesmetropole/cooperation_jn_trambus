@@ -1,6 +1,6 @@
 import { RennesApp } from '../src/services/RennesApp'
 import type { VcsObjectOptions } from '@vcmap/core'
-import { OpenlayersMap, GeoJSONLayer, Context } from '@vcmap/core'
+import { OpenlayersMap, GeoJSONLayer, VcsModule } from '@vcmap/core'
 import trambusStops from '../tests/dataLayers/trambusStops.json'
 import parking from '../tests/dataLayers/parking.json'
 import poi from '../tests/dataLayers/poi.json'
@@ -20,7 +20,7 @@ export class RennesAppTest extends RennesApp {
   test_viewpoints: VcsObjectOptions[]
   test_maps: VcsObjectOptions[]
   test_layers: VcsObjectOptions[]
-  test_context: Context | null
+  test_context: VcsModule | null
 
   constructor() {
     super({})
@@ -44,7 +44,7 @@ export class RennesAppTest extends RennesApp {
   }
 
   _createContext() {
-    this.test_context = new Context({
+    this.test_context = new VcsModule({
       layers: this.test_layers,
       viewpoints: this.test_viewpoints,
       maps: this.test_maps,
@@ -119,7 +119,7 @@ export class RennesAppTest extends RennesApp {
     this._addLayer(RENNES_LAYER.parking)
     this._createContext()
     if (this.test_context === null) return
-    await this.addContext(this.test_context)
+    await this.addModule(this.test_context)
     await this._linkedFeaturesToLayer(RENNES_LAYER.trambusStops)
     await this._linkedFeaturesToLayer(RENNES_LAYER.parking)
   }
@@ -139,7 +139,7 @@ export class RennesAppTest extends RennesApp {
     })
     this._createContext()
     if (this.test_context === null) return
-    await this.addContext(this.test_context)
+    await this.addModule(this.test_context)
     for (let i = 0; i < layers.length; i++) {
       await this._linkedFeaturesToLayer(layers[i])
     }
