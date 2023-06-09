@@ -7,6 +7,10 @@ import multiplePerson from '@/assets/icons/multiple-person.svg'
 import { computed } from 'vue'
 
 const props = defineProps({
+  img: {
+    type: String,
+    default: '',
+  },
   title: {
     type: String,
     default: '',
@@ -39,6 +43,10 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
+  link: {
+    type: String,
+    default: '',
+  },
 })
 
 const style = computed(() => {
@@ -62,11 +70,20 @@ const style = computed(() => {
     }
   }
 })
+
+function goTo(link: string) {
+  window.open(link, '_blank')
+}
 </script>
 
 <template>
   <div class="flex flex-row gap-4 py-4 border-b border-b-slate-200">
-    <slot name="img"></slot>
+    <img
+      class="h-[133px] w-[200px] rounded-lg"
+      :src="props.img"
+      alt="Illustration de la concertation"
+      @click="goTo(props.link)"
+    />
     <div class="flex flex-col gap-2">
       <p class="font-dm-sans font-bold text-base">{{ props.title }}</p>
       <div class="flex flex-row gap-3 h-8">

@@ -1,9 +1,9 @@
-import ConsultationComponent from '@/components/consultation/ConsultationMeeting.vue'
+import ProjectComponent from '@/components/consultation/ProjectMeeting.vue'
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-describe('ConsultationComponent', () => {
-  const wrapper = mount(ConsultationComponent, {
+describe('ProjectComponent', () => {
+  const wrapper = mount(ProjectComponent, {
     props: {
       illustration: 'src/assets/illustrations/ex_consultation.png',
       title: 'Vos réactions au futur aménagement du réseau trambus',
