@@ -24,14 +24,15 @@
       "name": "cesium",
       "debugging": false,
       "fxaa": false,
-      "enableLightning": true,
-      "allowSoftwareRendering": false,
+      "enableLightning": false,
+      "allowSoftwareRendering": true,
       "fogEnabled": true,
       "fogEnabledMobile": true,
-      "fogDensity": 0.0002,
-      "fogDensityMobile": 0.0004,
+      "fogDensity": 0.16,
+      "fogDensityMobile": 0.32,
       "fogScreenSpaceError": 2,
-      "fogScreenSpaceErrorMobile": 4
+      "fogScreenSpaceErrorMobile": 4,
+      "maximumScreenSpaceError": 64
     },
     {
       "type": "OpenlayersMap",
@@ -52,8 +53,8 @@
       "name": "building",
       "url": "https://rennes3d-dev-tiles.s3.fr-par.scw.cloud/f8a215a9-d0cc-4804-b284-0eac8a58924d/",
       "activeOnStartup": true,
-      "screenSpaceError": 16,
-      "screenSpaceErrorMobile": 32,
+      "screenSpaceError": 32,
+      "screenSpaceErrorMobile": 64,
       "zIndex": 1
     },
     {

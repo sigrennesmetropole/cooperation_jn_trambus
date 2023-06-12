@@ -75,7 +75,7 @@ const containerStyle = computed(() => {
         </div>
       </div>
     </div>
-    <IconLineArrow :lineNumber="props.lineNumber"></IconLineArrow>
+    <IconLineArrow :lineNumber="props.lineNumber!"></IconLineArrow>
     <div class="flex flex-col items-start p-0 gap-1 grow">
       <div
         class="flex flex-col justify-center items-start p-0 gap-1.5"
