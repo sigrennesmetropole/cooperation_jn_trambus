@@ -17,19 +17,19 @@ const props = defineProps({
   },
   status: {
     type: String,
-    default: '',
+    default: 'open',
   },
   date: {
     type: String,
-    default: '01/01/2001',
+    default: 'Non renseigné',
   },
   place: {
     type: String,
-    default: '',
+    default: 'Non renseigné',
   },
   content: {
     type: String,
-    default: '',
+    default: 'Non renseigné',
   },
   comment: {
     type: Number,
@@ -43,7 +43,7 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
-  link: {
+  url: {
     type: String,
     default: '',
   },
@@ -55,12 +55,6 @@ const style = computed(() => {
       buttonStyle: 'bg-amber-400',
       textStyle: 'text-black',
       textContent: 'Ouverte',
-    }
-  } else if (props.status === 'inAnalysis') {
-    return {
-      buttonStyle: 'bg-slate-500',
-      textStyle: 'text-white',
-      textContent: 'En analyse',
     }
   } else {
     return {
@@ -82,7 +76,7 @@ function goTo(link: string) {
       class="h-[133px] w-[200px] rounded-lg"
       :src="props.img"
       alt="Illustration de la concertation"
-      @click="goTo(props.link)"
+      @click="goTo(props.url)"
     />
     <div class="flex flex-col gap-2">
       <p class="font-dm-sans font-bold text-base">{{ props.title }}</p>

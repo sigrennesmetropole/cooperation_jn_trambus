@@ -20,7 +20,7 @@ let projects: Ref<
     nb_comments: number
     nb_likes: number
     nb_persons: number
-    link: string
+    url: string
   }[]
 > = ref([])
 
@@ -65,7 +65,7 @@ onBeforeMount(async () => {
         :comment="project.nb_comments"
         :like="project.nb_likes"
         :person="project.nb_persons"
-        :link="project.link"
+        :url="project.url"
       >
       </ProjectMeeting>
       <h2
@@ -85,7 +85,7 @@ onBeforeMount(async () => {
         :comment="project.nb_comments"
         :like="project.nb_likes"
         :person="project.nb_persons"
-        :link="project.link"
+        :url="project.url"
       >
       </ProjectMeeting>
     </div>
