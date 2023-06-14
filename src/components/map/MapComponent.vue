@@ -14,6 +14,7 @@ import {
   useHomeViewsStore,
   useTravelTimesViewStore,
   useViewsStore,
+  useLineViewsStore,
 } from '@/stores/views'
 import { useStationsStore } from '@/stores/stations'
 import { useComponentAboveMapStore } from '@/stores/componentsAboveMapStore'
@@ -61,6 +62,7 @@ const linesStore = useLinesStore()
 const metroInteractionStore = useMetroInteractionStore()
 const busInteractionStore = useBusInteractionStore()
 const bikeInteractionStore = useBikeInteractionStore()
+const lineStore = useLineViewsStore()
 
 onMounted(async () => {
   await rennesApp.initializeMap()
@@ -220,6 +222,16 @@ homeViewStore.$subscribe(async () => {
 
 poiStore.$subscribe(async () => {
   poiStoreSubcribe(rennesApp)
+})
+
+lineStore.$subscribe(async () => {
+  await updateLineViewStyle(rennesApp)
+  if (
+    viewStore.currentView == viewList.station &&
+    lineStore.displayedOtherLines
+  ) {
+    mapViewPointStore.updateViewpoint('rennes')
+  }
 })
 
 traveltimeInteractionStore.$subscribe(async () => {
