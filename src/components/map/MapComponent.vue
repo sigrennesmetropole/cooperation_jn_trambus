@@ -174,7 +174,9 @@ layerStore.$subscribe(async () => {
   if (!layerStore.visibilities[RENNES_LAYER.bike]) {
     bikeInteractionStore.resetBikeLabels()
   }
-  updateHomeViewStyle(rennesApp)
+  if (viewStore.currentView == viewList.home) {
+    updateHomeViewStyle(rennesApp)
+  }
 })
 
 map3dStore.$subscribe(async () => {
