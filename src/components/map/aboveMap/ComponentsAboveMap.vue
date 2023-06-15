@@ -2,19 +2,19 @@
 import { useComponentAboveMapStore } from '@/stores/componentsAboveMapStore'
 import LabelStation from '@/components/map/aboveMap/LabelStation.vue'
 import LabelLine from '@/components/map/aboveMap/LabelLine.vue'
-import LabelMetro from '@/components/map/aboveMap/LabelMetro.vue'
-import LabelBus from '@/components/map/aboveMap/LabelBus.vue'
+// import LabelMetro from '@/components/map/aboveMap/LabelMetro.vue'
+// import LabelBus from '@/components/map/aboveMap/LabelBus.vue'
 import {
   useLineInteractionStore,
   useTravelTimeBoxesStore,
   useTraveltimeInteractionStore,
   useMetroInteractionStore,
   useBusInteractionStore,
-  useBikeInteractionStore,
+  // useBikeInteractionStore,
 } from '@/stores/interactionMap'
 import TravelTimeBox from '@/components/map/aboveMap/TravelTimeBox.vue'
 import { RENNES_LAYER, useLayersStore } from '@/stores/layers'
-import LabelBike from './LabelBike.vue'
+// import LabelBike from './LabelBike.vue'
 
 const componentAboveMapStore = useComponentAboveMapStore()
 const lineInteractionStore = useLineInteractionStore()
@@ -22,7 +22,7 @@ const travelTimeBoxesStore = useTravelTimeBoxesStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
 const metroInteractionStore = useMetroInteractionStore()
 const busInteractionStore = useBusInteractionStore()
-const bikeInteractionStore = useBikeInteractionStore()
+// const bikeInteractionStore = useBikeInteractionStore()
 const layerStore = useLayersStore()
 </script>
 
@@ -41,6 +41,9 @@ const layerStore = useLayersStore()
     :topPosition="lineInteractionStore.clickPosition.y"
     :leftPosition="lineInteractionStore.clickPosition.x"
     :lines="lineInteractionStore.selectedLines"
+    :metro-lines="metroInteractionStore.selectedMetros"
+    :bus-lines="busInteractionStore.selectedBusLines"
+    :bike="layerStore.visibilities[RENNES_LAYER.bike]"
   />
   <TravelTimeBox
     v-for="ttbox in travelTimeBoxesStore.travelTimeBoxes"
@@ -53,7 +56,7 @@ const layerStore = useLayersStore()
       traveltimeInteractionStore.selectedTraveltime?.id
     "
   ></TravelTimeBox>
-  <LabelMetro
+  <!-- <LabelMetro
     v-if="
       metroInteractionStore.clickPosition !== null &&
       layerStore.visibilities[RENNES_LAYER.metro]
@@ -81,5 +84,5 @@ const layerStore = useLayersStore()
     :topPosition="bikeInteractionStore.clickPosition.y"
     :leftPosition="bikeInteractionStore.clickPosition.x"
   >
-  </LabelBike>
+  </LabelBike> -->
 </template>

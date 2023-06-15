@@ -232,6 +232,7 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
         return
       }
       const lines = this.getAllBusLines(event)
+      console.log(`bus lines: ${lines}`)
       const busInteractionStore = useBusInteractionStore()
       busInteractionStore.selectBusLines(lines)
       busInteractionStore.selectClickPosition(event.windowPosition)
@@ -284,19 +285,27 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
     const isFeatureBus = event.feature?.[vcsLayerName] === RENNES_LAYER.bus
     const isFeatureBike = event.feature?.[vcsLayerName] === RENNES_LAYER.bike
 
+    // console.log(
+    //   `event.feature?.[vcsLayerName]: ${event.feature?.[vcsLayerName]}`
+    // )
+
     if (isFeatureTrambusStpos) {
       this._interactionStation(event)
-    } else if (isFeatureLine) {
+    } else if (
+      isFeatureLine ||
+      isFeatureMetro ||
+      isFeatureBus ||
+      isFeatureBike
+    ) {
+      console.log(
+        `event.feature?.[vcsLayerName]: ${event.feature?.[vcsLayerName]}`
+      )
       await this._interactionLine(event)
+      await this._interactionMetro(event)
+      await this._interactionBus(event)
+      await this._interactionBike(event)
     } else if (isFeaturePOI) {
       this._interactionPoi(event)
-    } else if (isFeatureMetro) {
-      await this._interactionMetro(event)
-    } else if (isFeatureBus) {
-      await this._interactionBus(event)
-    } else if (isFeatureBike) {
-      console.log(`isFeatureBike`)
-      await this._interactionBike(event)
     } else {
       const stationsStore = useStationsStore()
       if (stationsStore.flagClearStationsExceptPermanently) {
