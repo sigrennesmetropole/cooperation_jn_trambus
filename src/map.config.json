@@ -309,24 +309,6 @@
       "zIndex": 4
     },
     {
-      "name": "customLayerLabelMetro",
-      "type": "GeoJSONLayer",
-      "activeOnStartup": true,
-      "zIndex": 4
-    },
-    {
-      "name": "customLayerLabelBus",
-      "type": "GeoJSONLayer",
-      "activeOnStartup": true,
-      "zIndex": 4
-    },
-    {
-      "name": "customLayerLabelBike",
-      "type": "GeoJSONLayer",
-      "activeOnStartup": true,
-      "zIndex": 4
-    },
-    {
       "name": "staticLabel",
       "type": "GeoJSONLayer",
       "url": "/staticLabels.geojson",
