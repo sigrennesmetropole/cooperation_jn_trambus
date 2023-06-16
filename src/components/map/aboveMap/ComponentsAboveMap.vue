@@ -7,19 +7,13 @@ import {
   useLineInteractionStore,
   useTravelTimeBoxesStore,
   useTraveltimeInteractionStore,
-  useMetroInteractionStore,
-  useBusInteractionStore,
 } from '@/stores/interactionMap'
 import TravelTimeBox from '@/components/map/aboveMap/TravelTimeBox.vue'
-import { RENNES_LAYER, useLayersStore } from '@/stores/layers'
 
 const componentAboveMapStore = useComponentAboveMapStore()
 const lineInteractionStore = useLineInteractionStore()
 const travelTimeBoxesStore = useTravelTimeBoxesStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
-const metroInteractionStore = useMetroInteractionStore()
-const busInteractionStore = useBusInteractionStore()
-const layerStore = useLayersStore()
 </script>
 
 <template>
@@ -36,10 +30,10 @@ const layerStore = useLayersStore()
     v-if="lineInteractionStore.clickPosition !== null"
     :topPosition="lineInteractionStore.clickPosition.y"
     :leftPosition="lineInteractionStore.clickPosition.x"
-    :lines="lineInteractionStore.selectedLines"
-    :metro-lines="metroInteractionStore.selectedMetros"
-    :bus-lines="busInteractionStore.selectedBusLines"
-    :bike="layerStore.visibilities[RENNES_LAYER.bike]"
+    :lines="lineInteractionStore.selectedTrambusLines"
+    :metro-lines="lineInteractionStore.selectedMetroLines"
+    :bus-lines="lineInteractionStore.selectedBusLines"
+    :bike="lineInteractionStore.isBikeSelected"
   />
   <TravelTimeBox
     v-for="ttbox in travelTimeBoxesStore.travelTimeBoxes"
