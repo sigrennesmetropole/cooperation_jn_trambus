@@ -18,6 +18,7 @@ import BusC6Icon from '@/assets/icons/bus-c6.svg'
 import BusC7Icon from '@/assets/icons/bus-c7.svg'
 
 import BikeIcon from '@/assets/icons/velo.svg'
+import { RENNES_LAYER, useLayersStore } from '@/stores/layers'
 
 const props = defineProps<{
   lines: string[]
@@ -29,6 +30,7 @@ const props = defineProps<{
 }>()
 
 const lineViewStore = useLineViewsStore()
+const layerStore = useLayersStore()
 const router = useRouter()
 const panelStore = usePanelsStore()
 
@@ -75,11 +77,17 @@ const getBgColorLine = (line: string) => {
         {{ line }}
       </div>
     </div>
-    <div class="flex p-1 round-md" v-if="props.metroLines.length > 0">
+    <div
+      class="flex p-1 round-md space-x-1"
+      v-if="layerStore.visibilities[RENNES_LAYER.metro]"
+    >
       <img v-if="props.metroLines.indexOf('a') > -1" :src="MetroAIcon" />
       <img v-if="props.metroLines.indexOf('b') > -1" :src="MetroBIcon" />
     </div>
-    <div class="flex p-1 round-md space-x-1" v-if="props.busLines.length > 0">
+    <div
+      class="flex p-1 round-md space-x-1"
+      v-if="layerStore.visibilities[RENNES_LAYER.bus]"
+    >
       <img v-if="props.busLines.indexOf('C1') > -1" :src="BusC1Icon" />
       <img v-if="props.busLines.indexOf('C2') > -1" :src="BusC2Icon" />
       <img v-if="props.busLines.indexOf('C3') > -1" :src="BusC3Icon" />
@@ -88,8 +96,11 @@ const getBgColorLine = (line: string) => {
       <img v-if="props.busLines.indexOf('C6') > -1" :src="BusC6Icon" />
       <img v-if="props.busLines.indexOf('C7') > -1" :src="BusC7Icon" />
     </div>
-    <div class="flex p-1 round-md" v-if="props.bike">
-      <img :src="BikeIcon" />
+    <div
+      class="flex p-1 round-md"
+      v-if="layerStore.visibilities[RENNES_LAYER.bike]"
+    >
+      <img v-if="props.bike" :src="BikeIcon" />
     </div>
   </div>
 </template>
