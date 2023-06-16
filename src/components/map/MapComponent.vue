@@ -167,9 +167,9 @@ layerStore.$subscribe(async () => {
   if (!layerStore.visibilities[RENNES_LAYER.bus]) {
     lineInteractionStore.selectedBusLines = []
   }
-  // if (!layerStore.visibilities[RENNES_LAYER.bike]) {
-  //   bikeInteractionStore.resetBikeLabels()
-  // }
+  if (!layerStore.visibilities[RENNES_LAYER.bike]) {
+    lineInteractionStore.isBikeSelected = false
+  }
   updateHomeViewStyle(rennesApp)
 })
 

@@ -144,6 +144,9 @@ export const useLineInteractionStore = defineStore(
 
     function resetLinesLabels() {
       selectedTrambusLines.value = []
+      selectedMetroLines.value = []
+      selectedBusLines.value = []
+      isBikeSelected.value = false
       clickPosition.value = null
       featureLabel.value = null
     }
