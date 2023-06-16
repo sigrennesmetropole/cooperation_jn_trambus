@@ -156,7 +156,9 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
       map.olMap.forEachFeatureAtPixel(
         [event.windowPosition.x, event.windowPosition.y],
         (feat: Feature) => {
-          lines.push(feat.get('ligne'))
+          if (feat.get('ligne')) {
+            lines.push(feat.get('ligne'))
+          }
         },
         { hitTolerance: 10 }
       )
@@ -167,7 +169,9 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
       pickedObjects.forEach((object) => {
         if (object.primitive && object.primitive.olFeature) {
           const feature = object.primitive.olFeature
-          lines.push(feature.get('ligne'))
+          if (feature.get('ligne')) {
+            lines.push(feature.get('ligne'))
+          }
         }
       })
     }
@@ -206,7 +210,9 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
       map.olMap.forEachFeatureAtPixel(
         [event.windowPosition.x, event.windowPosition.y],
         (feat: Feature) => {
-          lines.push(feat.get('li_num'))
+          if (feat.get('li_num')) {
+            lines.push(feat.get('li_num'))
+          }
         },
         { hitTolerance: 10 }
       )
@@ -217,7 +223,9 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
       pickedObjects.forEach((object) => {
         if (object.primitive && object.primitive.olFeature) {
           const feature = object.primitive.olFeature
-          lines.push(feature.get('li_num'))
+          if (feature.get('li_num')) {
+            lines.push(feature.get('li_num'))
+          }
         }
       })
     }
