@@ -77,7 +77,7 @@ function mouseOverAndLeaveItem(
   list-style: none;
 }
 
-.list-stations > a {
+.list-stations > div {
   position: relative;
 }
 </style>

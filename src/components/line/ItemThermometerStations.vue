@@ -8,7 +8,7 @@ import type { LineNumber } from '@/model/lines.model'
 import { getColorLine } from '@/services/color'
 import type { BusNumber } from '@/model/bus.model'
 import { useStationsStore } from '@/stores/stations'
-import router from '@/router'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
   index: {
@@ -54,6 +54,7 @@ const props = defineProps({
 const stationActive = ref<Boolean>(false)
 const stationInteractionOnMap = ref<Boolean>(false)
 const borderColor = ref(getColorLine('border', props.line, 600))
+const router = useRouter()
 
 let desserteSplit = props.desserte
   .split(' ')
@@ -152,7 +153,7 @@ function goToStationPage() {
 </script>
 
 <template>
-  <a
+  <div
     class="flex items-center mb-1 cursor-pointer h-7"
     :aria-label="`Station ${name}.`"
     :class="stationActive || stationInteractionOnMap ? 'bg-slate-100' : ''"
@@ -160,7 +161,7 @@ function goToStationPage() {
     @mouseleave="stationActive = false"
     tabindex="0"
     @click="goToStationPage()"
-    href="#"
+    role="button"
   >
     <div :id="'divcircle-' + name" :class="classCircle" />
     <p class="font-dm-sans font-bold text-base -tracking-[1%] w-80 h-6 mb-1">
@@ -179,5 +180,5 @@ function goToStationPage() {
         </template>
       </div>
     </div>
-  </a>
+  </div>
 </template>

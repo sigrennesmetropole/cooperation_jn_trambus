@@ -14,6 +14,7 @@ import {
   useHomeViewsStore,
   useTravelTimesViewStore,
   useViewsStore,
+  useLineViewsStore,
 } from '@/stores/views'
 import { useStationsStore } from '@/stores/stations'
 import { useComponentAboveMapStore } from '@/stores/componentsAboveMapStore'
@@ -56,6 +57,7 @@ const componentAboveMapStore = useComponentAboveMapStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
 const travelTimeBoxesStore = useTravelTimeBoxesStore()
 const linesStore = useLinesStore()
+const lineStore = useLineViewsStore()
 const lineInteractionStore = useLineInteractionStore()
 
 onMounted(async () => {
@@ -170,7 +172,9 @@ layerStore.$subscribe(async () => {
   if (!layerStore.visibilities[RENNES_LAYER.bike]) {
     lineInteractionStore.isBikeSelected = false
   }
-  updateHomeViewStyle(rennesApp)
+  if (viewStore.currentView == viewList.home) {
+    updateHomeViewStyle(rennesApp)
+  }
 })
 
 map3dStore.$subscribe(async () => {
@@ -214,6 +218,16 @@ homeViewStore.$subscribe(async () => {
 
 poiStore.$subscribe(async () => {
   poiStoreSubcribe(rennesApp)
+})
+
+lineStore.$subscribe(async () => {
+  await updateLineViewStyle(rennesApp)
+  if (
+    viewStore.currentView == viewList.station &&
+    lineStore.displayedOtherLines
+  ) {
+    mapViewPointStore.updateViewpoint('rennes')
+  }
 })
 
 traveltimeInteractionStore.$subscribe(async () => {
