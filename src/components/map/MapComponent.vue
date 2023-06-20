@@ -222,12 +222,6 @@ poiStore.$subscribe(async () => {
 
 lineStore.$subscribe(async () => {
   await updateLineViewStyle(rennesApp)
-  if (
-    viewStore.currentView == viewList.station &&
-    lineStore.displayedOtherLines
-  ) {
-    mapViewPointStore.updateViewpoint('rennes')
-  }
 })
 
 traveltimeInteractionStore.$subscribe(async () => {
