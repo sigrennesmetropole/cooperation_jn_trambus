@@ -19,7 +19,7 @@
       "properties": { "layerName": "metro", "line": "b" },
       "geometry": {
         "type": "Point",
-        "coordinates": [-1.617434411670337, 48.133185271017766]
+        "coordinates": [-1.615370017233238, 48.132048166041074]
       }
     },
     {
@@ -27,7 +27,7 @@
       "properties": { "layerName": "bus", "line": "c1" },
       "geometry": {
         "type": "Point",
-        "coordinates": [-1.618703803241133, 48.135021108012324]
+        "coordinates": [-1.621454901792769, 48.136767140114962]
       }
     },
     {
@@ -51,7 +51,7 @@
       "properties": { "layerName": "bus", "line": "c4" },
       "geometry": {
         "type": "Point",
-        "coordinates": [-1.694407859050045, 48.137058184249746]
+        "coordinates": [-1.697375410174867, 48.1369409560698]
       }
     },
     {
