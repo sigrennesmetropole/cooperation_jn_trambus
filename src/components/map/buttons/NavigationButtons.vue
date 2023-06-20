@@ -22,6 +22,7 @@ import { useMapViewPointStore } from '@/stores/map'
 import { useStationsStore } from '@/stores/stations'
 import type { Viewpoint } from '@vcmap/core'
 import { useLayersStore } from '@/stores/layers'
+import { tiltViewpoint } from '@/helpers/viewpointHelper'
 
 const stationsStore = useStationsStore()
 const rennesApp = inject('rennesApp') as RennesApp
@@ -68,6 +69,7 @@ const heightClass = computed(() => {
 async function resetZoom() {
   if (viewStore.currentView !== 'station') {
     let viewpoint = rennesApp.viewpoints.getByKey(mapStore.viewPoint)
+    viewpoint = tiltViewpoint(viewpoint!)
     const activeMap = rennesApp.maps.activeMap
     await activeMap.gotoViewpoint(viewpoint!)
   } else {
