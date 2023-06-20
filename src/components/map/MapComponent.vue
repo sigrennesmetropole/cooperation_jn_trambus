@@ -42,6 +42,8 @@ import { poiStoreSubcribe } from '@/services/poi'
 import { usePoiParkingStore } from '@/stores/poiParking'
 import { useLinesStore } from '@/stores/lines'
 import { storeLineDescriptions } from '@/services/line'
+import { clearLayerAndApplyStyle } from '@/services/viewStyle'
+import { staticLabelStyleFunction } from '@/styles/staticLabel'
 
 const rennesApp = inject('rennesApp') as RennesApp
 
@@ -175,6 +177,9 @@ layerStore.$subscribe(async () => {
   if (viewStore.currentView == viewList.home) {
     updateHomeViewStyle(rennesApp)
   }
+  clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.staticLabel, (feature) =>
+    staticLabelStyleFunction(feature, layerStore.visibilities)
+  )
 })
 
 map3dStore.$subscribe(async () => {
