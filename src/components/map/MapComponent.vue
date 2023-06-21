@@ -20,6 +20,7 @@ import { useStationsStore } from '@/stores/stations'
 import { useComponentAboveMapStore } from '@/stores/componentsAboveMapStore'
 import {
   useLineInteractionStore,
+  useTrambusLineInteractionStore,
   useTravelTimeBoxesStore,
   useTraveltimeInteractionStore,
 } from '@/stores/interactionMap'
@@ -61,6 +62,7 @@ const travelTimeBoxesStore = useTravelTimeBoxesStore()
 const linesStore = useLinesStore()
 const lineStore = useLineViewsStore()
 const lineInteractionStore = useLineInteractionStore()
+const trambusLineInteractionStore = useTrambusLineInteractionStore()
 
 onMounted(async () => {
   await rennesApp.initializeMap()
@@ -68,6 +70,8 @@ onMounted(async () => {
   await updateMapStyle()
   componentAboveMapStore.addListenerForUpdatePositions(rennesApp)
   travelTimeBoxesStore.addListenerForUpdatePositions(rennesApp)
+  trambusLineInteractionStore.addListenerForUpdatePositions(rennesApp)
+  trambusLineInteractionStore.initializeTrambusLines(rennesApp)
 })
 
 // The following code is needed to cleanup resources we created

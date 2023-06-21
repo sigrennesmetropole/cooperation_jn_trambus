@@ -180,3 +180,55 @@ export const usePoiInteractionStore = defineStore('poi-interaction-map', () => {
     selectCurrentFeaturePoi,
   }
 })
+
+export const useTrambusLineInteractionStore = defineStore(
+  'trambus-line-interaction',
+  () => {
+    // const trambusLines: Ref<string[]> = ref(['T1', 'T2', 'T3', 'T4'])
+    const trambusLines: Ref<
+      {
+        line: string
+        feature: Feature
+        cartesian: Cartesian2
+      }[]
+    > = ref([])
+    const previousViewPoint: Ref<Viewpoint | null> = ref(null)
+
+    async function initializeTrambusLines(rennesApp: RennesApp) {
+      // Read from layer (?) -> get Features
+      const staticLabelLayer = await rennesApp.getLayerByKey('staticLabel')
+      staticLabelLayer.getFeatures().forEach((f) => {
+        console.log(f)
+        if (f.getProperties()['layerName'] === 'trambus') {
+          console.log(f.getProperties()['layerName'])
+          const line = f.getProperties()['line']
+          const cartesian = getCartesianPositionFromFeature(rennesApp, f)
+          console.log(cartesian)
+          trambusLines.value.push({
+            line: line,
+            feature: f,
+            cartesian: cartesian!,
+          })
+        }
+      })
+    }
+
+    function updatePositionsStaticTrambusLines(rennesApp: RennesApp) {
+      updateCartesianPositions(rennesApp, trambusLines.value)
+    }
+
+    function addListenerForUpdatePositions(rennesApp: RennesApp) {
+      addGenericListenerForUpdatePositions(
+        rennesApp,
+        previousViewPoint.value,
+        updatePositionsStaticTrambusLines
+      )
+    }
+
+    return {
+      trambusLines,
+      addListenerForUpdatePositions,
+      initializeTrambusLines,
+    }
+  }
+)

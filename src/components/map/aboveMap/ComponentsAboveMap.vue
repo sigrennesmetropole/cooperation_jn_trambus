@@ -5,6 +5,7 @@ import LabelLine from '@/components/map/aboveMap/LabelLine.vue'
 
 import {
   useLineInteractionStore,
+  useTrambusLineInteractionStore,
   useTravelTimeBoxesStore,
   useTraveltimeInteractionStore,
 } from '@/stores/interactionMap'
@@ -14,6 +15,7 @@ const componentAboveMapStore = useComponentAboveMapStore()
 const lineInteractionStore = useLineInteractionStore()
 const travelTimeBoxesStore = useTravelTimeBoxesStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
+const trambusLineInteractionStore = useTrambusLineInteractionStore()
 </script>
 
 <template>
@@ -46,4 +48,15 @@ const traveltimeInteractionStore = useTraveltimeInteractionStore()
       traveltimeInteractionStore.selectedTraveltime?.id
     "
   ></TravelTimeBox>
+  <!-- Static trambus label -->
+  <LabelLine
+    v-for="trambusLine in trambusLineInteractionStore.trambusLines"
+    :key="trambusLine.line"
+    :topPosition="trambusLine.cartesian.y"
+    :leftPosition="trambusLine.cartesian.x"
+    :lines="[trambusLine.line]"
+    :metro-lines="[]"
+    :bus-lines="[]"
+    :bike="false"
+  />
 </template>
