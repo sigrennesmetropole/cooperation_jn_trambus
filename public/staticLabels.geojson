@@ -91,7 +91,7 @@
       "properties": { "layerName": "trambus", "line": "T1" },
       "geometry": {
         "type": "Point",
-        "coordinates": [-1.707406060396877, 48.132652407437426]
+        "coordinates": [-1.709761400899932, 48.133909963081585]
       }
     },
     {
@@ -99,7 +99,23 @@
       "properties": { "layerName": "trambus", "line": "T2" },
       "geometry": {
         "type": "Point",
-        "coordinates": [-1.589684657767637, 48.118198006346958]
+        "coordinates": [-1.592851806953465, 48.122115523006585]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "layerName": "trambus", "line": "T3" },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-1.597441746937447, 48.082724353302069]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "layerName": "trambus", "line": "T4" },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-1.728154601847834, 48.079393342737099]
       }
     }
   ]
