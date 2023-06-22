@@ -10,12 +10,26 @@ import {
   useTraveltimeInteractionStore,
 } from '@/stores/interactionMap'
 import TravelTimeBox from '@/components/map/aboveMap/TravelTimeBox.vue'
+import { useLineViewsStore, useViewsStore } from '@/stores/views'
+import { viewList } from '@/model/views.model'
 
 const componentAboveMapStore = useComponentAboveMapStore()
 const lineInteractionStore = useLineInteractionStore()
 const travelTimeBoxesStore = useTravelTimeBoxesStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
 const trambusLineInteractionStore = useTrambusLineInteractionStore()
+const lineViewStore = useLineViewsStore()
+const viewStore = useViewsStore()
+
+function shouldShowStaticTrambusLabel(line: string) {
+  if (viewStore.currentView == viewList.home) return true
+  else if (viewStore.currentView == viewList.line) {
+    const selectedLine: string = 'T' + lineViewStore.selectedLine
+    return line == selectedLine
+  } else {
+    return false
+  }
+}
 </script>
 
 <template>
@@ -49,14 +63,16 @@ const trambusLineInteractionStore = useTrambusLineInteractionStore()
     "
   ></TravelTimeBox>
   <!-- Static trambus label -->
-  <LabelLine
-    v-for="trambusLine in trambusLineInteractionStore.trambusLines"
-    :key="trambusLine.line"
-    :topPosition="trambusLine.cartesian.y"
-    :leftPosition="trambusLine.cartesian.x"
-    :lines="[trambusLine.line]"
-    :metro-lines="[]"
-    :bus-lines="[]"
-    :bike="false"
-  />
+  <template v-for="trambusLine in trambusLineInteractionStore.trambusLines">
+    <LabelLine
+      v-if="shouldShowStaticTrambusLabel(trambusLine.line)"
+      :key="trambusLine.line"
+      :topPosition="trambusLine.cartesian.y"
+      :leftPosition="trambusLine.cartesian.x"
+      :lines="[trambusLine.line]"
+      :metro-lines="[]"
+      :bus-lines="[]"
+      :bike="false"
+    />
+  </template>
 </template>
