@@ -2,6 +2,8 @@
 import type Map from 'ol/Map'
 import { inject } from 'vue'
 import { UiIconButton } from '@sigrennesmetropole/cooperation_jn_common_ui'
+import { IconPlus } from '@sigrennesmetropole/cooperation_jn_common_ui'
+import { IconMinus } from '@sigrennesmetropole/cooperation_jn_common_ui'
 
 const olMap = inject('map') as Map
 
@@ -22,15 +24,33 @@ async function zoom(out = false, zoomDistance = 0.5): Promise<void> {
 
 <template>
   <div
-    class="h-90 transition-[height] absolute right-2 bottom-10 flex flex-col [&>*]:m-2 text-gray-dark items-center overflow-hidden w-32 select-none"
+    class="h-90 transition-[height] absolute right-2 bottom-10 flex flex-col [&>*]:m-2 text-gray-dark items-center w-32 select-none"
   >
     <div class="flex flex-col zoom-buttons text-2xl [&>*]:p-2" role="group">
-      <UiIconButton class="rounded-t-lg" @click="() => zoom(false)"
-        >+</UiIconButton
+      <UiIconButton
+        class="rounded-t-lg"
+        @click="() => zoom(false)"
+        ariaLabelButton="Zoom avant sur la carte"
+        titleButton="Zoom avant sur la carte"
+        heightTitle="30"
+        widthTitle="200"
+        positionX="-210"
+        positionY="12"
       >
-      <UiIconButton class="rounded-b-lg" @click="() => zoom(true)"
-        >-</UiIconButton
+        <IconPlus />
+      </UiIconButton>
+      <UiIconButton
+        class="rounded-b-lg"
+        @click="() => zoom(true)"
+        ariaLabelButton="Zoom arrière sur la carte"
+        titleButton="Zoom arrière sur la carte"
+        heightTitle="30"
+        widthTitle="200"
+        positionX="-210"
+        positionY="12"
       >
+        <IconMinus />
+      </UiIconButton>
     </div>
   </div>
 </template>
