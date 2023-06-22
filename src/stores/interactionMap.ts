@@ -180,3 +180,50 @@ export const usePoiInteractionStore = defineStore('poi-interaction-map', () => {
     selectCurrentFeaturePoi,
   }
 })
+
+export const useTrambusLineInteractionStore = defineStore(
+  'trambus-line-interaction',
+  () => {
+    const trambusLines: Ref<
+      {
+        line: string
+        feature: Feature
+        cartesian: Cartesian2
+      }[]
+    > = ref([])
+    const previousViewPoint: Ref<Viewpoint | null> = ref(null)
+
+    async function initializeTrambusLines(rennesApp: RennesApp) {
+      const staticLabelLayer = await rennesApp.getLayerByKey('staticLabel')
+      staticLabelLayer.getFeatures().forEach((f) => {
+        if (f.getProperties()['layerName'] === 'trambus') {
+          const line = f.getProperties()['line']
+          const cartesian = getCartesianPositionFromFeature(rennesApp, f)
+          trambusLines.value.push({
+            line: line,
+            feature: f,
+            cartesian: cartesian!,
+          })
+        }
+      })
+    }
+
+    function updatePositionsStaticTrambusLines(rennesApp: RennesApp) {
+      updateCartesianPositions(rennesApp, trambusLines.value)
+    }
+
+    function addListenerForUpdatePositions(rennesApp: RennesApp) {
+      addGenericListenerForUpdatePositions(
+        rennesApp,
+        previousViewPoint.value,
+        updatePositionsStaticTrambusLines
+      )
+    }
+
+    return {
+      trambusLines,
+      addListenerForUpdatePositions,
+      initializeTrambusLines,
+    }
+  }
+)

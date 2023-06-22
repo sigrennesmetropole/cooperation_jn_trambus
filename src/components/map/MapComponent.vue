@@ -20,6 +20,7 @@ import { useStationsStore } from '@/stores/stations'
 import { useComponentAboveMapStore } from '@/stores/componentsAboveMapStore'
 import {
   useLineInteractionStore,
+  useTrambusLineInteractionStore,
   useTravelTimeBoxesStore,
   useTraveltimeInteractionStore,
 } from '@/stores/interactionMap'
@@ -42,6 +43,8 @@ import { poiStoreSubcribe } from '@/services/poi'
 import { usePoiParkingStore } from '@/stores/poiParking'
 import { useLinesStore } from '@/stores/lines'
 import { storeLineDescriptions } from '@/services/line'
+import { clearLayerAndApplyStyle } from '@/services/viewStyle'
+import { staticLabelStyleFunction } from '@/styles/staticLabel'
 
 const rennesApp = inject('rennesApp') as RennesApp
 
@@ -59,6 +62,7 @@ const travelTimeBoxesStore = useTravelTimeBoxesStore()
 const linesStore = useLinesStore()
 const lineStore = useLineViewsStore()
 const lineInteractionStore = useLineInteractionStore()
+const trambusLineInteractionStore = useTrambusLineInteractionStore()
 
 onMounted(async () => {
   await rennesApp.initializeMap()
@@ -66,6 +70,8 @@ onMounted(async () => {
   await updateMapStyle()
   componentAboveMapStore.addListenerForUpdatePositions(rennesApp)
   travelTimeBoxesStore.addListenerForUpdatePositions(rennesApp)
+  trambusLineInteractionStore.addListenerForUpdatePositions(rennesApp)
+  await trambusLineInteractionStore.initializeTrambusLines(rennesApp)
 })
 
 // The following code is needed to cleanup resources we created
@@ -175,6 +181,9 @@ layerStore.$subscribe(async () => {
   if (viewStore.currentView == viewList.home) {
     updateHomeViewStyle(rennesApp)
   }
+  clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.staticLabel, (feature) =>
+    staticLabelStyleFunction(feature, layerStore.visibilities)
+  )
 })
 
 map3dStore.$subscribe(async () => {
