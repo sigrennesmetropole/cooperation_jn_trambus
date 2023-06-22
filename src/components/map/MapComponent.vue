@@ -71,7 +71,7 @@ onMounted(async () => {
   componentAboveMapStore.addListenerForUpdatePositions(rennesApp)
   travelTimeBoxesStore.addListenerForUpdatePositions(rennesApp)
   trambusLineInteractionStore.addListenerForUpdatePositions(rennesApp)
-  trambusLineInteractionStore.initializeTrambusLines(rennesApp)
+  await trambusLineInteractionStore.initializeTrambusLines(rennesApp)
 })
 
 // The following code is needed to cleanup resources we created
