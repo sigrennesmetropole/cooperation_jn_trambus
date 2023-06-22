@@ -198,12 +198,9 @@ export const useTrambusLineInteractionStore = defineStore(
       // Read from layer (?) -> get Features
       const staticLabelLayer = await rennesApp.getLayerByKey('staticLabel')
       staticLabelLayer.getFeatures().forEach((f) => {
-        console.log(f)
         if (f.getProperties()['layerName'] === 'trambus') {
-          console.log(f.getProperties()['layerName'])
           const line = f.getProperties()['line']
           const cartesian = getCartesianPositionFromFeature(rennesApp, f)
-          console.log(cartesian)
           trambusLines.value.push({
             line: line,
             feature: f,
