@@ -184,7 +184,6 @@ export const usePoiInteractionStore = defineStore('poi-interaction-map', () => {
 export const useTrambusLineInteractionStore = defineStore(
   'trambus-line-interaction',
   () => {
-    // const trambusLines: Ref<string[]> = ref(['T1', 'T2', 'T3', 'T4'])
     const trambusLines: Ref<
       {
         line: string
@@ -195,7 +194,6 @@ export const useTrambusLineInteractionStore = defineStore(
     const previousViewPoint: Ref<Viewpoint | null> = ref(null)
 
     async function initializeTrambusLines(rennesApp: RennesApp) {
-      // Read from layer (?) -> get Features
       const staticLabelLayer = await rennesApp.getLayerByKey('staticLabel')
       staticLabelLayer.getFeatures().forEach((f) => {
         if (f.getProperties()['layerName'] === 'trambus') {

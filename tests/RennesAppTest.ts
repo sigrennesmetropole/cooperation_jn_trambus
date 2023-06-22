@@ -133,6 +133,7 @@ export class RennesAppTest extends RennesApp {
       RENNES_LAYER.trambusLines,
       RENNES_LAYER.appTrambusLines,
       RENNES_LAYER.trambusTempsParcours,
+      RENNES_LAYER.staticLabel,
     ]
     layers.forEach((layer) => {
       this._addLayer(layer)
