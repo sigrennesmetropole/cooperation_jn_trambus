@@ -45,6 +45,7 @@ import { useLinesStore } from '@/stores/lines'
 import { storeLineDescriptions } from '@/services/line'
 import { clearLayerAndApplyStyle } from '@/services/viewStyle'
 import { staticLabelStyleFunction } from '@/styles/staticLabel'
+import { Color } from '@vcmap-cesium/engine'
 
 const rennesApp = inject('rennesApp') as RennesApp
 
@@ -138,6 +139,17 @@ async function updateActiveMap() {
   // Notes(IS): Currently there is no way to set custom tilt when switch active map
   // Get current tilt
   const oldViewpoint = await rennesApp.maps.activeMap.getViewpoint()
+
+  //quand la carte se charge en 2D
+  if (map3dStore.activeMap === 'ol') {
+    // rennesApp.get2DMap().olMap.getScene().backgroundColor = Color.SILVER
+  }
+  //quand la carte se charge en 3D
+  else {
+    // console.log("background 3D", rennesApp.get3DMap().getScene().backgroundColor)
+    // console.log(Color.SILVER)
+    rennesApp.get3DMap().getScene().backgroundColor = Color.SILVER
+  }
 
   await rennesApp.maps.setActiveMap(map3dStore.activeMap)
 

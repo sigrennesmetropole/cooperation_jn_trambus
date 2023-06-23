@@ -10,6 +10,7 @@ import {
 import mapClickAndMoveInteraction from '@/interactions/clickAndMoveInteraction'
 import type { RennesLayer } from '@/stores/layers'
 import { useMap3dStore } from '@/stores/map'
+import { Color } from '@vcmap-cesium/engine'
 
 export class RennesApp extends VcsApp {
   readonly mapConfig
@@ -31,7 +32,7 @@ export class RennesApp extends VcsApp {
       cesiumMap.getScene().skyAtmosphere.show = false
       cesiumMap.getScene().globe.showGroundAtmosphere = false
       cesiumMap.getScene().skyBox.show = false
-      // cesiumMap.getScene().backgroundColor = Color.DEEPPINK
+      cesiumMap.getScene().backgroundColor = Color.SILVER
     }
 
     // block max zoom level to initial one
