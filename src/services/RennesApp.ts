@@ -31,7 +31,6 @@ export class RennesApp extends VcsApp {
       cesiumMap.getScene().skyAtmosphere.show = false
       cesiumMap.getScene().globe.showGroundAtmosphere = false
       cesiumMap.getScene().skyBox.show = false
-      // cesiumMap.getScene().backgroundColor = Color.DEEPPINK
     }
 
     // block max zoom level to initial one

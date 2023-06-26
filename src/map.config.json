@@ -32,7 +32,8 @@
       "fogDensityMobile": 0.32,
       "fogScreenSpaceError": 2,
       "fogScreenSpaceErrorMobile": 4,
-      "maximumScreenSpaceError": 64
+      "maximumScreenSpaceError": 64,
+      "globeColor": "#C0C0C0"
     },
     {
       "type": "OpenlayersMap",
