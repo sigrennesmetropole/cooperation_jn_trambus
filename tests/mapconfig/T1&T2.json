@@ -174,7 +174,7 @@
     },
     {
       "name": "trambusLines",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=trp_coll:trambus_lignes&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code='T1' OR li_code='T2')",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:coopterr_trambus_lignes&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code='T1' OR li_code='T2')",
       "type": "GeoJSONLayer",
       "style": {
         "name": "trambusLineStyle",
@@ -197,7 +197,7 @@
     },
     {
       "name": "trambusStops",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_arrets&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code%20LIKE%20'%25T1%25'%20OR%20li_code%20LIKE%20'%25T2%25')",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:coopterr_trambus_arrets&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code%20LIKE%20'%25T1%25'%20OR%20li_code%20LIKE%20'%25T2%25')",
       "type": "GeoJSONLayer",
       "style": {
         "name": "trambusStopStyle",
@@ -232,7 +232,7 @@
     },
     {
       "name": "_trambusStopsOutline",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_arrets&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code%20LIKE%20'%25T1%25'%20OR%20li_code%20LIKE%20'%25T2%25')",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:coopterr_trambus_arrets&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code%20LIKE%20'%25T1%25'%20OR%20li_code%20LIKE%20'%25T2%25')",
       "type": "GeoJSONLayer",
       "style": {
         "name": "trambusStopOutlineStyle",
@@ -277,7 +277,7 @@
     },
     {
       "name": "appTrambusLines",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_lignes&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code='T1' OR li_code='T2')",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:coopterr_trambus_lignes&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code='T1' OR li_code='T2')",
       "type": "GeoJSONLayer",
       "activeOnStartup": true,
       "style": {
@@ -288,7 +288,7 @@
     },
     {
       "name": "trambusTempsParcours",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_temps_parcours&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code='T1' OR li_code='T2')",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:coopterr_trambus_temps_parcours&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code='T1' OR li_code='T2')",
       "type": "GeoJSONLayer",
       "activeOnStartup": true,
       "style": {
