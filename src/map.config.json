@@ -24,14 +24,16 @@
       "name": "cesium",
       "debugging": false,
       "fxaa": false,
-      "enableLightning": true,
-      "allowSoftwareRendering": false,
+      "enableLightning": false,
+      "allowSoftwareRendering": true,
       "fogEnabled": true,
       "fogEnabledMobile": true,
-      "fogDensity": 0.0002,
-      "fogDensityMobile": 0.0004,
+      "fogDensity": 0.16,
+      "fogDensityMobile": 0.32,
       "fogScreenSpaceError": 2,
-      "fogScreenSpaceErrorMobile": 4
+      "fogScreenSpaceErrorMobile": 4,
+      "maximumScreenSpaceError": 64,
+      "globeColor": "#C0C0C0"
     },
     {
       "type": "OpenlayersMap",
@@ -52,8 +54,8 @@
       "name": "building",
       "url": "https://rennes3d-dev-tiles.s3.fr-par.scw.cloud/f8a215a9-d0cc-4804-b284-0eac8a58924d/",
       "activeOnStartup": true,
-      "screenSpaceError": 16,
-      "screenSpaceErrorMobile": 32,
+      "screenSpaceError": 32,
+      "screenSpaceErrorMobile": 64,
       "zIndex": 1
     },
     {
@@ -165,7 +167,7 @@
     },
     {
       "name": "trambusLines",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=trp_coll:trambus_lignes&outputFormat=application/json&srsName=EPSG:4326",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:coopterr_trambus_lignes&outputFormat=application/json&srsName=EPSG:4326",
       "type": "GeoJSONLayer",
       "style": {
         "name": "trambusLineStyle",
@@ -188,7 +190,7 @@
     },
     {
       "name": "trambusStops",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_arrets&outputFormat=application/json&srsName=EPSG:4326",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:coopterr_trambus_arrets&outputFormat=application/json&srsName=EPSG:4326",
       "type": "GeoJSONLayer",
       "style": {
         "name": "trambusStopStyle",
@@ -223,7 +225,7 @@
     },
     {
       "name": "_trambusStopsOutline",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_arrets&outputFormat=application/json&srsName=EPSG:4326",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:coopterr_trambus_arrets&outputFormat=application/json&srsName=EPSG:4326",
       "type": "GeoJSONLayer",
       "style": {
         "name": "trambusStopOutlineStyle",
@@ -268,7 +270,7 @@
     },
     {
       "name": "appTrambusLines",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_lignes&outputFormat=application/json&srsName=EPSG:4326",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:coopterr_trambus_lignes&outputFormat=application/json&srsName=EPSG:4326",
       "type": "GeoJSONLayer",
       "activeOnStartup": true,
       "style": {
@@ -279,7 +281,7 @@
     },
     {
       "name": "trambusTempsParcours",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:trambus_temps_parcours&outputFormat=application/json&srsName=EPSG:4326",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=app:coopterr_trambus_temps_parcours&outputFormat=application/json&srsName=EPSG:4326",
       "type": "GeoJSONLayer",
       "activeOnStartup": true,
       "style": {
@@ -308,27 +310,9 @@
       "zIndex": 4
     },
     {
-      "name": "customLayerLabelMetro",
-      "type": "GeoJSONLayer",
-      "activeOnStartup": true,
-      "zIndex": 4
-    },
-    {
-      "name": "customLayerLabelBus",
-      "type": "GeoJSONLayer",
-      "activeOnStartup": true,
-      "zIndex": 4
-    },
-    {
-      "name": "customLayerLabelBike",
-      "type": "GeoJSONLayer",
-      "activeOnStartup": true,
-      "zIndex": 4
-    },
-    {
       "name": "staticLabel",
       "type": "GeoJSONLayer",
-      "url": "/src/assets/staticLabels.geojson",
+      "url": "/staticLabels.geojson",
       "activeOnStartup": true,
       "zIndex": 4
     }

@@ -14,13 +14,13 @@ import {
   useHomeViewsStore,
   useTravelTimesViewStore,
   useViewsStore,
+  useLineViewsStore,
 } from '@/stores/views'
 import { useStationsStore } from '@/stores/stations'
 import { useComponentAboveMapStore } from '@/stores/componentsAboveMapStore'
 import {
-  useBikeInteractionStore,
-  useBusInteractionStore,
-  useMetroInteractionStore,
+  useLineInteractionStore,
+  useTrambusLineInteractionStore,
   useTravelTimeBoxesStore,
   useTraveltimeInteractionStore,
 } from '@/stores/interactionMap'
@@ -43,6 +43,8 @@ import { poiStoreSubcribe } from '@/services/poi'
 import { usePoiParkingStore } from '@/stores/poiParking'
 import { useLinesStore } from '@/stores/lines'
 import { storeLineDescriptions } from '@/services/line'
+import { clearLayerAndApplyStyle } from '@/services/viewStyle'
+import { staticLabelStyleFunction } from '@/styles/staticLabel'
 
 const rennesApp = inject('rennesApp') as RennesApp
 
@@ -58,9 +60,9 @@ const componentAboveMapStore = useComponentAboveMapStore()
 const traveltimeInteractionStore = useTraveltimeInteractionStore()
 const travelTimeBoxesStore = useTravelTimeBoxesStore()
 const linesStore = useLinesStore()
-const metroInteractionStore = useMetroInteractionStore()
-const busInteractionStore = useBusInteractionStore()
-const bikeInteractionStore = useBikeInteractionStore()
+const lineStore = useLineViewsStore()
+const lineInteractionStore = useLineInteractionStore()
+const trambusLineInteractionStore = useTrambusLineInteractionStore()
 
 onMounted(async () => {
   await rennesApp.initializeMap()
@@ -68,6 +70,8 @@ onMounted(async () => {
   await updateMapStyle()
   componentAboveMapStore.addListenerForUpdatePositions(rennesApp)
   travelTimeBoxesStore.addListenerForUpdatePositions(rennesApp)
+  trambusLineInteractionStore.addListenerForUpdatePositions(rennesApp)
+  await trambusLineInteractionStore.initializeTrambusLines(rennesApp)
 })
 
 // The following code is needed to cleanup resources we created
@@ -166,15 +170,20 @@ async function updateMapStyle() {
 layerStore.$subscribe(async () => {
   await updateLayersVisibility()
   if (!layerStore.visibilities[RENNES_LAYER.metro]) {
-    metroInteractionStore.resetMetroLabels()
+    lineInteractionStore.selectedMetroLines = []
   }
   if (!layerStore.visibilities[RENNES_LAYER.bus]) {
-    busInteractionStore.resetBusLabels()
+    lineInteractionStore.selectedBusLines = []
   }
   if (!layerStore.visibilities[RENNES_LAYER.bike]) {
-    bikeInteractionStore.resetBikeLabels()
+    lineInteractionStore.isBikeSelected = false
   }
-  updateHomeViewStyle(rennesApp)
+  if (viewStore.currentView == viewList.home) {
+    updateHomeViewStyle(rennesApp)
+  }
+  clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.staticLabel, (feature) =>
+    staticLabelStyleFunction(feature, layerStore.visibilities)
+  )
 })
 
 map3dStore.$subscribe(async () => {
@@ -218,6 +227,10 @@ homeViewStore.$subscribe(async () => {
 
 poiStore.$subscribe(async () => {
   poiStoreSubcribe(rennesApp)
+})
+
+lineStore.$subscribe(async () => {
+  await updateLineViewStyle(rennesApp)
 })
 
 traveltimeInteractionStore.$subscribe(async () => {

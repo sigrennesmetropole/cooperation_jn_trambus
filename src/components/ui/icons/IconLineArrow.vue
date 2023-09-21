@@ -13,11 +13,11 @@ const props = defineProps({
 </script>
 <template>
   <div class="flex flex-col items-center rounded p-0">
-    <IconLineEllipse :lineNumber="props.lineNumber"></IconLineEllipse>
+    <IconLineEllipse :lineNumber="props.lineNumber!"></IconLineEllipse>
     <IconLineRectangle
       class="grow"
-      :lineNumber="props.lineNumber"
+      :lineNumber="props.lineNumber!"
     ></IconLineRectangle>
-    <IconLineEllipse :lineNumber="props.lineNumber"></IconLineEllipse>
+    <IconLineEllipse :lineNumber="props.lineNumber!"></IconLineEllipse>
   </div>
 </template>

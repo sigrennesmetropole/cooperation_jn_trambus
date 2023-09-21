@@ -30,7 +30,7 @@ describe('HeadToolbarTrambus', () => {
       viewStore.currentView = 'home'
     })
     it('renders properly on home', () => {
-      expect(wrapper.findAll('button').length).toBe(5)
+      expect(wrapper.findAll('button').length).toBe(4)
     })
   })
 
@@ -77,7 +77,7 @@ describe('HeadToolbarTrambus', () => {
       viewStore.currentView = 'line'
     })
     it('renders properly on home', () => {
-      expect(wrapper.findAll('button').length).toBe(6)
+      expect(wrapper.findAll('button').length).toBe(5)
     })
   })
   describe('when click on metrobus button', () => {

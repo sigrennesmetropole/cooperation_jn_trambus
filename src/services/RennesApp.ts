@@ -25,10 +25,12 @@ export class RennesApp extends VcsApp {
     const cesiumMap = this.get3DMap()
     await cesiumMap?.initialize()
     if (cesiumMap) {
-      cesiumMap.getScene().globe.maximumScreenSpaceError = 1
       const homeViewPoint = this.viewpoints.getByKey('rennes') as Viewpoint
       cesiumMap.getScene().screenSpaceCameraController.maximumZoomDistance =
         homeViewPoint.distance
+      cesiumMap.getScene().skyAtmosphere.show = false
+      cesiumMap.getScene().globe.showGroundAtmosphere = false
+      cesiumMap.getScene().skyBox.show = false
     }
 
     // block max zoom level to initial one

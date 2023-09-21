@@ -8,9 +8,6 @@ import IconVelo from '@/components/ui/icons/logo-transports-icons/IconVelo.vue'
 import IconBus from '@/components/ui/icons/logo-transports-icons/IconBus.vue'
 import IconMetro from '@/components/ui/icons/logo-transports-icons/IconMetro.vue'
 import IconTB from '@/components/ui/icons/logo-transports-icons/IconTB.vue'
-
-import LoginButtons from '@/components/map/buttons/LoginButtons.vue'
-
 import { usePanelsStore } from '@/stores/panels'
 import { useLayersStore } from '@/stores/layers'
 import type { RennesLayer } from '@/stores/layers'
@@ -127,6 +124,5 @@ function activeAllTrambusLine() {
         Planning du projet
       </span>
     </UiButton>
-    <LoginButtons> </LoginButtons>
   </div>
 </template>
