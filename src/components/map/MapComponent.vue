@@ -70,8 +70,8 @@ onMounted(async () => {
   await updateMapStyle()
   componentAboveMapStore.addListenerForUpdatePositions(rennesApp)
   travelTimeBoxesStore.addListenerForUpdatePositions(rennesApp)
-  trambusLineInteractionStore.addListenerForUpdatePositions(rennesApp)
   await trambusLineInteractionStore.initializeTrambusLines(rennesApp)
+  trambusLineInteractionStore.addListenerForUpdatePositions(rennesApp)
 })
 
 // The following code is needed to cleanup resources we created
@@ -198,6 +198,8 @@ map3dStore.$subscribe(async () => {
     )
   }
   travelTimeBoxesStore.addListenerForUpdatePositions(rennesApp)
+  trambusLineInteractionStore.addListenerForUpdatePositions(rennesApp)
+
   poiStoreSubcribe(rennesApp)
 
   if (map3dStore.isInitializeMap && linesStore.lineDesciptions.length == 0) {
