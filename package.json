@@ -28,9 +28,10 @@
   },
   "dependencies": {
     "@pinia/testing": "^0.0.14",
+    "@sigrennesmetropole/cooperation_jn_common_ui": "0.0.32",
     "@tailwindcss/forms": "^0.5.3",
-    "@vcmap-cesium/engine": "~2.3.1",
-    "@vcmap/core": "5.0.0-rc.32",
+    "@vcmap-cesium/engine": "~4.0.3",
+    "@vcmap/core": "5.0.2",
     "node-fetch": "^3.3.0",
     "ol": "^7.1.0",
     "pinia": "^2.0.21",
