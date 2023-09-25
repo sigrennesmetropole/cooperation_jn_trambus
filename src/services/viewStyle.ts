@@ -1,7 +1,7 @@
 import { RENNES_LAYER } from '@/stores/layers'
 import type { StyleFunction } from 'ol/style/Style'
 import type { Style } from 'ol/style'
-import type { FeatureLayer } from '@vcmap/core'
+import type { VectorLayer } from '@vcmap/core'
 import type { RennesApp } from '@/services/RennesApp'
 import {
   trambusLineViewStyleFunction,
@@ -33,7 +33,7 @@ export function clearLayerAndApplyStyle(
   layerName: string,
   style: Style | StyleFunction | undefined
 ) {
-  const layer = rennesApp.layers.getByKey(layerName) as FeatureLayer
+  const layer = rennesApp.layers.getByKey(layerName) as VectorLayer
   if (layer) {
     layer.clearStyle()
     if (style) {

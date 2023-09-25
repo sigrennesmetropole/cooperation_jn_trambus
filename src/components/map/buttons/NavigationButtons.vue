@@ -40,13 +40,13 @@ async function toggle3DMap() {
 async function zoom(out = false, zoomFactor = 2): Promise<void> {
   const activeMap = rennesApp.maps.activeMap
   const viewpoint = await activeMap?.getViewpoint()
-  const maxZoom = rennesApp.get3DMap().getScene()
-    .screenSpaceCameraController.maximumZoomDistance
+  const maxZoom = rennesApp.get3DMap().getScene()!.screenSpaceCameraController
+    .maximumZoomDistance
 
   if (activeMap && viewpoint) {
-    let distance = viewpoint.distance / zoomFactor
+    let distance = viewpoint.distance! / zoomFactor
     if (out) {
-      distance = Math.min(viewpoint.distance * zoomFactor, maxZoom)
+      distance = Math.min(viewpoint.distance! * zoomFactor, maxZoom)
     }
     const newVp = cloneViewPointAndResetCameraPosition(viewpoint, distance)
     await rennesApp.maps?.activeMap.gotoViewpoint(newVp)
@@ -71,9 +71,9 @@ async function resetZoom() {
     let viewpoint = rennesApp.viewpoints.getByKey(mapStore.viewPoint)
     viewpoint = tiltViewpoint(viewpoint!)
     const activeMap = rennesApp.maps.activeMap
-    await activeMap.gotoViewpoint(viewpoint!)
+    await activeMap!.gotoViewpoint(viewpoint!)
   } else {
-    await rennesApp.maps?.activeMap.gotoViewpoint(
+    await rennesApp.maps?.activeMap!.gotoViewpoint(
       stationsStore.viewPointStation as Viewpoint
     )
   }
