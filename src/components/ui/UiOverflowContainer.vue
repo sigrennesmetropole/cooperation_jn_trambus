@@ -56,14 +56,14 @@ const marginContents = computed(() => {
       <slot></slot>
     </div>
     <button
-      class="absolute z-10 bg-white w-9 h-9 shadow-lg top-1/2 left-2 transform -translate-y-1/2 rounded-lg flex items-start p-2.5"
+      class="absolute z-10 bg-white w-9 h-9 shadow-lg top-1/2 left-2 transform -translate-y-1/2 rounded-lg flex items-start p-2.5 hover:bg-neutral-100 hover:drop-shadow"
       @click="scroll(-250)"
       :class="{ hidden: isMostLeftPosition }"
     >
       <img :src="leftArrow" />
     </button>
     <button
-      class="absolute z-10 bg-white w-9 h-9 shadow-lg top-1/2 right-2 transform -translate-y-1/2 rounded-lg flex items-start p-2.5"
+      class="absolute z-10 bg-white w-9 h-9 shadow-lg top-1/2 right-2 transform -translate-y-1/2 rounded-lg flex items-start p-2.5 hover:bg-neutral-100 hover:drop-shadow"
       @click="scroll(250)"
       :class="{ hidden: isMostRightPosition }"
     >

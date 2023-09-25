@@ -91,7 +91,7 @@ function setAlternativeMapChecked() {
 <template>
   <div
     :class="heightClass"
-    class="transition-[height] absolute right-2 bottom-10 flex flex-col [&>*]:m-2 text-gray-dark items-center w-32 select-none"
+    class="transition-[height] absolute right-2 bottom-10 flex flex-col [&>*]:m-2 text-gray-dark items-center w-32 select-none [&>*:last-child]:mb-0"
   >
     <UiIconButton
       class="rounded-lg"
@@ -176,7 +176,7 @@ function setAlternativeMapChecked() {
     <CompassComponent v-if="map3dStore.is3D()" />
   </div>
 
-  <div class="absolute right-[120px] bottom-10" v-if="!map3dStore.is3D()">
+  <div class="absolute right-[120px] bottom-10 h-12" v-if="!map3dStore.is3D()">
     <UiDescribeButton3D></UiDescribeButton3D>
   </div>
   <div class="absolute right-[130px] bottom-12" v-else>
