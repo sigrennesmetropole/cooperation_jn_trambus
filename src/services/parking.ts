@@ -15,7 +15,7 @@ export async function fetchParkingsByStations(
   stations.forEach((station) => {
     const nom_station = station['nom']
     const parkings_on_station = parkingsFeatures.filter(
-      (feature) => feature.getProperty('arret_nom') === nom_station
+      (feature) => feature.getProperties()['arret_nom'] === nom_station
     )
     if (parkings_on_station.length > 0) {
       parkings_on_station.forEach((feature) => {

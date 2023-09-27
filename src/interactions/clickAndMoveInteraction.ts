@@ -25,6 +25,7 @@ import { Style } from 'ol/style'
 import { displayCurrentPoi, undisplayCurrentPoi } from '@/services/poi'
 import { isTrambusStopBelongsToLine } from '@/services/station'
 import { usePanelsStore } from '@/stores/panels'
+import type { FeatureLike } from 'ol/Feature'
 
 class mapClickAndMoveInteraction extends AbstractInteraction {
   private _rennesApp: RennesApp
@@ -79,10 +80,10 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
     const lines: string[] = []
     if (event.map.className === 'OpenlayersMap') {
       const map = event.map as OpenlayersMap
-      map.olMap.forEachFeatureAtPixel(
+      map.olMap!.forEachFeatureAtPixel(
         [event.windowPosition.x, event.windowPosition.y],
-        (feat: Feature) => {
-          if (this.isFeatureLine(feat, lines)) {
+        (feat: FeatureLike) => {
+          if (this.isFeatureLine(feat as Feature, lines)) {
             lines.push(feat.get('li_nom'))
           }
         },
@@ -91,7 +92,7 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
     } else if (event.map.className === 'CesiumMap') {
       const cesiumMap = event.map as CesiumMap
       const scene = cesiumMap.getScene()
-      const pickedObjects = scene.drillPick(event.windowPosition)
+      const pickedObjects = scene!.drillPick(event.windowPosition)
       pickedObjects.forEach((object) => {
         if (object.primitive && object.primitive.olFeature) {
           const feature = object.primitive.olFeature
@@ -160,9 +161,9 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
     const lines: string[] = []
     if (event.map.className === 'OpenlayersMap') {
       const map = event.map as OpenlayersMap
-      map.olMap.forEachFeatureAtPixel(
+      map.olMap!.forEachFeatureAtPixel(
         [event.windowPosition.x, event.windowPosition.y],
-        (feat: Feature) => {
+        (feat: FeatureLike) => {
           if (feat.get('ligne')) {
             lines.push(feat.get('ligne'))
           }
@@ -172,7 +173,7 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
     } else if (event.map.className === 'CesiumMap') {
       const cesiumMap = event.map as CesiumMap
       const scene = cesiumMap.getScene()
-      const pickedObjects = scene.drillPick(event.windowPosition)
+      const pickedObjects = scene!.drillPick(event.windowPosition)
       pickedObjects.forEach((object) => {
         if (object.primitive && object.primitive.olFeature) {
           const feature = object.primitive.olFeature
@@ -189,9 +190,9 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
     const lines: string[] = []
     if (event.map.className === 'OpenlayersMap') {
       const map = event.map as OpenlayersMap
-      map.olMap.forEachFeatureAtPixel(
+      map.olMap!.forEachFeatureAtPixel(
         [event.windowPosition.x, event.windowPosition.y],
-        (feat: Feature) => {
+        (feat: FeatureLike) => {
           if (feat.get('li_num')) {
             lines.push(feat.get('li_num'))
           }
@@ -201,7 +202,7 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
     } else if (event.map.className === 'CesiumMap') {
       const cesiumMap = event.map as CesiumMap
       const scene = cesiumMap.getScene()
-      const pickedObjects = scene.drillPick(event.windowPosition)
+      const pickedObjects = scene!.drillPick(event.windowPosition)
       pickedObjects.forEach((object) => {
         if (object.primitive && object.primitive.olFeature) {
           const feature = object.primitive.olFeature
@@ -215,17 +216,25 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
   }
 
   isBike(event: InteractionEvent) {
+    // @ts-ignore
     return event.feature?.[vcsLayerName] === RENNES_LAYER.bike
   }
 
   async pipe(event: InteractionEvent): Promise<InteractionEvent> {
+    // @ts-ignore
     const isFeatureTrambusStpos =
+      // @ts-ignore
       event.feature?.[vcsLayerName] === RENNES_LAYER.trambusStops
     const isFeatureLine =
+      // @ts-ignore
       event.feature?.[vcsLayerName] === RENNES_LAYER.trambusLines
+    // @ts-ignore
     const isFeaturePOI = event.feature?.[vcsLayerName] === RENNES_LAYER.poi
+    // @ts-ignore
     const isFeatureMetro = event.feature?.[vcsLayerName] === RENNES_LAYER.metro
+    // @ts-ignore
     const isFeatureBus = event.feature?.[vcsLayerName] === RENNES_LAYER.bus
+    // @ts-ignore
     const isFeatureBike = event.feature?.[vcsLayerName] === RENNES_LAYER.bike
 
     if (isFeatureTrambusStpos) {

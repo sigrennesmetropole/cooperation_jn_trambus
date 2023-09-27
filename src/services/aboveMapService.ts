@@ -26,7 +26,7 @@ export function addGenericListenerForUpdatePositions(
 ) {
   const map = rennesApp.maps.activeMap
   if (map instanceof CesiumMap) {
-    map.getScene().postRender.addEventListener(() => {
+    map.getScene()!.postRender.addEventListener(() => {
       const vp = map.getViewpointSync()
       if (
         previousViewPoint === null ||

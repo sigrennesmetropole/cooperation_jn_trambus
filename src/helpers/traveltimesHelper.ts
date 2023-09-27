@@ -1,9 +1,10 @@
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import { RENNES_LAYER } from '@/stores/layers'
-import { LineString } from 'ol/geom'
+import { LineString, Point } from 'ol/geom'
 import type { RennesApp } from '@/services/RennesApp'
 import { getHeightFromTerrainProvider, mercatorProjection } from '@vcmap/core'
 import { Feature } from 'ol'
+import type { CesiumTerrainProvider } from '@vcmap-cesium/engine'
 
 export async function lineStringsFromTraveltimes(
   traveltimes: TravelTimeModel[],
@@ -28,10 +29,10 @@ export async function lineStringsFromTraveltimes(
 
       const [startCoordinate, endCoordinate] =
         await getHeightFromTerrainProvider(
-          cesiumMap.terrainProvider,
+          cesiumMap.terrainProvider as CesiumTerrainProvider,
           [
-            startTrambusStop?.getGeometry()?.getCoordinates(),
-            endTrambusStop?.getGeometry()?.getCoordinates(),
+            (startTrambusStop?.getGeometry() as Point).getCoordinates(),
+            (endTrambusStop?.getGeometry() as Point).getCoordinates(),
           ],
           mercatorProjection
         )
@@ -42,8 +43,8 @@ export async function lineStringsFromTraveltimes(
       return feature
     } else {
       const geom = new LineString([
-        startTrambusStop?.getGeometry()?.getCoordinates(),
-        endTrambusStop?.getGeometry()?.getCoordinates(),
+        (startTrambusStop?.getGeometry() as Point).getCoordinates(),
+        (endTrambusStop?.getGeometry() as Point).getCoordinates(),
       ])
       const feature = new Feature(geom)
       feature.setProperties({ ...traveltime })

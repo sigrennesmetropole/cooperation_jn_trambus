@@ -1,4 +1,4 @@
-import { LineString } from 'ol/geom'
+import { LineString, Point } from 'ol/geom'
 import type Feature from 'ol/Feature'
 
 export async function lineStringsFromStationPois(
@@ -7,8 +7,8 @@ export async function lineStringsFromStationPois(
 ) {
   const promises = pois.map(async (poi) => {
     const lineString = new LineString([
-      station?.getGeometry()?.getCoordinates(),
-      poi?.getGeometry()?.getCoordinates(),
+      (station?.getGeometry() as Point).getCoordinates(),
+      (poi?.getGeometry() as Point).getCoordinates(),
     ])
     return lineString
   })

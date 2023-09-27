@@ -24,18 +24,20 @@ export class RennesApp extends VcsApp {
 
     const cesiumMap = this.get3DMap()
     await cesiumMap?.initialize()
-    if (cesiumMap) {
+    if (cesiumMap && cesiumMap.getScene()) {
       const homeViewPoint = this.viewpoints.getByKey('rennes') as Viewpoint
-      cesiumMap.getScene().screenSpaceCameraController.maximumZoomDistance =
-        homeViewPoint.distance
-      cesiumMap.getScene().skyAtmosphere.show = false
-      cesiumMap.getScene().globe.showGroundAtmosphere = false
-      cesiumMap.getScene().skyBox.show = false
+      cesiumMap.getScene()!.screenSpaceCameraController.maximumZoomDistance =
+        homeViewPoint.distance!
+      cesiumMap.getScene()!.skyAtmosphere.show = false
+      cesiumMap.getScene()!.globe.showGroundAtmosphere = false
+      cesiumMap.getScene()!.skyBox.show = false
     }
 
     // block max zoom level to initial one
     const olMap = this.get2DMap().olMap
-    olMap.getView().setMinZoom(olMap.getView().getZoom())
+    if (olMap) {
+      olMap.getView().setMinZoom(olMap.getView().getZoom()!)
+    }
     this.maps.eventHandler.featureInteraction.setActive(EventType.CLICKMOVE)
     this.maps.eventHandler.addPersistentInteraction(
       new mapClickAndMoveInteraction(this)
@@ -63,7 +65,7 @@ export class RennesApp extends VcsApp {
   ) {
     const selected = layer
       .getFeatures()
-      .filter((feature) => feature.getProperty(attribute) === value)
+      .filter((feature) => feature.getProperties()[attribute] === value)
     return selected
   }
 
@@ -101,7 +103,7 @@ export class RennesApp extends VcsApp {
   ) {
     const selected = layer
       .getFeatures()
-      .filter((feature) => feature.getProperty(attribute).includes(value))
+      .filter((feature) => feature.getProperties()[attribute].includes(value))
     return selected
   }
 
