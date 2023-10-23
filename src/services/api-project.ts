@@ -2,7 +2,7 @@ import { apiService } from '@/services/api'
 
 class ApiProjectService {
   async getProjectInformations() {
-    const data = await apiService.callApiGet(`/api/consultations`)
+    const data = await apiService.callApiGet(`/api/consultations/projects`)
     return data
   }
 }
