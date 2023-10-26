@@ -7,25 +7,29 @@ import multiplePerson from '@/assets/icons/multiple-person.svg'
 import { computed } from 'vue'
 
 const props = defineProps({
+  img: {
+    type: String,
+    default: '',
+  },
   title: {
     type: String,
     default: '',
   },
   status: {
     type: String,
-    default: '',
+    default: 'open',
   },
   date: {
     type: String,
-    default: '01/01/2001',
+    default: 'Non renseigné',
   },
   place: {
     type: String,
-    default: '',
+    default: 'Non renseigné',
   },
   content: {
     type: String,
-    default: '',
+    default: 'Non renseigné',
   },
   comment: {
     type: Number,
@@ -39,6 +43,10 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
+  url: {
+    type: String,
+    default: '',
+  },
 })
 
 const style = computed(() => {
@@ -48,12 +56,6 @@ const style = computed(() => {
       textStyle: 'text-black',
       textContent: 'Ouverte',
     }
-  } else if (props.status === 'inAnalysis') {
-    return {
-      buttonStyle: 'bg-slate-500',
-      textStyle: 'text-white',
-      textContent: 'En analyse',
-    }
   } else {
     return {
       buttonStyle: 'bg-white border border-neutral-300',
@@ -62,11 +64,20 @@ const style = computed(() => {
     }
   }
 })
+
+function goTo(link: string) {
+  window.open(link, '_blank')
+}
 </script>
 
 <template>
   <div class="flex flex-row gap-4 py-4 border-b border-b-slate-200">
-    <slot name="img"></slot>
+    <img
+      class="h-[133px] w-[200px] rounded-lg"
+      :src="props.img"
+      alt="Illustration de la concertation"
+      @click="goTo(props.url)"
+    />
     <div class="flex flex-col gap-2">
       <p class="font-dm-sans font-bold text-base">{{ props.title }}</p>
       <div class="flex flex-row gap-3 h-8">

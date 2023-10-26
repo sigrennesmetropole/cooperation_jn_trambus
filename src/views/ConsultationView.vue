@@ -1,15 +1,35 @@
 <script setup lang="ts">
-import { onBeforeMount } from 'vue'
+import { ref, Ref, onBeforeMount } from 'vue'
 import { viewList } from '@/model/views.model'
 import { useViewsStore } from '@/stores/views'
 import ChevronArrowRight from '@/assets/icons/chevron-left.svg'
-import ConsultationMeeting from '@/components/consultation/ConsultationMeeting.vue'
+import ProjectMeeting from '@/components/consultation/ProjectMeeting.vue'
 import ExplanationComponent from '@/components/consultation/ExplanationComponent.vue'
-import ConsultationIllustration from '@/assets/illustrations/ex_consultation.png'
+import { apiProjectService } from '@/services/api-project'
 const viewStore = useViewsStore()
 
-onBeforeMount(() => {
+let projects: Ref<
+  {
+    id: string
+    img: string
+    title: string
+    status: string
+    date_end: string
+    content: string
+    location: string
+    nb_comments: number
+    nb_likes: number
+    nb_persons: number
+    url: string
+  }[]
+> = ref([])
+
+onBeforeMount(async () => {
   viewStore.currentView = viewList['consultation']
+  const projectInformations = await apiProjectService.getProjectInformations()
+  for (let project of projectInformations) {
+    projects.value.push(project)
+  }
 })
 </script>
 
@@ -33,67 +53,41 @@ onBeforeMount(() => {
       >
         Les concertations ouvertes
       </h2>
-      <ConsultationMeeting
-        :title="'Vos réactions au futur aménagement du réseau trambus'"
-        :status="'open'"
-        :date="'15/10/2023'"
-        :place="'Zone géographique'"
-        :content="'Appaisement du traffic et végétalisation des espaces. La rue chicogné va faire l’objet d’une requalification'"
-        :comment="481"
-        :like="1291"
-        :person="353"
+      <ProjectMeeting
+        v-for="project in projects.filter((i) => i.status != 'closed')"
+        :key="project.id"
+        :img="project.img"
+        :title="project.title"
+        :status="project.status"
+        :date="project.date_end"
+        :place="project.location"
+        :content="project.content"
+        :comment="project.nb_comments"
+        :like="project.nb_likes"
+        :person="project.nb_persons"
+        :url="project.url"
       >
-        <template v-slot:img>
-          <img
-            class="h-[133px] w-[200px] rounded-lg"
-            :src="ConsultationIllustration"
-            alt="Illustration de la concertation"
-          />
-        </template>
-      </ConsultationMeeting>
-      <ConsultationMeeting
-        :illustration="'src/assets/illustrations/ex_consultation.png'"
-        :title="'Trambus'"
-        :status="'inAnalysis'"
-        :date="'15/10/2023'"
-        :place="'Ligne 4'"
-        :content="'Appaisement du traffic et végétalisation des espaces. La rue chicogné va faire l’objet d’une requalification'"
-        :comment="120"
-        :like="364"
-        :person="56"
-      >
-        <template v-slot:img>
-          <img
-            class="h-[133px] w-[200px] rounded-lg"
-            :src="ConsultationIllustration"
-            alt="Illustration de la concertation"
-          />
-        </template>
-      </ConsultationMeeting>
+      </ProjectMeeting>
       <h2
         class="font-dm-sans font-bold text-lg leading-6 border-b border-b-slate-200 mt-6 pb-6"
       >
         Les concertations terminées
       </h2>
-      <ConsultationMeeting
-        :illustration="'src/assets/illustrations/ex_consultation.png'"
-        :title="'Trambus'"
-        :status="'closed'"
-        :date="'15/10/2023'"
-        :place="'Gare'"
-        :content="'Appaisement du traffic et végétalisation des espaces. La rue chicogné va faire l’objet d’une requalification'"
-        :comment="61"
-        :like="579"
-        :person="237"
+      <ProjectMeeting
+        v-for="project in projects.filter((i) => i.status == 'closed')"
+        :key="project.id"
+        :img="project.img"
+        :title="project.title"
+        :status="project.status"
+        :date="project.date_end"
+        :place="project.location"
+        :content="project.content"
+        :comment="project.nb_comments"
+        :like="project.nb_likes"
+        :person="project.nb_persons"
+        :url="project.url"
       >
-        <template v-slot:img>
-          <img
-            class="h-[133px] w-[200px] rounded-lg"
-            :src="ConsultationIllustration"
-            alt="Illustration de la concertation"
-          />
-        </template>
-      </ConsultationMeeting>
+      </ProjectMeeting>
     </div>
   </main>
 </template>
