@@ -32,3 +32,4 @@ coverage
 *.iml
 
 .env
+.env.docker
