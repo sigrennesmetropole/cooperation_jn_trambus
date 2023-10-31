@@ -73,6 +73,8 @@ docker build -t cooperation_jn_trambus:latest  --build-arg NPM_TOKEN=<YOUR_GITHU
 
 ### Run the image
 
+Create `.env.docker` from `.env.docker.example` to put the environment variables.
+
 ```shell
 docker run -p 8080:80 cooperation_jn_trambus:latest
 ```
