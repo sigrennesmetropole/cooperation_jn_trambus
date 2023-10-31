@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig, type UserConfig, type Plugin } from 'vite'
+import importMetaEnv from '@import-meta-env/unplugin'
 import vue from '@vitejs/plugin-vue'
 import rollupPluginStripPragma from 'rollup-plugin-strip-pragma'
 import path from 'path'
@@ -10,9 +11,23 @@ import { determineHostFromArgv } from './build/determineHost.js'
 type stripPragmas = (options: { pragmas: string[] }) => Plugin
 
 // https://vitejs.dev/config/
+// Also see https://import-meta-env.org/guide/getting-started/compile-time-transform.html#unplugin
+// for configuring the environment variables
 export default defineConfig(({ command }) => {
+  let transformMode: 'compile-time' | 'runtime' = 'compile-time'
+  if (command === 'build') {
+    transformMode = 'runtime'
+  }
+
   const base: UserConfig = {
-    plugins: [vue()],
+    plugins: [
+      vue(),
+      importMetaEnv.vite({
+        env: '.env',
+        example: '.env.example',
+        transformMode: transformMode,
+      }),
+    ],
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),

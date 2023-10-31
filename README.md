@@ -73,6 +73,8 @@ docker build -t cooperation_jn_trambus:latest  --build-arg NPM_TOKEN=<YOUR_GITHU
 
 ### Run the image
 
+Create `.env.docker` from `.env.docker.example` to put the environment variables.
+
 ```shell
 docker run -p 8080:80 cooperation_jn_trambus:latest
 ```
@@ -80,7 +82,7 @@ docker run -p 8080:80 cooperation_jn_trambus:latest
 or the following command if you want to use port 5173, with `cj_trambus` as the container name, and delete the container directly after stopped.
 
 ```shell
-docker run -p 5173:80 --name cj_trambus --rm cooperation_jn_trambus:latest
+docker run -p 5173:80 --env-file ./.env.docker --name cj_trambus --rm cooperation_jn_trambus:latest
 
 ```
 

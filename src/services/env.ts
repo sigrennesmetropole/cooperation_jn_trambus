@@ -1,3 +1,3 @@
 export function getUrlBackOffice() {
-  return import.meta.env.VITE_URL_BACKOFFICE
+  return import.meta.env.URL_BACKOFFICE
 }
