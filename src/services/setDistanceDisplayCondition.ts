@@ -1,7 +1,8 @@
 import type { OpenlayersMap } from '@vcmap/core'
 import { Projection, StyleItem } from '@vcmap/core'
-import type { Feature, Map as olMap } from 'ol'
+import type { Map as olMap } from 'ol'
 import { NearFarScalar, Math as CesiumMath } from '@vcmap-cesium/engine'
+import type { FeatureLike } from 'ol/Feature'
 /**
  * Calculates the camera distance based on the current viewport, view and resolution
  * @param {number} resolution
@@ -37,7 +38,7 @@ export function setDistanceDisplayConditionFeature(
   map: OpenlayersMap
 ): void {
   const currentStyle = layer.style
-  layer.style = (feature: Feature, resolution: number) => {
+  layer.style = (feature: FeatureLike, resolution: number) => {
     let featureDistance
     const scaleByDistance = feature.get('olcs_scaleByDistance')
     let featureNearFar = undefined
@@ -54,7 +55,7 @@ export function setDistanceDisplayConditionFeature(
     }
     if (
       featureDistance != null &&
-      getDistanceFromResolution(resolution, map.olMap) > featureDistance
+      getDistanceFromResolution(resolution, map.olMap!) > featureDistance
     ) {
       return undefined
     }

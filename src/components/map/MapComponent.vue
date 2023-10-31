@@ -70,8 +70,8 @@ onMounted(async () => {
   await updateMapStyle()
   componentAboveMapStore.addListenerForUpdatePositions(rennesApp)
   travelTimeBoxesStore.addListenerForUpdatePositions(rennesApp)
-  trambusLineInteractionStore.addListenerForUpdatePositions(rennesApp)
   await trambusLineInteractionStore.initializeTrambusLines(rennesApp)
+  trambusLineInteractionStore.addListenerForUpdatePositions(rennesApp)
 })
 
 // The following code is needed to cleanup resources we created
@@ -82,7 +82,7 @@ onUnmounted(() => {
 })
 
 async function setLayerVisible(layerName: string, visible: boolean) {
-  const layer: Layer = rennesApp.maps.layerCollection.getByKey(layerName)
+  const layer: Layer = rennesApp.maps.layerCollection.getByKey(layerName)!
   if (visible) {
     await layer?.activate()
   } else {
@@ -114,7 +114,7 @@ async function updateViewPoint(viewPoint: string) {
     }
     stationsStore.setViewPointStation(viewpoint as Viewpoint)
 
-    await activeMap.gotoViewpoint(viewpoint!)
+    await activeMap!.gotoViewpoint(viewpoint!)
   } else {
     let selectedViewPoint = rennesApp.viewpoints.getByKey(viewPoint)
 
@@ -122,14 +122,14 @@ async function updateViewPoint(viewPoint: string) {
       if (map3dStore.is3D()) {
         selectedViewPoint = tiltViewpoint(selectedViewPoint!)
       }
-      await activeMap.gotoViewpoint(selectedViewPoint)
+      await activeMap!.gotoViewpoint(selectedViewPoint)
     } else {
       // go to home
       let homeViewPoint = rennesApp.viewpoints.getByKey('rennes')
       if (map3dStore.is3D()) {
         homeViewPoint = tiltViewpoint(homeViewPoint!)
       }
-      await activeMap.gotoViewpoint(homeViewPoint!)
+      await activeMap!.gotoViewpoint(homeViewPoint!)
     }
   }
 }
@@ -137,7 +137,7 @@ async function updateViewPoint(viewPoint: string) {
 async function updateActiveMap() {
   // Notes(IS): Currently there is no way to set custom tilt when switch active map
   // Get current tilt
-  const oldViewpoint = await rennesApp.maps.activeMap.getViewpoint()
+  const oldViewpoint = await rennesApp.maps.activeMap!.getViewpoint()
 
   await rennesApp.maps.setActiveMap(map3dStore.activeMap)
 
@@ -147,7 +147,7 @@ async function updateActiveMap() {
   } else {
     newViewpoint = untiltViewpoint(oldViewpoint!)
   }
-  await rennesApp.maps.activeMap.gotoViewpoint(newViewpoint)
+  await rennesApp.maps.activeMap!.gotoViewpoint(newViewpoint)
 }
 
 async function updateMapStyle() {
@@ -198,6 +198,8 @@ map3dStore.$subscribe(async () => {
     )
   }
   travelTimeBoxesStore.addListenerForUpdatePositions(rennesApp)
+  trambusLineInteractionStore.addListenerForUpdatePositions(rennesApp)
+
   poiStoreSubcribe(rennesApp)
 
   if (map3dStore.isInitializeMap && linesStore.lineDesciptions.length == 0) {

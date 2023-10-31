@@ -91,7 +91,7 @@
       "properties": { "layerName": "trambus", "line": "T1" },
       "geometry": {
         "type": "Point",
-        "coordinates": [-1.709761400899932, 48.133909963081585]
+        "coordinates": [-1.704, 48.125]
       }
     },
     {
@@ -115,7 +115,7 @@
       "properties": { "layerName": "trambus", "line": "T4" },
       "geometry": {
         "type": "Point",
-        "coordinates": [-1.728154601847834, 48.079393342737099]
+        "coordinates": [-1.712, 48.076]
       }
     }
   ]

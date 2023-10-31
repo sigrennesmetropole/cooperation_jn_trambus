@@ -64,7 +64,7 @@ export function tiltViewpoint(viewpoint: Viewpoint, tiltDegree: number = 45) {
   vpJson.animate = true
   vpJson.duration = 0.5
 
-  vpJson.distance = viewpoint.distance * Math.sin(degreeToRadian(tiltDegree))
+  vpJson.distance = viewpoint.distance! * Math.sin(degreeToRadian(tiltDegree))
   vpJson.pitch = -tiltDegree
 
   const newVp = new Viewpoint(vpJson)
@@ -81,7 +81,7 @@ export function untiltViewpoint(
   vpJson.animate = true
   vpJson.duration = 0.5
 
-  vpJson.distance = viewpoint.distance / Math.sin(degreeToRadian(untiltDegree))
+  vpJson.distance = viewpoint.distance! / Math.sin(degreeToRadian(untiltDegree))
   vpJson.pitch = -90
 
   const newVp = new Viewpoint(vpJson)

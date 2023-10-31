@@ -31,7 +31,8 @@ export async function filterFeatureByParkingAndLine(
   const featuresToHide: string[] = []
   parkingsFeatures.forEach((featureParking) => {
     const station_with_parking = stations.filter(
-      (station) => station['nom'] === featureParking.getProperty('arret_nom')
+      (station) =>
+        station['nom'] === featureParking.getProperties()['arret_nom']
     )
     if (station_with_parking.length == 0) {
       let id: string | number = featureParking.getId()!
