@@ -164,6 +164,9 @@ async function updateMapStyle() {
     case viewList.station:
       await updateStationViewStyle(rennesApp)
       break
+    case viewList.consultation:
+      updateHomeViewStyle(rennesApp)
+      break
   }
 }
 
@@ -178,7 +181,10 @@ layerStore.$subscribe(async () => {
   if (!layerStore.visibilities[RENNES_LAYER.bike]) {
     lineInteractionStore.isBikeSelected = false
   }
-  if (viewStore.currentView == viewList.home) {
+  if (
+    viewStore.currentView == viewList.home ||
+    viewStore.currentView == viewList.consultation
+  ) {
     updateHomeViewStyle(rennesApp)
   }
   clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.staticLabel, (feature) =>
