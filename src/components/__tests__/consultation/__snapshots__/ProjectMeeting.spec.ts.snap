@@ -1,7 +1,8 @@
 // Vitest Snapshot v1
 
 exports[`ProjectComponent > renders correctly 1`] = `
-"<div class=\\"flex flex-row gap-4 py-4 border-b border-b-slate-200\\" illustration=\\"src/assets/illustrations/ex_consultation.png\\"><img class=\\"h-[133px] w-[200px] rounded-lg\\" src=\\"\\" alt=\\"Illustration de la concertation\\">
+"<div class=\\"flex flex-row gap-4 py-4 border-b border-b-slate-200\\" illustration=\\"src/assets/illustrations/ex_consultation.png\\">
+  <div class=\\"h-[133px] w-[200px] rounded-lg flex items-center justify-center\\"><img class=\\"w-full h-full object-cover\\" src=\\"\\" alt=\\"Illustration de la concertation\\"></div>
   <div class=\\"flex flex-col gap-2\\">
     <p class=\\"font-dm-sans font-bold text-base\\">Vos réactions au futur aménagement du réseau trambus</p>
     <div class=\\"flex flex-row gap-3 h-8\\"><button class=\\"bg-amber-400 flex items-center py-1 px-2 rounded h-[28px]\\">
@@ -14,7 +15,7 @@ exports[`ProjectComponent > renders correctly 1`] = `
         <p class=\\"font-dm-sans font-normal text-xs\\">Zone géographique</p>
       </div>
     </div>
-    <p class=\\"font-dm-sans font-normal text-xs\\">Appaisement du traffic et végétalisation des espaces. La rue chicogné va faire l’objet d’une requalification</p>
+    <p class=\\"font-dm-sans font-normal text-xs w-[320px]\\">Non renseigné</p>
     <div class=\\"flex flex-row gap-3 py-3\\">
       <div class=\\"flex flex-row gap-1.5 items-center\\"><img src=\\"/src/assets/icons/chat-bubble.svg\\" class=\\"w-4 h-4\\">
         <p>481</p>
