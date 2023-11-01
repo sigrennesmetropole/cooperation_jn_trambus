@@ -31,6 +31,10 @@ const props = defineProps({
     type: String,
     default: 'Non renseigné',
   },
+  meta_description: {
+    type: String,
+    default: 'Non renseigné',
+  },
   comment: {
     type: Number,
     default: 0,
@@ -104,7 +108,9 @@ function goTo(link: string) {
           <p class="font-dm-sans font-normal text-xs">{{ props.place }}</p>
         </div>
       </div>
-      <p class="font-dm-sans font-normal text-xs">{{ props.content }}</p>
+      <p class="font-dm-sans font-normal text-xs">
+        {{ props.meta_description }}
+      </p>
       <div class="flex flex-row gap-3 py-3">
         <div class="flex flex-row gap-1.5 items-center">
           <img :src="chatBubble" class="w-4 h-4" />

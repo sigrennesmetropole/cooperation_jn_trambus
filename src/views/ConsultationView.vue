@@ -13,10 +13,12 @@ let projects: Ref<
     id: string
     img: string
     title: string
+    meta_description: string
     status: string
     date_end: string
     content: string
     location: string
+    geojson: string
     nb_comments: number
     nb_likes: number
     nb_persons: number
@@ -62,6 +64,7 @@ onBeforeMount(async () => {
         :date="project.date_end"
         :place="project.location"
         :content="project.content"
+        :meta_description="project.meta_description"
         :comment="project.nb_comments"
         :like="project.nb_likes"
         :person="project.nb_persons"
@@ -82,6 +85,7 @@ onBeforeMount(async () => {
         :date="project.date_end"
         :place="project.location"
         :content="project.content"
+        :meta_description="project.meta_description"
         :comment="project.nb_comments"
         :like="project.nb_likes"
         :person="project.nb_persons"
