@@ -76,12 +76,17 @@ function goTo(link: string) {
 
 <template>
   <div class="flex flex-row gap-4 py-4 border-b border-b-slate-200">
-    <img
-      class="h-[133px] w-[200px] rounded-lg"
-      :src="props.img"
-      alt="Illustration de la concertation"
-      @click="goTo(props.url)"
-    />
+    <div
+      class="h-[133px] w-[200px] rounded-lg flex items-center justify-center"
+    >
+      <img
+        class="w-full h-full object-cover"
+        :src="props.img"
+        alt="Illustration de la concertation"
+        @click="goTo(props.url)"
+      />
+    </div>
+
     <div class="flex flex-col gap-2">
       <p class="font-dm-sans font-bold text-base">{{ props.title }}</p>
       <div class="flex flex-row gap-3 h-8">
@@ -108,7 +113,7 @@ function goTo(link: string) {
           <p class="font-dm-sans font-normal text-xs">{{ props.place }}</p>
         </div>
       </div>
-      <p class="font-dm-sans font-normal text-xs">
+      <p class="font-dm-sans font-normal text-xs w-[320px]">
         {{ props.meta_description }}
       </p>
       <div class="flex flex-row gap-3 py-3">
