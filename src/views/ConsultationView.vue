@@ -1,12 +1,20 @@
 <script setup lang="ts">
-import { ref, Ref, onBeforeMount } from 'vue'
+import { ref, Ref, onBeforeMount, onMounted } from 'vue'
 import { viewList } from '@/model/views.model'
 import { useViewsStore } from '@/stores/views'
 import ChevronArrowRight from '@/assets/icons/chevron-left.svg'
 import ProjectMeeting from '@/components/consultation/ProjectMeeting.vue'
 import ExplanationComponent from '@/components/consultation/ExplanationComponent.vue'
 import { apiProjectService } from '@/services/api-project'
+// import type { RennesApp } from '@/services/RennesApp'
+import { useLineInteractionStore } from '@/stores/interactionMap'
+import { useLayersStore } from '@/stores/layers'
+import { useMap3dStore } from '@/stores/map'
+
 const viewStore = useViewsStore()
+const lineInteractionStore = useLineInteractionStore()
+const layerStore = useLayersStore()
+const map3dStore = useMap3dStore()
 
 let projects: Ref<
   {
@@ -26,12 +34,28 @@ let projects: Ref<
   }[]
 > = ref([])
 
+// const rennesApp = inject('rennesApp') as RennesApp
+
 onBeforeMount(async () => {
   viewStore.currentView = viewList['consultation']
   const projectInformations = await apiProjectService.getProjectInformations()
   for (let project of projectInformations) {
     projects.value.push(project)
   }
+})
+
+onMounted(async () => {
+  lineInteractionStore.resetLinesLabels()
+  layerStore.setVisibilities(map3dStore.is3D(), {
+    trambusLines: true,
+    trambusStops: false,
+    parking: true,
+    poi: true,
+    metro: false,
+    bus: false,
+    bike: false,
+    _traveltimeArrow: false,
+  })
 })
 </script>
 

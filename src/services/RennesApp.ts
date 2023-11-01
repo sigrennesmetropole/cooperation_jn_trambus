@@ -16,6 +16,7 @@ export class RennesApp extends VcsApp {
   constructor(mapConfig: object) {
     super()
     this.mapConfig = mapConfig
+    console.log('RennesApp constructed')
   }
 
   async initializeMap() {
@@ -45,6 +46,7 @@ export class RennesApp extends VcsApp {
 
     const mapStore = useMap3dStore()
     mapStore.isInitializeMap = true
+    console.log('mapStore.isInitializeMap')
   }
 
   async getLayerByKey(key: RennesLayer) {
