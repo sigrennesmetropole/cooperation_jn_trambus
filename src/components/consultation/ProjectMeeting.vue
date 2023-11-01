@@ -4,7 +4,9 @@ import Localization from '@/assets/icons/localization-icon.svg'
 import chatBubble from '@/assets/icons/chat-bubble.svg'
 import likeThumb from '@/assets/icons/like-thumb.svg'
 import multiplePerson from '@/assets/icons/multiple-person.svg'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+
+const isHovered = ref(false)
 
 const props = defineProps({
   img: {
@@ -75,7 +77,13 @@ function goTo(link: string) {
 </script>
 
 <template>
-  <div class="flex flex-row gap-4 py-4 border-b border-b-slate-200">
+  <div
+    class="flex flex-row gap-4 py-4 border-b border-b-slate-200"
+    @click="goTo(props.url)"
+    @mouseover="isHovered = true"
+    @mouseout="isHovered = false"
+    :class="{ 'cursor-pointer': isHovered }"
+  >
     <div
       class="h-[133px] w-[200px] rounded-lg flex items-center justify-center"
     >
@@ -83,7 +91,6 @@ function goTo(link: string) {
         class="w-full h-full object-cover"
         :src="props.img"
         alt="Illustration de la concertation"
-        @click="goTo(props.url)"
       />
     </div>
 
