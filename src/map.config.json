@@ -315,6 +315,12 @@
       "url": "/staticLabels.geojson",
       "activeOnStartup": true,
       "zIndex": 4
+    },
+    {
+      "name": "concertations",
+      "type": "GeoJSONLayer",
+      "activeOnStartup": true,
+      "zIndex": 4
     }
   ],
   "viewpoints": [

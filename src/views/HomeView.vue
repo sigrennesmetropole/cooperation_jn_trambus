@@ -33,6 +33,7 @@ onMounted(() => {
     bus: false,
     bike: false,
     _traveltimeArrow: false,
+    concertations: false,
   })
 })
 </script>

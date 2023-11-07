@@ -54,7 +54,10 @@ const viewStore = useViewsStore()
   <!-- Static trambus label -->
   <template v-for="trambusLine in trambusLineInteractionStore.trambusLines">
     <LabelLine
-      v-if="viewStore.currentView == viewList.home"
+      v-if="
+        viewStore.currentView == viewList.home ||
+        viewStore.currentView == viewList.consultation
+      "
       :key="trambusLine.line"
       :topPosition="trambusLine.cartesian.y"
       :leftPosition="trambusLine.cartesian.x"
