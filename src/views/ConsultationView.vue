@@ -60,7 +60,7 @@ onMounted(async () => {
   })
 })
 
-async function showGeoJSON(geojson: object) {
+async function showConcertations(geojson: object) {
   const features = new GeoJSON().readFeatures(geojson)
   const concertationLayer = await rennesApp.getLayerByKey(
     RENNES_LAYER.concertations
@@ -69,7 +69,7 @@ async function showGeoJSON(geojson: object) {
   concertationLayer.addFeatures(features)
 }
 
-async function removeGeoJSON() {
+async function removeConcertations() {
   const concertationLayer = await rennesApp.getLayerByKey(
     RENNES_LAYER.concertations
   )
@@ -111,8 +111,8 @@ async function removeGeoJSON() {
         :like="project.nb_likes"
         :person="project.nb_persons"
         :url="project.url"
-        @mouseover="showGeoJSON(project.geojson)"
-        @mouseleave="removeGeoJSON()"
+        @mouseover="showConcertations(project.geojson)"
+        @mouseleave="removeConcertations()"
       >
       </ProjectMeeting>
       <h2
@@ -134,8 +134,8 @@ async function removeGeoJSON() {
         :like="project.nb_likes"
         :person="project.nb_persons"
         :url="project.url"
-        @mouseover="showGeoJSON(project.geojson)"
-        @mouseleave="removeGeoJSON()"
+        @mouseover="showConcertations(project.geojson)"
+        @mouseleave="removeConcertations()"
       >
       </ProjectMeeting>
     </div>
