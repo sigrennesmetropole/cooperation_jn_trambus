@@ -1,4 +1,4 @@
-# Rennes 3D
+# Trambus
 
 ## Quick start
 

@@ -48,5 +48,17 @@ const router = createRouter({
   routes: routes,
 })
 
+router.beforeEach((to, from, next) => {
+  if (
+    (from.name === null || from.name === undefined) &&
+    to.name !== 'home' &&
+    to.name !== '/'
+  ) {
+    next('/home')
+  } else {
+    next()
+  }
+})
+
 export { routes }
 export default router
