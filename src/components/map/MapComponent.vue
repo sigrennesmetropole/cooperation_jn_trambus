@@ -36,6 +36,7 @@ import {
   updateTravelTimesViewStyle,
   updateStationViewStyle,
   updateHomeViewStyle,
+  highlightHoveredLine,
 } from '@/services/viewStyle'
 import { updateTraveltimeArrow } from '@/services/arrow'
 import { viewList } from '@/model/views.model'
@@ -230,11 +231,11 @@ stationsStore.$subscribe(async () => {
 })
 
 homeViewStore.$subscribe(async () => {
-  await updateHomeViewStyle(rennesApp)
+  await highlightHoveredLine(rennesApp)
 })
 
 poiStore.$subscribe(async () => {
-  poiStoreSubcribe(rennesApp)
+  await poiStoreSubcribe(rennesApp)
 })
 
 lineStore.$subscribe(async () => {

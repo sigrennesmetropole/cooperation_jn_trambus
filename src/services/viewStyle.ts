@@ -7,10 +7,11 @@ import {
   trambusLineViewStyleFunction,
   trambusLineTravelTimesViewStyleFunction,
   homeViewStyleFunction,
+  trambusLineStyle,
 } from '@/styles/line'
 
 import { useMap3dStore } from '@/stores/map'
-import { useLineViewsStore } from '@/stores/views'
+import { useHomeViewsStore, useLineViewsStore } from '@/stores/views'
 import {
   trambusStopLineViewStyleFunction,
   trambusStopOutlineTravelTimesViewStyleFunction,
@@ -21,7 +22,7 @@ import {
   isTrambusStopBelongsLineToTravelTime,
   isTrambusStopBelongsToLine,
 } from '@/services/station'
-import { parkingStyle } from '@/styles/common'
+import { getTrambusLineNumber, parkingStyle } from '@/styles/common'
 import { useTraveltimeInteractionStore } from '@/stores/interactionMap'
 import { updateTraveltimeArrow } from '@/services/arrow'
 import type { TravelTimeModel } from '@/model/travel-time.model'
@@ -31,14 +32,14 @@ import { useLayersStore } from '@/stores/layers'
 export function clearLayerAndApplyStyle(
   rennesApp: RennesApp,
   layerName: string,
-  style: Style | StyleFunction | undefined
+  style: Style | StyleFunction | undefined,
+  clearFeaturesStyle: boolean = false
 ) {
   const layer = rennesApp.layers.getByKey(layerName) as VectorLayer
-  if (layer) {
+  if (layer && style) {
     layer.clearStyle()
-    if (style) {
-      layer.setStyle(style)
-    }
+    if (clearFeaturesStyle) layer.getFeatures().map((f) => f.setStyle(style))
+    layer.setStyle(style)
   }
 }
 
@@ -46,12 +47,16 @@ export async function updateLineViewStyle(rennesApp: RennesApp) {
   const mapStore = useMap3dStore()
   const lineViewStore = useLineViewsStore()
   const traveltimeInteractionStore = useTraveltimeInteractionStore()
-  clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.trambusLines, (feature) =>
-    trambusLineViewStyleFunction(
-      feature,
-      lineViewStore.selectedLine,
-      lineViewStore.displayedOtherLines
-    )
+  clearLayerAndApplyStyle(
+    rennesApp,
+    RENNES_LAYER.trambusLines,
+    (feature) =>
+      trambusLineViewStyleFunction(
+        feature,
+        lineViewStore.selectedLine,
+        lineViewStore.displayedOtherLines
+      ),
+    true
   )
   clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.trambusStops, (feature) =>
     trambusStopLineViewStyleFunction(
@@ -175,4 +180,34 @@ export function updateHomeViewStyle(rennesApp: RennesApp) {
   clearLayerAndApplyStyle(rennesApp, RENNES_LAYER.staticLabel, (feature) =>
     staticLabelStyleFunction(feature, layerStore.visibilities)
   )
+}
+
+export async function highlightHoveredLine(rennesApp: RennesApp) {
+  const homeViewStore = useHomeViewsStore()
+  const layer = await rennesApp.getLayerByKey(RENNES_LAYER.trambusLines)
+  const selectedLineFeature = layer
+    .getFeatures()
+    .find(
+      (f) =>
+        getTrambusLineNumber(f) === homeViewStore.getSelectedLineOnHomePage()!
+    )
+
+  const previousSelectedLineFeature = layer
+    .getFeatures()
+    .find(
+      (f) =>
+        getTrambusLineNumber(f) ===
+        homeViewStore.getPreviousSelectedLineOnHomePage()!
+    )
+  selectedLineFeature?.setStyle(
+    trambusLineStyle(homeViewStore.getSelectedLineOnHomePage()!, 'selected')
+  )
+  if (previousSelectedLineFeature) {
+    previousSelectedLineFeature?.setStyle(
+      trambusLineStyle(
+        homeViewStore.getPreviousSelectedLineOnHomePage()!,
+        'normal'
+      )
+    )
+  }
 }

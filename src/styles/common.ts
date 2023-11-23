@@ -41,7 +41,8 @@ export function generatePoiStyle(
   label: string,
   distance: string,
   is3D: boolean,
-  displayDistance: boolean
+  displayDistance: boolean,
+  hovering: boolean = false
 ) {
   if (displayDistance) {
     label = label + '\n' + distance + 'm'
@@ -67,7 +68,7 @@ export function generatePoiStyle(
     label: label,
     image: {
       src: is3D ? pinIconWhite : pinIconBlack,
-      scale: 1,
+      scale: hovering && !is3D ? 1.5 : 1,
     },
   })
 }

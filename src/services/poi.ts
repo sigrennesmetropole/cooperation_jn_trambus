@@ -57,7 +57,8 @@ export function displayCurrentPoi(feature: Feature<Geometry>) {
     name,
     feature.getProperties()['distance'],
     map3dStore.is3D(),
-    false
+    false,
+    true
   )
   // @ts-ignore
   feature[createSync] = true
@@ -83,7 +84,8 @@ async function resetStyleOfPoi(view: View, rennesApp: RennesApp) {
         shorterName(f.getProperties()['site_nom']),
         f.getProperties()['distance'],
         map3dStore.is3D(),
-        true
+        true,
+        false
       )
     } else {
       styleItem = generatePoiStyleWithoutLabel(map3dStore.is3D())

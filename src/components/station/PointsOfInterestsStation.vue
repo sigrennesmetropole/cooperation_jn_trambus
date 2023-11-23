@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, inject, onMounted } from 'vue'
 import type { Ref } from 'vue'
-import ItemPOI from '@/components/station/ItemPOI.vue'
 import type { RennesApp } from '@/services/RennesApp'
 import { RENNES_LAYER } from '@/stores/layers'
 
@@ -36,12 +35,12 @@ onMounted(async () => {
       Centres d'intérêt
     </h2>
 
-    <ItemPOI
-      v-for="poi in pointsOfInterests"
-      :key="poi.name"
-      :img="poi.img"
-      :name="poi.name"
-      :distance="poi.distance"
-    />
+    <!--    <ItemPOI-->
+    <!--      v-for="poi in pointsOfInterests"-->
+    <!--      :key="poi.name"-->
+    <!--      :img="poi.img"-->
+    <!--      :name="poi.name"-->
+    <!--      :distance="poi.distance"-->
+    <!--    />-->
   </template>
 </template>

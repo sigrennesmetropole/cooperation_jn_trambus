@@ -29,7 +29,11 @@ import type { FeatureLike } from 'ol/Feature'
 
 class mapClickAndMoveInteraction extends AbstractInteraction {
   private _rennesApp: RennesApp
-
+  private viewsWithPoiDisplayed = [
+    viewList.home,
+    viewList.line,
+    viewList.consultation,
+  ]
   constructor(rennesApp: RennesApp) {
     super(EventType.CLICKMOVE, ModificationKeyType.NONE, PointerKeyType.ALL)
     this._rennesApp = rennesApp
@@ -142,7 +146,7 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
 
   _interactionPoi(event: InteractionEvent) {
     const viewStore = useViewsStore()
-    if ([viewList.home, viewList.line].includes(viewStore.currentView)) {
+    if (this.viewsWithPoiDisplayed.includes(viewStore.currentView)) {
       document.body.style.cursor = 'auto'
       const poiInteractionStore = usePoiInteractionStore()
       const feature: Feature<Point> = event.feature as Feature<Point>
@@ -256,7 +260,7 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
       }
 
       const viewStore = useViewsStore()
-      if ([viewList.home, viewList.line].includes(viewStore.currentView)) {
+      if (this.viewsWithPoiDisplayed.includes(viewStore.currentView)) {
         const poiInteractionStore = usePoiInteractionStore()
         if (poiInteractionStore.currentFeaturePoi) {
           undisplayCurrentPoi()
