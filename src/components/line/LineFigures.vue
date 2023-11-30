@@ -64,7 +64,7 @@ function getLength(networkFigures: null | LineFigureModel[]): Number {
     >
       <article>
         <UiNetworkFigure
-          :figure="networkFigure.figure"
+          :figure="Number(networkFigure.figure)"
           :description="networkFigure.description"
           :unit="networkFigure.unit"
           :icon="networkFigure.icon"

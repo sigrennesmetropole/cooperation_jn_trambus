@@ -304,6 +304,21 @@
       }
     },
     {
+      "name": "cityPlans",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows",
+      "type": "WMSLayer",
+      "activeOnStartup": false,
+      "version": "1.3.0",
+      "layers": "raster:pg_h_2020",
+      "parameters": "STYLE=default&TRANSPARENT=TRUE&format=image/png&transparent=true",
+      "extent": {
+        "projection": {
+          "epsg": "4326"
+        }
+      },
+      "zIndex": 4
+    },
+    {
       "name": "customLayerLabelLine",
       "type": "GeoJSONLayer",
       "activeOnStartup": true,

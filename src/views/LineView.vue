@@ -104,6 +104,7 @@ onBeforeMount(async () => {
 })
 
 onMounted(async () => {
+  console.log('Mounted')
   lineInteractionStore.resetLinesLabels()
   layerStore.setVisibilities(map3dStore.is3D(), {
     trambusLines: true,
@@ -115,6 +116,7 @@ onMounted(async () => {
     bike: false,
     _traveltimeArrow: true,
     concertations: false,
+    cityPlans: false,
   })
 })
 
