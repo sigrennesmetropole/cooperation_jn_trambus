@@ -20,7 +20,7 @@ onMounted(async () => {
 })
 
 function goToLinePage(line: number) {
-  homeViewStore.selectedLineOnHomePage = null
+  homeViewStore.setSelectedLineOnHomePage(null)
   router.push(`/line/${line}`)
 }
 
@@ -32,12 +32,12 @@ function overLine(line: number) {
   } else {
     return
   }
-  homeViewStore.selectedLineOnHomePage = line as LineNumber
+  homeViewStore.setSelectedLineOnHomePage(line as LineNumber)
 }
 
 function leaveLine() {
   lineActive.value = null
-  homeViewStore.selectedLineOnHomePage = null
+  homeViewStore.setSelectedLineOnHomePage(null)
 }
 </script>
 

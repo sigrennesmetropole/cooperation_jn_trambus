@@ -73,7 +73,7 @@ onBeforeMount(async () => {
   }
   viewStore.setCurrentView(viewList.line, currentLine, null)
   if (isFromLineToLine) {
-    poiStoreSubcribe(rennesApp)
+    await poiStoreSubcribe(rennesApp)
   }
   const travelTimes = await fetchTravelTimeByLine(rennesApp, currentLine)
   traveltimeInteractionStore.setDisplayTravelTimes(travelTimes)

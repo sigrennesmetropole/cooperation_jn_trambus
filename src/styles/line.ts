@@ -15,14 +15,14 @@ export function trambusLineStyle(
   const basicLineStyle = new Style({
     stroke: new Stroke({
       color: lineColors[lineNumber],
-      width: 3,
+      width: 4,
     }),
     zIndex: 1,
   })
   const unselectedLineStyle = new Style({
     stroke: new Stroke({
       color: lineDimmedColors[lineNumber],
-      width: 2,
+      width: 3,
     }),
     zIndex: 1,
   })
@@ -34,7 +34,7 @@ export function trambusLineStyle(
   if (lineState == 'selected') {
     const selectedLineStyle = basicLineStyle.clone()
     selectedLineStyle.setZIndex(2)
-    selectedLineStyle.getStroke().setWidth(4)
+    selectedLineStyle.getStroke().setWidth(6)
     lineStyles.push(selectedLineStyle)
   } else if (lineState == 'normal') {
     lineStyles.push(basicLineStyle)

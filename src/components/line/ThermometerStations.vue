@@ -40,7 +40,7 @@ function mouseOverAndLeaveItem(
 
 <template>
   <div class="flex flex-col items-start p-0 gap-2">
-    <h2 class="font-dm-sans font-bold text-lg leading-6">
+    <h2 class="font-dm-sans font-bold text-lg leading-6 mb-2">
       Toutes les stations
     </h2>
   </div>

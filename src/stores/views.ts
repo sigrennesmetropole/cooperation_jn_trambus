@@ -76,8 +76,27 @@ export const useTravelTimesViewStore = defineStore('traveltimes-views', () => {
 
 export const useHomeViewsStore = defineStore('home-views', () => {
   const selectedLineOnHomePage: Ref<LineNumber | null> = ref(null)
+  const previousSelectedLineOnHomePage: Ref<LineNumber | null> = ref(null)
 
-  return { selectedLineOnHomePage }
+  function setSelectedLineOnHomePage(lineNumber: LineNumber | null) {
+    previousSelectedLineOnHomePage.value = selectedLineOnHomePage.value
+    selectedLineOnHomePage.value = lineNumber
+  }
+
+  function getPreviousSelectedLineOnHomePage() {
+    return previousSelectedLineOnHomePage.value
+  }
+
+  function getSelectedLineOnHomePage() {
+    return selectedLineOnHomePage.value
+  }
+  return {
+    selectedLineOnHomePage,
+    previousSelectedLineOnHomePage,
+    setSelectedLineOnHomePage,
+    getPreviousSelectedLineOnHomePage,
+    getSelectedLineOnHomePage,
+  }
 })
 
 export const useLineViewsStore = defineStore('line-views', () => {
