@@ -212,6 +212,7 @@ map3dStore.$subscribe(async () => {
   if (map3dStore.isInitializeMap && linesStore.lineDesciptions.length == 0) {
     await storeLineDescriptions(rennesApp)
   }
+  await updateMapStyle()
 })
 
 mapViewPointStore.$subscribe(async () => {

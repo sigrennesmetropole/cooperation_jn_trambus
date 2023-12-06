@@ -14,7 +14,6 @@ import type {
 import type { StationModel } from '@/model/stations.model'
 import { viewList } from '@/model/views.model'
 import ServicesStation from '@/components/station/ServicesStation.vue'
-import PointsOfInterestsStation from '@/components/station/PointsOfInterestsStation.vue'
 import BackButton from '@/components/home/BackButton.vue'
 import { usePoiParkingStore } from '@/stores/poiParking'
 import { useLineInteractionStore } from '@/stores/interactionMap'
@@ -25,7 +24,7 @@ import { legalList } from '@/constants/legalLinks'
 import { fetchLineDescription } from '@/services/line'
 import { useLinesStore } from '@/stores/lines'
 import { fetchStationDescription } from '@/services/station'
-import UiToggleButton from '@/components/station/UiToggleButton.vue'
+import { UiToggleButton } from '@sigrennesmetropole/cooperation_jn_common_ui'
 import cityPlansIcon from '@/assets/illustrations/cityPlansIcon.png'
 
 const openLink = (link: string) => {
@@ -147,10 +146,6 @@ const toggle = () => {
     :idStation="state.stationDescription.id"
   />
 
-  <PointsOfInterestsStation
-    v-if="state.stationDescription?.id"
-    :nameStation="state.stationDescription.nom"
-  />
   <div class="border-b border-neutral-300 my-3"></div>
   <FooterAreaLink
     class="mt-auto"

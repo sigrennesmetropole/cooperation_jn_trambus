@@ -104,7 +104,6 @@ onBeforeMount(async () => {
 })
 
 onMounted(async () => {
-  console.log('Mounted')
   lineInteractionStore.resetLinesLabels()
   layerStore.setVisibilities(map3dStore.is3D(), {
     trambusLines: true,
