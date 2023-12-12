@@ -15,10 +15,6 @@ import BackButton from '@/components/home/BackButton.vue'
 import ConsultationComponent from '@/components/home/ConsultationComponent.vue'
 import { useStationsStore } from '@/stores/stations'
 import FooterPlainPage from '@/components/home/FooterPlainPage.vue'
-import { legalList } from '@/constants/legalLinks'
-const openLink = (link: string) => {
-  window.open(link, '_blank')
-}
 
 const panelStore = usePanelsStore()
 const viewStore = useViewsStore()
@@ -73,8 +69,6 @@ const isPageFullScreen = computed(() => {
       <FooterPlainPage
         v-if="panelStore.isInformationPanelShown === false"
         class="absolute bottom-0 z-50"
-        @openLink="openLink($event)"
-        :legalList="legalList"
       ></FooterPlainPage>
 
       <PhotoGallery
@@ -103,11 +97,7 @@ const isPageFullScreen = computed(() => {
         v-show="panelStore.isPlanningViewShown"
       >
         <PlanningView></PlanningView>
-        <FooterPlainPage
-          class="absolute bottom-0 z-50"
-          @openLink="openLink($event)"
-          :legalList="legalList"
-        ></FooterPlainPage>
+        <FooterPlainPage class="absolute bottom-0 z-50"></FooterPlainPage>
       </div>
     </div>
   </main>

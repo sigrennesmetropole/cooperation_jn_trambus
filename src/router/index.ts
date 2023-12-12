@@ -49,10 +49,12 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  // Redirect to home if accessed directly (beside legalnotice and home)
   if (
     (from.name === null || from.name === undefined) &&
     to.name !== 'home' &&
-    to.name !== '/'
+    to.name !== '/' &&
+    to.name !== 'legalnotice'
   ) {
     next('/home')
   } else {

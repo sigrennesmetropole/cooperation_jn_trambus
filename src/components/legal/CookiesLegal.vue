@@ -7,7 +7,9 @@
     >
       Cookies
     </h1>
-    <div class="text-base font-normal"></div>
+    <div class="text-base font-normal">
+      L'application n'utilise pas de cookie.
+    </div>
   </div>
 </template>
 <script setup lang="ts"></script>

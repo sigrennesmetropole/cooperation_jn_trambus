@@ -11,10 +11,6 @@ import { useMap3dStore } from '@/stores/map'
 import { useLineInteractionStore } from '@/stores/interactionMap'
 import SkipLinksHome from '@/components/accessibility/SkipLinksHome.vue'
 import FooterAreaLink from '@/components/home/FooterAreaLink.vue'
-import { legalList } from '@/constants/legalLinks'
-const openLink = (link: string) => {
-  window.open(link, '_blank')
-}
 
 const layerStore = useLayersStore()
 const viewStore = useViewsStore()
@@ -51,9 +47,5 @@ onMounted(() => {
       class="grow border-b border-neutral-300"
     ></LineDescriptions>
   </section>
-  <FooterAreaLink
-    class="mt-auto"
-    @openLink="openLink($event)"
-    :legalList="legalList"
-  ></FooterAreaLink>
+  <FooterAreaLink></FooterAreaLink>
 </template>
