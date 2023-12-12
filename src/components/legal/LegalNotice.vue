@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import expandIcon from '../../assets/icons/expand-small-bigger-retract-smaller-big.svg'
+import expandIcon from '@/assets/icons/expand-small-bigger-retract-smaller-big.svg'
+import imgFinancePar from '@/assets/illustrations/etiquette-fr.png'
 </script>
 
 <template>
@@ -53,18 +54,18 @@ import expandIcon from '../../assets/icons/expand-small-bigger-retract-smaller-b
         <h3 class="text-xl font-bold">Directeur de la publication:</h3>
         <div>
           <p>Nathalie APPERE, présidente de Rennes Métropole.</p>
-          <p>
-            Directeur de la communication et de l'information : Laurent Riéra.
-          </p>
         </div>
       </div>
       <div class="flex flex-col gap-2 text-base font-normal">
         <h3 class="text-xl font-bold">Conception et charte graphique:</h3>
         <p>Lucile Collignon EI</p>
       </div>
-      <div class="flex flex-col gap-2 text-base font-normal">
-        <h3 class="text-xl font-bold">Développement:</h3>
-        <p>CampToCamp</p>
+      <div class="flex flex-col text-base font-normal">
+        <h3 class="text-xl font-bold mb-2">Développement:</h3>
+        <p>Camptocamp France SAS</p>
+        <p>18 rue du Lac Saint André - Bât. Le Dauphin</p>
+        <p>Savoie Technolac</p>
+        <p>73 370 Le Bourget-du-Lac</p>
       </div>
       <div class="flex flex-col gap-2 text-base font-normal">
         <h3 class="text-xl font-bold">Hébergement:</h3>
@@ -73,11 +74,7 @@ import expandIcon from '../../assets/icons/expand-small-bigger-retract-smaller-b
       <div class="flex flex-col gap-2 text-base font-normal">
         <h3 class="text-xl font-bold">Programme France Relance:</h3>
         <p>Ce projet a été soutenu par le programme France Relance.</p>
-        <img
-          class="h-[130px] w-[242.25px]"
-          src="../../assets/illustrations/etiquette-fr.png"
-          alt=""
-        />
+        <img class="w-[242.25px] h-[130px]" :src="imgFinancePar" alt="" />
       </div>
     </div>
   </div>
