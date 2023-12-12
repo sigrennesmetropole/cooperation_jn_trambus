@@ -9,12 +9,15 @@ import iconCheckGreen from '@/assets/icons/icon-check-green.svg'
     <h1 class="text-[44px] leading-[48px] lmb-12 font-bold">
       Politique de protection des données personnelles
     </h1>
-    <p>Dernière mise à jour : date</p>
+    <p>Dernière mise à jour : 13 juin 2023</p>
     <div class="bg-neutral-50 p-8 border border-neutral-200">
       <p class="text-base font-normal">
         Bienvenue sur lien
-        <a class="underline decoration-1 font-medium" href="" target="_blank"
-          >https://...</a
+        <a
+          class="underline decoration-1 font-medium"
+          href="https://trambus.coopterr.rennesmetropole.fr/"
+          target="_blank"
+          >https://trambus.coopterr.rennesmetropole.fr/</a
         >
       </p>
       <p class="text-base font-normal">
@@ -41,13 +44,10 @@ import iconCheckGreen from '@/assets/icons/icon-check-green.svg'
     <div class="flex flex-col gap-8">
       <div class="text-base font-normal">
         <p class="mb-6">
-          Dans le cadre de la simulation des économies d'énergie liées au
-          pré-dimensionnement d'une installation photovoltaïque, vous nous
-          transmettez des informations personnelles : adresse et consommation
-          électrique annuelle. Les champs obligatoires sont indiqués comme tels
-          dans les formulaires. Nous nous engageons à ce que la collecte et le
-          traitement de vos données soient effectués de manière licite, loyale
-          et transparente, conformément au
+          Dans le cadre de l'accès à l'application web du Réseau Trambus, seule
+          votre adresse IP est collectée. Nous nous engageons à ce que la
+          collecte et le traitement de vos données soient effectués de manière
+          licite, loyale et transparente, conformément au
           <a
             class="underline decoration-1 font-medium"
             href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees"
@@ -96,28 +96,8 @@ import iconCheckGreen from '@/assets/icons/icon-check-green.svg'
         </p>
       </div>
       <h2 class="text-2xl font-bold">
-        Quelles données personnelles collectons-nous sur la plateforme ?
+        Quelles données personnelles collectons-nous ?
       </h2>
-      <div class="font-normal">
-        <h3 class="text-xl font-bold mb-2">
-          Consommation électrique annuelle, adresse et surface d'installation
-          des panneaux photovoltaïques :
-        </h3>
-        <p class="text-base">
-          Ces données sont renseignées par l'utilisateur de la Plateforme ou,
-          pour la consommation électrique, si l'utilisateur le souhaite, obtenue
-          par connexion au service DataConnect d'Enedis. La surface
-          d'installation des panneaux est calculée automatiquement après que
-          l'utilisateur ait retiré les obstacles présents sur la toiture.
-        </p>
-      </div>
-      <div class="font-normal">
-        <h3 class="text-xl font-bold mb-2">Adresse mail :</h3>
-        <p class="text-base">
-          Cette donnée est renseignée si l'utilisateur de la Plateforme souhaite
-          un envoi du rapport de synthèse à son adresse mail.
-        </p>
-      </div>
       <div class="font-normal">
         <h3 class="text-xl font-bold mb-2">Journaux de connexion :</h3>
         <p class="text-base">
