@@ -12,11 +12,9 @@ import imgFinancePar from '@/assets/illustrations/etiquette-fr.png'
     <div class="flex flex-col gap-8 leading-6 text-">
       <p class="text-base align-baseline">
         Rennes Métropole met à disposition, via le présent site, un service
-        permettant, sur le territoire de Ville de Rennes, de consulter les
-        mesures d'exposition aux ondes électromagnétiques réalisées,
-        d'identifier les sites radioélectriques présents et d'être redirigé vers
-        le site de l'ANFR pour réaliser une demande de mesure d'exposition aux
-        ondes électromagnétiques. L’Utilisateur est réputé avoir pris
+        permettant, de visualiser l'implantation des futures lignes de Trambus
+        prévues à l'horizon 2030 ainsi que de consulter les consultations
+        citoyennes qui ont lieu à ce sujet. L’Utilisateur est réputé avoir pris
         connaissance des présentes conditions générales, qui s'imposent à tout
         usager du présent site. L’Utilisateur garantit qu’il n’utilisera pas le
         site à des fins illicites ou immorales ou contraires à leur utilisation
@@ -74,24 +72,22 @@ import imgFinancePar from '@/assets/illustrations/etiquette-fr.png'
       <h2 class="text-2xl font-bold">Services proposés aux utilisateurs</h2>
       <ul class="list-disc pl-6">
         <li>
-          Consultation des mesures en temps réel : via l'observatoire des Ondes,
-          un service de l'EXEM (laboratoire spécialisé dans la mesure de champs
-          électromagnétiques). Les mesures "en temps réel" sont enregistrées
-          toutes les deux heures par des capteurs permanents du laboratoire EXEM
-          installés par la Ville de Rennes.
+          Consultation de l'implantation des futures lignes de Trambus ainsi que
+          de leurs stations et des points d'intérêt situés à proximité
         </li>
         <li>
-          Consultation des mesures ponctuelles : via le site Cartoradio, carte
-          des sites et des mesures radioélectriques de l'ANFR. Le site permet la
-          consultation des rapports détaillés des mesures de champs
-          électromagnétiques ainsi que des informations sur les sites
-          radioélectriques en France.
+          Consultation des lignes de métro, bus et pistes cyclables au sein de
+          la Métropole
+        </li>
+        <li>Consultation du planning du projet</li>
+        <li>
+          Module "temps de parcours théorique" permettant d'estimer un temps de
+          trajet théorique avec les nouvelles lignes en comparaison aux temps de
+          parcours théoriques actuels
         </li>
         <li>
-          Consultation des sites émetteurs d'ondes (téléphonie mobile, réseaux
-          mobiles privés, télévision, radio, faisceaux hertziens et autres
-          stations) : également disponibles via le site Cartoradio. Ces données
-          sont mises à jour une fois par trimestre.
+          Consultation des concertations citoyennes ouvertes / terminées sur le
+          Réseau Trambus via la Fabrique Citoyenne
         </li>
       </ul>
       <h2 class="text-2xl font-bold mt-1">Propriété intellectuelle</h2>
@@ -99,20 +95,12 @@ import imgFinancePar from '@/assets/illustrations/etiquette-fr.png'
       <ul class="list-disc pl-6">
         <li>
           <a
-            href="https://www.observatoiredesondes.com/fr/carte-des-ondes/"
+            href="https://fabriquecitoyenne.fr/"
             target="_blank"
             class="underline"
-            >https://www.observatoiredesondes.com/fr/carte-des-ondes/</a
-          >
-          : ce site permet la consultation des mesures en temps réel
-          d'exposition aux ondes électromagnétiques
-        </li>
-        <li>
-          <a href="https://cartoradio.fr/#/" target="_blank" class="underline"
-            >https://cartoradio.fr/#/</a
-          >
-          : ce site permet la consultation à la fois des mesures ponctuelles et
-          des sites émetteurs d'ondes au sein de la Ville de Rennes
+            >https://fabriquecitoyenne.fr/</a
+          >: ce site permet la consultation des concertations citoyennes
+          ouvertes / terminées sur le réseau Trambus
         </li>
       </ul>
       <h2 class="text-2xl font-bold mt-1">Droits de reproduction</h2>
