@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { UiLinkFooter } from '@sigrennesmetropole/cooperation_jn_common_ui'
-import type { PropType } from 'vue'
-import type { LegalItem } from '@sigrennesmetropole/cooperation_jn_common_ui/dist/model/legalItem.model'
+import { legalList } from '@/constants/legalLinks'
 
 const props = defineProps({
   textColor: {
@@ -9,7 +8,6 @@ const props = defineProps({
     required: false,
     default: 'neutral-500',
   },
-  legalList: Array as PropType<LegalItem[]>,
 })
 
 function openLink(linkToFollow: string) {
@@ -26,7 +24,7 @@ function openLink(linkToFollow: string) {
       class="flex flex-wrap items-end gap-[7px] pt-2 font-dm-sans font-normal text-xs leading-4 text-neutral-500 underline hover:cursor-pointer"
     >
       <UiLinkFooter
-        v-for="item in props.legalList"
+        v-for="item in legalList"
         tabindex="0"
         :key="item['name']"
         @keydown.enter="openLink(item['link'])"
