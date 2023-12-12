@@ -207,11 +207,12 @@ map3dStore.$subscribe(async () => {
   travelTimeBoxesStore.addListenerForUpdatePositions(rennesApp)
   trambusLineInteractionStore.addListenerForUpdatePositions(rennesApp)
 
-  poiStoreSubcribe(rennesApp)
+  await poiStoreSubcribe(rennesApp)
 
   if (map3dStore.isInitializeMap && linesStore.lineDesciptions.length == 0) {
     await storeLineDescriptions(rennesApp)
   }
+  await updateMapStyle()
 })
 
 mapViewPointStore.$subscribe(async () => {

@@ -21,6 +21,7 @@ export const RENNES_LAYER = {
   trambusTempsParcours: 'trambusTempsParcours',
   staticLabel: 'staticLabel',
   concertations: 'concertations',
+  cityPlans: 'cityPlans',
 }
 
 export const RENNES_LAYERNAMES = [
@@ -40,6 +41,7 @@ export const RENNES_LAYERNAMES = [
   RENNES_LAYER.appTrambusLines,
   RENNES_LAYER.trambusTempsParcours,
   RENNES_LAYER.concertations,
+  RENNES_LAYER.cityPlans,
 ] as const
 
 export type RennesLayer = typeof RENNES_LAYERNAMES[number]
@@ -60,6 +62,7 @@ export const useLayersStore = defineStore('layers', () => {
     _traveltimeArrow: false,
     _trambusStopsOutline: false,
     concertations: false,
+    cityPlans: false,
   })
 
   function toggleLayer(name: RennesLayer) {
@@ -98,6 +101,7 @@ export const useLayersStore = defineStore('layers', () => {
       metro: boolean
       bus: boolean
       bike: boolean
+      cityPlans: boolean
       _traveltimeArrow: boolean
       concertations: boolean
     }
@@ -114,6 +118,7 @@ export const useLayersStore = defineStore('layers', () => {
     visibilities.value.bike = newVisibilities.bike
     visibilities.value._traveltimeArrow = newVisibilities._traveltimeArrow
     visibilities.value.concertations = newVisibilities.concertations
+    visibilities.value.cityPlans = newVisibilities.cityPlans
   }
 
   function displayAlternativeOrtho() {

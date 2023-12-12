@@ -39,6 +39,7 @@ export const useViewsStore = defineStore('views', () => {
       poiStore.activeStationProfile(selectedStation)
       lineViewsStore.selectLine(selectedLine)
       mapViewpointStore.updateViewpoint(viewList.station, true)
+      traveltimeInteractionStore.removeDisplayTravelTime()
       travelTimeBoxesStore.cleanTravelTimesBoxes()
     } else if (view === viewList.home) {
       setHomeAsCurrentView()

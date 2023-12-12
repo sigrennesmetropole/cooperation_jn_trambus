@@ -3,7 +3,7 @@ import { onBeforeMount, onMounted, ref, reactive, inject } from 'vue'
 import { useRoute } from 'vue-router'
 import { useMap3dStore } from '@/stores/map'
 import { useViewsStore } from '@/stores/views'
-import { useLayersStore } from '@/stores/layers'
+import { RENNES_LAYER, useLayersStore } from '@/stores/layers'
 import { useStationsStore } from '@/stores/stations'
 import UiStationHeader from '@/components/ui/UiStationHeader.vue'
 import type {
@@ -14,7 +14,6 @@ import type {
 import type { StationModel } from '@/model/stations.model'
 import { viewList } from '@/model/views.model'
 import ServicesStation from '@/components/station/ServicesStation.vue'
-import PointsOfInterestsStation from '@/components/station/PointsOfInterestsStation.vue'
 import BackButton from '@/components/home/BackButton.vue'
 import { usePoiParkingStore } from '@/stores/poiParking'
 import { useLineInteractionStore } from '@/stores/interactionMap'
@@ -24,6 +23,8 @@ import FooterAreaLink from '@/components/home/FooterAreaLink.vue'
 import { fetchLineDescription } from '@/services/line'
 import { useLinesStore } from '@/stores/lines'
 import { fetchStationDescription } from '@/services/station'
+import { UiToggleButton } from '@sigrennesmetropole/cooperation_jn_common_ui'
+import cityPlansIcon from '@/assets/illustrations/cityPlansIcon.png'
 
 const map3dStore = useMap3dStore()
 const viewStore = useViewsStore()
@@ -86,6 +87,7 @@ onMounted(async () => {
     bike: false,
     _traveltimeArrow: false,
     concertations: false,
+    cityPlans: false,
   })
 })
 
@@ -96,6 +98,10 @@ linesStore.$subscribe(async () => {
     )
   }
 })
+
+const toggle = () => {
+  layerStore.toggleLayer(RENNES_LAYER.cityPlans)
+}
 </script>
 
 <template>
@@ -113,17 +119,28 @@ linesStore.$subscribe(async () => {
   </div>
 
   <div class="border-b border-neutral-300 mt-2 -mx-6"></div>
+  <div
+    class="w-[450px] h-[124px] px-6 justify-start items-center gap-6 inline-flex"
+  >
+    <img class="w-[130px] h-[124px] rounded" :src="cityPlansIcon" />
+    <div class="flex-col justify-center items-start gap-3 inline-flex">
+      <div class="text-black text-lg font-bold font-['DM Sans'] leading-normal">
+        Afficher l’aménagement <br />sur la carte
+      </div>
 
+      <UiToggleButton
+        :disabled="false"
+        :state="layerStore.visibilities[RENNES_LAYER.cityPlans]"
+        @click="toggle"
+      ></UiToggleButton>
+    </div>
+  </div>
   <ServicesStation
     v-if="state.stationDescription?.id"
     :nameStation="state.stationDescription.nom"
     :idStation="state.stationDescription.id"
   />
 
-  <PointsOfInterestsStation
-    v-if="state.stationDescription?.id"
-    :nameStation="state.stationDescription.nom"
-  />
   <div class="border-b border-neutral-300 my-3"></div>
   <FooterAreaLink></FooterAreaLink>
 </template>

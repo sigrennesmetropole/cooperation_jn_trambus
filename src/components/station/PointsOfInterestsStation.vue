@@ -35,12 +35,12 @@ onMounted(async () => {
       Centres d'intérêt
     </h2>
 
-    <!--    <ItemPOI-->
-    <!--      v-for="poi in pointsOfInterests"-->
-    <!--      :key="poi.name"-->
-    <!--      :img="poi.img"-->
-    <!--      :name="poi.name"-->
-    <!--      :distance="poi.distance"-->
-    <!--    />-->
+    <ItemPOI
+      v-for="poi in pointsOfInterests"
+      :key="poi.name"
+      :img="poi.img"
+      :name="poi.name"
+      :distance="poi.distance"
+    />
   </template>
 </template>

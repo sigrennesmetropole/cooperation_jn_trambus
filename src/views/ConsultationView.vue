@@ -57,6 +57,7 @@ onMounted(async () => {
     bike: false,
     _traveltimeArrow: false,
     concertations: true,
+    cityPlans: false,
   })
 })
 

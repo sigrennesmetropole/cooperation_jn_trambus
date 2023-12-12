@@ -30,6 +30,7 @@ onMounted(() => {
     bike: false,
     _traveltimeArrow: false,
     concertations: false,
+    cityPlans: false,
   })
 })
 </script>
