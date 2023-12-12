@@ -12,7 +12,7 @@ const props = defineProps({
   legalList: Array as PropType<LegalItem[]>,
 })
 
-function goTo(linkToFollow: string) {
+function openLink(linkToFollow: string) {
   window.open(linkToFollow, '_blank')
 }
 </script>
@@ -29,8 +29,8 @@ function goTo(linkToFollow: string) {
         v-for="item in props.legalList"
         tabindex="0"
         :key="item['name']"
-        @keydown.enter="goTo(item['link'])"
-        @click="goTo(item['link'])"
+        @keydown.enter="openLink(item['link'])"
+        @click="openLink(item['link'])"
         :textColor="props.textColor"
         >{{ item['name'] }}</UiLinkFooter
       >
