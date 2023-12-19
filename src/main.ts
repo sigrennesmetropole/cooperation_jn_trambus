@@ -6,6 +6,7 @@ import router from './router'
 
 import '@sigrennesmetropole/cooperation_jn_common_ui/dist/style.css'
 import './assets/main.css'
+import { apiConfigService } from './services/api-config'
 
 declare global {
   interface Window {
@@ -19,4 +20,6 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 
-app.mount('#app')
+apiConfigService.getConfig().then(() => {
+  app.mount('#app')
+})

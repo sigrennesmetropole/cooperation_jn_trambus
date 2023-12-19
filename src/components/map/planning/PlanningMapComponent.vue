@@ -26,8 +26,10 @@ import OlNavigationButtons from '@/components/map/buttons/OlNavigationButtons.vu
 import type { LineNumber } from '@/model/lines.model'
 import { LinePlanningStateTypes } from '@/model/line-planning-state.model'
 import type { Positioning } from 'ol/Overlay'
+import { useConfigStore } from '@/stores/config'
 
 const planningStore = usePlanningStore()
+const configStore = useConfigStore()
 
 // Create map and provide it to the descendant to avoid reactivity on map object
 let map = new Map({ controls: [] })
@@ -57,7 +59,7 @@ const tileGrid = new WMTSTileGrid({
 
 const rennesBaseMap = new TileLayer({
   source: new WMTS({
-    url: 'https://public.sig.rennesmetropole.fr/geowebcache/service/wmts',
+    url: configStore.config?.trambus.projectPlanningBaseMapUrl,
     layer: 'ref_fonds:pvci_simple_gris',
     matrixSet: 'EPSG:3857',
     format: 'image/png',
@@ -193,7 +195,7 @@ const styleFunction: StyleFunction = function (feature: FeatureLike): Style[] {
 
 const planningLayer = new VectorLayer({
   source: new VectorSource({
-    url: 'https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=trp_coll:trambus_lignes_planification&outputFormat=application/json&srsName=EPSG:4326',
+    url: configStore.config?.trambus.projectPlanningLayerUrl,
     format: new GeoJSON(),
   }),
   style: styleFunction,
