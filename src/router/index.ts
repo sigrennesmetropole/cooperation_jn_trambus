@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { _paq } from '@/matomo.js'
 
 const routes = [
   {
@@ -61,6 +62,18 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
+
+router.afterEach(
+  (
+    // @ts-ignore
+    to
+  ) => {
+    // Track the page view after navigation is confirmed
+    _paq.push(['setCustomUrl', to.fullPath])
+    _paq.push(['setDocumentTitle', to.meta.title || 'My New Title'])
+    _paq.push(['trackPageView'])
+  }
+)
 
 export { routes }
 export default router
