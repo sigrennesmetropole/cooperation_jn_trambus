@@ -18,8 +18,8 @@ window.CESIUM_BASE_URL = '/node_modules/@vcmap-cesium/engine/Build/'
 const app = createApp(App)
 
 app.use(createPinia())
-app.use(router)
 
 apiConfigService.getConfig().then(() => {
+  app.use(router)
   app.mount('#app')
 })
