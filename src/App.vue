@@ -72,7 +72,7 @@ const isPageFullScreen = computed(() => {
       ></FooterPlainPage>
 
       <PhotoGallery
-        class="z-10 absolute inset-x-0 bottom-0 max-w-max m-auto"
+        class="z-1 absolute inset-x-0 bottom-0 max-w-max m-auto"
         v-show="isPhotoGalleryVisible"
       ></PhotoGallery>
 

@@ -8,7 +8,7 @@ const openLink = (link: string) => {
 
 <template>
   <FooterArea
-    class="mt-auto"
+    class="mt-auto z-10"
     @openLink="openLink($event)"
     :legalList="legalList"
   ></FooterArea>

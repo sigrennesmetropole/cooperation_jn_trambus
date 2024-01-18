@@ -6,6 +6,14 @@ type ConfigType = {
   trambus: {
     projectPlanningBaseMapUrl: string
     projectPlanningLayerUrl: string
+    fabriqueCitoyenneCGUUrl: string
+  }
+  link: {
+    coopterr_link: string
+    solar_link: string
+    trambus_link: string
+    ondes_link: string
+    contact_link: string
   }
 }
 
