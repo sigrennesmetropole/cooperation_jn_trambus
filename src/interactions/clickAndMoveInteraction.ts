@@ -151,7 +151,7 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
       const poiInteractionStore = usePoiInteractionStore()
       const feature: Feature<Point> = event.feature as Feature<Point>
       if (feature.getId() !== poiInteractionStore.currentFeaturePoi?.getId()) {
-        undisplayCurrentPoi()
+        undisplayCurrentPoi(this._rennesApp)
         poiInteractionStore.selectCurrentFeaturePoi(feature)
         if (poiInteractionStore.currentFeaturePoi) {
           // @ts-ignore
@@ -258,12 +258,11 @@ class mapClickAndMoveInteraction extends AbstractInteraction {
         stationsStore.clearStationsExceptPermanently()
         stationsStore.flagClearStationsExceptPermanently = false
       }
-
       const viewStore = useViewsStore()
       if (this.viewsWithPoiDisplayed.includes(viewStore.currentView)) {
         const poiInteractionStore = usePoiInteractionStore()
         if (poiInteractionStore.currentFeaturePoi) {
-          undisplayCurrentPoi()
+          undisplayCurrentPoi(this._rennesApp)
         }
       }
 

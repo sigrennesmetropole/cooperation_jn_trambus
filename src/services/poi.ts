@@ -20,15 +20,9 @@ import { setDistanceDisplayConditionFeature } from '@/services/setDistanceDispla
 import { usePoiParkingStore } from '@/stores/poiParking'
 import { useStationsStore } from '@/stores/stations'
 import { useLineViewsStore } from '@/stores/views'
+import { shorterName, splitName } from '@/helpers/nameFormatHelper'
 
-const CHAR_MAX = 25
-export function shorterName(poiName: string) {
-  let shorterName = poiName.replace("'", ' ')
-  if (poiName.length > CHAR_MAX) {
-    shorterName = shorterName.slice(0, CHAR_MAX).concat('...')
-  }
-  return shorterName
-}
+const DEFAULT_MAX_SCALE = 8000
 
 export async function fixGeometryOfPoi(rennesApp: RennesApp) {
   const layer = await rennesApp.getLayerByKey(RENNES_LAYER.poi)
@@ -39,7 +33,12 @@ export async function fixGeometryOfPoi(rennesApp: RennesApp) {
       f.getProperties()['site_y'],
     ]
     f.setGeometry(new Point(transform(coordinates, 'EPSG:4326', 'EPSG:3857')))
-    const echelleMax = f.get('echelle_max') / 5
+    let echelleMax = f.get('echelle_max')
+    if (echelleMax) {
+      echelleMax /= 5
+    } else {
+      echelleMax = DEFAULT_MAX_SCALE
+    }
     f.set('olcs_scaleByDistance', [echelleMax - 1, 1, echelleMax, 0])
   })
 }
@@ -48,10 +47,7 @@ export function displayCurrentPoi(feature: Feature<Geometry>) {
   const map3dStore = useMap3dStore()
   if (feature === null) return
   const full_name = feature.getProperties()['site_nom']
-  let name = full_name.slice(0, CHAR_MAX)
-  if (full_name.length > CHAR_MAX) {
-    name += '\n' + full_name.slice(CHAR_MAX, full_name.length)
-  }
+  const name = splitName(full_name)
 
   const styleItem = generatePoiStyle(
     name,
@@ -65,11 +61,12 @@ export function displayCurrentPoi(feature: Feature<Geometry>) {
   feature.setStyle(styleItem.style)
 }
 
-export function undisplayCurrentPoi() {
+export function undisplayCurrentPoi(rennesApp: RennesApp) {
   const poiInteractionStore = usePoiInteractionStore()
   const map3dStore = useMap3dStore()
   if (poiInteractionStore.currentFeaturePoi === null) return
   const styleItem = generatePoiStyleWithoutLabel(map3dStore.is3D())
+  setDistanceDisplayConditionFeature(styleItem, rennesApp.get2DMap())
   poiInteractionStore.currentFeaturePoi.setStyle(styleItem.style)
   poiInteractionStore.selectCurrentFeaturePoi(null)
 }
