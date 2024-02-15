@@ -309,7 +309,7 @@
       "type": "WMSLayer",
       "activeOnStartup": false,
       "version": "1.3.0",
-      "layers": "raster:pg_h_2020",
+      "layers": "urba_proj:plans_amenagement_trambus",
       "parameters": "STYLE=default&TRANSPARENT=TRUE&format=image/png&transparent=true",
       "extent": {
         "projection": {
