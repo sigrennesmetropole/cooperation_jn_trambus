@@ -59,7 +59,7 @@ const tileGrid = new WMTSTileGrid({
 
 const rennesBaseMap = new TileLayer({
   source: new WMTS({
-    url: configStore.config?.trambus.projectPlanningBaseMapUrl,
+    url: configStore.config?.trambus.ogc.project_planning_base_map_url,
     layer: 'ref_fonds:pvci_simple_gris',
     matrixSet: 'EPSG:3857',
     format: 'image/png',
@@ -195,7 +195,7 @@ const styleFunction: StyleFunction = function (feature: FeatureLike): Style[] {
 
 const planningLayer = new VectorLayer({
   source: new VectorSource({
-    url: configStore.config?.trambus.projectPlanningLayerUrl,
+    url: configStore.config?.trambus.ogc.project_planning_layer_url,
     format: new GeoJSON(),
   }),
   style: styleFunction,
