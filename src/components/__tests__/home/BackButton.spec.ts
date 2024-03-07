@@ -3,11 +3,11 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { mount, VueWrapper } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import BackButton from '../../home/BackButton.vue'
-import UiButton from '../../ui/UiButton.vue'
 import { createRouter, createWebHistory, Router } from 'vue-router'
 import { useTraveltimeInteractionStore } from '@/stores/interactionMap'
 import { routes } from '@/router'
 import type { TravelTimeModel } from '@/model/travel-time.model'
+import { UiButton } from '@sigrennesmetropole/cooperation_jn_common_ui'
 
 describe('BackButton', () => {
   describe('click on button', () => {

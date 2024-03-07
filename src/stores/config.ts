@@ -1,21 +1,7 @@
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
-
-type ConfigType = {
-  trambus: {
-    projectPlanningBaseMapUrl: string
-    projectPlanningLayerUrl: string
-    fabriqueCitoyenneCGUUrl: string
-  }
-  link: {
-    coopterr_link: string
-    solar_link: string
-    trambus_link: string
-    ondes_link: string
-    contact_link: string
-  }
-}
+import type { ConfigType } from '@sigrennesmetropole/cooperation_jn_common_ui'
 
 export const useConfigStore = defineStore('configStore', () => {
   const config: Ref<ConfigType | null> = ref(null)

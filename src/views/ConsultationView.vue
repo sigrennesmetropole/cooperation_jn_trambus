@@ -11,6 +11,7 @@ import { useLineInteractionStore } from '@/stores/interactionMap'
 import { RENNES_LAYER, useLayersStore } from '@/stores/layers'
 import { useMap3dStore } from '@/stores/map'
 import GeoJSON from 'ol/format/GeoJSON'
+import { UiButton } from '@sigrennesmetropole/cooperation_jn_common_ui'
 
 const viewStore = useViewsStore()
 const lineInteractionStore = useLineInteractionStore()
