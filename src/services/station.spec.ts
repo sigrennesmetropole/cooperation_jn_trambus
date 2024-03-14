@@ -6,6 +6,7 @@ import {
   keepOnlyUsefulDessertes,
   sortStationsByOrder,
 } from '@/services/station'
+import { Point } from 'ol/geom'
 
 describe('StationService', () => {
   let stations: StationModel[]
@@ -20,6 +21,7 @@ describe('StationService', () => {
         ordre_t3: 2,
         ordre_t4: null,
         desserte: '12 67 C1 C3 C4 C6 N4 N5 Relais_b TTZ',
+        point: new Point([0, 0]),
       },
       {
         id: 2,
@@ -30,6 +32,7 @@ describe('StationService', () => {
         ordre_t3: 3,
         ordre_t4: null,
         desserte: '153 154 155 53 54 55 56',
+        point: new Point([0, 0]),
       },
       {
         id: 3,
@@ -41,6 +44,7 @@ describe('StationService', () => {
         ordre_t4: null,
         desserte:
           '100 11 153 154 155 156 167 53 54 55 56 67 API Bzh7 C1 C2 C3 C4 C5 C6 N1 N2 N3 N4 N5 Relais_a a',
+        point: new Point([0, 0]),
       },
     ]
   })

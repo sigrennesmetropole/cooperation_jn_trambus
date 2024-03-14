@@ -11,4 +11,6 @@ export interface StationModel {
   desserte_scolaire?: string
   desserte_soirs_we?: string
   desserte_dimanche?: string
+  // eslint-disable-next-line
+  point?: any
 }

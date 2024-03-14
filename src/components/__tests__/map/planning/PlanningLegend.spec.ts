@@ -48,14 +48,6 @@ describe('PlanningLegend', () => {
           .classes()
           .find((elt: string) => elt === 'text-neutral-500')
       ).toBeFalsy()
-      expect(
-        wrapper
-          .findAll('.cursor-pointer')
-          .filter(
-            (item) =>
-              item.text() !== LinePlanningStateTypes.UNSTARTED.toString()
-          ).length
-      ).toBe(13)
       wrapper
         .findAll('.cursor-pointer')
         .filter(

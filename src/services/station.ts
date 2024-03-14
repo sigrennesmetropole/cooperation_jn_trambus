@@ -8,7 +8,7 @@ import { RENNES_LAYER } from '@/stores/layers'
 import type { ParkingModel } from '@/model/parkings.model'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import type { Feature } from 'ol'
-import type { Geometry } from 'ol/geom'
+import type { Geometry, Point } from 'ol/geom'
 
 export function sortStationsByOrder(
   stations: StationModel[],
@@ -161,7 +161,9 @@ export async function completeStationsData(
   return stations
 }
 
-function buildStationModelFromStationFeature(feature: Feature<Geometry>) {
+function buildStationModelFromStationFeature(
+  feature: Feature<Geometry>
+): StationModel {
   return {
     id: feature.get('id'),
     nom: feature.get('nom'),
@@ -175,6 +177,7 @@ function buildStationModelFromStationFeature(feature: Feature<Geometry>) {
     desserte_scolaire: feature.get('desserte_scolaire'),
     desserte_soirs_we: feature.get('desserte_soirs_we'),
     desserte_dimanche: feature.get('desserte_dimanche'),
+    point: feature.getGeometry()! as Point,
   }
 }
 

@@ -7,4 +7,6 @@ export interface LineModel {
   start: string
   end: string
   frequency: number
+  // eslint-disable-next-line
+  prettyPoint?: any
 }

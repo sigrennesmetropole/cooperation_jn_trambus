@@ -193,7 +193,7 @@ linesStore.$subscribe(async () => {
   <section id="stations-list">
     <ThermometerStations
       v-if="state.lineDescription && state.stations"
-      :line="state.lineDescription?.id"
+      :line="state.lineDescription?.id!"
       :stations="state.stations"
     />
   </section>

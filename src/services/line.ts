@@ -4,6 +4,7 @@ import { fetchStationsByLine } from '@/services/station'
 import type { StationModel } from '@/model/stations.model'
 import type { LineModel, LineNumber } from '@/model/lines.model'
 import { useLinesStore } from '@/stores/lines'
+import type { Point } from 'ol/geom'
 
 export async function getLinesId(rennesApp: RennesApp) {
   const layer = await rennesApp.getLayerByKey(RENNES_LAYER.trambusLines)
@@ -64,6 +65,7 @@ export async function fetchLineDescriptions(rennesApp: RennesApp) {
       start: startStation?.nom || '',
       end: endStation?.nom || '',
       frequency: parseInt(frequency),
+      prettyPoint: endStation?.point as Point,
     })
   }
   return linesDescriptions

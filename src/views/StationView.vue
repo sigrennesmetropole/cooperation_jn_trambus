@@ -87,7 +87,7 @@ onMounted(async () => {
     bike: false,
     _traveltimeArrow: false,
     concertations: false,
-    cityPlans: false,
+    cityPlans: true,
   })
 })
 
@@ -125,7 +125,7 @@ const toggle = () => {
     <img class="w-[130px] h-[124px] rounded" :src="cityPlansIcon" />
     <div class="flex-col justify-center items-start gap-3 inline-flex">
       <div class="text-black text-lg font-bold font-['DM Sans'] leading-normal">
-        Afficher l’aménagement <br />sur la carte
+        Masquer l’aménagement <br />sur la carte
       </div>
 
       <UiToggleButton
