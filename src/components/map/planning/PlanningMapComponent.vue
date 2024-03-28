@@ -27,19 +27,18 @@ import type { LineNumber } from '@/model/lines.model'
 import { LinePlanningStateTypes } from '@/model/line-planning-state.model'
 import type { Positioning } from 'ol/Overlay'
 import { useConfigStore } from '@/stores/config'
+import { useLinesStore } from '@/stores/lines'
 
 const planningStore = usePlanningStore()
 const configStore = useConfigStore()
+const linesStore = useLinesStore()
 
 // Create map and provide it to the descendant to avoid reactivity on map object
 let map = new Map({ controls: [] })
 provide('map', map)
 
 const mapLoaded = ref(false)
-const line1 = ref(null)
-const line2 = ref(null)
-const line3 = ref(null)
-const line4 = ref(null)
+const linesRef = ref([])
 
 const resolutions = []
 const matrixIds = []
@@ -233,10 +232,16 @@ function setupMap() {
     })
   )
   map.setLayers([rennesBaseMap, planningLayer])
-  addOverlay(map, -1.69963979, 48.13097969, line1.value)
-  addOverlay(map, -1.59290358, 48.11698771, line2.value)
-  addOverlay(map, -1.59973872, 48.08178725, line3.value)
-  addOverlay(map, -1.71701545, 48.07001307, line4.value)
+  linesRef.value.forEach((lineRef, index) => {
+    let point = linesStore.lineDesciptions[index].prettyPoint!
+    point.transform('EPSG:3857', 'EPSG:4326')
+    addOverlay(
+      map,
+      point.getCoordinates()[0],
+      point.getCoordinates()[1],
+      linesRef.value[index]
+    )
+  })
 
   mapLoaded.value = true
 }
@@ -264,39 +269,17 @@ function setSelectedLine(line: number) {
   <OlNavigationButtons></OlNavigationButtons>
   <div class="absolute left-10 top-10 flex flex-row gap-1">
     <UiLineButton
-      ref="line1"
-      :line="1"
+      v-for="line in linesStore.lineDesciptions"
+      :key="line.id"
+      ref="linesRef"
+      :line="line.id"
       :chevron="false"
-      :active="[2, 3, 4].indexOf(planningStore.selectedLine) == -1"
+      :active="
+        planningStore.selectedLine === line.id ||
+        planningStore.selectedLine == 0
+      "
       :corner="'br'"
-      @click="setSelectedLine(1)"
-    >
-    </UiLineButton>
-    <UiLineButton
-      ref="line2"
-      :line="2"
-      :chevron="false"
-      :active="[1, 3, 4].indexOf(planningStore.selectedLine) == -1"
-      :corner="'bl'"
-      @click="setSelectedLine(2)"
-    >
-    </UiLineButton>
-    <UiLineButton
-      ref="line3"
-      :line="3"
-      :chevron="false"
-      :active="[1, 2, 4].indexOf(planningStore.selectedLine) == -1"
-      :corner="'tl'"
-      @click="setSelectedLine(3)"
-    >
-    </UiLineButton>
-    <UiLineButton
-      ref="line4"
-      :line="4"
-      :chevron="false"
-      :active="[1, 2, 3].indexOf(planningStore.selectedLine) == -1"
-      :corner="'br'"
-      @click="setSelectedLine(4)"
+      @click="setSelectedLine(line.id)"
     >
     </UiLineButton>
   </div>
