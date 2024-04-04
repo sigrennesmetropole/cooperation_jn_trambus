@@ -260,7 +260,7 @@
     },
     {
       "name": "parking",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=trp_coll:trambus_parc_relais&outputFormat=application/json&srsName=EPSG:4326",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=trp_coll:trambus_parc_relais&outputFormat=application/json&srsName=EPSG:4326&CQL_FILTER=(li_code=%27T1%27%20OR%20li_code=%27T2%27)",
       "type": "GeoJSONLayer",
       "activeOnStartup": true,
       "zIndex": 4,
