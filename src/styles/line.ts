@@ -1,6 +1,6 @@
 import type { LineNumber, SelectedTrambusLine } from '@/model/lines.model'
 import { Stroke, Style } from 'ol/style'
-import { getTrambusLineNumber, lineColors, lineDimmedColors } from './common'
+import { getTrambusLineNumber, lineColorsOl, lineDimmedColors } from './common'
 import type { FeatureLike } from 'ol/Feature'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import { useHomeViewsStore } from '@/stores/views'
@@ -14,7 +14,7 @@ export function trambusLineStyle(
   const lineStyles = []
   const basicLineStyle = new Style({
     stroke: new Stroke({
-      color: lineColors[lineNumber],
+      color: lineColorsOl[lineNumber],
       width: 4,
     }),
     zIndex: 1,

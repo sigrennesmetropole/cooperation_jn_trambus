@@ -12,7 +12,6 @@ import MetroBIcon from '@/assets/icons/metro-b.svg'
 import BusC1Icon from '@/assets/icons/bus-c1.svg'
 import BusC2Icon from '@/assets/icons/bus-c2.svg'
 import BusC3Icon from '@/assets/icons/bus-c3.svg'
-import BusC4Icon from '@/assets/icons/bus-c4.svg'
 import BusC5Icon from '@/assets/icons/bus-c5.svg'
 import BusC6Icon from '@/assets/icons/bus-c6.svg'
 import BusC7Icon from '@/assets/icons/bus-c7.svg'
@@ -60,7 +59,7 @@ const goToLinePage = (line: string) => {
 
 const getBgColorLine = (line: string) => {
   const num_line = parseInt(line.replace('T', '')) as LineNumber
-  return getColorLine('bg', num_line, 600)
+  return getColorLine('bg', num_line, 'classic')
 }
 </script>
 
@@ -91,7 +90,6 @@ const getBgColorLine = (line: string) => {
       <img v-if="props.busLines.indexOf('C1') > -1" :src="BusC1Icon" />
       <img v-if="props.busLines.indexOf('C2') > -1" :src="BusC2Icon" />
       <img v-if="props.busLines.indexOf('C3') > -1" :src="BusC3Icon" />
-      <img v-if="props.busLines.indexOf('C4') > -1" :src="BusC4Icon" />
       <img v-if="props.busLines.indexOf('C5') > -1" :src="BusC5Icon" />
       <img v-if="props.busLines.indexOf('C6') > -1" :src="BusC6Icon" />
       <img v-if="props.busLines.indexOf('C7') > -1" :src="BusC7Icon" />

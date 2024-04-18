@@ -7,6 +7,7 @@ import rollupPluginStripPragma from 'rollup-plugin-strip-pragma'
 import path from 'path'
 import fs from 'fs'
 import { determineHostFromArgv } from './build/determineHost.js'
+import commonjs from 'vite-plugin-commonjs'
 
 type stripPragmas = (options: { pragmas: string[] }) => Plugin
 
@@ -22,6 +23,7 @@ export default defineConfig(({ command }) => {
   const base: UserConfig = {
     plugins: [
       vue(),
+      commonjs(),
       importMetaEnv.vite({
         env: '.env',
         example: '.env.example',

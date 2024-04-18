@@ -7,6 +7,7 @@ import {
 import { usePlanningStore } from '@/stores/planning'
 import { useLinesStore } from '@/stores/lines'
 import UiPlanningLegend from '@/components/ui/UiPlanningLegend.vue'
+import type { LineNumber } from '@/model/lines.model'
 const planningStore = usePlanningStore()
 const linesStore = useLinesStore()
 
@@ -17,7 +18,12 @@ let items = [
 ]
 let lines = linesStore.lineDesciptions.map(
   (line, idx) =>
-    new LineName('line' + line.id, line.name, linesImg[idx], idx + 1)
+    new LineName(
+      'line' + line.id,
+      line.name,
+      linesImg[idx],
+      (idx + 1) as LineNumber
+    )
 )
 
 const updateLineState = (lineState: LinePlanningStateTypes) => {

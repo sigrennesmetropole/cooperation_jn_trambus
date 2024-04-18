@@ -5,6 +5,7 @@ import type {
   LinePlanningStateTypes,
 } from '@/model/line-planning-state.model'
 import { usePlanningStore } from '@/stores/planning'
+import IconLine from '@/components/ui/icons/IconLine.vue'
 const planningStore = usePlanningStore()
 
 const props = defineProps({
@@ -89,8 +90,10 @@ function setSelectedLine(line: number) {
       class="flex-1 flex flex-row items-center relative hover:font-medium"
     >
       <label class="cursor-pointer flex flex-row" :for="line.id"
-        ><img :src="line.img" class="h-6 mr-3" />{{ line.printValue }}
+        ><IconLine :line="line.number" size="m" class="mr-3 ml-px"></IconLine>
+        {{ line.printValue }}
       </label>
+
       <div class="mr-auto"></div>
       <input
         type="radio"

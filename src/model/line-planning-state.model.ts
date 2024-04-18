@@ -2,6 +2,7 @@ import Line1 from '@/assets/icons/line1.svg'
 import Line2 from '@/assets/icons/line2.svg'
 import Line3 from '@/assets/icons/line3.svg'
 import Line4 from '@/assets/icons/line4.svg'
+import type { LineNumber } from '@/model/lines.model'
 
 export class LinePlanningStateTypes {
   static readonly UNSTARTED = new LinePlanningStateTypes(
@@ -47,7 +48,7 @@ export class LineName {
     public readonly id: string,
     public readonly printValue: string,
     public readonly img: string,
-    public readonly number: number
+    public readonly number: LineNumber
   ) {}
 
   toString() {

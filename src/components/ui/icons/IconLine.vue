@@ -16,7 +16,7 @@ const props = defineProps({
   },
 })
 
-const bgColor = ref(getColorLine('bg', props.line, 600))
+const bgColor = ref(getColorLine('bg', props.line, 'classic'))
 const lineText = ref(props.size === 's' ? `${props.line}` : `T${props.line}`)
 </script>
 <template>

@@ -33,7 +33,6 @@ describe('UiTravelTime', () => {
     })
     const divTravelTime = wrapper.find('[id="1:République-Grand Quartier"]')
     const classes = divTravelTime.classes()
-    expect(classes.includes('bg-indigo-100')).toBe(true)
-    expect(classes.includes('border-indigo-50')).toBe(true)
+    expect(classes.includes('bg-T1-light')).toBe(true)
   })
 })

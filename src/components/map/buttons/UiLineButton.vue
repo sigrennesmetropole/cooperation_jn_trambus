@@ -26,7 +26,7 @@ const props = defineProps({
 })
 
 const buttonStyle = computed(() => {
-  let bgColor = getColorLine('bg', props.line, 600)
+  let bgColor = getColorLine('bg', props.line, 'classic')
   if (!props.active) {
     bgColor = 'bg-white'
   }
@@ -44,7 +44,7 @@ const textStyle = computed(() => {
   if (props.active) {
     return 'text-white'
   }
-  const textColor = getColorLine('text', props.line, 600)
+  const textColor = getColorLine('text', props.line, 'classic')
   return [textColor]
 })
 
@@ -52,7 +52,7 @@ const arrowStrokeColor = computed(() => {
   if (props.active) {
     return 'stroke-white'
   }
-  const strokeColor = getColorLine('stroke', props.line, 600)
+  const strokeColor = getColorLine('stroke', props.line, 'classic')
   return strokeColor
 })
 </script>

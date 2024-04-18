@@ -53,7 +53,7 @@ const props = defineProps({
 })
 const stationActive = ref<Boolean>(false)
 const stationInteractionOnMap = ref<Boolean>(false)
-const borderColor = ref(getColorLine('border', props.line, 600))
+const borderColor = ref(getColorLine('border', props.line, 'classic'))
 const router = useRouter()
 
 let desserteSplit = props.desserte
