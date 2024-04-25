@@ -3,7 +3,7 @@ import { Circle, Fill, Stroke, Style } from 'ol/style'
 import { getTrambusLineNumber, lineColorsOl } from './common'
 import * as ol_color from 'ol/color'
 import type { FeatureLike } from 'ol/Feature'
-import { getAllStartEndStations } from '@/services/line'
+import { getAllTerminus } from '@/services/line'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import { isStationLabelDisplayed } from '@/services/station'
 
@@ -109,7 +109,7 @@ export function trambusStopTravelTimesViewStyleFunction(
   let lineNumber = getTrambusLineNumber(feature) as LineNumber
 
   // no travel time selected, only show the start and end stations
-  let shownStations = getAllStartEndStations()
+  let shownStations = getAllTerminus()
   // There is a travel time selected, show only the selected station from
   // the selected travel time
   if (selectedTravelTime != null) {
@@ -134,7 +134,7 @@ export function trambusStopOutlineTravelTimesViewStyleFunction(
   let lineNumber = getTrambusLineNumber(feature) as LineNumber
 
   // no travel time selected, only show the start and end stations
-  let shownStations = getAllStartEndStations()
+  let shownStations = getAllTerminus()
   // There is a travel time selected, show only the selected station from
   // the selected travel time
   if (selectedTravelTime != null) {

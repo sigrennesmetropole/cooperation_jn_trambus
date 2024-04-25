@@ -18,7 +18,7 @@ export async function fetchNetworkFigure(rennesApp: RennesApp) {
   networkFigures.push({
     id: 'lines',
     figure: lines.length,
-    description: 'Nouvelles lignes',
+    description: 'Lignes',
     icon: linesIcon,
   })
 
@@ -26,7 +26,7 @@ export async function fetchNetworkFigure(rennesApp: RennesApp) {
   networkFigures.push({
     id: 'stations',
     figure: stations.length,
-    description: 'Nouvelles stations',
+    description: 'Stations',
     icon: stationIcon,
   })
 
