@@ -68,6 +68,10 @@ module.exports = {
     'before:border-emerald-600',
     'before:border-purple-500',
     'before:border-purple-600',
+    'before:border-T1-classic',
+    'before:border-T2-classic',
+    'before:border-T3-classic',
+    'before:border-T4-classic',
   ],
   theme: {
     extend: {
