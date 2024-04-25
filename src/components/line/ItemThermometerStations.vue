@@ -121,7 +121,7 @@ function getClassBeforeCircle() {
     'before:absolute',
     "before:content-['']",
     'before:border-l-2',
-    'before:' + borderColor.value,
+    'before:' + getColorLine('border', props.line, 'classic'),
   ]
   let ml = 'before:ml-px'
   let bottom = 'before:bottom-[65%]'
