@@ -11,8 +11,8 @@ const props = defineProps({
 })
 
 const colorClass = computed(() => {
-  const fillColor = getColorLine('fill', props.lineNumber, 600)
-  const strokeColor = getColorLine('stroke', props.lineNumber, 50)
+  const fillColor = getColorLine('fill', props.lineNumber, 'classic')
+  const strokeColor = getColorLine('stroke', props.lineNumber, 'border')
 
   return [fillColor, strokeColor]
 })

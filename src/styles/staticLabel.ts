@@ -7,7 +7,6 @@ import MetroBIcon from '@/assets/icons/metro-b.svg'
 import BusC1Icon from '@/assets/icons/bus-c1.svg'
 import BusC2Icon from '@/assets/icons/bus-c2.svg'
 import BusC3Icon from '@/assets/icons/bus-c3.svg'
-import BusC4Icon from '@/assets/icons/bus-c4.svg'
 import BusC5Icon from '@/assets/icons/bus-c5.svg'
 import BusC6Icon from '@/assets/icons/bus-c6.svg'
 import BusC7Icon from '@/assets/icons/bus-c7.svg'
@@ -27,7 +26,6 @@ export function staticLabelStyle(line: string, isLayerShown: boolean): Style[] {
     c1: BusC1Icon,
     c2: BusC2Icon,
     c3: BusC3Icon,
-    c4: BusC4Icon,
     c5: BusC5Icon,
     c6: BusC6Icon,
     c7: BusC7Icon,

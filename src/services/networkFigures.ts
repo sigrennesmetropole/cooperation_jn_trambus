@@ -5,17 +5,20 @@ import bikeIcon from '@/assets/icons/bike.svg'
 import linesIcon from '@/assets/icons/lines.svg'
 import stationIcon from '@/assets/icons/station.svg'
 import { getStations } from '@/services/station'
+import { useConfigStore } from '@/stores/config'
 
 const CYCLING_DISTANCE = 128
 
 export async function fetchNetworkFigure(rennesApp: RennesApp) {
+  const configStore = useConfigStore()
+
   const networkFigures: NetworkFigureModel[] = []
 
   const lines = await getLinesId(rennesApp)
   networkFigures.push({
     id: 'lines',
     figure: lines.length,
-    description: 'Nouvelles lignes',
+    description: 'Lignes',
     icon: linesIcon,
   })
 
@@ -23,13 +26,14 @@ export async function fetchNetworkFigure(rennesApp: RennesApp) {
   networkFigures.push({
     id: 'stations',
     figure: stations.length,
-    description: 'Nouvelles stations',
+    description: 'Stations',
     icon: stationIcon,
   })
 
   networkFigures.push({
     id: 'bike',
-    figure: CYCLING_DISTANCE,
+    figure:
+      configStore.config?.trambus.misc.cycling_distance || CYCLING_DISTANCE,
     description: 'Aménagement cyclables',
     unit: 'km',
     icon: bikeIcon,

@@ -11,7 +11,7 @@ const props = defineProps({
 })
 
 const colorClass = computed(() => {
-  const bgColor = getColorLine('bg', props.lineNumber, 300)
+  const bgColor = getColorLine('bg', props.lineNumber, 'border')
 
   return [bgColor]
 })

@@ -71,9 +71,9 @@ describe('StationService', () => {
   })
 
   describe('#keepOnlyUsefulDessertes', () => {
-    it('remove desserte on station', () => {
+    it('remove desserte (and C4) on station', () => {
       keepOnlyUsefulDessertes(stations)
-      expect(stations[0].desserte).toBe('C1 C3 C4 C6')
+      expect(stations[0].desserte).toBe('C1 C3 C6')
     })
   })
 

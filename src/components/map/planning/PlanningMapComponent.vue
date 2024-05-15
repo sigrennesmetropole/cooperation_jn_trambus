@@ -15,7 +15,7 @@ import { Style, Stroke } from 'ol/style'
 import type { StyleFunction } from 'ol/style/Style'
 import type { FeatureLike } from 'ol/Feature'
 
-import { getTrambusLineNumber, lineColors } from '@/styles/common'
+import { getTrambusLineNumber, lineColorsOl } from '@/styles/common'
 
 import { usePlanningStore } from '@/stores/planning'
 import PlanningLegend from '@/components/map/planning/PlanningLegend.vue'
@@ -87,7 +87,7 @@ const blackBorderStyle = new Style({
 function activeLineBorderStyle(line: LineNumber): Style {
   return new Style({
     stroke: new Stroke({
-      color: lineColors[line],
+      color: lineColorsOl[line],
       width: 9,
     }),
     zIndex: 0,

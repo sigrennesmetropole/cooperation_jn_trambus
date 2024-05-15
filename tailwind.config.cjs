@@ -1,4 +1,6 @@
 /* eslint-env node */
+const colors = require('./src/constants/colors')
+
 module.exports = {
   content: ['index.html', './src/**/*.{html,js,ts,vue}'],
   safelist: [
@@ -66,6 +68,10 @@ module.exports = {
     'before:border-emerald-600',
     'before:border-purple-500',
     'before:border-purple-600',
+    'before:border-T1-classic',
+    'before:border-T2-classic',
+    'before:border-T3-classic',
+    'before:border-T4-classic',
   ],
   theme: {
     extend: {
@@ -73,9 +79,7 @@ module.exports = {
         poppins: ['Poppins'],
         'dm-sans': ['DM Sans'],
       },
-      colors: {
-        'gray-dark': '#5E5E5E',
-      },
+      colors: colors,
     },
   },
   plugins: [require('tailwind-scrollbar-hide'), require('@tailwindcss/forms')],

@@ -1,21 +1,14 @@
 import type { LineNumber } from '@/model/lines.model'
 import type { BusNumber } from '@/model/bus.model'
 
-export const lineColors: Record<LineNumber, String> = {
-  1: 'indigo',
-  2: 'pink',
-  3: 'emerald',
-  4: 'purple',
-}
-
 export function getColorLine(
   colorType: String,
   lineNumber: LineNumber,
-  variant: Number
+  variant: Number | string
 ): string {
-  return `${colorType}-${lineColors[lineNumber]}-${variant}`
+  const key = `T${lineNumber}-${variant}`
+  return `${colorType}-${key}`
 }
-
 export const busColors: Record<BusNumber, String> = {
   C1: 'lime-500', // #95C11E
   C2: 'sky-600', // #008BD2

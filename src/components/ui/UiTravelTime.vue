@@ -28,8 +28,8 @@ const containerStyle = computed(() => {
   let borderColor = 'border-slate-50'
   let clickable = ''
   if (props.colored) {
-    bgColor = getColorLine('bg', props.lineNumber, 100)
-    borderColor = getColorLine('border', props.lineNumber, 50)
+    bgColor = getColorLine('bg', props.lineNumber, 'light')
+    borderColor = getColorLine('border', props.lineNumber, 'border')
   }
   if (props.clickable == false) {
     clickable = 'disabled'

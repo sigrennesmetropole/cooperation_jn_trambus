@@ -19,10 +19,12 @@ export async function getLinesId(rennesApp: RennesApp) {
   return ids.sort()
 }
 
-function getStartAndEndStationOfLine(
-  stations: StationModel[],
-  lineNumber: number
-) {
+/**
+ * Compute the first and the last stations of a line given the list of stations of the app
+ * @param stations
+ * @param lineNumber
+ */
+function _computeTerminus(stations: StationModel[], lineNumber: number) {
   const startStation = stations.find(
     // @ts-ignore
     (s) => s['ordre_t' + lineNumber.toString()] == 1
@@ -54,7 +56,7 @@ export async function fetchLineDescriptions(rennesApp: RennesApp) {
   const linesDescriptions: LineModel[] = []
   for (const line of lines) {
     const stations = await fetchStationsByLine(rennesApp, parseInt(line))
-    const [startStation, endStation] = getStartAndEndStationOfLine(
+    const [startStation, endStation] = _computeTerminus(
       stations,
       parseInt(line)
     )
@@ -85,7 +87,10 @@ export async function storeLineDescriptions(rennesApp: RennesApp) {
   linesStore.setLineDescriptions(lineDesciptions)
 }
 
-export function getAllStartEndStations(): string[] {
+/**
+ * get all the terminus of all the lines stores in the app
+ */
+export function getAllTerminus(): string[] {
   const startEndStations: string[] = []
   const linesStore = useLinesStore()
   linesStore.lineDesciptions.forEach((line) => {
@@ -95,19 +100,12 @@ export function getAllStartEndStations(): string[] {
   return startEndStations
 }
 
-export function getStartEndStationsOfLine(lineNumber: LineNumber): string[] {
+/**
+ * get first and last stop of a line
+ * @param lineNumber
+ */
+export function getTerminusOfLine(lineNumber: LineNumber): string[] {
   const linesStore = useLinesStore()
   const line = linesStore.lineDesciptions.find((line) => line.id == lineNumber)
   return line ? [line.start, line.end] : []
-}
-
-export function isStartEndStation(stationName: string): boolean {
-  return getAllStartEndStations().includes(stationName)
-}
-
-export function isStartEndStationOfLine(
-  lineNumber: LineNumber,
-  stationName: string
-): boolean {
-  return getStartEndStationsOfLine(lineNumber).includes(stationName)
 }

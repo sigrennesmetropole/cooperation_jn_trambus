@@ -1,10 +1,7 @@
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
-import {
-  getAllStartEndStations,
-  getStartEndStationsOfLine,
-} from '@/services/line'
+import { getAllTerminus, getTerminusOfLine } from '@/services/line'
 import type { LineNumber } from '@/model/lines.model'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import type { Viewpoint } from '@vcmap/core'
@@ -64,11 +61,11 @@ export const useStationsStore = defineStore('stations', () => {
   }
 
   function addStationStartEndPermanently() {
-    getAllStartEndStations().forEach((s) => addStationToDisplayPermanently(s))
+    getAllTerminus().forEach((s) => addStationToDisplayPermanently(s))
   }
 
   function addStationStartEndOfLinePermanently(lineNumber: LineNumber) {
-    getStartEndStationsOfLine(lineNumber).forEach((s) =>
+    getTerminusOfLine(lineNumber).forEach((s) =>
       addStationToDisplayPermanently(s)
     )
   }

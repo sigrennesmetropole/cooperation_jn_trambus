@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 import type { LineNumber } from '@/model/lines.model'
 import * as ol_color from 'ol/color'
 import type { FeatureLike } from 'ol/Feature'
@@ -8,25 +7,25 @@ import parkingIcon from '../assets/icons/parkingRelaisMin.png'
 import pinIconBlack from '../assets/icons/pin-black.svg'
 import pinIconWhite from '../assets/icons/pin-white.svg'
 import { VectorStyleItem } from '@vcmap/core'
+import colors from '@/constants/colors.js'
 
 export function getTrambusLineNumber(feature: FeatureLike): number {
   const lineNumberString = feature.get('li_code') // e.g. T1
   return Number(lineNumberString.substr(1, 2))
 }
-
-export const lineColors: Record<LineNumber, ol_color.Color> = {
-  1: ol_color.fromString('#4338CA'), // indigo-600
-  2: ol_color.fromString('#DB2777'), // pink-600
-  3: ol_color.fromString('#057857'), // emerald-600
-  4: ol_color.fromString('#9333EA'), // purple-600
+export const lineColorsOl: Record<LineNumber, ol_color.Color> = {
+  1: ol_color.fromString(colors['T1-classic']),
+  2: ol_color.fromString(colors['T2-classic']),
+  3: ol_color.fromString(colors['T3-classic']), // emerald-600
+  4: ol_color.fromString(colors['T4-classic']), // purple-600
 }
 
 // TODO: it seems the dimmed color is not so dimmed
 export const lineDimmedColors: Record<LineNumber, ol_color.Color> = {
-  1: ol_color.fromString('#A5B4FC'), // indigo-200
-  2: ol_color.fromString('#F9A8D5'), // pink-200
-  3: ol_color.fromString('#6EE7B7'), // emerald-200
-  4: ol_color.fromString('#C084FC'), // purple-200
+  1: ol_color.fromString(colors['T1-light']),
+  2: ol_color.fromString(colors['T2-light']),
+  3: ol_color.fromString(colors['T3-light']),
+  4: ol_color.fromString(colors['T4-light']),
 }
 
 export const parkingStyle: Style = new Style({

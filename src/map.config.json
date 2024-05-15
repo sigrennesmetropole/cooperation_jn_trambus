@@ -137,7 +137,7 @@
     },
     {
       "name": "bus",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/wfs?&outputFormat=application/json&srsName=EPSG:4326&SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=trp_coll:v_star_lignes_actives&STARTINDEX=0&COUNT=1000000&SRSNAME=urn:ogc:def:crs:EPSG::4326&FILTER=%3Cfes:Filter%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%20xmlns:gml%3D%22http://www.opengis.net/gml/3.2%22%3E%0A%20%3Cfes:And%3E%0A%20%20%3Cfes:BBOX%3E%0A%20%20%20%3Cfes:ValueReference%3Etrp_coll:geom%3C/fes:ValueReference%3E%0A%20%20%20%3Cgml:Envelope%20srsName%3D%22urn:ogc:def:crs:EPSG::4326%22%3E%0A%20%20%20%20%3Cgml:lowerCorner%3E48.00619999999999976%20-1.76367999999999991%3C/gml:lowerCorner%3E%0A%20%20%20%20%3Cgml:upperCorner%3E48.17779999999999774%20-1.58430000000000004%3C/gml:upperCorner%3E%0A%20%20%20%3C/gml:Envelope%3E%0A%20%20%3C/fes:BBOX%3E%0A%20%20%3Cfes:Or%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%20%3Cfes:ValueReference%3Etrp_coll:li_num%3C/fes:ValueReference%3E%0A%20%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3EC1%3C/fes:Literal%3E%0A%20%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%20%3Cfes:ValueReference%3Etrp_coll:li_num%3C/fes:ValueReference%3E%0A%20%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3EC2%3C/fes:Literal%3E%0A%20%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%20%3Cfes:ValueReference%3Etrp_coll:li_num%3C/fes:ValueReference%3E%0A%20%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3EC3%3C/fes:Literal%3E%0A%20%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%20%3Cfes:ValueReference%3Etrp_coll:li_num%3C/fes:ValueReference%3E%0A%20%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3EC4%3C/fes:Literal%3E%0A%20%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%20%3Cfes:ValueReference%3Etrp_coll:li_num%3C/fes:ValueReference%3E%0A%20%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3EC5%3C/fes:Literal%3E%0A%20%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%20%3Cfes:ValueReference%3Etrp_coll:li_num%3C/fes:ValueReference%3E%0A%20%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3EC6%3C/fes:Literal%3E%0A%20%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%20%20%3Cfes:PropertyIsEqualTo%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3E%0A%20%20%20%20%3Cfes:ValueReference%3Etrp_coll:li_num%3C/fes:ValueReference%3E%0A%20%20%20%20%3Cfes:Literal%20xmlns:fes%3D%22http://www.opengis.net/fes/2.0%22%3EC7%3C/fes:Literal%3E%0A%20%20%20%3C/fes:PropertyIsEqualTo%3E%0A%20%20%3C/fes:Or%3E%0A%20%3C/fes:And%3E%0A%3C/fes:Filter%3E%0A",
+      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=trp_coll:v_star_lignes_actives&OUTPUTFORMAT=application%2Fjson&COUNT=10000&SRSNAME=EPSG%3A4326&cql_filter=(li_num%20IN%20(%27C1%27,%20%27C2%27,%20%27C3%27,%20%27C5%27,%20%27C6%27,%20%27C7%27))",
       "type": "GeoJSONLayer",
       "activeOnStartup": false,
       "style": {
@@ -173,11 +173,11 @@
         "name": "trambusLineStyle",
         "type": "DeclarativeStyleItem",
         "declarativeStyle": {
-          "strokeWidth": "3",
+          "strokeWidth": "15",
           "color": {
             "conditions": [
-              ["${li_code} === 'T1'", "color('#4338ca')"],
-              ["${li_code} === 'T2'", "color('#db2777')"],
+              ["${li_code} === 'T1'", "color('#6f2282')"],
+              ["${li_code} === 'T2'", "color('#61c3d9')"],
               ["${li_code} === 'T3'", "color('#057857')"],
               ["${li_code} === 'T4'", "color('#9333ea')"],
               ["true", "color(${couleur})"]

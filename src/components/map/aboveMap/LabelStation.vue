@@ -51,7 +51,7 @@ const colorClass = computed(() => {
   }
 
   if (lineNumber !== null) {
-    const bgColor: string = getColorLine('bg', lineNumber, 600)
+    const bgColor: string = getColorLine('bg', lineNumber, 'classic')
     return [bgColor]
   }
   return ['bg-orange-600']

@@ -53,7 +53,7 @@ const props = defineProps({
 })
 const stationActive = ref<Boolean>(false)
 const stationInteractionOnMap = ref<Boolean>(false)
-const borderColor = ref(getColorLine('border', props.line, 600))
+const borderColor = ref(getColorLine('border', props.line, 'classic'))
 const router = useRouter()
 
 let desserteSplit = props.desserte
@@ -121,7 +121,7 @@ function getClassBeforeCircle() {
     'before:absolute',
     "before:content-['']",
     'before:border-l-2',
-    'before:' + borderColor.value,
+    'before:' + getColorLine('border', props.line, 'classic'),
   ]
   let ml = 'before:ml-px'
   let bottom = 'before:bottom-[65%]'

@@ -1,9 +1,9 @@
 import type { LineNumber } from '@/model/lines.model'
 import { Circle, Fill, Stroke, Style } from 'ol/style'
-import { getTrambusLineNumber, lineColors } from './common'
+import { getTrambusLineNumber, lineColorsOl } from './common'
 import * as ol_color from 'ol/color'
 import type { FeatureLike } from 'ol/Feature'
-import { getAllStartEndStations } from '@/services/line'
+import { getAllTerminus } from '@/services/line'
 import type { TravelTimeModel } from '@/model/travel-time.model'
 import { isStationLabelDisplayed } from '@/services/station'
 
@@ -13,13 +13,13 @@ function getCircleStyle(
   is3D: boolean
 ): Style {
   let fillColor = ol_color.fromString('#FFFFFF')
-  let strokeColor = lineColors[lineNumber]
+  let strokeColor = lineColorsOl[lineNumber]
 
   // Only handle the color of the 3D style here, disk is configured by
   // vector properties of the layer
   if (is3D) {
     fillColor = ol_color.fromString('#FFFFFF')
-    strokeColor = lineColors[lineNumber]
+    strokeColor = lineColorsOl[lineNumber]
   }
 
   const fill = new Fill({
@@ -84,16 +84,16 @@ export function trambusStopOutlineStyle(
   }
   const outline_style = new Style({
     image: new Circle({
-      fill: new Fill({ color: lineColors[lineNumber] }),
+      fill: new Fill({ color: lineColorsOl[lineNumber] }),
       stroke: new Stroke({
-        color: lineColors[lineNumber],
+        color: lineColorsOl[lineNumber],
         width: 0,
       }),
       radius: radius,
     }),
-    fill: new Fill({ color: lineColors[lineNumber] }),
+    fill: new Fill({ color: lineColorsOl[lineNumber] }),
     stroke: new Stroke({
-      color: lineColors[lineNumber],
+      color: lineColorsOl[lineNumber],
       width: 0,
     }),
     zIndex: 5,
@@ -109,7 +109,7 @@ export function trambusStopTravelTimesViewStyleFunction(
   let lineNumber = getTrambusLineNumber(feature) as LineNumber
 
   // no travel time selected, only show the start and end stations
-  let shownStations = getAllStartEndStations()
+  let shownStations = getAllTerminus()
   // There is a travel time selected, show only the selected station from
   // the selected travel time
   if (selectedTravelTime != null) {
@@ -134,7 +134,7 @@ export function trambusStopOutlineTravelTimesViewStyleFunction(
   let lineNumber = getTrambusLineNumber(feature) as LineNumber
 
   // no travel time selected, only show the start and end stations
-  let shownStations = getAllStartEndStations()
+  let shownStations = getAllTerminus()
   // There is a travel time selected, show only the selected station from
   // the selected travel time
   if (selectedTravelTime != null) {

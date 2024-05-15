@@ -1,4 +1,5 @@
-export type LineNumber = 1 | 2 | 3 | 4
+import type { LineNumber } from '@/model/lines.model'
+
 export interface PhotoModel {
   url: string
   line?: LineNumber
