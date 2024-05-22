@@ -56,9 +56,7 @@ const containerStyle = computed(() => {
         props.endStation +
         ' le temps de parcours est de ' +
         props.newDuration +
-        ' minutes au lieu de ' +
-        props.oldDuration +
-        ' minutes'
+        ' minutes.'
       "
     >
       <div class="flex items-center px-0.5 py-2 gap-1 rounded">
