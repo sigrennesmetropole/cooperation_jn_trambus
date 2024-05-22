@@ -10,7 +10,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="flex w-44 h-8 py-2 gap-3">
+  <div class="flex w-44 h-8 py-2 pr-1 gap-3">
     <img
       class="w-4 h-4"
       :src="props.type !== undefined ? IMG_OF_SERVICE[props.type] : ''"

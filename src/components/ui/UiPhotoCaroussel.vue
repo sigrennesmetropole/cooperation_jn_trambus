@@ -42,17 +42,19 @@ onMounted(async () => {
           <img :src="iconArrowLeft" class="w-4 h-4" />
         </div>
       </div>
-      <div class="bg-white p-3 rounded-lg mr-3">
+      <div class="flex flex-col content-around bg-white p-3 rounded-lg mr-3">
         <img
           :key="props.photos[indexCurrentImage]"
           :src="props.photos[indexCurrentImage]"
           class="w-full h-[90%]"
         />
-        <span class="font-dm-sans font-normal text-base">
-          Simulation 3D d’une voie aménagée avec un couloir de bus avec piste
-          cyclable, une voie automobile, une piste cyclable , une bande végétale
-          et 2 voies piétonnes dans une rue résidentielle.
-        </span>
+        <div class="flex flex-grow items-center justify-center">
+          <span class="font-dm-sans font-normal text-lg">
+            Illustrations des aménagements prévus autour des futures stations,
+            avec voies de bus dédiées, arborées et agrémentées de zones
+            piétonnes et cyclables.
+          </span>
+        </div>
       </div>
       <div class="flex flex-col">
         <img

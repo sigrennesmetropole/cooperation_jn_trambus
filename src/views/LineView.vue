@@ -86,7 +86,9 @@ onBeforeMount(async () => {
     stationStore.addStationToDisplayPermanently(tt.end)
   })
 
-  state.photo = await apiClientService.fetchPhotoByLine(lineStore.selectedLine)
+  state.photo = await apiClientService.fetchFirstPhotoOfLine(
+    lineStore.selectedLine
+  )
   const stations = await fetchStationsByLine(rennesApp, lineStore.selectedLine)
 
   state.parkings = await fetchParkingsByStations(rennesApp, stations)

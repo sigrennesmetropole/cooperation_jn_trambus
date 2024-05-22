@@ -87,9 +87,8 @@ linesStore.$subscribe(async () => {
   <div class="flex flex-col items-start p-0 gap-3">
     <div class="flex items-center p-0 gap-4">
       <p class="font-dm-sans font-medium text-sm text-neutral-800">
-        Les temps de parcours présentés sont estimés de façon théorique. Ils
-        sont calculés à l'heure de pointe du matin en direction de Rennes et
-        sont comparés aux temps de parcours théoriques actuels.
+        Les temps de parcours présentés sont estimés de façon théorique et
+        calculés à l'heure de pointe du matin en direction de Rennes.
       </p>
     </div>
   </div>

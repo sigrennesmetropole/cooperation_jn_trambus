@@ -7,6 +7,6 @@ exports[`ConsultationComponent.vue > renders the component correctly 1`] = `
       <h4 class=\\"font-dm-sans font-bold text-lg leading-6\\"> La Fabrique Citoyenne </h4>
       <p class=\\"font-dm-sans font-normal text-sm\\"> Découvrez l'espace concertation et <br> contribuez au transport de demain </p>
     </div>
-  </div><button tabindex=\\"0\\" class=\\"font-dm-sans font-medium text-base border border-white px-4 py-3 rounded-lg h-12\\"> Découvrir </button>
+  </div><button tabindex=\\"0\\" class=\\"font-dm-sans font-medium text-base border border-white px-4 py-3 rounded-lg h-12\\"> Participer </button>
 </div>"
 `;

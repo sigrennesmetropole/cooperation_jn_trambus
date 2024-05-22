@@ -34,7 +34,7 @@ export async function fetchNetworkFigure(rennesApp: RennesApp) {
     id: 'bike',
     figure:
       configStore.config?.trambus.misc.cycling_distance || CYCLING_DISTANCE,
-    description: 'Aménagement cyclables',
+    description: 'Aménagement cyclable',
     unit: 'km',
     icon: bikeIcon,
   })

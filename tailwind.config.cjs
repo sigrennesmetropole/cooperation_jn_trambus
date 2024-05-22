@@ -72,6 +72,14 @@ module.exports = {
     'before:border-T2-classic',
     'before:border-T3-classic',
     'before:border-T4-classic',
+    'bg-T1-classic',
+    'fill-T1-classic',
+    'stroke-T1-border',
+    'bg-T1-border',
+    'bg-T2-classic',
+    'fill-T2-classic',
+    'stroke-T2-border',
+    'bg-T2-border',
   ],
   theme: {
     extend: {

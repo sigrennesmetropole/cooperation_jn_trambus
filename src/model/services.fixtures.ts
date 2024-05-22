@@ -10,27 +10,23 @@ export const servicesFixtures = (): ServiceModel[] => [
     idStation: 1543,
   },
   {
-    type: 'box-bike',
+    type: 'information-kiosk',
     idStation: 1543,
   },
   {
-    type: 'usb-charging',
+    type: 'star-network-information',
     idStation: 1543,
   },
   {
-    type: 'newspaper-distributor',
+    type: 'accessibility',
     idStation: 1543,
   },
   {
-    type: 'vegetable-garden',
+    type: 'comfort',
     idStation: 1543,
   },
   {
-    type: 'public-sanitary',
-    idStation: 1543,
-  },
-  {
-    type: 'parcel-locker',
+    type: 'seats',
     idStation: 1543,
   },
 ]

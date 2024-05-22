@@ -67,7 +67,7 @@ export async function fetchLineDescriptions(rennesApp: RennesApp) {
       start: startStation?.nom || '',
       end: endStation?.nom || '',
       frequency: parseInt(frequency),
-      prettyPoint: endStation?.point as Point,
+      prettyPoint: (endStation?.point || startStation?.point) as Point,
     })
   }
   return linesDescriptions
