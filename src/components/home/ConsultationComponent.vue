@@ -40,7 +40,7 @@ function goToConsultation() {
       @click="goToConsultation()"
       @keydown.enter="goToConsultation()"
     >
-      Découvrir
+      Participer
     </button>
   </div>
 </template>
