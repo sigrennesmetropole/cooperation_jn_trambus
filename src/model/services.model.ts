@@ -1,8 +1,8 @@
-import imgBikeRack from '@/assets/icons/services/bike-rack.svg'
+import imgBikeRack from '@/assets/icons/services/bike-rack.png'
 import imgInformationKiosk from '@/assets/icons/services/information-kiosk.png'
 import imgStartNetworkInformation from '@/assets/icons/services/star-network-information.png'
 import imgSeats from '@/assets/icons/services/seats.png'
-import imgTicketMachine from '@/assets/icons/services/ticket-machine.svg'
+import imgTicketMachine from '@/assets/icons/services/ticket-machine.png'
 import imgComfort from '@/assets/icons/services/comfort.png'
 import imgAccessibility from '@/assets/icons/services/accessibility.png'
 
