@@ -68,7 +68,7 @@ const desserteTab = ref<BusNumber[]>(
 
 var lineTab = ref<LineNumber[]>([])
 if (props.li_code != '') {
-  let li_code_split = props.li_code.split(' ')
+  let li_code_split = props.li_code.trim().split(' ')
   lineTab.value = li_code_split.map((line) => {
     let new_line: LineNumber = parseInt(line) as LineNumber
     return new_line
