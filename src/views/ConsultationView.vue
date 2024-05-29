@@ -2,7 +2,6 @@
 import { ref, Ref, onBeforeMount, onMounted, inject } from 'vue'
 import { viewList } from '@/model/views.model'
 import { useViewsStore } from '@/stores/views'
-import ChevronArrowRight from '@/assets/icons/chevron-left.svg'
 import ProjectMeeting from '@/components/consultation/ProjectMeeting.vue'
 import ExplanationComponent from '@/components/consultation/ExplanationComponent.vue'
 import { apiProjectService } from '@/services/api-project'
@@ -11,7 +10,7 @@ import { useLineInteractionStore } from '@/stores/interactionMap'
 import { RENNES_LAYER, useLayersStore } from '@/stores/layers'
 import { useMap3dStore } from '@/stores/map'
 import GeoJSON from 'ol/format/GeoJSON'
-import { UiButton } from '@sigrennesmetropole/cooperation_jn_common_ui'
+import BackButton from '@/components/home/BackButton.vue'
 
 const viewStore = useViewsStore()
 const lineInteractionStore = useLineInteractionStore()
@@ -82,15 +81,14 @@ async function removeConcertations() {
 <template>
   <main class="h-screen">
     <div class="flex flex-row">
-      <UiButton
-        class="shadow-md rounded-lg p-2 flex gap-2.5 shrink-0 grow-0 mr-4 cursor-pointer"
-        @click="$router.push(viewList.home)"
-      >
-        <img :src="ChevronArrowRight" />
-      </UiButton>
-      <div class="font-dm-sans grow font-bold text-2xl">Concertations</div>
+      <div class="flex items-center p-0 mb-2 gap-4">
+        <BackButton title="Retour vers la page d'accueil."></BackButton>
+        <div class="font-dm-sans grow font-bold text-2xl mt-1">
+          Concertations
+        </div>
+      </div>
     </div>
-    <div class="-mx-6 mt-6">
+    <div>
       <ExplanationComponent></ExplanationComponent>
     </div>
     <div class="flex flex-col">
