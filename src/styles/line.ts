@@ -21,7 +21,7 @@ export function trambusLineStyle(
   const basicLineStyle = new Style({
     stroke: new Stroke({
       color: lineColorsOl[lineNumber],
-      width: 4,
+      width: traceType === 'variante' ? 8 : 4,
       lineDash: traceType === 'variante' ? [0, 30, 0, 0] : [],
       lineCap: 'round',
     }),
@@ -31,7 +31,7 @@ export function trambusLineStyle(
   const unselectedLineStyle = new Style({
     stroke: new Stroke({
       color: lineDimmedColors[lineNumber],
-      width: 3,
+      width: traceType === 'variante' ? 6 : 3,
       lineDash: traceType === 'variante' ? [0, 30, 0, 0] : [],
       lineCap: 'round',
     }),
