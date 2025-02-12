@@ -22,7 +22,7 @@ export function trambusLineStyle(
     stroke: new Stroke({
       color: lineColorsOl[lineNumber],
       width: traceType === 'variante' ? 8 : 4,
-      lineDash: traceType === 'variante' ? [0, 30, 0, 0] : [],
+      lineDash: traceType === 'variante' ? [0.1, 20] : undefined,
       lineCap: 'round',
     }),
     zIndex: 1,
@@ -32,7 +32,7 @@ export function trambusLineStyle(
     stroke: new Stroke({
       color: lineDimmedColors[lineNumber],
       width: traceType === 'variante' ? 6 : 3,
-      lineDash: traceType === 'variante' ? [0, 30, 0, 0] : [],
+      lineDash: traceType === 'variante' ? [0.1, 20] : undefined,
       lineCap: 'round',
     }),
     zIndex: 1,
