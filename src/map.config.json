@@ -292,7 +292,7 @@
     },
     {
       "name": "poi",
-      "url": "https://public.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=trp_coll:trambus_station_to_site&outputFormat=application/json&srsName=EPSG:4326",
+      "url": "https://public-test.sig.rennesmetropole.fr/geoserver/ows?service=WFS&request=getFeature&typename=trp_coll:trambus_station_to_site&outputFormat=application/json&srsName=EPSG:4326",
       "type": "GeoJSONLayer",
       "activeOnStartup": false,
       "hiddenObjectIds": [],
