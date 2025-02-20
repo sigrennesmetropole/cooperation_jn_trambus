@@ -14,7 +14,7 @@ const state = reactive({
 const rennesApp = inject('rennesApp') as RennesApp
 
 onMounted(async () => {
-  state.travelTimes = await fetchTravelTime(rennesApp, 3)
+  state.travelTimes = await fetchTravelTime(rennesApp)
 })
 </script>
 
