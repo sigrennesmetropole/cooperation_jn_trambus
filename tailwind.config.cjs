@@ -80,6 +80,14 @@ module.exports = {
     'fill-T2-classic',
     'stroke-T2-border',
     'bg-T2-border',
+    'bg-T3-classic',
+    'fill-T3-classic',
+    'stroke-T3-border',
+    'bg-T3-border',
+    'bg-T4-classic',
+    'fill-T4-classic',
+    'stroke-T4-border',
+    'bg-T4-border',
   ],
   theme: {
     extend: {
