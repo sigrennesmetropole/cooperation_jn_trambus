@@ -1,6 +1,7 @@
 const CHAR_MAX = 25
 const BREAK_LINE_TOLERANCE = 10
 export function shorterName(poiName: string) {
+  // Needed because Cesium does not support single quotes in labels (it breaks the label)
   let shorterName = poiName.replace("'", ' ')
   if (poiName.length > CHAR_MAX) {
     shorterName = shorterName.slice(0, CHAR_MAX).concat('...')

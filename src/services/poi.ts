@@ -20,7 +20,7 @@ import { setDistanceDisplayConditionFeature } from '@/services/setDistanceDispla
 import { usePoiParkingStore } from '@/stores/poiParking'
 import { useStationsStore } from '@/stores/stations'
 import { useLineViewsStore } from '@/stores/views'
-import { shorterName, splitName } from '@/helpers/nameFormatHelper'
+import { splitName } from '@/helpers/nameFormatHelper'
 
 const DEFAULT_MAX_SCALE = 8000
 
@@ -77,8 +77,12 @@ async function resetStyleOfPoi(view: View, rennesApp: RennesApp) {
   layer.getFeatures().forEach((f) => {
     let styleItem: StyleItem
     if (view === viewList.station) {
+      let name = f.getProperties()['site_nom']
+      // Needed because Cesium does not support single quotes in labels (it breaks the label)
+      name = name.replace("'", ' ')
+
       styleItem = generatePoiStyle(
-        shorterName(f.getProperties()['site_nom']),
+        name,
         f.getProperties()['distance'],
         map3dStore.is3D(),
         true,
