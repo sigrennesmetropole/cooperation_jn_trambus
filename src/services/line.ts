@@ -29,10 +29,13 @@ function _computeTerminus(stations: StationModel[], lineNumber: number) {
     // @ts-ignore
     (s) => s['ordre_t' + lineNumber.toString()] == 1
   )
-  const endStation = stations.find(
+  const endStation = stations.reduce((maxStation, currentStation) => {
     // @ts-ignore
-    (s) => s['ordre_t' + lineNumber.toString()] == stations.length
-  )
+    const currentOrder = currentStation['ordre_t' + lineNumber.toString()]
+    // @ts-ignore
+    const maxOrder = maxStation['ordre_t' + lineNumber.toString()]
+    return currentOrder > maxOrder ? currentStation : maxStation
+  }, stations[0])
   return [startStation, endStation]
 }
 
